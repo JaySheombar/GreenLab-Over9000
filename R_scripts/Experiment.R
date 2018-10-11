@@ -77,10 +77,18 @@ get_all_data<-function(dir_path){
 data<-get_all_data("/home/mglmx/Documents/GL/repo/GreenLab-Over9000/R_scripts/Data/nx9")
 data
 
+shapiro.test(data[which(data$Webpage == "amazonawscom"),]$Energy_consumption)[[2]]
+
 par(mfrow=c(3,4));
 for(webpage in levels(data$Webpage)){
   webpage_data <- data[which(data$Webpage == webpage),]
   qqnorm(webpage_data$Energy_consumption, main = webpage, ylab = "Energy Consumption")
   qqline(webpage_data$Energy_consumption)
   hist(webpage_data$Energy_consumption, main = webpage, xlab = "Energy Consumption")
+  
+  p_value <- shapiro.test(webpage_data$Energy_consumption)[[2]]
+  
+  cat(webpage,p_value)
+  print("")
 }
+
