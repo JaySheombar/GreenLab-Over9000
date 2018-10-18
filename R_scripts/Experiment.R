@@ -80,7 +80,7 @@ get_mean_data<-function(data){
   for (webpage in levels(data$Webpage)) {
     webpage_data <- data[which(data$Webpage == webpage),]
     webpage_mean <- mean(webpage_data$Energy_consumption)
-    mean_data <- rbind(mean_data,data.frame("Webpage"=webpage,"Mean_energy_consupmtion"=webpage_mean))
+    mean_data <- rbind(mean_data,data.frame("Webpage"=webpage,"Mean_energy_consumption"=webpage_mean))
   }
   return(mean_data)
 }
@@ -150,3 +150,28 @@ for(webpage in levels(data$Webpage)){
 
 merged_data <- get_merged_data(data)
 merged_data
+
+
+#Checking normality of the data on each category
+par(mfrow=c(3,3));
+for(performance in levels(merged_data$Performance)){
+  performance_data <- merged_data[which(merged_data$Performance == performance),]
+  
+  qqnorm(performance_data$Mean_energy_consumption, main = performance, ylab = "Mean energy consumption")
+  qqline(performance_data$Mean_energy_consumption)
+  hist(performance_data$Mean_energy_consumption, main = performance, xlab = "Mean energy consumption")
+  boxplot(performance_data$Mean_energy_consumption,)
+  
+  p_value <- shapiro.test(performance_data$Mean_energy_consumption)[[2]]
+  cat(performance,p_value)
+  print("")
+}
+
+
+#!!Probably missing some randomization before doing anova
+
+energy_aov <- lm(Mean_energy_consumption~Performance, data = merged_data)
+anova(energy_aov)
+
+summary(energy_aov)
+confint(energy_aov)
