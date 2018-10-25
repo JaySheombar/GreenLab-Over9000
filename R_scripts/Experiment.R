@@ -99,32 +99,32 @@ get_mean_data<-function(data){
 #Creates a dataframe with the webpages and the performance caterogry based on its energy consumption. 
 #The categories are obtained with python script get_categories.py and they are added manually.
 get_performance_data<-function(){
-  performance_data <- data.frame("Webpage"=character(),"Performance"=character(),stringsAsFactors = TRUE)
+  performance_data <- data.frame("Webpage"=character(),"Performance_score"=double(),"Performance"=character(),stringsAsFactors = TRUE)
   #performance_data <- data.frame("Webpage"=character(),"Performance"=character(),stringsAsFactors = FALSE)
   
-  performance_data <- rbind(performance_data,data.frame("Webpage"="yandexru","Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="xnxxcom","Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="popadsnet","Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="microsoftcom","Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="xvideoscom","Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="youtubecom","Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="askcom","Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="yandexru","Performance_score"=0.83,"Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="xnxxcom","Performance_score"=0.8,"Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="popadsnet","Performance_score"=0.94,"Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="microsoftcom","Performance_score"=0.86,"Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="xvideoscom","Performance_score"=0.76,"Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="youtubecom","Performance_score"=0.75,"Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="askcom","Performance_score"=0.94,"Performance"="Good"))
   
-  performance_data <- rbind(performance_data,data.frame("Webpage"="paypalcom","Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="instagramcom","Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="tianyacn","Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="twittercom","Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="applecom","Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="quoracom","Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="whatsappcom","Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="paypalcom","Performance_score"=0.63,"Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="instagramcom","Performance_score"=0.69,"Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="tianyacn","Performance_score"=0.52,"Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="twittercom","Performance_score"=0.48,"Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="applecom","Performance_score"=0.45,"Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="quoracom","Performance_score"=0.59,"Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="whatsappcom","Performance_score"=0.63,"Performance"="Average"))
   
-  performance_data <- rbind(performance_data,data.frame("Webpage"="coccoccom","Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="theguardiancom","Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="ettodaynet","Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="hao123com","Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="cnncom","Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="amazonawscom","Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="chinacom","Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="coccoccom","Performance_score"=0.22,"Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="theguardiancom","Performance_score"=0.43,"Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="ettodaynet","Performance_score"=0.04,"Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="hao123com","Performance_score"=0.17,"Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="cnncom","Performance_score"=0.01,"Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="amazonawscom","Performance_score"=0.13,"Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="chinacom","Performance_score"=0.08,"Performance"="Poor"))
   
   return(performance_data)
 }
@@ -143,7 +143,6 @@ get_merged_data<-function(data){
 #   representation of directories. For windows, use escape sequences for slashes
 data<-get_energy_data(".\\Data\\nx9")
 data
-
 
 View(data)
 
