@@ -150,7 +150,7 @@ View(data)
 # Visualize the data using Histograms, qqnorm and qqplot
 qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Values")
 p <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y))
-  p + stat_qq() + stat_qq_line() + ylab("Energy Consumption Sample Quantile") + 
+  p + stat_qq() + stat_qq_line(col="red", lty=2) + ylab("Energy Consumption Sample Quantile") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
 
 # Test the data for normality -- Fail
@@ -160,7 +160,7 @@ skewness(data$Energy_consumption)
 
 # Manipulating the data to check if skewness can be fixxed
 energy_squared <-data$Energy_consumption ^ 2
-energy_log <- log(data$Energy_consumption)
+energy_natural_log <- log(data$Energy_consumption)        # performs natural log
 energy_reciprocal <- 1/ data$Energy_consumption
 
 ## Visualize the square of the data -- No major improvement
@@ -178,21 +178,39 @@ ggplot(data.frame(y = energy_squared), aes(sample = y)) +
 
 
 ## Visualize the log of the data -- Promising
-qplot(energy_log, geom="histogram")
+qplot(energy_natural_log, geom="histogram")
 ggplot(data.frame(y = energy_log), aes(sample = y)) +
   stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Log of the Energy Consumption Values")
 
 # Test the data for normality of the log -- Fail
-shapiro.test(energy_log)
+shapiro.test(energy_natural_log)
+
+
 # Test for skewness -- Substantially lower but still skewed
-skewness(energy_log)
+skewness(energy_natural_log)
 
 # We conclude that even with data manipulation, the energy consumption is not normal.
 #       We perform kruskal wallis (non-parametric test)
 Performance_data = get_performance_data()
-energy_with_performance = merge(data, performance_data, by"=data.Webpage")
-kruskal.test(data$Webpage)
+energy_consumption_values = data
+energy_with_performance = join(Performance_data, energy_consumption_values, by="Webpage", type="inner")
+
+rank_values <- data.frame("Performance"=character(), "Rank" = numeric(), stringsAsFactors = TRUE)
+rank_values <- rbind(rank_values,data.frame("Performance"="Good","Rank"=1))
+rank_values <- rbind(rank_values,data.frame("Performance"="Average","Rank"=2))
+rank_values <- rbind(rank_values,data.frame("Performance"="Poor","Rank"=3))
+
+energies_with_ranks = join(energy_with_performance, rank_values, by="Performance", type="inner")
+
+# Make an analysis of variance for Energy consumption values with performance as a 
+#   factor
+kruskal.test(energy_with_performance$Energy_consumption, energy_with_performance$Performance)
+
+# Make an analysis of Correlion which is non-parametric
+cor.test(energies_with_ranks$Rank,energies_with_ranks$Energy_consumption, method="spearman")
+cor.test(energies_with_ranks$Energy_consumption,energies_with_ranks$Rank, method="spearman")
+
 
 
 # Tes
