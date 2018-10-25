@@ -1,3 +1,14 @@
+library(ggplot2)
+library(reshape)
+library(e1071)
+
+require(plyr)
+
+# Install these packages if they are not already in your system
+# install.packages("ggplot2")
+# install.packages("reshape")
+# install.packages("e1071")
+
 # To get a dataframe with all the data of the webapges and their energy consumed on each run,
 # Call the function get_energy_data(dir_path) where dir_path is the path to the directory with the name of the device in the output files.
 # There is an example at the end of the file
@@ -126,10 +137,65 @@ get_merged_data<-function(data){
   return(merged_data)
 }
 ##############################################
-data<-get_energy_data("/home/mglmx/Documents/GL/repo/GreenLab-Over9000/R_scripts/Data/nx9")
+
+
+# Must update the directory to your own folder.  Pay special attention to your system's
+#   representation of directories. For windows, use escape sequences for slashes
+data<-get_energy_data(".\\Data\\nx9")
 data
 
+
 View(data)
+
+# Visualize the data using Histograms, qqnorm and qqplot
+qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Values")
+p <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y))
+  p + stat_qq() + stat_qq_line() + ylab("Energy Consumption Sample Quantile") + 
+  xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
+
+# Test the data for normality -- Fail
+shapiro.test(data$Energy_consumption)
+# Test for skewness
+skewness(data$Energy_consumption)
+
+# Manipulating the data to check if skewness can be fixxed
+energy_squared <-data$Energy_consumption ^ 2
+energy_log <- log(data$Energy_consumption)
+energy_reciprocal <- 1/ data$Energy_consumption
+
+## Visualize the square of the data -- No major improvement
+qplot(energy_reciprocal, geom="histogram")
+ggplot(data.frame(y = energy_reciprocal), aes(sample = y)) +
+    stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile") + 
+  xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Reciprocal of the Energy Consumption Values")
+
+## Visualize the Reciprocal of the data -- No major improvement
+qplot(energy_squared, geom="histogram")
+ggplot(data.frame(y = energy_squared), aes(sample = y)) +
+  stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile") + 
+  xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Square of the Energy Consumption Values")
+
+
+
+## Visualize the log of the data -- Promising
+qplot(energy_log, geom="histogram")
+ggplot(data.frame(y = energy_log), aes(sample = y)) +
+  stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile") + 
+  xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Log of the Energy Consumption Values")
+
+# Test the data for normality of the log -- Fail
+shapiro.test(energy_log)
+# Test for skewness -- Substantially lower but still skewed
+skewness(energy_log)
+
+# We conclude that even with data manipulation, the energy consumption is not normal.
+#       We perform kruskal wallis (non-parametric test)
+Performance_data = get_performance_data()
+energy_with_performance = merge(data, performance_data, by"=data.Webpage")
+kruskal.test(data$Webpage)
+
+
+# Tes
 shapiro.test(data[which(data$Webpage == "amazonawscom"),]$Energy_consumption)[[2]]
 
 par(mfrow=c(3,4));
