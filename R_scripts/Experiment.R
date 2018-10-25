@@ -179,13 +179,15 @@ ggplot(data.frame(y = energy_squared), aes(sample = y)) +
 
 ## Visualize the log of the data -- Promising
 qplot(energy_natural_log, geom="histogram")
-ggplot(data.frame(y = energy_log), aes(sample = y)) +
+ggplot(data.frame(y = energy_natural_log), aes(sample = y)) +
   stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Log of the Energy Consumption Values")
 
 # Test the data for normality of the log -- Fail
-shapiro.test(energy_natural_log)
+ggplot(data.frame(y = energy_natural_log), aes(sample = y)) + geom_density(adjust=5)
 
+shapiro.test(energy_natural_log)
+ks.test(x=energy_natural_log, "pnorm", mean(energy_natural_log), sd(energy_natural_log) )
 
 # Test for skewness -- Substantially lower but still skewed
 skewness(energy_natural_log)
@@ -211,7 +213,7 @@ kruskal.test(energy_with_performance$Energy_consumption, energy_with_performance
 cor.test(energies_with_ranks$Rank,energies_with_ranks$Energy_consumption, method="spearman")
 cor.test(energies_with_ranks$Energy_consumption,energies_with_ranks$Rank, method="spearman")
 
-
+Perf
 
 # Tes
 shapiro.test(data[which(data$Webpage == "amazonawscom"),]$Energy_consumption)[[2]]
@@ -253,9 +255,18 @@ for(performance in levels(merged_data$Performance)){
 
 
 #!!Probably missing some randomization before doing anova
+# 
+# Energy_with_log = data
+# Energy_with_log$log = energy_natural_log
+# Energy_Log_with_Performance = join(Performance_data, Energy_with_log, by="Webpage", type="inner")
 
-energy_aov <- lm(Mean_energy_consumption~Performance, data = merged_data)
-anova(energy_aov)
 
-summary(energy_aov)
-confint(energy_aov)
+
+
+# 
+# energy_aov <- lm(Energy_consumption~Performance, data = Energy_Log_with_Performance)
+# anova(energy_aov)
+# 
+# summary(energy_aov)
+# qqnorm(residuals(energy_aov))
+# confint(energy_aov)
