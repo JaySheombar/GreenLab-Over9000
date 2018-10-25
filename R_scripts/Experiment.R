@@ -1,13 +1,14 @@
 library(ggplot2)
 library(reshape)
 library(e1071)
-
+library(effsize)
 require(plyr)
 
 # Install these packages if they are not already in your system
 # install.packages("ggplot2")
 # install.packages("reshape")
 # install.packages("e1071")
+# install.packages("effsize")
 
 # To get a dataframe with all the data of the webapges and their energy consumed on each run,
 # Call the function get_energy_data(dir_path) where dir_path is the path to the directory with the name of the device in the output files.
@@ -212,7 +213,12 @@ kruskal.test(energy_with_performance$Energy_consumption, energy_with_performance
 cor.test(energies_with_ranks$Rank,energies_with_ranks$Energy_consumption, method="spearman")
 cor.test(energies_with_ranks$Energy_consumption,energies_with_ranks$Rank, method="spearman")
 
-Perf
+# cor.test(energies_with_ranks$Performance_score,energies_with_ranks$Energy_consumption, method="spearman")
+
+
+# Make an analysis of th3e Effect size
+cliff.delta( energies_with_ranks$Energy_consumption, energies_with_ranks$Rank, formula=Energy_consumption ~ Rank, data =energies_with_ranks)
+cohen.d(energies_with_ranks$Energy_consumption, energies_with_ranks$Rank)
 
 # Tes
 shapiro.test(data[which(data$Webpage == "amazonawscom"),]$Energy_consumption)[[2]]
