@@ -137,7 +137,7 @@ get_merged_data<-function(data){
   
   return(merged_data)
 }
-##############################################
+######################################################################
 
 
 # Must update the directory to your own folder.  Pay special attention to your system's
@@ -199,9 +199,9 @@ energy_consumption_values = data
 energy_with_performance = join(Performance_data, energy_consumption_values, by="Webpage", type="inner")
 
 rank_values <- data.frame("Performance"=character(), "Rank" = numeric(), stringsAsFactors = TRUE)
-rank_values <- rbind(rank_values,data.frame("Performance"="Good","Rank"=1))
+rank_values <- rbind(rank_values,data.frame("Performance"="Good","Rank"=3))
 rank_values <- rbind(rank_values,data.frame("Performance"="Average","Rank"=2))
-rank_values <- rbind(rank_values,data.frame("Performance"="Poor","Rank"=3))
+rank_values <- rbind(rank_values,data.frame("Performance"="Poor","Rank"=1))
 
 energies_with_ranks = join(energy_with_performance, rank_values, by="Performance", type="inner")
 
@@ -211,14 +211,16 @@ kruskal.test(energy_with_performance$Energy_consumption, energy_with_performance
 
 # Make an analysis of Correlion which is non-parametric
 cor.test(energies_with_ranks$Rank,energies_with_ranks$Energy_consumption, method="spearman")
+cor.test(energies_with_ranks$Energy_consumption,energies_with_ranks$Performance_score, method="spearman")
 cor.test(energies_with_ranks$Energy_consumption,energies_with_ranks$Rank, method="spearman")
 
 # cor.test(energies_with_ranks$Performance_score,energies_with_ranks$Energy_consumption, method="spearman")
 
 
 # Make an analysis of th3e Effect size
-cliff.delta( energies_with_ranks$Energy_consumption, energies_with_ranks$Rank, formula=Energy_consumption ~ Rank, data =energies_with_ranks)
-cohen.d(energies_with_ranks$Energy_consumption, energies_with_ranks$Rank)
+#cliff.delta( energies_with_ranks$Energy_consumption, energies_with_ranks$Performance_score, formula=Energy_consumption ~ Performance_score, data =energies_with_ranks)
+cliff.delta( energies_with_ranks$Energy_consumption, energies_with_ranks$Performance_score, formula=Energy_consumption ~ Rank, data =energies_with_ranks)
+cliff.delta( energies_with_ranks, energies_with_ranks$Energy_consumption)
 
 # Tes
 shapiro.test(data[which(data$Webpage == "amazonawscom"),]$Energy_consumption)[[2]]
