@@ -5,10 +5,10 @@ library(effsize)
 require(plyr)
 
 # Install these packages if they are not already in your system
-# install.packages("ggplot2")
-# install.packages("reshape")
-# install.packages("e1071")
-# install.packages("effsize")
+install.packages("ggplot2")
+install.packages("reshape")
+install.packages("e1071")
+install.packages("effsize")
 
 # To get a dataframe with all the data of the webapges and their energy consumed on each run,
 # Call the function get_energy_data(dir_path) where dir_path is the path to the directory with the name of the device in the output files.
@@ -142,7 +142,7 @@ get_merged_data<-function(data){
 
 # Must update the directory to your own folder.  Pay special attention to your system's
 #   representation of directories. For windows, use escape sequences for slashes
-data<-get_energy_data(".\\Data\\nx9")
+data<-get_energy_data("./Data/nx9")
 data
 
 View(data)
@@ -152,6 +152,7 @@ qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Valu
 p <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y))
   p + stat_qq() + stat_qq_line(col="red", lty=2) + ylab("Energy Consumption Sample Quantile") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
+
 
 # Test the data for normality -- Fail
 shapiro.test(data$Energy_consumption)
@@ -197,6 +198,10 @@ skewness(energy_natural_log)
 Performance_data = get_performance_data()
 energy_consumption_values = data
 energy_with_performance = join(Performance_data, energy_consumption_values, by="Webpage", type="inner")
+
+View(energy_with_performance)
+p <- ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance, y=y, sample = y, color = energy_with_performance$Performance)) + geom_point()
+p
 
 rank_values <- data.frame("Performance"=character(), "Rank" = numeric(), stringsAsFactors = TRUE)
 rank_values <- rbind(rank_values,data.frame("Performance"="Good","Rank"=3))
