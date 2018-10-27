@@ -2,13 +2,19 @@ library(ggplot2)
 library(reshape)
 library(e1071)
 library(effsize)
+# library(dunn.test)
+library(FSA)
+
 require(plyr)
 
 # Install these packages if they are not already in your system
+
 # install.packages("ggplot2")
 # install.packages("reshape")
 # install.packages("e1071")
 # install.packages("effsize")
+# install.packages("dunn.test")
+# install.packages("FSA")
 
 # To get a dataframe with all the data of the webapges and their energy consumed on each run,
 # Call the function get_energy_data(dir_path) where dir_path is the path to the directory with the name of the device in the output files.
@@ -142,8 +148,10 @@ get_merged_data<-function(data){
 
 # Must update the directory to your own folder.  Pay special attention to your system's
 #   representation of directories. For windows, use escape sequences for slashes
-data<-get_energy_data(".\\Data\\nx9")
-data
+#   This operation takes a long time to finish. let loading take place
+#   before performing other operations
+
+data<-get_energy_data("C:\\School Projects\\GreenLab\\Analysis\\GreenLab-Over9000\\R_scripts\\Data\\nx9")
 
 View(data)
 
@@ -209,15 +217,31 @@ energies_with_ranks = join(energy_with_performance, rank_values, by="Performance
 #   factor
 kruskal.test(energy_with_performance$Energy_consumption, energy_with_performance$Performance)
 
-# Make an analysis of Correlion which is non-parametric
-cor.test(energies_with_ranks$Rank,energies_with_ranks$Energy_consumption, method="spearman")
-cor.test(energies_with_ranks$Energy_consumption,energies_with_ranks$Performance_score, method="spearman")
+# Perform a Dunn post-hoc test on the individual performance groups 
+#   (effectively performing 3 * (3-1) / 2 pairwise tests) on the individual
+#   performance groups.  Apply Holms correction to correct for multiple tests:
+# https://cran.r-project.org/web/packages/dunn.test/dunn.test.pdf
+dunnTest(Energy_consumption ~ Performance, data = energies_with_ranks,method="holm")
+
+# dunn.test(x = energies_with_ranks$Energy_consumption, g = energies_with_ranks$Performance, method="holm")
+
+
+
+# Make an analysis of Correlion which is non-parametric.
+#   Perform it between the ranks and the Energy COnsumption (Ranks must be ordered 
+#   Such that high performance has a higher value than lower performance)
 cor.test(energies_with_ranks$Energy_consumption,energies_with_ranks$Rank, method="spearman")
 
 # cor.test(energies_with_ranks$Performance_score,energies_with_ranks$Energy_consumption, method="spearman")
 
 
 # Make an analysis of th3e Effect size
+energy_good_performance <- energies_with_ranks[energies_with_ranks$Performance == "Good", ]
+energy_average_performance <- energies_with_ranks[energies_with_ranks$Performance == "Average", ]
+energy_poor_performance <- energies_with_ranks[energies_with_ranks$Performance == "Poor", ]
+
+
+
 #cliff.delta( energies_with_ranks$Energy_consumption, energies_with_ranks$Performance_score, formula=Energy_consumption ~ Performance_score, data =energies_with_ranks)
 cliff.delta( energies_with_ranks$Energy_consumption, energies_with_ranks$Performance_score, formula=Energy_consumption ~ Rank, data =energies_with_ranks)
 cliff.delta( energies_with_ranks, energies_with_ranks$Energy_consumption)
