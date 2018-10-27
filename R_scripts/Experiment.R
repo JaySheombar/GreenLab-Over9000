@@ -16,6 +16,7 @@ require(plyr)
 # install.packages("dunn.test")
 # install.packages("FSA")
 
+
 # To get a dataframe with all the data of the webapges and their energy consumed on each run,
 # Call the function get_energy_data(dir_path) where dir_path is the path to the directory with the name of the device in the output files.
 # There is an example at the end of the file
@@ -153,6 +154,7 @@ get_merged_data<-function(data){
 
 data<-get_energy_data("C:\\School Projects\\GreenLab\\Analysis\\GreenLab-Over9000\\R_scripts\\Data\\nx9")
 
+
 View(data)
 
 # Visualize the data using Histograms, qqnorm and qqplot
@@ -160,6 +162,7 @@ qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Valu
 p <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y))
   p + stat_qq() + stat_qq_line(col="red", lty=2) + ylab("Energy Consumption Sample Quantile") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
+
 
 # Test the data for normality -- Fail
 shapiro.test(data$Energy_consumption)
@@ -205,6 +208,10 @@ skewness(energy_natural_log)
 Performance_data = get_performance_data()
 energy_consumption_values = data
 energy_with_performance = join(Performance_data, energy_consumption_values, by="Webpage", type="inner")
+
+View(energy_with_performance)
+p <- ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance, y=y, sample = y, color = energy_with_performance$Performance)) + geom_point()
+p
 
 rank_values <- data.frame("Performance"=character(), "Rank" = numeric(), stringsAsFactors = TRUE)
 rank_values <- rbind(rank_values,data.frame("Performance"="Good","Rank"=3))
