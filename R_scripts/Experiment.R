@@ -157,7 +157,7 @@ data<-get_energy_data("C:\\School Projects\\GreenLab\\Analysis\\GreenLab-Over900
 View(data)
 
 # Visualize the data using Histograms, qqnorm and qqplot
-qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Consumption", xlab = "Energy Consumption (Joules)", ylab = "density")
+qplot(data$Energy_consumption, col=I("White"),geom="histogram", main="Histogram for Energy Consumption", xlab = "Energy Consumption (Joules)", ylab = "Frequency")
 p <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y))
   p + stat_qq() + stat_qq_line(col="red", lty=2) + ylab("Energy Consumption Sample Quantile (Joules)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
@@ -181,7 +181,7 @@ energy_natural_log <- log(data$Energy_consumption)        # performs natural log
 energy_reciprocal <- 1/ data$Energy_consumption
 
 ## Visualize the reciprocal of the data -- No major improvement
-qplot(energy_reciprocal, geom="histogram", main="Histogram for the Reciprocal of the Energy Consumption ", xlab = "Reciprocal of Energy Consumption (1/ Joules)", ylab = "Density")
+qplot(energy_reciprocal, col = I("White"), geom="histogram", main="Histogram for the Reciprocal of the Energy Consumption ", xlab = "Reciprocal of Energy Consumption (1/ Joules)", ylab = "Frequency")
 ggplot(data.frame(y = energy_reciprocal), aes(sample = y)) +
     stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (1/Joule)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Reciprocal of the Energy Consumption Values")
@@ -189,7 +189,7 @@ ggplot(data.frame(y = energy_reciprocal), aes(sample = y)) +
 skewness(energy_reciprocal)
 
 ## Visualize the square of the data -- No major improvement
-qplot(energy_squared, geom="histogram", main="Histogram for the Square of the Energy Consumption ", xlab = "Square of Energy Consumption (Joules ^ 2)", ylab = "Density")
+qplot(energy_squared, col = I("White"), geom="histogram", main="Histogram for the Square of the Energy Consumption ", xlab = "Square of Energy Consumption (Joules ^ 2)", ylab = "Frequency")
 ggplot(data.frame(y = energy_squared), aes(sample = y)) +
   stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (Joule ^ 2)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Square of the Energy Consumption Values")
@@ -197,7 +197,7 @@ ggplot(data.frame(y = energy_squared), aes(sample = y)) +
 skewness(energy_squared)
 
 ## Visualize the log of the data -- Promising
-qplot(energy_natural_log, geom="histogram", main="Histogram for the Natural Log of the Energy Consumption ", xlab = "Natural Log of Energy Consumption Ln(Joules)", ylab = "Density")
+qplot(energy_natural_log, col=I("White"), geom="histogram", main="Histogram for the Natural Log of the Energy Consumption ", xlab = "Natural Log of Energy Consumption Ln(Joules)", ylab = "Frequency")
 ggplot(data.frame(y = energy_natural_log), aes(sample = y)) +
   stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile Ln(Joules)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Log of the Energy Consumption Values")
@@ -242,9 +242,9 @@ kruskal.test(energy_with_performance$Energy_consumption, energy_with_performance
 
 # Perform a Dunn post-hoc test on the individual performance groups 
 #   (effectively performing 3 * (3-1) / 2 pairwise tests) on the individual
-#   performance groups.  Apply Holms correction to correct for multiple tests:
+#   performance groups.  Apply Bonferroni correction to correct for multiple tests:
 # https://www.rdocumentation.org/packages/FSA/versions/0.8.20/topics/dunnTest
-dunnTest(Energy_consumption ~ Performance, data = energies_with_ranks,method="holm")
+dunnTest(Energy_consumption ~ Performance, data = energies_with_ranks,method="bonferroni")
 
 
 # Make an analysis of Correlion which is non-parametric.
