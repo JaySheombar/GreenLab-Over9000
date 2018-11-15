@@ -232,19 +232,27 @@ p
 # View a scatter plot of the data per Performance Score
 ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance_score, y=y, sample = y, color = energy_with_performance$Performance)) +
   labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Score",  y = "Energy Consumption (joules)", color = "Performance Level")+
-  geom_point() 
+  geom_point()
+
+
 
 # View Box Plot of the data per Performance Score
-ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance, y=y, sample = y, fill = energy_with_performance$Performance)) +
+ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = rev(energy_with_performance$Performance), y=y, sample = y, fill = (energy_with_performance$Performance))) +
   labs(title="Boxplot: Energy Consumption Values", x="Performance Level",  y = "Energy Consumption (joules)", fill = "Performance Level")+
-  geom_boxplot()
+  geom_boxplot() + scale_x_discrete(breaks=c("Good", "Average", "Poor"), 
+                                    labels=c("Poor", "Average", "Good"))
+
+
+
+# View Box Plot of Each Website versus its energy consumption per trial
 
 ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Webpage, y=y, sample = y, fill = energy_with_performance$Performance)) +
   theme(axis.text.x = element_text(angle= -75, hjust = 0, size = 11))+
-  labs(title="Boxplot: Energy Consumption Values per website", x="Website",  y = "Energy Consumption (joules)", fill = "Performance Level")+
-  geom_boxplot()
+  labs(title="Boxplot: Energy Consumption Values per Web app", x="Web app",  y = "Energy Consumption (joules)", fill = "Performance Level")+
+  geom_boxplot() + scale_x_discrete(limits= rev(levels(energy_with_performance$Webpage)))
 
-# View Box Plot of Each Website versus its energy consumption per trial
+
+
 
 
 
