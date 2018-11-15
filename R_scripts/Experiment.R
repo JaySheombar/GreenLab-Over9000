@@ -234,6 +234,17 @@ ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energ
   labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Score",  y = "Energy Consumption (joules)", color = "Performance Level")+
   geom_point() 
 
+# View Box Plot of the data per Performance Score
+ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance, y=y, sample = y, fill = energy_with_performance$Performance)) +
+  labs(title="Boxplot: Energy Consumption Values", x="Performance Level",  y = "Energy Consumption (joules)", fill = "Performance Level")+
+  geom_boxplot()
+
+ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Webpage, y=y, sample = y, fill = energy_with_performance$Performance)) +
+  labs(title="Boxplot: Energy Consumption Values per website", x="Website",  y = "Energy Consumption (joules)", fill = "Performance Level")+
+  geom_boxplot()
+
+# View Box Plot of Each Website versus its energy consumption per trial
+
 
 
 rank_values <- data.frame("Performance"=character(), "Rank" = numeric(), stringsAsFactors = TRUE)
