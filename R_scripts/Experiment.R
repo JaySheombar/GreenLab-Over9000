@@ -240,6 +240,7 @@ ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energ
   geom_boxplot()
 
 ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Webpage, y=y, sample = y, fill = energy_with_performance$Performance)) +
+  theme(axis.text.x = element_text(angle= -75, hjust = 0, size = 11))+
   labs(title="Boxplot: Energy Consumption Values per website", x="Website",  y = "Energy Consumption (joules)", fill = "Performance Level")+
   geom_boxplot()
 
