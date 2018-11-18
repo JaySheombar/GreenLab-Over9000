@@ -1,0 +1,248 @@
+Webpage:  http:__www.microsoft.com_/
+HTML size:  0 KB	LOC:  1
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  0 KB	LOC:  0 
+
+Webpage:  http:__www.quora.com_/
+HTML size:  140 KB	LOC:  60
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  0 KB	LOC:  0 
+
+Webpage:  http:__www.twitter.com_/
+File:  http:__www.twitter.com_/css/twitter_more_1.bundle.css 	 (LOC:  9  Size:  225002 )
+File:  http:__www.twitter.com_/css/twitter_core.bundle.css 	 (LOC:  1  Size:  187759 )
+File:  http:__www.twitter.com_/css/fullscreen_errors-4e29aecc89be6d500979e19c3bd72aa2.css 	 (LOC:  1  Size:  6010 )
+File:  http:__www.twitter.com_/css/twitter_more_2.bundle.css 	 (LOC:  12  Size:  232020 )
+File:  http:__www.twitter.com_/js/js_inst.js 	 (LOC:  29  Size:  12381 )
+File:  http:__www.twitter.com_/js/init.nl.9765877e4c80514a6758.js 	 (LOC:  36  Size:  561815 )
+File:  http:__www.twitter.com_/js/404-174a1f1a41465b8e7b205e9551995267.js 	 (LOC:  1  Size:  19809 )
+HTML size:  232 KB	LOC:  1127
+Total CSS size:  650 KB	LOC:  23
+Total JS size:  594 KB	LOC:  66 
+
+Webpage:  http:__www.apple.com_/
+File:  http:__www.apple.com_/css/ac-localnav.built.css 	 (LOC:  1  Size:  92507 )
+File:  http:__www.apple.com_/css/modal.css 	 (LOC:  1  Size:  88616 )
+File:  http:__www.apple.com_/css/ac-globalnav.built.css 	 (LOC:  1  Size:  93239 )
+File:  http:__www.apple.com_/css/main.built.css 	 (LOC:  1  Size:  761451 )
+File:  http:__www.apple.com_/css/fonts.css 	 (LOC:  437  Size:  16488 )
+File:  http:__www.apple.com_/css/ac-globalfooter.built.css 	 (LOC:  1  Size:  43528 )
+File:  http:__www.apple.com_/js/gpu.js 	 (LOC:  380  Size:  8689 )
+File:  http:__www.apple.com_/js/autofilms.built.js 	 (LOC:  1  Size:  358100 )
+File:  http:__www.apple.com_/js/ac-analytics.js 	 (LOC:  1  Size:  306812 )
+File:  http:__www.apple.com_/js/localeswitcher.built.js 	 (LOC:  7  Size:  199928 )
+File:  http:__www.apple.com_/js/ac-globalnav.built.js 	 (LOC:  5  Size:  133497 )
+File:  http:__www.apple.com_/js/head.built.js 	 (LOC:  3  Size:  66487 )
+File:  http:__www.apple.com_/js/main.built.js 	 (LOC:  7  Size:  209368 )
+File:  http:__www.apple.com_/js/ac-globalfooter.built.js 	 (LOC:  1  Size:  14175 )
+HTML size:  45 KB	LOC:  943
+Total CSS size:  1095 KB	LOC:  442
+Total JS size:  1297 KB	LOC:  405 
+
+Webpage:  http:__www.ask.com_/
+File:  http:__www.ask.com_/css/site-ask-sites-asknl-home-page.css 	 (LOC:  1  Size:  10062 )
+File:  http:__www.ask.com_/js/ask-page.min.js 	 (LOC:  1  Size:  128914 )
+File:  http:__www.ask.com_/js/unified-api.min.js 	 (LOC:  1  Size:  18352 )
+HTML size:  33 KB	LOC:  767
+Total CSS size:  10 KB	LOC:  1
+Total JS size:  147 KB	LOC:  2 
+
+Webpage:  http:__www.yandex.ru_/
+File:  http:__www.yandex.ru_/css/Pf4vLwLSsAl7_Bm2-ZSkOb3pE.css 	 (LOC:  1  Size:  18979 )
+File:  http:__www.yandex.ru_/css/RAHQQRDNOI1Y4AtuBAt5oDT7M.css 	 (LOC:  1  Size:  380534 )
+File:  http:__www.yandex.ru_/js/watch.js 	 (LOC:  255  Size:  131069 )
+File:  http:__www.yandex.ru_/js/jquery.min.js 	 (LOC:  4  Size:  84345 )
+File:  http:__www.yandex.ru_/js/QWaVeqakLaZ5JFCja5M2te5rw.js 	 (LOC:  1  Size:  920924 )
+HTML size:  87 KB	LOC:  1
+Total CSS size:  399 KB	LOC:  2
+Total JS size:  1136 KB	LOC:  260 
+
+Webpage:  http:__www.tianya.cn_/
+File:  http:__www.tianya.cn_/css/TY.css 	 (LOC:  1  Size:  18831 )
+File:  http:__www.tianya.cn_/css/loginV3_11ae0a8.css 	 (LOC:  1  Size:  4291 )
+File:  http:__www.tianya.cn_/js/loginV3_91a3b3a.js 	 (LOC:  1  Size:  830 )
+File:  http:__www.tianya.cn_/js/TY.js 	 (LOC:  5  Size:  160008 )
+File:  http:__www.tianya.cn_/js/ads.js 	 (LOC:  1  Size:  5279 )
+HTML size:  7 KB	LOC:  138
+Total CSS size:  23 KB	LOC:  2
+Total JS size:  166 KB	LOC:  7 
+
+Webpage:  http:__www.xnxx.com_/
+File:  http:__www.xnxx.com_/css/front.css 	 (LOC:  49  Size:  229164 )
+File:  http:__www.xnxx.com_/js/xnxx.header.static.js 	 (LOC:  4  Size:  69976 )
+File:  http:__www.xnxx.com_/js/xnxx.footer.static.js 	 (LOC:  2  Size:  4507 )
+File:  http:__www.xnxx.com_/js/jquery.min.js 	 (LOC:  5  Size:  97163 )
+File:  http:__www.xnxx.com_/js/require.static.js 	 (LOC:  2  Size:  25953 )
+HTML size:  69 KB	LOC:  257
+Total CSS size:  229 KB	LOC:  49
+Total JS size:  197 KB	LOC:  13 
+
+Webpage:  http:__www.xvideos.com_/
+File:  http:__www.xvideos.com_/css/main.css 	 (LOC:  49  Size:  578310 )
+File:  http:__www.xvideos.com_/js/default.footer.static.js 	 (LOC:  2  Size:  8435 )
+File:  http:__www.xvideos.com_/js/jquery.min.js 	 (LOC:  5  Size:  97163 )
+File:  http:__www.xvideos.com_/js/require.static.js 	 (LOC:  2  Size:  25953 )
+File:  http:__www.xvideos.com_/js/default.header.static.js 	 (LOC:  4  Size:  73522 )
+HTML size:  112 KB	LOC:  413
+Total CSS size:  578 KB	LOC:  49
+Total JS size:  205 KB	LOC:  13 
+
+Webpage:  http:__www.instagram.com_/
+File:  http:__www.instagram.com_/js/6d5d9da9a217.js 	 (LOC:  1  Size:  179299 )
+File:  http:__www.instagram.com_/js/13758d0151d9.js 	 (LOC:  1  Size:  38126 )
+File:  http:__www.instagram.com_/js/fd511240bc76.js 	 (LOC:  1  Size:  276828 )
+File:  http:__www.instagram.com_/js/350b5e8f3dde.js 	 (LOC:  1  Size:  1031509 )
+File:  http:__www.instagram.com_/js/c7548aaadfb8.js 	 (LOC:  1  Size:  223773 )
+File:  http:__www.instagram.com_/js/64597f3768f2.js 	 (LOC:  1  Size:  130575 )
+HTML size:  25 KB	LOC:  285
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  1880 KB	LOC:  6 
+
+Webpage:  http:__www.whatsapp.com_/
+File:  http:__www.whatsapp.com_/css/style.build.css 	 (LOC:  4263  Size:  245025 )
+File:  http:__www.whatsapp.com_/js/jquery-1.12.2.min.js 	 (LOC:  5  Size:  97244 )
+HTML size:  32 KB	LOC:  390
+Total CSS size:  245 KB	LOC:  4263
+Total JS size:  97 KB	LOC:  5 
+
+Webpage:  http:__www.cnn.com_/
+File:  http:__www.cnn.com_/js/d22a6b50-6c73-4070-8922-86c722dd1f35.js 	 (LOC:  3  Size:  1149 )
+File:  http:__www.cnn.com_/js/chartbeat_mab.js 	 (LOC:  38  Size:  18788 )
+File:  http:__www.cnn.com_/js/cnn-analytics.min.js 	 (LOC:  1  Size:  27586 )
+File:  http:__www.cnn.com_/js/cnn-header-second.min.js 	 (LOC:  32  Size:  504820 )
+File:  http:__www.cnn.com_/js/128727546.js 	 (LOC:  817  Size:  364740 )
+File:  http:__www.cnn.com_/js/cnn-footer-lib.min.js 	 (LOC:  4  Size:  741983 )
+File:  http:__www.cnn.com_/js/gigya-sharebar.min.js 	 (LOC:  1  Size:  9379 )
+File:  http:__www.cnn.com_/js/sfp.js 	 (LOC:  2  Size:  374349 )
+File:  http:__www.cnn.com_/js/cnn-header.7351276a42fab3455d9a-first-bundle.js 	 (LOC:  269  Size:  219620 )
+File:  http:__www.cnn.com_/js/load.js 	 (LOC:  527  Size:  265030 )
+File:  http:__www.cnn.com_/js/jsmd.min.js 	 (LOC:  768  Size:  398632 )
+HTML size:  1714 KB	LOC:  19
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  2926 KB	LOC:  2462 
+
+Webpage:  http:__www.popads.net_/
+File:  http:__www.popads.net_/css/front_set.css 	 (LOC:  129  Size:  7331 )
+File:  http:__www.popads.net_/css/scambar.css 	 (LOC:  35  Size:  584 )
+File:  http:__www.popads.net_/js/jquery.popupoverlay.js 	 (LOC:  849  Size:  31000 )
+File:  http:__www.popads.net_/js/scambar.js 	 (LOC:  34  Size:  2095 )
+File:  http:__www.popads.net_/js/various.js 	 (LOC:  170  Size:  5614 )
+File:  http:__www.popads.net_/js/jquery-1.8.2.min.js 	 (LOC:  2  Size:  93435 )
+File:  http:__www.popads.net_/js/did_challenge.js 	 (LOC:  155  Size:  10922 )
+File:  http:__www.popads.net_/js/trustguard.js 	 (LOC:  5  Size:  1043 )
+HTML size:  13 KB	LOC:  179
+Total CSS size:  7 KB	LOC:  164
+Total JS size:  144 KB	LOC:  1215 
+
+Webpage:  http:__www.theguardian.com_/
+File:  http:__www.theguardian.com_/css/new-footer.css 	 (LOC:  2  Size:  4271 )
+File:  http:__www.theguardian.com_/css/facia.garnett.css 	 (LOC:  2  Size:  262292 )
+File:  http:__www.theguardian.com_/css/print.css 	 (LOC:  2  Size:  7192 )
+File:  http:__www.theguardian.com_/js/require.min.js 	 (LOC:  35  Size:  14760 )
+HTML size:  888 KB	LOC:  4475
+Total CSS size:  273 KB	LOC:  6
+Total JS size:  14 KB	LOC:  35 
+
+Webpage:  http:__www.hao123.com_/
+File:  http:__www.hao123.com_/js/bigRender.639e75c.js 	 (LOC:  17  Size:  37377 )
+File:  http:__www.hao123.com_/js/game.min.js 	 (LOC:  3408  Size:  1732618 )
+File:  http:__www.hao123.com_/js/lib.79d6f21.js 	 (LOC:  1  Size:  89 )
+File:  http:__www.hao123.com_/js/common.8cce381.js 	 (LOC:  2  Size:  40282 )
+HTML size:  499 KB	LOC:  377
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  1810 KB	LOC:  3428 
+
+Webpage:  http:__www.china.com_/
+File:  http:__www.china.com_/js/function.js 	 (LOC:  420  Size:  11830 )
+File:  http:__www.china.com_/js/121.js 	 (LOC:  1  Size:  1277 )
+File:  http:__www.china.com_/js/tab.min.js 	 (LOC:  17  Size:  3652 )
+File:  http:__www.china.com_/js/aq_auth.js 	 (LOC:  1  Size:  3051 )
+File:  http:__www.china.com_/js/rank_1.js 	 (LOC:  1  Size:  364136 )
+File:  http:__www.china.com_/js/rank.js 	 (LOC:  1  Size:  334291 )
+File:  http:__www.china.com_/js/chinaadclientV2.0.js 	 (LOC:  562  Size:  22119 )
+File:  http:__www.china.com_/js/paihang_tag.js 	 (LOC:  1  Size:  1326 )
+File:  http:__www.china.com_/js/freescroll.js 	 (LOC:  7  Size:  9228 )
+File:  http:__www.china.com_/js/fixedLimit.min.js 	 (LOC:  9  Size:  8941 )
+File:  http:__www.china.com_/js/jquery-1.10.2.min.js 	 (LOC:  6  Size:  93107 )
+File:  http:__www.china.com_/js/china_core.js 	 (LOC:  16  Size:  7117 )
+File:  http:__www.china.com_/js/ds.js 	 (LOC:  4  Size:  120102 )
+File:  http:__www.china.com_/js/china_api_login.js 	 (LOC:  21  Size:  12111 )
+HTML size:  113 KB	LOC:  1969
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  992 KB	LOC:  1067 
+
+Webpage:  http:__www.ettoday.net_/
+File:  http:__www.ettoday.net_/css/style.css 	 (LOC:  3843  Size:  119863 )
+File:  http:__www.ettoday.net_/css/travel-style.css 	 (LOC:  50  Size:  3099 )
+File:  http:__www.ettoday.net_/css/etlive.css 	 (LOC:  89  Size:  8954 )
+File:  http:__www.ettoday.net_/js/etlive.js 	 (LOC:  58  Size:  1698 )
+File:  http:__www.ettoday.net_/js/logo.js 	 (LOC:  34  Size:  1571 )
+File:  http:__www.ettoday.net_/js/firebase.js 	 (LOC:  36  Size:  396273 )
+File:  http:__www.ettoday.net_/js/dfp-gpt.js 	 (LOC:  101  Size:  6034 )
+File:  http:__www.ettoday.net_/js/travel-action.js 	 (LOC:  43  Size:  1574 )
+File:  http:__www.ettoday.net_/js/index.js 	 (LOC:  61  Size:  1353 )
+File:  http:__www.ettoday.net_/js/all.js 	 (LOC:  1101  Size:  161073 )
+HTML size:  101 KB	LOC:  1590
+Total CSS size:  131 KB	LOC:  3982
+Total JS size:  569 KB	LOC:  1434 
+
+Webpage:  http:__www.youtube.com_/
+File:  http:__www.youtube.com_/css/www-core-vflKmIJhL.css 	 (LOC:  1  Size:  267384 )
+File:  http:__www.youtube.com_/css/www-home-c4-vflgGC6wm.css 	 (LOC:  1  Size:  151350 )
+File:  http:__www.youtube.com_/css/www-guide-vflNDDMf7.css 	 (LOC:  1  Size:  18271 )
+File:  http:__www.youtube.com_/css/www-player.css 	 (LOC:  1  Size:  297589 )
+File:  http:__www.youtube.com_/css/www-pageframe-vfl2QekqP.css 	 (LOC:  1  Size:  57548 )
+File:  http:__www.youtube.com_/js/spf.js 	 (LOC:  74  Size:  34427 )
+File:  http:__www.youtube.com_/js/scheduler.js 	 (LOC:  44  Size:  5996 )
+File:  http:__www.youtube.com_/js/base.js 	 (LOC:  941  Size:  146388 )
+HTML size:  316 KB	LOC:  1465
+Total CSS size:  792 KB	LOC:  5
+Total JS size:  186 KB	LOC:  1059 
+
+Webpage:  http:__www.paypal.com_/
+File:  http:__www.paypal.com_/css/c0110b5a780f2090ca4bf0aa25a6c743481506.css 	 (LOC:  8  Size:  172894 )
+File:  http:__www.paypal.com_/css/25c5a847bf0a320bd79d9af2ae296b502f5a5e.css 	 (LOC:  2  Size:  26155 )
+File:  http:__www.paypal.com_/css/fa89f17d37eb3f97e39b926835ba73c0a3fd63.css 	 (LOC:  4  Size:  1601 )
+File:  http:__www.paypal.com_/js/opinionLab-2.0.0.js 	 (LOC:  68  Size:  42322 )
+File:  http:__www.paypal.com_/js/751efb8473df511a126f479e230eb600ce7616.js 	 (LOC:  1  Size:  407613 )
+File:  http:__www.paypal.com_/js/bs-chunk.js 	 (LOC:  1  Size:  68971 )
+File:  http:__www.paypal.com_/js/571cec64feb432ca2cc494ddfd3d89efade92a.js 	 (LOC:  1  Size:  21276 )
+File:  http:__www.paypal.com_/js/pa.js 	 (LOC:  2  Size:  34074 )
+HTML size:  49 KB	LOC:  783
+Total CSS size:  200 KB	LOC:  14
+Total JS size:  574 KB	LOC:  73 
+
+Webpage:  http:__www.amazonaws.com_/
+File:  http:__www.amazonaws.com_/css/style-awsm.css 	 (LOC:  8  Size:  427696 )
+File:  http:__www.amazonaws.com_/js/main.js 	 (LOC:  1  Size:  6063 )
+File:  http:__www.amazonaws.com_/js/aws-target-mediator.js 	 (LOC:  2  Size:  49707 )
+File:  http:__www.amazonaws.com_/js/aws-da.js 	 (LOC:  7  Size:  29627 )
+File:  http:__www.amazonaws.com_/js/libra-head.js 	 (LOC:  77  Size:  133599 )
+File:  http:__www.amazonaws.com_/js/awshome_s_code.js 	 (LOC:  10  Size:  67663 )
+HTML size:  177 KB	LOC:  2628
+Total CSS size:  427 KB	LOC:  8
+Total JS size:  286 KB	LOC:  97 
+
+Webpage:  http:__www.coccoc.com_/
+File:  http:__www.coccoc.com_/css/Fy9CDdHyKUz.css 	 (LOC:  63  Size:  84449 )
+File:  http:__www.coccoc.com_/css/QJAi1foz6VE.css 	 (LOC:  213  Size:  238221 )
+File:  http:__www.coccoc.com_/css/www-core-vflKmIJhL.css 	 (LOC:  1  Size:  267384 )
+File:  http:__www.coccoc.com_/css/browser-min.css 	 (LOC:  1  Size:  68354 )
+File:  http:__www.coccoc.com_/css/I3vC5Kp4Qu9.css 	 (LOC:  30  Size:  21644 )
+File:  http:__www.coccoc.com_/css/DxEJ0DUeAG8.css 	 (LOC:  121  Size:  195786 )
+File:  http:__www.coccoc.com_/css/www-player-vfliya7v9.css 	 (LOC:  1  Size:  297589 )
+File:  http:__www.coccoc.com_/css/www-error-vflvD9R0Z.css 	 (LOC:  1  Size:  732 )
+File:  http:__www.coccoc.com_/css/ZJZfUN3j7Cy.css 	 (LOC:  65  Size:  71298 )
+File:  http:__www.coccoc.com_/css/www-pageframe-vfl2QekqP.css 	 (LOC:  1  Size:  57548 )
+File:  http:__www.coccoc.com_/js/o0PpQvxq9Ar.js 	 (LOC:  296  Size:  320152 )
+File:  http:__www.coccoc.com_/js/jquery.js 	 (LOC:  9472  Size:  418275 )
+File:  http:__www.coccoc.com_/js/browser-min.js 	 (LOC:  2  Size:  150517 )
+File:  http:__www.coccoc.com_/js/api.js 	 (LOC:  1  Size:  762 )
+File:  http:__www.coccoc.com_/js/www-embed-player.js 	 (LOC:  663  Size:  103223 )
+File:  http:__www.coccoc.com_/js/jquery.cycle2.min.js 	 (LOC:  16  Size:  22945 )
+File:  http:__www.coccoc.com_/js/base.js 	 (LOC:  7834  Size:  1333354 )
+File:  http:__www.coccoc.com_/js/www-notfound.js 	 (LOC:  71  Size:  10300 )
+HTML size:  44 KB	LOC:  455
+Total CSS size:  1303 KB	LOC:  497
+Total JS size:  2359 KB	LOC:  18355 
+

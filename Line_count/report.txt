@@ -1,0 +1,105 @@
+Webpage:  http:__www.microsoft.com_/
+HTML size:  0 KB	LOC:  1
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  0 KB	LOC:  0 
+
+Webpage:  http:__www.quora.com_/
+HTML size:  140 KB	LOC:  60
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  0 KB	LOC:  0 
+
+Webpage:  http:__www.twitter.com_/
+HTML size:  232 KB	LOC:  1127
+Total CSS size:  650 KB	LOC:  23
+Total JS size:  594 KB	LOC:  66 
+
+Webpage:  http:__www.apple.com_/
+HTML size:  45 KB	LOC:  943
+Total CSS size:  1095 KB	LOC:  442
+Total JS size:  1297 KB	LOC:  405 
+
+Webpage:  http:__www.ask.com_/
+HTML size:  33 KB	LOC:  767
+Total CSS size:  10 KB	LOC:  1
+Total JS size:  147 KB	LOC:  2 
+
+Webpage:  http:__www.yandex.ru_/
+HTML size:  87 KB	LOC:  1
+Total CSS size:  399 KB	LOC:  2
+Total JS size:  1136 KB	LOC:  260 
+
+Webpage:  http:__www.tianya.cn_/
+HTML size:  7 KB	LOC:  138
+Total CSS size:  23 KB	LOC:  2
+Total JS size:  166 KB	LOC:  7 
+
+Webpage:  http:__www.xnxx.com_/
+HTML size:  69 KB	LOC:  257
+Total CSS size:  229 KB	LOC:  49
+Total JS size:  197 KB	LOC:  13 
+
+Webpage:  http:__www.xvideos.com_/
+HTML size:  112 KB	LOC:  413
+Total CSS size:  578 KB	LOC:  49
+Total JS size:  205 KB	LOC:  13 
+
+Webpage:  http:__www.instagram.com_/
+HTML size:  25 KB	LOC:  285
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  1880 KB	LOC:  6 
+
+Webpage:  http:__www.whatsapp.com_/
+HTML size:  32 KB	LOC:  390
+Total CSS size:  245 KB	LOC:  4263
+Total JS size:  97 KB	LOC:  5 
+
+Webpage:  http:__www.cnn.com_/
+HTML size:  1714 KB	LOC:  19
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  2926 KB	LOC:  2462 
+
+Webpage:  http:__www.popads.net_/
+HTML size:  13 KB	LOC:  179
+Total CSS size:  7 KB	LOC:  164
+Total JS size:  144 KB	LOC:  1215 
+
+Webpage:  http:__www.theguardian.com_/
+HTML size:  888 KB	LOC:  4475
+Total CSS size:  273 KB	LOC:  6
+Total JS size:  14 KB	LOC:  35 
+
+Webpage:  http:__www.hao123.com_/
+HTML size:  499 KB	LOC:  377
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  1810 KB	LOC:  3428 
+
+Webpage:  http:__www.china.com_/
+HTML size:  113 KB	LOC:  1969
+Total CSS size:  0 KB	LOC:  0
+Total JS size:  992 KB	LOC:  1067 
+
+Webpage:  http:__www.ettoday.net_/
+HTML size:  101 KB	LOC:  1590
+Total CSS size:  131 KB	LOC:  3982
+Total JS size:  569 KB	LOC:  1434 
+
+Webpage:  http:__www.youtube.com_/
+HTML size:  316 KB	LOC:  1465
+Total CSS size:  792 KB	LOC:  5
+Total JS size:  186 KB	LOC:  1059 
+
+Webpage:  http:__www.paypal.com_/
+HTML size:  49 KB	LOC:  783
+Total CSS size:  200 KB	LOC:  14
+Total JS size:  574 KB	LOC:  73 
+
+Webpage:  http:__www.amazonaws.com_/
+HTML size:  177 KB	LOC:  2628
+Total CSS size:  427 KB	LOC:  8
+Total JS size:  286 KB	LOC:  97 
+
+Webpage:  http:__www.coccoc.com_/
+HTML size:  44 KB	LOC:  455
+Total CSS size:  1303 KB	LOC:  497
+Total JS size:  2359 KB	LOC:  18355 
+
