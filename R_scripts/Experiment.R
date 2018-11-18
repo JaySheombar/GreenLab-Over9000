@@ -165,8 +165,8 @@ qqplot_raw <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y)) +
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
 
 grid.arrange(histo_raw, qqplot_raw, ncol=2)
-  
-  
+
+
 # Perform the summary of the Energy Consumption data
 summary(data$Energy_consumption)  
 
@@ -174,7 +174,7 @@ summary(data$Energy_consumption)
 sd(data$Energy_consumption)  
 
 
-  
+
 # Test the data for normality -- Fail
 shapiro.test(data$Energy_consumption)
 # Test for skewness
@@ -188,7 +188,7 @@ energy_reciprocal <- 1/ data$Energy_consumption
 ## Visualize the reciprocal of the data -- No major improvement
 histo_reciprocal <- qplot(energy_reciprocal, geom="histogram", main="Histogram for the Reciprocal of the Energy Consumption ", xlab = "Reciprocal of Energy Consumption (1/ joules)", ylab = "Density", col = I("White"))
 qqplot_reciprocal <- ggplot(data.frame(y = energy_reciprocal), aes(sample = y)) +
-    stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (1/ joules)") + 
+  stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (1/ joules)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Reciprocal of the Energy Consumption Values")
 
 grid.arrange(histo_reciprocal, qqplot_reciprocal, ncol=2)
@@ -225,8 +225,8 @@ energy_with_performance = join(Performance_data, energy_consumption_values, by="
 # View A scatter plot of the data per Performance Level
 View(energy_with_performance)
 p <- ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance, y=y, sample = y, color = energy_with_performance$Performance)) +
-    labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Level",  y = "Energy Consumption (joules)", color = "Performance Level")+
-    geom_point() 
+  labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Level",  y = "Energy Consumption (joules)", color = "Performance Level")+
+  geom_point() 
 p
 
 # View a scatter plot of the data per Performance Score
