@@ -6,9 +6,10 @@ library(effsize)
 library(FSA)
 
 require(plyr)
+require(gridExtra)
 
 # Install these packages if they are not already in your system
-
+# install.packages("gridExtra")
 # install.packages("ggplot2")
 # install.packages("reshape")
 # install.packages("e1071")
@@ -157,11 +158,15 @@ data<-get_energy_data("C:\\School Projects\\GreenLab\\Analysis\\GreenLab-Over900
 View(data)
 
 # Visualize the data using Histograms, qqnorm and qqplot
-qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Consumption", xlab = "Energy Consumption (Joules)", ylab = "density")
-p <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y))
-  p + stat_qq() + stat_qq_line(col="red", lty=2) + ylab("Energy Consumption Sample Quantile (Joules)") + 
+
+histo_raw <-qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Consumption", xlab = "Energy Consumption (joules)", ylab = "density", col = I("White"))
+qqplot_raw <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y)) +
+  stat_qq() + stat_qq_line(col="red", lty=2) + ylab("Energy Consumption Sample Quantile (joules)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
 
+grid.arrange(histo_raw, qqplot_raw, ncol=2)
+  
+  
 # Perform the summary of the Energy Consumption data
 summary(data$Energy_consumption)  
 
@@ -181,26 +186,28 @@ energy_natural_log <- log(data$Energy_consumption)        # performs natural log
 energy_reciprocal <- 1/ data$Energy_consumption
 
 ## Visualize the reciprocal of the data -- No major improvement
-qplot(energy_reciprocal, geom="histogram", main="Histogram for the Reciprocal of the Energy Consumption ", xlab = "Reciprocal of Energy Consumption (1/ Joules)", ylab = "Density")
-ggplot(data.frame(y = energy_reciprocal), aes(sample = y)) +
-    stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (1/Joule)") + 
+histo_reciprocal <- qplot(energy_reciprocal, geom="histogram", main="Histogram for the Reciprocal of the Energy Consumption ", xlab = "Reciprocal of Energy Consumption (1/ joules)", ylab = "Density", col = I("White"))
+qqplot_reciprocal <- ggplot(data.frame(y = energy_reciprocal), aes(sample = y)) +
+    stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (1/ joules)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Reciprocal of the Energy Consumption Values")
 
-skewness(energy_reciprocal)
+grid.arrange(histo_reciprocal, qqplot_reciprocal, ncol=2)
 
 ## Visualize the square of the data -- No major improvement
-qplot(energy_squared, geom="histogram", main="Histogram for the Square of the Energy Consumption ", xlab = "Square of Energy Consumption (Joules ^ 2)", ylab = "Density")
-ggplot(data.frame(y = energy_squared), aes(sample = y)) +
-  stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (Joule ^ 2)") + 
+hist_sqr <- qplot(energy_squared, geom="histogram", main="Histogram for the Square of the Energy Consumption ", xlab = "Square of Energy Consumption (joules ^ 2)", ylab = "Density", col = I("White"))
+qqplot_sqr <- ggplot(data.frame(y = energy_squared), aes(sample = y)) +
+  stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile (joules ^ 2)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Square of the Energy Consumption Values")
 
-skewness(energy_squared)
+grid.arrange(hist_sqr, qqplot_sqr, ncol=2)
 
 ## Visualize the log of the data -- Promising
-qplot(energy_natural_log, geom="histogram", main="Histogram for the Natural Log of the Energy Consumption ", xlab = "Natural Log of Energy Consumption Ln(Joules)", ylab = "Density")
-ggplot(data.frame(y = energy_natural_log), aes(sample = y)) +
-  stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile Ln(Joules)") + 
+hist_log <- qplot(energy_natural_log, geom="histogram", main="Histogram for the Natural Log of the Energy Consumption ", xlab = "Natural Log of Energy Consumption Ln(joules)", ylab = "Density", col=I("White"))
+qqplot_log <- ggplot(data.frame(y = energy_natural_log), aes(sample = y)) +
+  stat_qq() + stat_qq_line(col="red", lty=2)+ ylab("Energy Consumption Sample Quantile Ln(joules )") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Log of the Energy Consumption Values")
+
+grid.arrange(hist_log, qqplot_log, ncol=2)
 
 # Test the data for normality of the log -- Fail
 shapiro.test(energy_natural_log)
@@ -218,14 +225,34 @@ energy_with_performance = join(Performance_data, energy_consumption_values, by="
 # View A scatter plot of the data per Performance Level
 View(energy_with_performance)
 p <- ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance, y=y, sample = y, color = energy_with_performance$Performance)) +
-    labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Level",  y = "Energy Consumption (Joules)", color = "Performance Level")+
+    labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Level",  y = "Energy Consumption (joules)", color = "Performance Level")+
     geom_point() 
 p
 
 # View a scatter plot of the data per Performance Score
 ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance_score, y=y, sample = y, color = energy_with_performance$Performance)) +
-  labs(title="Scatter Plot of Performance Score versus Energy Consumption", x="Performance Score",  y = "Energy Consumption (Joules)", color = "Performance Level")+
-  geom_point() 
+  labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Score",  y = "Energy Consumption (joules)", color = "Performance Level")+
+  geom_point()
+
+
+
+# View Box Plot of the data per Performance Score
+ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = rev(energy_with_performance$Performance), y=y, sample = y, fill = (energy_with_performance$Performance))) +
+  labs(title="Boxplot: Energy Consumption Values", x="Performance Level",  y = "Energy Consumption (joules)", fill = "Performance Level")+
+  geom_boxplot() + scale_x_discrete(breaks=c("Good", "Average", "Poor"), 
+                                    labels=c("Poor", "Average", "Good"))
+
+
+
+# View Box Plot of Each Website versus its energy consumption per trial
+
+ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Webpage, y=y, sample = y, fill = energy_with_performance$Performance)) +
+  theme(axis.text.x = element_text(angle= -75, hjust = 0, size = 11))+
+  labs(title="Boxplot: Energy Consumption Values per Web app", x="Web app",  y = "Energy Consumption (joules)", fill = "Performance Level")+
+  geom_boxplot() + scale_x_discrete(limits= rev(levels(energy_with_performance$Webpage)))
+
+
+
 
 
 
@@ -258,7 +285,7 @@ energy_average_performance <- energies_with_ranks[energies_with_ranks$Performanc
 energy_poor_performance <- energies_with_ranks[energies_with_ranks$Performance == "Poor", ]
 
 ggplot(energies_with_ranks, aes(energies_with_ranks$Energy_consumption, fill = Performance) ) +
-  geom_density(alpha = 0.4)+ labs(title = "Energy Consumption per Performance Level", x = "Energy Consumption (Joules)")
+  geom_density(alpha = 0.4)+ labs(title = "Energy Consumption per Performance Level", x = "Energy Consumption (joules)", y = "Density")
 
 #cliff.delta( energies_with_ranks$Energy_consumption, energies_with_ranks$Performance_score, formula=Energy_consumption ~ Performance_score, data =energies_with_ranks)
 cliff.delta( energy_good_performance$Energy_consumption, energy_average_performance$Energy_consumption )

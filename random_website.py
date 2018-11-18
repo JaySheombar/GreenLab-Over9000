@@ -64,4 +64,4 @@ class Random_website:
 			f.write(web_string)
 
 website_picker = Random_website()
-website_picker.generateList()
+website_picker.write_list_to_textfile()
