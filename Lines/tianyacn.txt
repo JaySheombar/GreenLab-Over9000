@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)http://www.tianya.cn/ -->
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <script async="" src="./tianyacn_files/atrk.js" type="text/javascript">
+        </script>
+        <script async="" charset="utf-8" src="./tianyacn_files/h.js">
+        </script>
+        <script async="" charset="utf-8" src="./tianyacn_files/onlineusers.jsp">
+        </script>
+        <script async="" charset="utf-8" src="./tianyacn_files/registers.jsp">
+        </script>
+        <script async="" src="./tianyacn_files/qrload.do">
+        </script>
+        <script async="" src="./tianyacn_files/sid.do">
+        </script>
+        <title>
+            天涯社区_全球华人网上家园
+        </title>
+        <meta content="天涯,社区,论坛,博客,部落,城市,相册,空间" name="keywords">
+        <meta content="天涯社区提供论坛、部落、博客、问答、文学、相册、个人空间等服务。拥有天涯杂谈、娱乐八卦、情感天地等人气栏目，以及关天茶舍、煮酒论史等高端人文论坛。这里诞生了很多的热门网络事件与草根明星&hellip;&hellip;" name="description">
+        <meta content="2725366300611636" property="qc:admins">
+        <meta content="52e3aabe-fe8e-42c8-bfd9-be99fe1c0e0d" name="chinaz-site-verification">
+        <link href="./tianyacn_files/TY.css" rel="stylesheet" type="text/css">
+        <link href="./tianyacn_files/loginV3_11ae0a8.css" rel="stylesheet" type="text/css">
+        <!--[if IE 6]>
+                <link href="http://static.tianyaui.com/global/member/web/static/css/ieUpdate_0f3a22e.css" type="text/css" rel="stylesheet">
+<![endif]-->
+        <script language="JavaScript" type="text/javascript">
+            var referrerURL = document.domain;
+            if (referrerURL == 'tianya.cn') {
+                window.location.href = "http://www.tianya.cn";
+            }
+            var tyHost = "www.tianya.cn";
+            if (tyHost != window.top.location.host) {
+                window.top.location = "http://" + tyHost;
+            }
+        </script>
+        <script async="" charset="utf-8" src="./tianyacn_files/interface.js" type="text/javascript">
+        </script>
+        <script async="" charset="utf-8" src="./tianyacn_files/TY.util.userActionRl_f58083e.js" type="text/javascript">
+        </script>
+    </head>
+    <body>
+        <img height="0" src="./tianyacn_files/guid.jsp" width="0">
+        <script defer="" src="./tianyacn_files/cityid.jsp">
+        </script>
+        <img height="0" src="./tianyacn_files/clickAnalyse.jsp" width="0">
+        <div class="ads-loc-holder" data-ads-order="04">
+        </div>
+        <div class="wrap">
+            <div id="top_banner">
+                <div class="online-info">
+                    <div id="top_nav_wrap_login" style="">
+                        <div class="clearfix" id="top_nav_login">
+                            <div class="top-nav-logo">
+                                <a _tystat="新版顶导航/Logo" href="http://focus.tianya.cn/">
+                                </a>
+                            </div>
+                            <div class="ty-info">
+                            </div>
+                            <div class="clearfix">
+                                <div class="welcome fr">
+                                    来天涯，与
+                                    <b id="spanCounter">
+                                        <img height="16" src="./tianyacn_files/tyad_comein_16x16.gif" width="16">
+                                    </b>
+                                    位天涯人共同演绎你的网络人生
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bd" id="middle">
+                <div class="content-layout">
+                    <!--AD 开始全屏广告位-->
+                    <!--adbox是广告的box-->
+                    <div class="adbox ads-loc-holder" data-ads-order="01" id="adsp_center_banner" style="display: block">
+                    </div>
+                    <!--结束中央广告位-->
+                    <!--登录框 begin-->
+                    <div class="area">
+                        <div class="login-area" id="login_area">
+                            <div class="TY-login-window" id="TY_login_window_1542772546315">
+                                <div class="login-window-body">
+                                    <div class="loginWin-qrcode-login-wrapper" id="loginWin_content_wrapper">
+                                        <div class="loginWin-tab">
+                                            <a class="qrcode-login-tab" href="javascript:void(0);" title="扫码登录">
+                                            </a>
+                                            <a class="normal-login-tab" href="javascript:void(0);" title="密码登录">
+                                            </a>
+                                        </div>
+                                        <div class="loginWin-form">
+                                            <form accept-charset="UTF-8" action="https://passport.tianya.cn/login" class="loginWin-login-form" id="topguideloginform" method="post" name="topguideloginform" target="_top">
+                                                <div class="loginWin-form-item loginWin-account-input">
+                                                    <input autocomplete="off" class="input-text" id="vwriter" name="vwriter" placeholder="用户名/手机/邮箱" type="text">
+                                                </div>
+                                                <div class="loginWin-form-item loginWin-password-input">
+                                                    <input class="input-text" id="vpassword" name="vpassword" placeholder="密码" type="password">
+                                                </div>
+                                                <div class="loginWin-form-item fs12 cf">
+                                                    <label class="fl">
+                                                        <input checked="checked" class="input-checkbox" id="rmflag" name="rmflag" type="checkbox" value="1">
+              下次自动登录
+                                                    </label>
+                                                    <a class="loginWin-password-link fr" href="http://passport.tianya.cn/fp/fp.jsp" target="_blank">
+                                                        忘记密码？
+                                                    </a>
+                                                </div>
+                                                <div class="loginWin-form-item">
+                                                    <button class="loginWin-submit-btn" type="submit">
+                                                        登 录
+                                                    </button>
+                                                </div>
+                                                <div class="fs12 cf">
+                                                    <a class="loginWin-register-link fr" href="http://passport.tianya.cn/register/default.jsp?fowardURL=" target="_blank">
+                                                        立即注册
+                                                    </a>
+                                                </div>
+                                                <input name="__sid" type="hidden" value="">
+                                                <input name="fowardURL" type="hidden" value="">
+                                                <input name="returnURL" type="hidden" value="">
+                                            </form>
+                                            <dl class="loginWin-third-list cf">
+                                                <dt>
+                                                    其他帐号登录：
+                                                </dt>
+                                                <dd>
+                                                    <a class="weixin-login" href="https://open.weixin.qq.com/connect/qrconnect?appid=wx160fa51254add6be&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fpassport.tianya.cn%2Flogin%2Fweixin.do%3Fclient%3Dpc%26fowardURL%3D&amp;scope=snsapi_login#wechat_redirect" title="微信账号登录">
+                                                    </a>
+                                                </dd>
+                                                <dd>
+                                                    <a class="qq-login" href="https://graph.qq.com/oauth2.0/authorize?client_id=100253980&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fpassport.tianya.cn%2Flogin%2Fqq.do%3Fclient%3Dpc%26fowardURL%3D" title="QQ账号登录">
+                                                    </a>
+                                                </dd>
+                                                <dd>
+                                                    <a class="weibo-login" href="https://api.weibo.com/oauth2/authorize?client_id=482040646&amp;response_type=code&amp;with_offical_account=1&amp;redirect_uri=https%3A%2F%2Fpassport.tianya.cn%2Flogin%2Fsinaweibo.do%3Fclient%3Dpc%26fowardURL%3D" title="新浪微博账号登录">
+                                                    </a>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="loginWin-qrcode">
+                                            <div class="loginWin-qrcode-hd">
+                                                用天涯APP扫码安全登录
+                                            </div>
+                                            <div class="loginWin-qrcode-box">
+                                                <img class="loginWin-qrcode-img" src="http://www.tianya.cn/">
+                                            </div>
+                                            <p class="loginWin-app-download">
+                                                <a href="http://www.tianya.cn/mobile/" target="_blank">
+                                                    下载天涯社区客户端
+                                                </a>
+                                            </p>
+                                            <p class="loginWin-qrcode-links">
+                                                <a class="loginWin-register-link" href="http://passport.tianya.cn/register/default.jsp?fowardURL=" target="_blank">
+                                                    立即注册
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="onLine-num">
+                            <span class="fl online">
+                                当前在线：
+                                <em id="spanOnLine">
+                                    1056515
+                                </em>
+                            </span>
+                            <span class="fr">
+                                <a class="u_line" href="http://focus.tianya.cn/">
+                                    浏览进入&gt;&gt;
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <!--登录框 end-->
+                </div>
+            </div>
+            <div class="ft">
+                <div class="tianya-footer">
+                    <ul class="clearfix">
+                        <li>
+                            <a href="http://help.tianya.cn/about/about.html" target="_blank">
+        关于天涯
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://help.tianya.cn/about/service.html" target="_blank">
+                                广告服务
+                            </a>
+                        </li>
+                        <!--<li><a target="_blank" href="http://open.tianya.cn">开放平台</a></li>-->
+                        <li>
+                            <a href="http://service.tianya.cn/" target="_blank">
+        天涯客服
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://help.tianya.cn/about/ystl.html" target="_blank">
+                                隐私和版权
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://help.tianya.cn/about/contact.html" target="_blank">
+                                联系我们
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://join.tianya.cn/" target="_blank">
+                                加入天涯
+                            </a>
+                        </li>
+                        <li style="width: 100px;border-right: 0;">
+                            <a href="http://bbs.tianya.cn/post-complaint-158142-1.shtml" style="color: #D26B6E;" target="_blank">
+                                儿童不良信息举报
+                            </a>
+                        </li>
+                        <li class="footend">
+                            <a href="javascript:void(0);">
+                                &copy; 1999 -
+                                <script type="text/javascript">
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                2018 天涯社区版权所有
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="zj">
+                    <p>
+                        <a href="http://static.tianyaui.com/img/static/2011/boai/images/zz.jpg?v=1.0" target="_blank">
+                            增值电信业务经营许可证（琼B2-20060032）
+                        </a>
+                        <a href="http://static.tianyaui.com/global/member/web/static/images/wwz2018_62a2002.jpg" target="_blank">
+                            网络文化经营许可证（琼网文【2018】9148-792号）
+                        </a>
+                        <a href="http://static.tianyaui.com/global/member/login-default/images/ypzg.jpg" target="_blank">
+                            互联网药品信息服务资格证书(琼)-经营性-2010-0003
+                        </a>
+                    </p>
+                    <p>
+                        <a href="javascript:void(0)" id="shitingPop" style="padding-right:8px;">
+                            信息网络传播视听节目许可证
+                        </a>
+                        <a href="http://static.tianyaui.com/img/static/2011/boai/images/gb.jpg" target="_blank">
+                            广播电视节目制作经营许可证（琼字第052号）
+                        </a>
+                        <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010602000002" target="_blank">
+                            琼公网安备 46010602000002号
+                        </a>
+                        <span>
+                            打击网络侵权盗版&ldquo;剑网2018&rdquo;专项行动举报投诉热线12318
+                        </span>
+                    </p>
+                </div>
+                <div class="footer-pic-link clearfix">
+                    <a class="jc" href="http://www.haikou.cyberpolice.cn/" target="_blank">
+                    </a>
+                    <iframe allowtransparency="true" class="hngs" frameborder="0" scrolling="no" src="./tianyacn_files/lz.html" style="display:inline-block;float:left; width:100px; height:40px;position:relative;top:8px;">
+                    </iframe>
+                    <!-- <a href="http://aic.hainan.gov.cn:880/lz.ashx?vie=076144A08548ACE3DB843B1F0B84B9CFBD113CDACD2016A45D5901CEDB15CB7FBE9DB1239BB28D1E34A63570C1A9693A" target="_blank" class="hngs"></a> -->
+                    <a class="gab" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=46010602000002" target="_blank">
+                    </a>
+                    <a class="wm" href="http://www.wenming.cn/" target="_blank">
+                    </a>
+                    <a class="gs" href="http://service.tianya.cn/alarm/jbts.do" target="_blank">
+                    </a>
+                    <a class="kx" href="https://ss.knet.cn/verifyseal.dll?sn=e13062611010041408duli000000&amp;comefrom=verify&amp;trustKey=dn&amp;trustValue=www.tianya.cn" target="_blank">
+                    </a>
+                    <a class="jb" href="http://service.tianya.cn/alarm/jbts.do" target="_blank">
+                    </a>
+                    <a class="bl" href="http://www.12377.cn/" target="_blank">
+                    </a>
+                    <a class="bl2" href="http://report.12377.cn:13225/toreportinputNormal_anis.do" target="_blank">
+                    </a>
+                    <a class="xz" href="http://www.12377.cn/node_548446.htm" target="_blank">
+                    </a>
+                    <a class="bk" href="http://jubao.12377.cn:13225/reportform.do" target="_blank">
+                    </a>
+                </div>
+                <div class="footer-pic-link-gov clearfix">
+                </div>
+            </div>
+        </div>
+        <div class="ads-loc-holder" data-ads-order="02">
+            <!--对联广告-->
+        </div>
+        <div class="ads-loc-holder" data-ads-order="03">
+            <!--对联广告-->
+        </div>
+        <div class="ads-loc-holder" data-ads-order="99">
+            <!--性能-->
+        </div>
+        <script charset="utf-8" src="./tianyacn_files/TY.js" type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            var adsGlobal = {
+                itemId: "311",
+                pageType: "13"
+            };
+        </script>
+        <script charset="UTF-8" language="JavaScript" src="./tianyacn_files/loginV3_91a3b3a.js" type="text/javascript">
+        </script>
+        <div class="login_win_tip login_win_tip_right">
+            <div class="tri">
+            </div>
+            <div class="tip">
+            </div>
+        </div>
+        <script charset="UTF-8" language="javascript" src="./tianyacn_files/ads.js" type="text/javascript">
+        </script>
+        <!-- Start Alexa Certify Javascript -->
+        <script type="text/javascript">
+            _atrk_opts = {
+                atrk_acct: "WCmTk1a4eFf2mh",
+                domain: "tianya.cn",
+                dynamic: true
+            };
+            (function() {
+                var as = document.createElement('script');
+                as.type = 'text/javascript';
+                as.async = true;
+                as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js";
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(as, s);
+            })();
+        </script>
+        <noscript>
+            <img alt="" height="1" src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=WCmTk1a4eFf2mh" style="display:none" width="1">
+        </noscript>
+        <!-- End Alexa Certify Javascript -->
+        <div style="width: 0px; height: 0px;">
+            <object align="middle" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" height="0" id="TYFC1" width="0">
+                <param name="allowScriptAccess" value="always">
+                <param name="allowNetworking" value="all">
+                <param name="movie" value="//static.tianya.cn/js/2010/cookie.swf">
+                <param name="quality" value="high">
+                <param name="bgcolor" value="#ffffff">
+                <embed align="middle" allownetworking="all" allowscriptaccess="always" bgcolor="#ffffff" height="0" id="TYFC2" pluginspage="//www.macromedia.com/go/getflashplayer" quality="high" src="//static.tianya.cn/js/2010/cookie.swf" type="application/x-shockwave-flash" width="0">
+            </object>
+        </div>
+    </body>
+</html>

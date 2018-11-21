@@ -4,24 +4,34 @@ import glob, urllib, os
 class Lines:
 
 	def __init__(self):
+		self.single_file()
+
+	def single_file(self):
 		dir_path = os.path.dirname(os.path.realpath(__file__))
 		os.chdir(dir_path + "/Sites")
-		for file in glob.glob("*.html"):
-			location = dir_path + "/Sites/" + file
-			h = open(location, 'r')
-			print(h.read()) # todo: h.read() has to be beautified and saved to a txt file
 
-		# 	b = self.beautify(h.read())
+		filename = ""
+		location = dir_path + "/Sites/" + filename + ".html"
+		h = open(location, 'r')
+		s = self.beautify(h.read())
+		print(s)
 
-			# location_save = file + ".txt"
-			# print(location_save)
-			# save_file = open(location_save, 'w')
-			# save_file.write(b)
-			# save_file.close()
-			# print(file)
-		# input_text = '<title>Page Title</title><p>Some text here</p>'
-		# print(self.get_number_of_lines(self.beautify(input_text)))
-		# print(self.beautify(input_text))
+		loc_save = dir_path + "/" + filename + ".txt"
+		print("Saving file to:" + loc_save)
+		save_file = open(loc_save, 'w+')
+		save_file.write(s)
+		save_file.close()
+
+		print(self.get_lines(loc_save))
+
+	def get_lines(self, doc):
+		lines = 0
+
+		with open(doc, 'r') as f:
+			for line in f:
+				lines += 1
+		
+		return lines
 
 	def beautify(self, text_input):
 		return HTMLBeautifier.beautify(text_input, 4)

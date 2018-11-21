@@ -1,0 +1,1121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0018)http://coccoc.com/ -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <!-- Google Tag Manager -->
+        <script async="" src="./coccoccom_files/beacon.js">
+        </script>
+        <script async="" src="./coccoccom_files/atrk.js" type="text/javascript">
+        </script>
+        <script async="" src="./coccoccom_files/watch.js" type="text/javascript">
+        </script>
+        <script async="" id="www-widgetapi-script" src="./coccoccom_files/www-widgetapi.js" type="text/javascript">
+        </script>
+        <script async="" src="./coccoccom_files/iframe_api" type="text/javascript">
+        </script>
+        <script async="" src="./coccoccom_files/tag.js" type="text/javascript">
+        </script>
+        <script async="" src="./coccoccom_files/fbevents.js">
+        </script>
+        <script async="" src="./coccoccom_files/f.txt" type="text/javascript">
+        </script>
+        <script async="" src="./coccoccom_files/analytics.js" type="text/javascript">
+        </script>
+        <script async="" src="./coccoccom_files/bat.js">
+        </script>
+        <script async="" charset="utf-8" src="./coccoccom_files/blade_track_gl.js" type="text/javascript">
+        </script>
+        <script async="" src="./coccoccom_files/analytics(1).js">
+        </script>
+        <script async="" src="./coccoccom_files/recaptcha__vi.js" type="text/javascript">
+        </script>
+        <script src="./coccoccom_files/topbar-widget-vi.min.js">
+        </script>
+        <script async="" src="./coccoccom_files/gtm.js">
+        </script>
+        <script>
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-KKML7SR');
+        </script>
+        <!-- End Google Tag Manager -->
+        <script type="text/javascript">
+            window.onReadyRun = [];
+        </script>
+        <link href="http://coccoc.com/themes/default/browser/favicon.ico" rel="icon" sizes="16x16">
+        <link href="http://coccoc.com/themes/default/browser/favicon_32.ico" rel="icon" sizes="32x32">
+        <link href="http://coccoc.com/coccoc.xml" id="sep-xml" rel="search" title="Cốc Cốc" type="application/opensearchdescription+xml">
+        <meta content="http://coccoc.com/" property="og:url">
+        <meta content="website" property="og:type">
+        <meta content="Tr&igrave;nh duyệt Cốc Cốc: 23 triệu người sử dụng thường xuy&ecirc;n." property="og:title">
+        <meta content="http://coccoc.com/images/ogImage.jpg" property="og:image">
+        <meta content="100005045285438" property="fb:admins">
+        <meta content="coccoc.com" property="og:site_name">
+        <meta content="Tự t&igrave;m link tải v&agrave; tăng tốc tải phim, nhạc từ c&aacute;c trang media - Tự t&igrave;m gi&aacute; rẻ khi mua sắm online - T&iacute;ch hợp từ điển Anh Việt - Nhiều t&iacute;nh năng hữu &iacute;ch kh&aacute;c." property="og:description">
+        <meta content="Tự t&igrave;m link tải v&agrave; tăng tốc tải phim, nhạc từ c&aacute;c trang media - Tự t&igrave;m gi&aacute; rẻ khi mua sắm online - T&iacute;ch hợp từ điển Anh Việt - Nhiều t&iacute;nh năng hữu &iacute;ch kh&aacute;c." property="description">
+        <meta content="telephone=no" name="format-detection">
+        <script type="text/javascript">
+            (function(d) {
+                var l = d.location;
+                var match = l.hash.match(/[#&]query=([^&]+)/i);
+                if (match && match[1]) {
+                    l.replace(l.protocol + '//' + l.host + '/search' + l.hash);
+                }
+            })(document);
+            window.coc = window.coc || {
+            };
+            window.coc.is_mobile = false;
+            window.coc.is_android = false;
+            window.i18n = window.i18n || {
+            };
+            window.i18n.no_mobile_browser = 'Phiên bản di động của trình duyệt Cốc Cốc sẽ ra mắt trong thời gian sớm nhất. Xin vui lòng thử lại sau.';
+        </script>
+        <link href="./coccoccom_files/browser-min.css" rel="stylesheet" type="text/css">
+        <meta content="Tr&igrave;nh duyệt Cốc Cốc hỗ trợ truy cập facebook, tăng tốc độ tải, bắt link media, tự động th&ecirc;m dấu, sửa lỗi ch&iacute;nh tả. Sản phẩm tạo bởi người Việt, d&agrave;nh cho người Việt, với c&ocirc;ng nghệ quốc tế." name="description">
+        <title>
+            Tr&igrave;nh duyệt Cốc Cốc, lướt web theo phong c&aacute;ch Việt
+        </title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <script src="./coccoccom_files/jquery.js" type="aplication/javascript">
+        </script>
+        <script src="./coccoccom_files/jquery.js" type="text/javascript">
+        </script>
+        <!--[if IE 8 ]>
+    <script type="text/javascript" src="/bower_components/jquery-validation/dist/jquery.validate.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <script type="text/javascript" src="/themes/default/browser/js/main.js"></script>
+    <script type="text/javascript" src="/themes/default/browser/js/slider.js"></script>
+    <![endif]-->
+        <!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="/themes/default/browser/css/ie6.css"/>
+    <script type="text/javascript" src="/themes/default/browser/js/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script type="text/javascript" src="/themes/default/browser/js/ie6.js"></script>
+    <![endif]-->
+        <link href="http://coccoc.com/" rel="canonical">
+        <script src="./coccoccom_files/f(1).txt">
+        </script>
+    </head>
+    <body class="browser-home" id="corom-main">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript>
+            <iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-KKML7SR" style="display:none;visibility:hidden" width="0">
+            </iframe>
+        </noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <div id="topbar-placeholder">
+            <div class="container clearfix">
+                <style type="text/css">
+                    #topbar-widget,#topbar-widget a,#topbar-widget li {
+                        line-height         : 27px;
+                        height              : 28px
+                    }
+                    #topbar-widget .topbar-title,#topbar-widget button,#topbar-widget[hidden] {
+                        display             : none
+                    }
+                    #topbar-widget {
+                        font                : 13px Arial,Helvetica,sans-serif;
+                        position            : relative;
+                        background          : #4c4c4c;
+                        color               : #fff
+                    }
+                    #topbar-widget ul {
+                        background          : #4c4c4c;
+                        list-style          : none;
+                        white-space         : nowrap;
+                        margin              : 0;
+                        padding             : 0
+                    }
+                    #topbar-widget .topbar-active,#topbar-widget a {
+                        padding             : 0 20px
+                    }
+                    #topbar_item-search a,#topbar_item-search.topbar-active {
+                        padding-left        : 35px;*
+                        padding-left        : 20px;
+                        background-image    : url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAQAAABjX+2PAAAA3klEQVR4AW2LsSuEcQCGn/u67oobpJQYjB/XTRbjlST+ALcaTfIv2EQZWBUDyuSwuFHdgEkGizomuvEbbMpj0He/3+V7nunt6SXGcbd98c2eHZdEMDjlg4+2nLfpjpmbcS7btmN1sFfMbIa8YN9pidz1JiFnkS4fxLSphzzBJ8NklEJ+J2WYSX5K5mOOO5Z5JnDGN+Ym7vvkzGBv2bce3tDgkgrn3DPGOikb3Oa5RosGx8yyRsoXXU54BUQc9UpdFRFHrMifiDWv1T35L1a9UA9MivOpeijFYs8jy1LsL3zPwPvUi6pEAAAAAElFTkSuQmCC");*
+                        background-image    : none;
+                        background-repeat   : no-repeat;
+                        background-position : 15px 48%
+                    }
+                    #topbar-widget a,#topbar-widget li {
+                        display             : inline-block;*
+                        display             : inline;*
+                        zoom                : 1;
+                        color               : #fff;
+                        text-decoration     : none;
+                        vertical-align      : top;
+                        -webkit-transition  : background-color 50ms;
+                        -moz-transition     : background-color 50ms;
+                        -ms-transition      : background-color 50ms;
+                        transition          : background-color 50ms
+                    }
+                    #topbar-widget .topbar-active,#topbar-widget a:hover {
+                        background-color    : #3f3f3f;
+                        position            : relative
+                    }
+                    #topbar-widget .topbar-active {
+                        cursor              : default
+                    }
+                    #topbar-widget .topbar-arrow {
+                        display             : block;
+                        position            : absolute;
+                        overflow            : hidden;
+                        top                 : 100%;
+                        left                : 50%;
+                        width               : 0;
+                        height              : 0;
+                        content             : " ";
+                        border-left         : 4px solid transparent;
+                        border-right        : 4px solid transparent;
+                        border-bottom       : 3px solid #fff;
+                        margin-top          : -3px;
+                        margin-left         : -3px;
+                        font-size           : 0
+                    }
+                    #topbar-widget.topbar-widget-mobile .topbar-title {
+                        font-size           : 18px;
+                        padding             : 0 50px 0 15px;
+                        line-height         : 50px;
+                        overflow            : hidden;
+                        white-space         : nowrap;
+                        text-overflow       : ellipsis;
+                        display             : block
+                    }
+                    #topbar-widget.topbar-widget-mobile,#topbar-widget.topbar-widget-mobile li {
+                        line-height         : 50px;
+                        height              : 50px
+                    }
+                    #topbar-widget.topbar-widget-mobile button {
+                        display             : block;
+                        width               : 32px;
+                        height              : 30px;
+                        background          : #454545 url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAMCAYAAABr5z2BAAAAGUlEQVQokWP4TyFgoNiAYQBGA5EKYMADEQDcJn6QVVN+LQAAAABJRU5ErkJggg==") no-repeat 50% 50%;
+                        border              : 1px solid #3e3e3e;
+                        border-radius       : 2px;
+                        right               : 9px;
+                        top                 : 9px;
+                        position            : absolute
+                    }
+                    #topbar-widget.topbar-widget-mobile .topbar-active {
+                        display             : none
+                    }
+                    #topbar-widget.topbar-widget-mobile a:hover {
+                        background-color    : transparent
+                    }
+                    #topbar-widget.topbar-widget-mobile .topbar-link,#topbar-widget.topbar-widget-mobile .topbar-link a {
+                        font-size           : 15px;
+                        line-height         : 32px;
+                        height              : 32px;
+                        display             : block
+                    }
+                    #topbar-widget.topbar-widget-mobile .topbar-link {
+                        border-top          : 1px solid #3b3b3b;
+                        background          : #4c4c4c
+                    }
+                    #topbar-widget.topbar-widget-mobile .topbar-link a {
+                        border-top          : 1px solid #535353
+                    }
+                    #topbar-widget.topbar-widget-mobile .topbar-link a:hover {
+                        background-color    : #3f3f3f;
+                        border-color        : #3f3f3f
+                    }
+                    #topbar-widget.topbar-widget-mobile ul {
+                        overflow            : hidden;
+                        position            : absolute;
+                        -webkit-transition  : height 150ms;
+                        top                 : 100%;
+                        left                : 0;
+                        right               : 0;
+                        z-index             : 2147483647;
+                        height              : 0
+                    }
+                    #topbar-widget.topbar-widget-mobile button.expanded+ul {
+                        height              : 135px
+                    }
+                </style>
+                <div class="" id="topbar-widget">
+                    <span class="topbar-title">
+                        Tr&igrave;nh duyệt
+                    </span>
+                    <button onclick="this.className=this.className==='expanded'?'':'expanded';">
+                    </button>
+                    <ul>
+                        <li class="topbar-active" id="topbar_item-corom" title="Tr&igrave;nh duyệt">
+                            Tr&igrave;nh duyệt
+                            <span class="topbar-arrow">
+                            </span>
+                        </li>
+                        <li class="topbar-link" id="topbar_item-search">
+                            <a href="http://coccoc.com/search" index="1" title="T&igrave;m kiếm">
+                                T&igrave;m kiếm
+                            </a>
+                        </li>
+                        <li class="topbar-link" id="topbar_item-maps">
+                            <a href="http://map.coccoc.com/" index="2" title="Bản đồ">
+                                Bản đồ
+                            </a>
+                        </li>
+                        <li class="topbar-link" id="topbar_item-math">
+                            <a href="http://coccoc.com/search/math/" index="3" title="To&aacute;n học">
+                                To&aacute;n học
+                            </a>
+                        </li>
+                        <li class="topbar-link" id="topbar_item-celebrity">
+                            <a href="http://coccoc.com/search/celebrity/" index="4" title="Ng&ocirc;i sao">
+                                Ng&ocirc;i sao
+                            </a>
+                        </li>
+                        <li class="topbar-link" id="topbar_item-qc">
+                            <a href="https://qc.coccoc.com/vn/?utm_source=qcsite&amp;utm_medium=organic&amp;utm_campaign=Topbar" index="5" title="Quảng c&aacute;o">
+                                Quảng c&aacute;o
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pull-right">
+                    <div class="language">
+                        <a href="http://coccoc.com/en/" title="Switch to English">
+                            <img src="./coccoccom_files/gb_flag_36.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            setTimeout(function() {
+                window.__topbarId = "corom";
+                var s = document.createElement('script');
+                s.src = "//topbar.coccoc.com/topbar-widget-vi.min.js?2";
+                var x = document.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            }, 0);
+        </script>
+        <div id="wrapper" itemref="_operatingSystem2 _downloadUrl1 _downloadUrl2 _downloadUrl3 _applicationCategory5 _publisher6 _url7 _image8 _image9 _image10 _image11 _image12 _name14" itemscope="" itemtype="http://schema.org/SoftwareApplication">
+            <div id="slider-top">
+                <div class="slider-top-content hide" id="about-corom">
+                    <div class="slider-top-inner">
+                        <h1>
+                            Giới thiệu tr&igrave;nh duyệt Cốc Cốc
+                        </h1>
+                        <p>
+                            Tr&igrave;nh duyệt Cốc Cốc l&agrave; một sản phẩm của Cốc Cốc &ndash; C&ocirc;ng ty c&ocirc;ng nghệ do c&aacute;c kỹ sư Việt Nam th&agrave;nh lập.
+                            <br>
+                            Tr&igrave;nh duyệt mang lại một trải nghiệm lướt web được &ldquo;may đo&rdquo; theo nhu cầu h&agrave;ng ng&agrave;y của người d&ugrave;ng Việt Nam. Với Cốc Cốc, bạn c&oacute; thể:
+                        </p>
+                        <p>
+                            <img alt="Sản phẩm đến từ coccoc" height="323" src="./coccoccom_files/coccoc-feature.png" width="778">
+                        </p>
+                        <p>
+                            Trong trường hợp bạn c&oacute; bất kỳ g&oacute;p &yacute; n&agrave;o cho tr&igrave;nh duyệt h&atilde;y li&ecirc;n lạc ngay với ch&uacute;ng t&ocirc;i qua phần
+                            <a class="show-contact-form" href="http://coccoc.com/#">
+                                G&oacute;p &Yacute;
+                            </a>
+                            hoặc
+                            <a href="https://www.facebook.com/CocCocTrinhDuyet" target="_blank">
+                                fanpage của Cốc Cốc
+                            </a>
+                            .
+                            <br>
+                            Bạn c&oacute; thể t&igrave;m hiểu th&ecirc;m về c&ocirc;ng ty Cốc Cốc v&agrave; c&aacute;c sản phẩm kh&aacute;c của ch&uacute;ng t&ocirc;i
+                            <a href="http://coccoc.com/vi/about/" target="_blank">
+                                tại đ&acirc;y
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="slider-top-content hide" id="video-corom">
+                    <div class="slider-top-video">
+                        <iframe allowfullscreen="" data-gtm-yt-inspected-7758366_55="true" data-gtm-yt-inspected-7758366_56="true" frameborder="0" height="467" id="coccocVideo1" src="./coccoccom_files/wqYg3dtV2eU.html" width="830">
+                        </iframe>
+                    </div>
+                </div>
+                <span class="up-btn">
+                </span>
+            </div>
+            <div id="top-content">
+                <div id="header">
+                    <div class="container clearfix">
+                        <h1 class="logo vi">
+                            <a href="http://coccoc.com/">
+                                <meta content="http://coccoc.com" id="_url7" itemprop="url">
+                                <span id="_applicationCategory5" itemprop="applicationCategory">
+                                    Tr&igrave;nh duyệt
+                                </span>
+                                v&agrave; c&ocirc;ng cụ t&igrave;m kiếm
+                                <span id="_name14" itemprop="name">
+                                    Cốc Cốc
+                                </span>
+                            </a>
+                        </h1>
+                        <div class="nav-top">
+                            <ul>
+                                <li>
+                                    <a href="http://coccoc.com/#about-corom" id="btnAbout">
+                                        <i class="infos-icon">
+                                        </i>
+                                        <br>
+                                        Giới thiệu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/#video-corom" id="btnVideo">
+                                        <i class="plays-icon">
+                                        </i>
+                                        <br>
+                                        Xem Video
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="main">
+                    <div class="container" id="main-container">
+                        <!--		<span class="new-version">-->
+                        <!--</span>-->
+                        <div id="download">
+                            <script type="text/javascript">
+                                window.onReadyRun.push(function() {
+                                    jQuery.browserDownloads = {
+                                        downloadWinVi: "https:\/\/files.coccoc.com\/browser\/download\/vi?plat=win",
+                                        downloadWinEn: "https:\/\/files.coccoc.com\/browser\/download\/en?plat=win",
+                                        downloadOldwinVi: "https:\/\/files.coccoc.com\/browser\/download\/vi?plat=old_win",
+                                        downloadOldwinEn: "https:\/\/files.coccoc.com\/browser\/download\/en?plat=old_win",
+                                        downloadMac: "https:\/\/files.coccoc.com\/browser\/download\/en?plat=mac",
+                                        downloadWinFromMacVi: "https:\/\/files.coccoc.com\/browser\/download\/vi?plat=win",
+                                        downloadWinFromMacEn: "https:\/\/files.coccoc.com\/browser\/download\/en?plat=win",
+                                        downloadMacFromWin: "https:\/\/files.coccoc.com\/browser\/download\/en?plat=mac",
+                                        downloadOldwinViFromMac: "https:\/\/files.coccoc.com\/browser\/download\/vi?plat=old_win",
+                                        downloadOldwinEnFromMac: "https:\/\/files.coccoc.com\/browser\/download\/en?plat=old_win",
+                                        downloadOldwinViFromWin: "https:\/\/files.coccoc.com\/browser\/download\/vi?plat=old_win",
+                                        downloadOldwinEnFromWin: "https:\/\/files.coccoc.com\/browser\/download\/en?plat=old_win"
+                                    };
+                                });
+                            </script>
+                            <div class="macos force">
+                                <div class="download-counter">
+                                    <h3>
+                                        Số người đang d&ugrave;ng:
+                                    </h3>
+                                    <h1>
+                                        23,836,585
+                                    </h1>
+                                </div>
+                                <div class="text-center">
+                                    <a class="hide-text btn-download download-link vi" data-from="mac" data-lang="vi" data-os="mac" href="http://coccoc.com/vi/mac/thanks.html" id="_downloadUrl3" itemprop="downloadUrl" rel="nofollow">
+                                        Tải tr&igrave;nh duyệt Cốc Cốc
+                                    </a>
+                                    <a class="btn btn-share hide-text vi" href="https://www.facebook.com/dialog/feed?app_id=471303779719725&amp;link=http%3A%2F%2Fcoccoc.com%2F&amp;redirect_uri=http%3A%2F%2Fcoccoc.com%2Fclose.html&amp;picture=http%3A%2F%2Fcoccoc.com%2Fthemes%2Fdefault%2Fbrowser%2Fimg%2Fshare-translate.png&amp;display=popup&amp;name=Tra%20t%E1%BB%AB%20%C4%91i%E1%BB%83n%20Anh-Vi%E1%BB%87t%20d%E1%BB%85%20d%C3%A0ng%20tr%C3%AAn%20tr%C3%ACnh%20duy%E1%BB%87t%20C%E1%BB%91c%20C%E1%BB%91c.&amp;description=B%E1%BA%A1n%20mu%E1%BB%91n%20tra%20t%E1%BB%AB%20m%E1%BB%9Bi%20khi%20%C4%91ang%20l%C6%B0%E1%BB%9Bt%20web%3F%20Ch%E1%BB%89%20c%E1%BA%A7n%20click%20%C4%91%C3%BAp%20chu%E1%BB%99t%20tr%C3%A1i%20v%C3%A0o%20t%E1%BB%AB%20c%E1%BA%A7n%20tra%20l%C3%A0%20xong." id="share">
+                                        Chia sẻ ngay
+                                    </a>
+                                </div>
+                                <p>
+                                    <meta content="96.69MB" itemprop="fileSize">
+                                    Dung lượng: 96.69 Mb
+                                    <br>
+                                    D&agrave;nh cho
+                                    <span id="_operatingSystem2" itemprop="operatingSystem">
+                                        Mac OS X
+                                    </span>
+                                </p>
+                                <p>
+                                    <a class="download-link" data-from="mac" data-lang="vi" data-os="win" href="http://coccoc.com/vi/win/thanks.html" id="_downloadUrl1" itemprop="downloadUrl" rel="nofollow">
+                                        Tải phi&ecirc;n bản Windows (Windows: 7 / 8 / 10)
+                                    </a>
+                                </p>
+                                <p>
+                                    <a class="btn-download-en download-link" data-from="win" data-lang="vi" data-os="oldwin" href="http://coccoc.com/vi/old_win/thanks.html" id="_downloadUrl4" itemprop="downloadUrl">
+                                        Tải phi&ecirc;n bản Windows (Windows: XP / Vista)
+                                    </a>
+                                </p>
+                                <a class="download-link" data-from="mac" data-lang="en" data-os="win" href="http://coccoc.com/en/win/thanks.html" id="_downloadUrl2" itemprop="downloadUrl">
+                                    Download version for Windows (English)
+                                </a>
+                            </div>
+                        </div>
+                        <div id="slider">
+                            <div class="slider-content" style="display: none; opacity: 0;">
+                                <h2>
+                                    Tự động th&ecirc;m dấu tiếng Việt
+                                </h2>
+                                <img alt="" height="215" id="_image8" itemprop="image" src="./coccoccom_files/b2.png" width="606">
+                            </div>
+                            <div class="slider-content" style="display: none; opacity: 0;">
+                                <h2>
+                                    V&agrave;o Facebook nhanh
+                                </h2>
+                                <img alt="" height="248" id="_image9" itemprop="image" src="./coccoccom_files/b4.png" width="606">
+                            </div>
+                            <div class="slider-content" style="display: none; opacity: 0;">
+                                <h2>
+                                    Download cực nhanh
+                                    <small>
+                                        C&oacute; thể nhanh l&ecirc;n đến 8 lần
+                                    </small>
+                                </h2>
+                                <img alt="" height="124" id="_image10" itemprop="image" src="./coccoccom_files/b1.png" width="606">
+                            </div>
+                            <div class="slider-content" style="display: none; opacity: 0;">
+                                <h2>
+                                    Download thoải m&aacute;i từ zing, nhaccuatui
+                                </h2>
+                                <img alt="" height="217" id="_image11" itemprop="image" src="./coccoccom_files/b3.png" width="606">
+                            </div>
+                            <div class="slider-content" style="opacity: 1; display: block;">
+                                <h2>
+                                    Kiểm tra ch&iacute;nh tả
+                                </h2>
+                                <img alt="" height="247" id="_image12" itemprop="image" src="./coccoccom_files/b5.png" width="606">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="control-slider">
+                    <div class="container">
+                        <ul class="clearfix">
+                            <li class="">
+                                <div>
+                                    <a data-ga-name="seeAddtone" data-hash="addtone" href="http://coccoc.com/addtone.html">
+                                        <img alt="" height="79" src="./coccoccom_files/f2.png" width="93">
+                                        <span>
+                                            Tự động th&ecirc;m dấu
+                                        </span>
+                                    </a>
+                                </div>
+                                <span>
+                                </span>
+                            </li>
+                            <li class="">
+                                <div>
+                                    <a data-ga-name="seeAccessfacebook" data-hash="accessfacebook" href="http://coccoc.com/cach-vao-facebook">
+                                        <img alt="" height="79" src="./coccoccom_files/f3.png" width="93">
+                                        <span>
+                                            Truy cập facebook
+                                            <br>
+                                            thoải m&aacute;i
+                                        </span>
+                                    </a>
+                                </div>
+                                <span>
+                                </span>
+                            </li>
+                            <li class="">
+                                <div>
+                                    <a data-ga-name="seeFaster8times" data-hash="faster8times" href="http://coccoc.com/8lan">
+                                        <img alt="" height="79" src="./coccoccom_files/f1.png" width="93">
+                                        <span>
+                                            Download c&oacute; thể
+                                            <br>
+                                            nhanh hơn đến 8 lần
+                                        </span>
+                                    </a>
+                                </div>
+                                <span>
+                                </span>
+                            </li>
+                            <li class="">
+                                <div>
+                                    <a data-ga-name="seeDownloadmedia" data-hash="downloadmedia" href="http://coccoc.com/idm">
+                                        <img alt="" height="79" src="./coccoccom_files/f4.png" width="93">
+                                        <span>
+                                            Download thoải m&aacute;i từ
+                                            <br>
+                                            Zing, Nhaccuatui &hellip;
+                                        </span>
+                                    </a>
+                                </div>
+                                <span>
+                                </span>
+                            </li>
+                            <li class="last-child active">
+                                <div>
+                                    <a data-ga-name="seeSpellchecker" data-hash="spellchecker" href="http://coccoc.com/kiem-tra-chinh-ta">
+                                        <img alt="" height="79" src="./coccoccom_files/f5.png" width="93">
+                                        <span>
+                                            Kiểm tra
+                                            <br>
+                                            ch&iacute;nh tả
+                                        </span>
+                                    </a>
+                                </div>
+                                <span>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" id="footer">
+                <div class="container">
+                    <div class="footer-nav clearfix">
+                        <div class="bottom-nav coccoc-nav">
+                            <h3>
+                                Về Cốc Cốc
+                            </h3>
+                            <ul>
+                                <li>
+                                    <a href="http://coccoc.com/vi/about/">
+                                        Giới thiệu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://blog.coccoc.com/">
+                                        Blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/statistics/">
+                                        Thống k&ecirc;
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/career/">
+                                        Tuyển dụng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/opensource">
+                                        M&atilde; nguồn mở
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/contact/">
+                                        Li&ecirc;n hệ
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-nav browser-nav">
+                            <h3>
+                                Tr&igrave;nh duyệt
+                            </h3>
+                            <ul>
+                                <li>
+                                    <a href="http://coccoc.com/addtone.html">
+                                        Tự động th&ecirc;m dấu
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/cach-vao-facebook">
+                                        V&agrave;o Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/idm">
+                                        T&iacute;nh năng Download
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/kiem-tra-chinh-ta">
+                                        Ch&iacute;nh tả
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/torrent">
+                                        Download Torrent
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/8lan">
+                                        Download nhanh
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/shopping">
+                                        Gợi &yacute; mua sắm
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/tra-tu-dien">
+                                        Tra từ điển
+                                    </a>
+                                </li>
+                                <li class="hr">
+                                    <a href="http://coccoc.com/chuyen-file">
+                                        Chuyển file sang điện thoại
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/browser-policy">
+                                        Ch&iacute;nh s&aacute;ch bảo mật
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/help">
+                                        Trợ gi&uacute;p
+                                    </a>
+                                </li>
+                                <li class="send-feedback">
+                                    <a href="http://coccoc.com/#" id="btnFeedback">
+                                        G&oacute;p &yacute;
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-nav search-nav">
+                            <h3>
+                                T&igrave;m kiếm
+                            </h3>
+                            <ul>
+                                <li>
+                                    <a href="http://coccoc.com/search/">
+                                        T&igrave;m kiếm
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/search/math/">
+                                        To&aacute;n học
+                                    </a>
+                                </li>
+                                <li class="hr">
+                                    <a href="http://coccoc.com/search/celebrity/">
+                                        Ng&ocirc;i sao
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/termofuse">
+                                        Điều khoản sử dụng
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/policy">
+                                        Ch&iacute;nh s&aacute;ch ri&ecirc;ng tư
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-nav coccoc-ads-nav">
+                            <h3>
+                                Quảng c&aacute;o
+                            </h3>
+                            <ul>
+                                <li>
+                                    <a href="http://qc.coccoc.com/">
+                                        Đặt quảng c&aacute;o
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/quang-cao-tu-khoa">
+                                        Quảng c&aacute;o tr&ecirc;n trang t&igrave;m kiếm
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="http://coccoc.com/vi/quang-cao-banner">
+                                        Quảng c&aacute;o banner
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bottom-nav coccoc-contact-infos">
+                            <h3>
+                                Li&ecirc;n hệ
+                            </h3>
+                            <div id="_publisher6" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+                                <div class="mrgb-5">
+                                    <span itemprop="name">
+                                        <strong>
+                                            Cơ quan chủ quản:
+                                        </strong>
+                                        C&ocirc;ng ty TNHH Cốc Cốc.
+                                    </span>
+                                </div>
+                                <div class="adress-item">
+                                    <span class="poi-icon">
+                                    </span>
+                                    <div>
+                                        Ph&ograve;ng 1202, tầng 12, t&ograve;a nh&agrave; HITTC, 185 Giảng V&otilde;, H&agrave; Nội.
+                                    </div>
+                                </div>
+                                <div class="adress-item">
+                                    <span class="tel-icon">
+                                    </span>
+                                    <div>
+                                        Điện thoại: (024) 3512 3776.
+                                    </div>
+                                </div>
+                                <div class="adress-item mrgb-5">
+                                    <span class="email-icon">
+                                    </span>
+                                    <div>
+                                        D&agrave;nh cho b&aacute;o ch&iacute;: press@coccoc.com
+                                    </div>
+                                </div>
+                                <div class="mrgb-5" id="branch">
+                                    <strong>
+                                        Chi nh&aacute;nh:
+                                    </strong>
+                                </div>
+                                <div class="adress-item">
+                                    <span class="poi-icon">
+                                    </span>
+                                    <div>
+                                        Tầng 3, Khu AB, T&ograve;a nh&agrave; 27B Nguyễn Đ&igrave;nh Chiểu, Phường Đa Kao, Quận 1, TP.HCM.
+                                    </div>
+                                </div>
+                                <div class="adress-item">
+                                    <span class="tel-icon">
+                                    </span>
+                                    <div>
+                                        Điện thoại: (028) 62 88 99 00.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="intro-text">
+                        <span id="_publisher6" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+                            <span itemprop="name">
+                                Cơ quan chủ quản: C&ocirc;ng ty TNHH Cốc Cốc.
+                            </span>
+                            <br>
+                            Trụ sở: Ph&ograve;ng 1202, tầng 12, t&ograve;a nh&agrave; HITTC, 185 Giảng V&otilde;, H&agrave; Nội. Điện thoại: (024) 3512 3776.
+                            <br>
+                            .
+                        </span>
+                    </div>
+                    <div class="googleplay">
+                        <a href="https://play.google.com/store/apps/details?id=com.coccoc.trinhduyet&amp;referrer=utm_source%3Dmobile-lp%26utm_campaign%3Dmobile-landingpage">
+                            <img alt="google play" height="40" src="./coccoccom_files/google_play_button.png" width="135">
+                        </a>
+                    </div>
+                    <div class="appstore hide">
+                        <a href="https://itunes.apple.com/app/id1170593919">
+                            <img alt="App Store" height="40" src="./coccoccom_files/appstore_button.png" width="135">
+                        </a>
+                    </div>
+                    <div id="power">
+                    </div>
+                    <div class="facebook-widget facebook-widget-ready">
+                        <iframe allowtransparency="true" data-gtm-yt-inspected-7758366_55="true" data-gtm-yt-inspected-7758366_56="true" frameborder="0" scrolling="no" src="./coccoccom_files/like.html" style="border:none; overflow:hidden; width:1020px; height:60px;">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            <script async="" src="./coccoccom_files/api.js" type="text/javascript">
+            </script>
+            <div id="popup-wrapper">
+                <div class="popup-content feedback-content hide">
+                    <div class="feedback-head">
+                        <a class="close-popup" href="http://coccoc.com/#">
+                            <span>
+                                &times;
+                            </span>
+                        </a>
+                        <h3 class="popup-title">
+                            Gửi li&ecirc;n hệ
+                        </h3>
+                    </div>
+                    <div class="feedback">
+                        <form action="http://coccoc.com/feedback/index" id="feedbackForm" method="post" name="feedbackForm" style="display: none">
+                            <table id="feedbackForm_vi">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <label for="you_email">
+                                                Email
+                                            </label>
+                                        </th>
+                                        <td>
+                                            <input class="required" id="you_email" name="you_email" type="text" value="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label for="you_content">
+                                                Nội dung
+                                            </label>
+                                        </th>
+                                        <td>
+                                            <textarea class="required" id="you_content" name="you_content"></textarea>
+                                        </td>
+                                    </tr>
+                                    <input class="hiddenRecaptcha required hide" id="hiddenRecaptcha" name="hiddenRecaptcha" type="hidden">
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td align="right">
+                                            <input class="orange-btn" type="submit" value="Gửi">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="captcha-error error">
+                                Xin vui l&ograve;ng chọn h&igrave;nh captcha
+                            </div>
+                            <div class="g-recaptcha" data-sitekey="6LeTvAoUAAAAADj3Cr1Onbp4OIH1gzywMUJaefT0">
+                                <div style="width: 304px; height: 78px;">
+                                    <div>
+                                        <iframe data-gtm-yt-inspected-7758366_55="true" data-gtm-yt-inspected-7758366_56="true" frameborder="0" height="78" name="a-3334j4s0ey88" role="presentation" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" scrolling="no" src="./coccoccom_files/anchor.html" width="304">
+                                        </iframe>
+                                    </div>
+                                    <textarea class="g-recaptcha-response" id="g-recaptcha-response" name="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="message-text">
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-content instruction-content hide">
+                    <div class="feedback-head">
+                        <a class="close-popup" href="http://coccoc.com/#">
+                            <span>
+                                &times;
+                            </span>
+                        </a>
+                        <h3 class="popup-title">
+                            C&agrave;i đặt - Gỡ bỏ Cốc cốc
+                        </h3>
+                    </div>
+                    <div class="instruction-text">
+                        <p>
+                            <strong>
+                                C&agrave;i tr&igrave;nh duyệt Cốc Cốc
+                            </strong>
+                        </p>
+                        <p>
+                            Truy cập trang
+                            <a href="http://coccoc.com/" target="_blank">
+                                coccoc.com
+                            </a>
+                            <br>
+                            Chọn phi&ecirc;n bản ng&ocirc;n ngữ bạn muốn c&agrave;i đặt v&agrave; bấm Tải
+                            <br>
+                            Trong box download, chọn file c&agrave;i của tr&igrave;nh duyệt Cốc Cốc, sau đ&oacute; nhấp chuột 2 lần
+                            <br>
+                            Bấm Run -&gt; chọn C&agrave;i đặt (hoặc Install) -&gt; Chọn Yes
+                        </p>
+                        <p>
+                            <strong>
+                                Gỡ tr&igrave;nh duyệt Cốc Cốc
+                            </strong>
+                        </p>
+                        <p>
+                            Chọn Start / Control Panel / Uninstall a program
+                            <br>
+                            Chọn tr&igrave;nh duyệt Cốc Cốc trong danh s&aacute;ch phần mềm, nhấp chuột 2 lần
+                            <br>
+                            Lần lượt chọn Gỡ chương tr&igrave;nh (hoặc Uninstall) -&gt;  Yes
+                        </p>
+                    </div>
+                </div>
+                <div class="popup-download hide">
+                    <div class="popup-download-content">
+                        <a class="close-popup" href="http://coccoc.com/#">
+                            <span>
+                                &times;
+                            </span>
+                        </a>
+                        <h1 class="popup-title">
+                            Điều khoản sử dụng
+                        </h1>
+                        <div class="tab-block">
+                            <div class="term-content-wrapper">
+                                <div class="term-content">
+                                    <div class="user-agreement" id="eula-content">
+                                        <!--
+                            <p>Cảm ơn bạn đã chọn trình duyệt Cốc Cốc. Từng được biết đến với tên gọi “Cờ Rôm+”, trình duyệt Cốc Cốc là sản phẩm của Công ty TNHH Cốc Cốc, được xây dựng tại Việt Nam dựa trên nền tảng mã nguồn mở Chromium (Trình duyệt web Cốc Cốc sau đây được gọi tắt là "Cốc Cốc"). Cốc Cốc cung cấp cho bạn các sản phẩm, phần mềm, dịch vụ (gọi chung là <strong>"Dịch vụ"</strong>) với điều kiện bạn phải đồng ý và tuân thủ các điều khoản sau đây của Điều khoản Sử dụng (<strong>"Điều khoản Sử dụng"</strong>)</p>
+                            <h4>1. QUY ĐỊNH CHUNG</h4>
+                            <p>Điều khoản Sử dụng quy định các điều khoản ràng buộc bạn khi sử dụng Dịch vụ của Cốc Cốc. Thuật ngữ "Bạn" và/hoặc "Người sử dụng" sau đây được gọi chung để chỉ tới những người sử dụng Dịch vụ của Cốc Cốc. Vui lòng nghiên cứu kỹ và lưu lại một bản Điều khoản Sử dụng này.</p>
+                            <p>Bằng việc tải phần mềm và sử dụng Dịch vụ của chúng tôi, Bạn đồng ý bị ràng buộc với Điều khoản Sử dụng này. Nếu Bạn không đồng ý bị ràng buộc với Điều khoản Sử dụng này, Bạn nên chấm dứt ngay lập tức việc sử dụng Dịch vụ của Cốc Cốc.</p>
+                            <p>Bạn xác nhận và đồng ý rằng giữa Bạn và Cốc Cốc không có bất kỳ một quan hệ liên doanh, đối tác, quan hệ lao động, hoặc quan hệ đại lý nào xuất phát từ Điều khoản Sử dụng này hoặc do việc Bạn sử dụng Dịch vụ của Cốc Cốc. Chúng tôi thực hiện Điều khoản Sử dụng này theo quy định của pháp luật hiện hành và không nội dung nào trong Điều khoản Sử dụng này cản trở quyền của Cốc Cốc tuân thủ các quy định hoặc yêu cầu của chính phủ, tòa án, cơ quan thi hành án liên quan đến việc Bạn sử dụng Dịch vụ của Cốc Cốc hoặc thông tin do chúng tôi nhận được hoặc thu được từ việc sử dụng Dịch vụ của Bạn.</p>
+                            <h4>2. TỪ CHỐI BẢO ĐẢM</h4>
+                            <p>Website và Dịch vụ của Cốc Cốc được cung cấp dựa trên nguyên tắc không bảo hành, trên cơ sở dịch vụ và tính năng sẵn có mà không có bất kỳ sự bảo đảm bằng bất kỳ hình thức nào dù được thể hiện hoặc ngụ ý như vậy. Cốc Cốc không đảm bảo rằng Dịch vụ của chúng tôi sẽ đáp ứng các yêu cầu của Bạn hoặc đảm bảo rằng sự vận hành các phần mềm hoặc Dịch vụ của Cốc Cốc sẽ không bị gián đoạn hoặc bị lỗi.</p>
+                            <p>Cốc Cốc không chịu trách nhiệm đối với bất kỳ sự mất mát dữ liệu, tổn thất lợi ích nào hoặc các vấn đề khác liên quan đến việc sử dụng Dịch vụ của Cốc Cốc, bao gồm nhưng không giới hạn đến tất cả các thông tin, dữ liệu, văn bản, phần mềm, âm nhạc, âm thanh, hình ảnh, đồ họa, video, thông điệp hoặc các nguyên liệu khác (<strong>"Nội dung"</strong>) mà Bạn có thể lưu giữ, đưa lên, hoặc truyền tải thông qua Dịch vụ. Bạn đồng ý Dịch vụ của Cốc Cốc với tất cả sự rủi ro.</p>
+                            <h4>3. THAY ĐỔI ĐIỀU KHOẢN SỬ DỤNG</h4>
+                            <p>Cốc Cốc giữ quyền thay đổi và/hoặc sửa đổi mà không cần báo trước bất kỳ điều khoản nào trong Điều khoản Sử dụng này tùy từng thời điểm. Những sự thay đổi và/hoặc sửa đổi như vậy sẽ có hiệu lực ngay khi đăng lên một trong các website sau: Corom.vn, Corom.com.vn, Coccoc.com. Nếu Bạn tiếp tục sử dụng Dịch vụ của Cốc Cốc sau khi các thay đổi và/hoặc sửa đổi được đăng lên, Bạn đã chấp nhận và đồng ý với các thay đổi và/hoặc sửa đổi đó.</p>
+                            <h4>4. HÀNH VI BỊ CẤM KHI SỬ DỤNG DỊCH VỤ</h4>
+                            <p>Bạn phải sử dụng Dịch vụ của Cốc Cốc phù hợp với quy định hiện hành của pháp luật Việt Nam. Cốc Cốc không bỏ qua hoặc cho phép bất kỳ hành vi bất hợp pháp hoặc bị cấm liên quan đến Dịch vụ của Cốc Cốc. Dưới đây là một số hành vi bất hợp pháp hoặc bị cấm khi Bạn sử dụng Dịch vụ của Cốc Cốc. Chúng tôi giữ quyền điều tra và thực hiện những biện pháp pháp lý cần thiết đối với bất kỳ người nào, theo quyền quyết định của Cốc Cốc, vi phạm quy định này, bao gồm nhưng không giới hạn việc thông báo tới các Cơ quan Quản lý Nhà nước.</p>
+                            <p><strong>4.1. Bạn không được phép thực hiện các hành vi bị cấm bao gồm, nhưng không giới hạn tới việc lợi dụng Internet vì mục đích:</strong></p>
+                            <ul>
+                                <li>Chống lại nhà nước Cộng hòa Xã hội Chủ nghĩa Việt Nam; gây phương hại đến an ninh quốc gia, trật tự, an toàn xã hội; phá hoại khối đại đoàn kết toàn dân; tuyên truyền chiến tranh xâm lược; gây hận thù, mâu thuẫn, kỳ thị giữa các dân tộc, sắc tộc, tôn giáo;</li>
+                                <li>Tuyên truyền, kích động bạo lực, dâm ô, đồi trụy, tội ác, tệ nạn xã hội, mê tín dị đoan; phá hoại thuần phong, mỹ tục của dân tộc;</li>
+                                <li>Tiết lộ bí mật nhà nước, bí mật quân sự, an ninh, kinh tế, đối ngoại và những bí mật khác đã được pháp luật quy định;</li>
+                                <li>Đưa các thông tin xuyên tạc, vu khống, xúc phạm uy tín của tổ chức; danh dự, nhân phẩm của công dân;</li>
+                                <li>Lợi dụng Internet để quảng cáo, tuyên truyền, mua bán hàng hoá, dịch vụ thuộc danh mục cấm theo quy định của pháp luật;</li>
+                                <li>Xâm phạm quyền sở hữu trí tuệ;</li>
+                                <li>Sản xuất, lưu hành sản phẩm công nghệ thông tin trái pháp luật;</li>
+                                <li>Tạo đường dẫn trái phép đối với tên miền của tổ chức, cá nhân sử dụng hợp pháp tên miền đó;</li>
+                                <li>Gây rối, phá hoại hệ thống thiết bị và cản trở trái pháp luật việc quản lý, cung cấp, sử dụng các dịch vụ Internet và thông tin điện tử trên Internet;</li>
+                                <li>Đánh cắp và sử dụng trái phép mật khẩu, khoá mật mã và thông tin riêng của các tổ chức, cá nhân trên Internet;</li>
+                                <li>Tạo ra và cài đặt các chương trình virus máy tính, phần mềm gây hại để thực hiện một trong những hành vi trái pháp luật về công nghệ thông tin.</li>
+                            </ul>
+                            <br>
+                            <p><strong>4.2. Các hành vi sau đây bị coi là lạm dụng Cốc Cốc và bị nghiêm cấm:</strong></p>
+                            <ul>
+                                <li>Thông báo về trình duyệt Cốc Cốc dưới tên gọi Chrome hoặc bất kỳ tên gọi nào khác không liên quan đến tên thật của Cốc Cốc;</li>
+                                <li>Thanh toán cho bất kỳ bên thứ ba nào khác trong một chương trình hợp tác các khoản doanh thu quảng cáo có được từ các lần nhấp chuột (clicks) của người sử dụng trình duyệt Cốc Cốc, nhưng không cho phép Cốc Cốc tham gia vào chương trình hợp tác đó;</li>
+                                <li>Khóa trình duyệt Cốc Cốc hoặc thông báo sai sự thật rằng trình duyệt Cốc Cốc không được hỗ trợ;</li>
+                                <li>Ngăn chăn việc tải trình duyệt Cốc Cốc.</li>
+                            </ul>
+                            <p>Bất kỳ người (hoặc công ty) nào thực hiện một trong các hành vi được nêu tại mục 4.2 thì trong vòng 10 ngày làm việc sau mỗi tháng, sẽ phải thanh toán cho Cốc Cốc một phần giá trị doanh thu quảng cáo nhận được từ các lần nhấp chuột (clicks) của người sử dụng trình duyệt Cốc Cốc, với mức tương đương là 1000 VNĐ (một nghìn đồng Việt nam)/ 01 click. Nếu người (hoặc công ty) đó vi phạm thời hạn thanh toán nêu trên, sẽ phải chịu phạt 1% giá trị cho mỗi ngày thanh toán chậm. </p>
+                            <h4>5. QUY ĐỊNH SỬ DỤNG DỊCH VỤ</h4>
+                            <p>Khi sử dụng Dịch vụ của Cốc Cốc, Bạn bị ràng buộc chấp thuận và tuân thủ các điều kiện quy định dưới đây:</p>
+                            <ol style="list-style-type: lower-roman;">
+                                <li>Cốc Cốc cấp cho bạn sử dụng miễn phí, không tính phí bản quyền, không thể chuyển nhượng và không độc quyền để sử dụng phần mềm trình duyệt web Cốc Cốc và Dịch vụ. Bạn không được và không cho phép bất kỳ ai khác sao chép, tạo sản phẩm phái sinh, hoặc cố gắng trích xuất mã nguồn của phần mềm trình duyệt web Cốc Cốc.</li>
+                                <li>Phần mềm trình duyệt web Cốc Cốc mà bạn sử dụng có thể được tự động tải xuống và cài đặt thường xuyên các bản cập nhật để sửa chữa, cải tiến, nâng cao và phát triển tốt hơn các Dịch vụ của Cốc Cốc. Trong quá trình cập nhật, trình duyệt Cốc Cốc có thể phân phối các bản cập nhật theo cơ chế peer to peer. Bạn chấp thuận và cho phép Cốc Cốc sử dụng cơ chế cập nhật trình duyệt web như vậy trong quá trình sử dụng Dịch vụ.</li>
+                                <li>Bạn đồng ý và công nhận rằng các Nội dung thuộc trách nhiệm cá nhân của người chủ sở hữu Nội dung đó. Cốc Cốc được quyền nhưng không có nghĩa vụ kiểm duyệt, sàng lọc, từ chối, sửa đổi hoặc thay đổi bất kỳ Nội dung nào có sẵn trên các Dịch vụ của Cốc Cốc. Bạn phải tự chịu rủi ro khi sử dụng Dịch vụ của Cốc Cốc mặc dù khi cung cấp Dịch vụ, Cốc Cốc vẫn sử dụng các công cụ để sàng lọc thông tin có nội dung không phù hợp, vi phạm quy định của pháp luật Việt Nam.</li>
+                                <li>Bạn đồng ý rằng Bạn phải chịu trách nhiệm cho các hành vi của mình và cho bất kỳ Nội dung nào mà Bạn có được, tạo ra, trưng bày hoặc truyền tải khi sử dụng Dịch vụ của chúng tôi cũng như các hậu quả nếu có xuất phát từ hành vi sử dụng và Nội dung của bạn. Bạn đồng ý rằng bạn chỉ sử dụng Dịch vụ của chúng tôi cho các mục đích hợp pháp, hợp lệ, và phù hợp với các quy định của Điều khoản Sử dụng và Chính sách Bảo mật của Cốc Cốc cũng như các hướng dẫn hay chính sách khác mà chúng tôi áp dụng.</li>
+                                <li>Bạn đồng ý rằng Cốc Cốc sẽ không chịu trách nhiệm đối với việc bất kỳ Nội dung nào của Bạn bị xóa hoặc không lưu trữ được trong quá trình chúng tôi duy trì và cung cấp các Dịch vụ.</li>
+                                <li>Bạn đồng ý rằng Bạn sẽ không kinh doanh, khai thác, sản xuất lại, sao chép, sử dụng các Dịch vụ của Cốc Cốc vì mục đích thương mại trừ khi có sự đồng ý bằng văn bản của Cốc Cốc.</li>
+                                <li>Bạn công nhận rằng Cốc Cốc cung cấp một số Dịch vụ có nội dung quảng cáo và trưng bày các quảng cáo và khuyến mãi. Bạn đồng ý rằng Cốc Cốc có thể đặt thông tin quảng cáo và khuyến mãi như vậy tại các Dịch vụ và Cốc Cốc sẽ không chịu bất kỳ trách nhiệm nào đối với tổn thất và mất mát mà Bạn phải gánh chịu do sự xuất hiện của các dịch vụ quảng cáo và khuyến mãi hoặc Bạn thường xuyên phải nhận được các thông tin quảng cáo và khuyến mãi như vậy khi sử dụng Dịch vụ của Cốc Cốc.</li>
+                                <li>Bạn công nhận rằng Cốc Cốc có thể liên kết với hoặc cung cấp đường link của các websites khác và Bạn đồng ý rằng Cốc Cốc không kiểm soát và chịu trách nhiệm đối với bất kỳ Nội dung, quảng cáo, dịch vụ, sản phẩm mà Bạn có được hay biết được từ các websites đó. Đồng thời Bạn cũng xác nhận rằng Cốc Cốc sẽ không chịu trách nhiệm đối với tổn thất và mất mát mà Bạn phải gánh chịu có nguyên nhân từ hoặc do việc Bạn sử dụng Nội dung, quảng cáo, dịch vụ, sản phẩm từ các website như vậy.</li>
+                                <li>Bạn đồng ý rằng Bạn sẽ không tham gia bất kỳ hoạt động hay thực hiện bất kỳ hành vi nào có thể hoặc đe dọa làm gián đoạn hoặc tạm ngừng Dịch vụ của Cốc Cốc hoặc các dịch vụ và mạng lưới liên kết với các Dịch vụ của Cốc Cốc.</li>
+                                <li>Bạn đồng ý rằng Cốc Cốc, với toàn quyền quyết định của mình, có thể dừng cung cấp các Dịch vụ cho bạn nếu Cốc Cốc tin rằng Bạn đã vi phạm hoặc thực hiện không đúng các điều kiện sử dụng Dịch vụ của Cốc Cốc.</li>
+                                <li>Bạn đồng ý và công nhận rằng Cốc Cốc có toàn quyền quyết định và vào bất kỳ thời điểm nào chấm dứt việc cung cấp toàn bộ hoặc một phần Dịch vụ, có thể hoặc không cần thông báo. Đồng thời, Bạn đồng ý rằng Cốc Cốc không chịu trách nhiệm với Bạn hoặc với bất kỳ bên thứ ba nào do việc Bạn bị chấm dứt sử dụng Dịch vụ.</li>
+                                <li>Bạn đồng ý rằng, Cốc Cốc có quyền quét dữ liệu từ bất kỳ dịch vụ công cộng nào mà bạn truy cập thông qua trình duyệt và sử dụng các nội dung mang tính công khai của nó vào mục đích nâng cao chất lượng duyệt web của bạn, cũng như chất lượng của các dịch vụ mà bạn đang sử dụng với Cốc Cốc.</li>
+                            </ol>
+                            <br>
+                            <h4>6. GIỚI HẠN TRÁCH NHIỆM</h4>
+                            <p>Bạn xác nhận và đồng ý rằng Cốc Cốc chỉ sẵn sàng cung cấp các Dịch vụ nếu Bạn đồng ý giới hạn trách nhiệm của chúng tôi đối với Bạn và các bên thứ ba. Bạn đồng ý rằng Bạn chịu trách nhiệm bồi thường duy nhất và toàn bộ đối với bất kỳ khiếu nại, tố cáo nào tới Cốc Cốc liên quan đến bất kỳ sự vi phạm quy định sử dụng nào do việc Bạn ngừng sử dụng Dịch vụ của Cốc Cốc.</p>
+                            <p>Bạn đồng ý bảo vệ, bồi thường và giữ cho Cốc Cốc và các công ty liên kết của Cốc Cốc không bị tổn hại bởi bất kỳ khiếu nại, khiếu kiện, chi phí, tổn thất, thiệt hại, phán quyết của tòa án và phí tổn nào, bao gồm nhưng không giới hạn phí luật sư, liên quan đến hoặc phát sinh từ việc vi phạm Điều khoản Sử dụng hoặc bất kỳ sự sử dụng của Bạn đối với các Dịch vụ, hoặc bất kỳ người nào khác sử dụng Dịch vụ thông qua Bạn hoặc sử dụng máy tính của Bạn. Cốc Cốc giữ quyền, bằng chi phí của mình, đảm nhận hoàn toàn việc bảo vệ và kiểm soát (nhưng không có trách nhiệm) đối với bất kỳ vấn đề nào phát sinh như vậy tùy thuộc vào sự bồi thường của Bạn.</p>
+                            <h4>7. BẢO MẬT THÔNG TIN NGƯỜI DÙNG</h4>
+                            <p>Để hiểu rõ cơ chế bảo mật thông tin người dùng, xin vui lòng tham khảo Chính sách bảo mật của Cốc Cốc tại website của chúng tôi. Chính sách này sẽ cung cấp cho các bạn cơ chế thu tập, xử lý và bảo vệ thông tin người dùng. Khi bạn cài đặt và sử dụng trình duyệt này, bạn đã đồng ý tuân theo Chính sách bảo mật của Cốc Cốc.</p>
+                            <h4>8. BẢO VỆ BẢN QUYỀN VÀ QUYỀN SỞ HỮU TRÍ TUỆ KHÁC</h4>
+                            <p>8.1. Dịch vụ của Cốc Cốc và tất cả các phần mềm cần thiết, yếu tố cấu thành của Dịch vụ, bao gồm cả các quyền sở hữu trí tuệ đối với Dịch vụ của Cốc Cốc, và tất cả các phần mềm cần thiết, yếu tố cấu thành của Dịch vụ ("Sở hữu Trí tuệ"), được bảo vệ bởi bản quyền, quyền về thương hiệu, nhãn dịch vụ, hoặc quyền tài sản khác do Cốc Cốc sở hữu hoặc được sở hữu bởi bên thứ ba nào mà đã cấp quyền sở hữu trí tuệ cho Cốc Cốc. Bạn không được quyền sử dụng bất kỳ tên thương mại, nhãn hiệu của hàng hóa và dịch vụ, biểu tượng, tên miền và các hình thức nhận diện hàng hóa, dịch vụ đặc trưng nào khác của Cốc Cốc vào mục đích thương mại trừ khi Bạn được sự chấp thuận bằng văn bản của Cốc Cốc, hoặc việc sử dụng của Bạn không gây ảnh hưởng, cản trở, tác động xấu tới việc hoạt động bình thường của Cốc Cốc.<br>
+								Sự biên tập (có nghĩa là thu thập, sắp xếp, và tập hợp) của tất cả Sở hữu Trí tuệ của Dịch vụ là tài sản độc quyền của Cốc Cốc và được bảo vệ bởi pháp luật Việt Nam và các công ước quốc tế về bản quyền. Sở hữu trí tuệ của Dịch vụ và các dịch vụ khác mà Cốc Cốc sở hữu, vận hành, kiểm soát, hoặc được cấp phép không được sao chụp, sản xuất lại, tái bản, tải lên, đăng lên, truyền tải, hoặc phân phối dưới bất kỳ hình thức nào. Việc sử dụng hoặc sửa đổi quyền sở hữu trí tuệ của Cốc Cốc dưới bất kỳ hình thức nào, bao gồm nhưng không giới hạn tới bất kỳ website hoặc môi trường được kết nối máy vi tính nào, mà không được sự chấp thuận trước bằng văn bản là vi phạm bản quyền và các quyền tài sản khác của Cốc Cốc và bị nghiêm cấm.</p>
+                            <p>8.2. Theo Điều khoản này, Cốc Cốc tôn trọng và không tước đoạt quyền sở hữu hoặc các quyền khác của bạn đối với các Nội dung bạn gửi, đăng, chuyển giao hoặc hiển thị trên trình duyệt của chúng tôi. Bạn đồng ý chịu trách nhiệm bảo vệ và thi hành các quyền đó, và Cốc Cốc không có nghĩa vụ thực hiện công việc đó nhân danh bạn trừ khi giữa bạn và Cốc Cốc có thỏa thuận riêng bằng văn bản về vấn đề này.</p>
+                            <p>8.3. Chúng tôi tôn trọng quyền sở hữu trí tuệ của người khác và yêu cầu Người sử dụng của Cốc Cốc cũng như vậy. Bạn không được tải lên, gắn vào, đăng lên, truyền đi hoặc bằng cách khác tạo sẵn bất kỳ yếu tố cấu thành nào gây ảnh hưởng đến bản quyền, thương hiệu, bí mật thương mại hoặc quyền tài sản khác của bất kỳ tổ chức hoặc cá nhân nào. Chúng tôi có quyền chấm dứt đường truy cập vào Dịch vụ của Cốc Cốc hoặc bất kỳ dịch vụ nào do Cốc Cốc cung cấp đối với người bị nghi ngờ xâm phạm.</p>
+                            <h4>9. ĐIỀU KHOẢN KHÁC</h4>
+                            <p><strong>9.1. Luật điều chỉnh</strong><br>
+                                Điều khoản Sử dụng này được điều chỉnh bởi và giải thích phù hợp với pháp luật Việt Nam. Nếu bất kỳ điều khoản nào trong Điều khoản Sử dụng này không hợp pháp, vô hiệu hoặc vì bất kỳ lý do nào không thể thực hiện được, thì điều khoản đó sẽ được xem là tách rời khỏi Điều khoản Sử dụng này và không ảnh hưởng đến hiệu lực và tính thực thi của các điều khoản còn lại của Điều khoản Sử dụng này.</p>
+                            <p><strong>9.2. Chấm dứt</strong><br>
+                                Điều khoản Sử dụng này có hiệu lực cho đến khi bị chấm dứt bởi Bạn hoặc bởi Cốc Cốc theo các trường hợp sau đây:</p>
+                            <ol style="list-style-type: lower-roman;">
+                                <li>Chấm dứt bởi Bạn: Bạn có thể chấm dứt Điều khoản Sử dụng này bằng cách không sử dụng Dịch vụ của Cốc Cốc nữa.</li>
+                                <li>Chấm dứt bởi Cốc Cốc: Điều khoản Sử dụng này chấm dứt ngay lập tức mà Cốc Cốc không cần phải thông báo trước nếu (i) theo sự quyết định của Cốc Cốc, Bạn không tuân thủ bất kỳ điều khoản nào của Điều khoản Sử dụng này hoặc (ii) Pháp luật hoặc quyết định của chính phủ, tòa án, cơ quan thi hành án yêu cầu Cốc Cốc chấm dứt Điều khoản Sử dụng.</li>
+                            </ol>
+                            <p>Khi chấm dứt Điều khoản Sử dụng này, Bạn phải hủy bỏ tất cả thông tin, tư liệu nhận được từ Cốc Cốc và các website của Cốc Cốc, cũng như tất cả bản sao của thông tin, tư liệu đó, dù được lập bởi theo các quy định của Điều khoản Sử dụng này hoặc của các quy định khác.</p>
+                            <strong>9.3. Liên hệ</strong>
+                            <p>Nếu Bạn có bất kỳ câu hỏi nào về Điều khoản Sử dụng này, về hoạt động của website Coccoc.com, hoặc sự kết nối của Bạn với Cốc Cốc, vui lòng liên hệ với chúng tôi qua email: <a href="mailto:info@Coccoc.com">info@Coccoc.com</a>. Tất cả các vấn đề hoặc mâu thuẫn sẽ được giải quyết nhanh chóng và hợp lý.</p>							-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="coccoc-team">
+                            Ch&uacute;ng t&ocirc;i hy vọng bạn sẽ th&iacute;ch tr&igrave;nh duyệt Cốc Cốc.
+                            <br>
+                            Nh&oacute;m ph&aacute;t triển Cốc Cốc.
+                        </div>
+                        <div class="popup-download-bottom">
+                            <a class="green-btn" href="http://coccoc.com/#">
+                                T&ocirc;i đ&atilde; hiểu v&agrave; đồng &yacute;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="./coccoccom_files/browser-min.js" type="text/javascript">
+            </script>
+            <script src="./coccoccom_files/jquery.cycle2.min.js" type="text/javascript">
+            </script>
+            <script class="microad_blade_track" type="text/javascript">
+                <!--
+                	var microad_blade_gl = microad_blade_gl || { 'params' : new Array(), 'complete_map' : new Object() };
+                	(function() {
+                 var param = {'co_account_id' : '12827', 'group_id' : '', 'country_id' : '5', 'ver' : '2.1.0'};
+                 microad_blade_gl.params.push(param);
+                
+                 var src = (location.protocol == 'https:') ? 'https://d-cache.microadinc.com/js/blade_track_gl.js' : 'http://d-cache.microadinc.com/js/blade_track_gl.js';
+                
+                 var bs = document.createElement('script');
+                 bs.type = 'text/javascript'; bs.async = true;
+                 bs.charset = 'utf-8'; bs.src = src;
+                
+                 var s = document.getElementsByTagName('script')[0];
+                 s.parentNode.insertBefore(bs, s);
+                	})();-->
+            </script>
+            <!-- Bing -->
+            <script>
+                (function(w, d, t, r, u) {
+                    var f, n, i;
+                    w[u] = w[u] || [], f = function() {
+                        var o = {
+                            ti: "5102317"
+                        };
+                        o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad");
+                    }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function() {
+                        var s = this.readyState;
+                        s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null);
+                    }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i);
+                })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
+            </script>
+            <noscript>
+                <img height="0" src="//bat.bing.com/action/0?ti=5102317&amp;Ver=2" style="display:none; visibility: hidden;" width="0">
+            </noscript>
+        </div>
+        <script id="" type="text/javascript">
+            !function(b, e, f, g, a, c, d) {
+                b.fbq || (a = b.fbq = function() {
+                    a.callMethod ? a.callMethod.apply(a, arguments) : a.queue.push(arguments);
+                }, b._fbq || (b._fbq = a), a.push = a, a.loaded = !0, a.version = "2.0", a.queue = [], c = e.createElement(f), c.async = !0, c.src = g, d = e.getElementsByTagName(f)[0], d.parentNode.insertBefore(c, d));
+            }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+            fbq("init", "1477013712607702");
+            fbq("set", "agent", "tmgoogletagmanager", "1477013712607702");
+            fbq("track", "PageView");
+        </script>
+        <script id="" type="text/javascript">
+            (function(d, b, a) {
+                (b[a] = b[a] || []).push(function() {
+                    try {
+                        b.yaCounter50604109 = new Ya.Metrika2({
+                            id: 50604109,
+                            clickmap: !0,
+                            trackLinks: !0,
+                            accurateTrackBounce: !0,
+                            webvisor: !0
+                        });
+                    } catch (f) {
+            
+                }
+                });
+                var e = d.getElementsByTagName("script")[0], c = d.createElement("script");
+                a = function() {
+                    e.parentNode.insertBefore(c, e);
+                };
+                c.type = "text/javascript";
+                c.async = !0;
+                c.src = "https://mc.yandex.ru/metrika/tag.js";
+                "[object Opera]" == b.opera ? d.addEventListener("DOMContentLoaded", a, !1) : a();
+            })(document, window, "yandex_metrika_callbacks2");
+        </script>
+        <noscript>
+            <div>
+                <img alt="" src="https://mc.yandex.ru/watch/50604109" style="position:absolute; left:-9999px;">
+            </div>
+        </noscript>
+        <div id="batBeacon0.23248297264081663" style="width:0px; height:0px; display:none; visibility:hidden;">
+            <img alt="" height="0" id="batBeacon0.6120159371556819" src="./coccoccom_files/0" style="width:0px; height:0px; display:none; visibility:hidden;" width="0">
+        </div>
+        <iframe data-gtm-yt-inspected-7758366_55="true" data-gtm-yt-inspected-7758366_56="true" frameborder="0" name="_ym_native" src="./coccoccom_files/saved_resource.html" style="opacity: 0; width: 0px; height: 0px; position: absolute; left: 100%; bottom: 100%; border: 0px !important;">
+        </iframe>
+        <div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;">
+            <div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;">
+            </div>
+            <div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;">
+            </div>
+            <div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;">
+            </div>
+            <div style="z-index: 2000000000; position: relative;">
+                <iframe data-gtm-yt-inspected-7758366_55="true" data-gtm-yt-inspected-7758366_56="true" frameborder="0" name="c-3334j4s0ey88" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox" scrolling="no" src="./coccoccom_files/bframe.html" style="width: 100%; height: 100%;" title="h&igrave;nh x&aacute;c thực recaptcha">
+                </iframe>
+            </div>
+        </div>
+        <ym-measure class="ym-viewport" style="display: block; top: 0px; right: 0px; bottom: 0px; left: 0px; position: fixed; transform: translate(0px, -100%); transform-origin: 0px 0px 0px;">
+        </ym-measure>
+        <ym-measure class="ym-zoom" style="bottom: 100%; position: fixed; width: 100vw;">
+        </ym-measure>
+    </body>
+</html>
