@@ -9,7 +9,7 @@ class Lines:
 		for file in glob.glob("*.html"):
 			location = dir_path + "/Sites/" + file
 			h = open(location, 'r')
-			print(h.read())
+			print(h.read()) # todo: h.read() has to be beautified and saved to a txt file
 
 		# 	b = self.beautify(h.read())
 
