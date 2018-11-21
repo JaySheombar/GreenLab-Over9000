@@ -1,0 +1,205 @@
+function FixedModule(elem, o) {
+    if (!(this instanceof FixedModule)) {
+        return new FixedModule(elem, o);
+    }
+    ;
+    var elem = typeof elem == "string" ? document.getElementById(elem) : elem;
+    if (elem.nodeType != 1 && elem.length == "undefined") {
+        return false;
+    }
+    ;
+    if (this.ie == 6) {
+        return false;
+    }
+    ;
+    this.elem = elem;
+    this.o = o || {
+    };
+    this.items = [];
+    this.look;
+    this.scroll;
+    this.stopScroll;
+    this.init(elem, o);
+    this.event();
+    this.cpu();
+}
+;
+FixedModule.prototype.getCss = function(who, key) {
+    if (who.style[key] != '') {
+        return who.style[key];
+    }
+    ;
+    if (!!window.ActiveXObject) {
+        return who.currentStyle[key];
+    } else {
+        return document.defaultView.getComputedStyle(who, "").getPropertyValue(key.replace(/([A-Z])/g, "-$1").toLowerCase());
+    }
+    ;
+};
+FixedModule.prototype.pageY = function(elem) {
+    return elem.offsetParent ? (elem.offsetTop + this.pageY(elem.offsetParent)) : elem.offsetTop;
+};
+FixedModule.prototype.ie = /msie (\d+\.\d+)/i.test(navigator.userAgent) ? (document.documentMode || +RegExp['\x241']) : undefined;
+FixedModule.prototype.on = function(elem, type, listener) {
+    type = type.replace(/^on/i, '').toLowerCase();
+    var realListener = listener;
+    if (elem.addEventListener) {
+        elem.addEventListener(type, realListener, false);
+    } else if (elem.attachEvent) {
+        elem.attachEvent('on' + type, realListener);
+    }
+    ;
+    return elem;
+};
+FixedModule.prototype.getPageHeight = function() {
+    var de = document.documentElement;
+    return document.body.scrollHeight || (de && de.scrollHeight);
+};
+FixedModule.prototype.windowHeight = function() {
+    var de = document.documentElement;
+    return self.innerHeight || (de && de.offsetHeight) || document.body.offsetHeight;
+};
+FixedModule.prototype.init = function(elem, o) {
+    if (elem.nodeType == 1) {
+        this.items.push(elem);
+    } else if (elem.length != "undefined") {
+        this.items = elem;
+    }
+    ;
+    for (var i = 0, l = this.items.length; i < l; i++) {
+        this.items[i].setAttribute("fixed-init-top", parseInt(this.pageY(this.items[i])));
+        this.items[i].setAttribute("fixed-init-position", this.getCss(this.items[i], "position"));
+    }
+    ;
+};
+FixedModule.prototype.event = function() {
+    var that = this;
+    this.on(window, "scroll", function() {
+        that.cpu();
+    });
+    this.on(window, "resize", function() {
+        that.cpu();
+    });
+};
+FixedModule.prototype.cpu = function() {
+    for (var i = 0, l = this.items.length; i < l; i++) {
+        this.move(this.items[i], this.items[i].getAttribute("fixed-init-top"));
+    }
+    ;
+    if (this.o.callback && this.scroll) {
+        this.o.callback(this);
+    }
+    ;
+};
+FixedModule.prototype.move = function(elem, elemTop) {
+    var that = this, myhtml = document.getElementsByTagName('html')[0], mybody = document.getElementsByTagName('body')[0], elemHeight = elem.scrollHeight, removeTop = Math.max(myhtml.scrollTop, mybody.scrollTop), winHeight = this.windowHeight(), pageHeight = this.getPageHeight(), elemTop = parseInt(elemTop), elemBottom = parseInt(this.getCss(elem, 'bottom')), _top = 0, _bottom = 0, F_I_top = parseInt(elem.getAttribute("fixed-init-top")), F_T_hide = parseInt(elem.getAttribute("fixed-top-hide")), F_B_hide = parseInt(elem.getAttribute("fixed-bottom-hide")), F_T_stop = parseInt(elem.getAttribute("fixed-top-stop")), F_B_stop = parseInt(elem.getAttribute("fixed-bottom-stop")), F_T_show = parseInt(elem.getAttribute("fixed-top-show")), F_B_show = parseInt(elem.getAttribute("fixed-bottom-show")), F_W_T_start = parseInt(elem.getAttribute("fixed-win-top-start")), F_W_B_start = parseInt(elem.getAttribute("fixed-win-bottom-start"));
+    F_E_height = parseInt(elem.getAttribute("fixed-elem-height"));
+    if (elemTop >= 0) {
+        _top = elemTop + removeTop;
+    }
+    ;
+    if (elemBottom >= 0) {
+        _top = winHeight + removeTop - elemHeight - elemBottom;
+    }
+    ;
+    function show() {
+        elem.style.display = "block";
+        if (that.o.showCallback && that.look === false) {
+            that.o.showCallback(that);
+        }
+        ;
+        that.look = true;
+    }
+    ;
+    function startScroll(str, n) {
+        if (str == "top") {
+            elem.style.position = "fixed";
+            elem.style.top = n + 'px';
+        } else if (str == "bottom") {
+            elem.style.position = "fixed";
+            elem.style.bottom = n + 'px';
+            elem.style.top = 'auto';
+        }
+        ;
+        if (that.o.startScrollCallback && (!that.scroll || that.scroll === false)) {
+            that.o.startScrollCallback(that);
+        }
+        ;
+        that.scroll = true;
+    }
+    ;
+    function stopScroll(n) {
+        elem.style.position = "absolute";
+        elem.style.top = n + 'px';
+    }
+    ;
+    function hide() {
+        elem.style.display = "none";
+        if (that.o.hideCallback && that.look === true) {
+            that.o.hideCallback(that);
+        }
+        ;
+        that.look = false;
+    }
+    ;
+    function restoration() {
+        elem.style.position = elem.getAttribute("fixed-init-position");
+        elem.style.top = elem.getAttribute("fixed-init-top") + "px";
+        if (that.o.restorationCallback && that.scroll === true) {
+            that.o.restorationCallback(that);
+        }
+        ;
+        that.scroll = false;
+    }
+    ;
+    if (F_T_show || F_T_show === 0) {
+        _top <= F_T_show ? show() : hide();
+    }
+    ;
+    if (F_B_show || F_B_show === 0) {
+        _bottom = pageHeight - _top - elemHeight;
+        _bottom <= F_B_show ? show() : hide();
+    }
+    ;
+    if (F_W_T_start || F_W_T_start === 0) {
+        removeTop + F_W_T_start >= F_I_top ? startScroll("top", F_W_T_start) : restoration();
+    }
+    ;
+    if (F_W_B_start || F_W_B_start === 0) {
+        winHeight + removeTop >= F_I_top + elemHeight + F_W_B_start ? startScroll("bottom", F_W_B_start) : restoration();
+    }
+    ;
+    if (F_T_hide || F_T_hide === 0) {
+        _top <= F_T_hide ? hide() : show();
+    }
+    ;
+    if (F_B_hide || F_B_hide === 0) {
+        _bottom = pageHeight - _top - elemHeight;
+        _bottom <= F_B_hide ? hide() : show();
+    }
+    ;
+    if (F_T_stop || F_T_stop === 0) {
+        if (_top <= F_T_stop) {
+            stopScroll(F_T_stop);
+        }
+        ;
+    }
+    ;
+    if (F_B_stop || F_B_stop === 0) {
+        if (F_E_height && elemHeight == 0) {
+            elemHeight = F_E_height;
+        }
+        ;
+        if (elemHeight > winHeight) {
+            _bottom = pageHeight - removeTop - winHeight + (F_W_B_start || 0);
+        } else {
+            _bottom = pageHeight - removeTop - elemHeight - (F_W_T_start || 0);
+        }
+        ;
+        if (_bottom <= F_B_stop) {
+            stopScroll(pageHeight - elemHeight - F_B_stop);
+        }
+        ;
+    }
+    ;
+};

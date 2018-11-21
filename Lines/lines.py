@@ -8,10 +8,7 @@ class Lines:
 
 	apps = ['awsamazoncom', "applecom", "askcom", "chinacom", "cnncom", "coccoccom", "wettodaynet", "hao123com", "instagramcom", "microsoftcom", "paypalcom", "popadsnet", "quoracom", "theguardiancom", "tianyacn", "twittercom", "whatsappcom", "xnxxcom", "xvideoscom", "yandexru", "youtubecom"]
 
-	def js_file(self, app_name):
-		print(app_name)
-
-	def css_file(self, app_name, filetype):
+	def count_lines_from_file(self, app_name, filetype):
 		dir_path = os.path.dirname(os.path.realpath(__file__))
 		folder_location = "/Sites/" + app_name + "_files/"
 
@@ -32,6 +29,7 @@ class Lines:
 					result = CSSBeautifier.beautify(data, 4)
 				if filetype is 'js':
 					result = JSBeautifier.beautify(data, 4)
+
 
 				trimmed_app_name = file.replace(".", "")
 				loc_save = dir_path + "/" + app_name + "_files/" + trimmed_app_name + ".txt"
@@ -68,7 +66,7 @@ class Lines:
 		original_dir_path = os.path.dirname(os.path.realpath(__file__))		
 
 		for some_app in self.apps:
-			self.css_file(some_app, file_extension)
+			self.count_lines_from_file(some_app, file_extension)
 			os.chdir(original_dir_path)
 
 	def get_lines(self, doc):
@@ -87,4 +85,4 @@ class Lines:
 		return sum(1 for line in text_input)
 
 lines = Lines()
-lines.launch_line_counter('js')
+lines.launch_line_counter('css')
