@@ -1,0 +1,1 @@
+var Qrcode = {"loadUrl":"//passport.tianya.cn/loginapi/qrlogin.do","params":"?t=1542772559739&c=f56995a6531626dac6b941c3b6416a8e&k=45e562f5e76c33f2338e599b8a579a90","qrUrl":"//passport.tianya.cn/loginapi/qrcode.do"};

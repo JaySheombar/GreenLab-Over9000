@@ -1,0 +1,1 @@
+Krux.ns._default.kxjsonp_consent_set_1({"status":400,"body":{"code":"bad_request","request_id":"1kslWTMxxN6JKS7B2agjQ3","timestamp":1542772532,"pr":"global","settings":{"dc":1,"al":1,"tg":1,"cd":0,"sh":0,"re":0},"idt":"device","idv":"DNT","errors":{"idv":"user opted out via (optout or dnt)"},"dt":"kxcookie"}});

@@ -1,0 +1,35 @@
+#scam_warning {
+	background: red;
+	width: 700px;
+	height: auto;
+	padding: 50px 50px 20px 50px;
+	color: white;
+	border-radius: 20px;
+	line-height: 1.6;
+	font-size: 14pt;
+}
+#scam_warning .scam_warning_rf {
+	letter-spacing: 4px;
+	font-weight: bold;
+	color: yellow;
+	display: block;
+}
+#scam_resistant {
+	font-size: 8pt;
+	text-align: right;
+	padding-top: 30px;
+}
+#scam_bar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	margin: 0px auto;
+	overflow: hidden;
+	text-align: center;
+	background: red;
+	color: white;
+	font: bold 12pt Arial;
+	padding: 10px 0px;
+	display: block;
+	cursor: pointer;
+}
