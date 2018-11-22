@@ -5,7 +5,7 @@ from html5print import CSSBeautifier
 
 class Lines:
 
-	apps = ['awsamazoncom', "applecom", "askcom", "chinacom", "cnncom", "coccoccom", "wettodaynet", "hao123com", "instagramcom", "microsoftcom", "paypalcom", "popadsnet", "quoracom", "theguardiancom", "tianyacn", "twittercom", "whatsappcom", "xnxxcom", "xvideoscom", "yandexru", "youtubecom"]
+	apps = ['awsamazoncom', "applecom", "askcom", "chinacom", "cnncom", "coccoccom", "ettodaynet", "hao123com", "instagramcom", "microsoftcom", "paypalcom", "popadsnet", "quoracom", "theguardiancom", "tianyacn", "twittercom", "whatsappcom", "xnxxcom", "xvideoscom", "yandexru", "youtubecom"]
 	opts = jsbeautifier.default_options()
 
 	def __init__(self):
