@@ -2,7 +2,7 @@ library(ggplot2)
 library(reshape)
 library(e1071)
 library(effsize)
-# library(dunn.test)
+library(dunn.test)
 library(FSA)
 
 require(plyr)
@@ -14,7 +14,8 @@ require(gridExtra)
 # install.packages("reshape")
 # install.packages("e1071")
 # install.packages("effsize")
-# install.packages("FSA")
+#install.packages("FSA")
+#install.packages("gridExtra")
 
 
 # To get a dataframe with all the data of the webapges and their energy consumed on each run,
@@ -26,6 +27,15 @@ get_empty_index<-function(data){
   
   for(x in 1:nrow(data["Time...ms."])){
     if(data[x,1]== ""){
+      empty_index = x
+    }
+  }
+  return(empty_index)
+}
+
+get_time_index<-function(interactive_time){
+  for(x in 1:nrow(data["Time...ms."])){
+    if(data[x,1] > interactive_time){
       empty_index = x
     }
   }
@@ -104,42 +114,42 @@ get_mean_data<-function(data){
   return(mean_data)
 }
 
-#Creates a dataframe with the webpages and the performance caterogry based on its energy consumption. 
+#Creates a dataframe with the webpages, performance category, performance score and time to interactive
 #The categories are obtained with python script get_categories.py and they are added manually.
-get_performance_data<-function(){
+get_lighthouse_data<-function(){
   performance_data <- data.frame("Webpage"=character(),"Performance_score"=double(),"Performance"=character(),stringsAsFactors = TRUE)
   #performance_data <- data.frame("Webpage"=character(),"Performance"=character(),stringsAsFactors = FALSE)
   
-  performance_data <- rbind(performance_data,data.frame("Webpage"="yandexru","Performance_score"=0.83,"Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="xnxxcom","Performance_score"=0.8,"Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="popadsnet","Performance_score"=0.94,"Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="microsoftcom","Performance_score"=0.86,"Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="xvideoscom","Performance_score"=0.76,"Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="youtubecom","Performance_score"=0.75,"Performance"="Good"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="askcom","Performance_score"=0.94,"Performance"="Good"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="yandexru","Performance_score"=0.83,"Performance"="Good","Time_interactive"=5070.721))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="xnxxcom","Performance_score"=0.8,"Performance"="Good","Time_interactive"=5839.8585))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="popadsnet","Performance_score"=0.94,"Performance"="Good","Time_interactive"=2756.281))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="microsoftcom","Performance_score"=0.86,"Performance"="Good","Time_interactive"=3775.443))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="xvideoscom","Performance_score"=0.76,"Performance"="Good","Time_interactive"=6610.909))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="youtubecom","Performance_score"=0.75,"Performance"="Good","Time_interactive"=6091.047))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="askcom","Performance_score"=0.94,"Performance"="Good","Time_interactive"=3364.1665))
   
-  performance_data <- rbind(performance_data,data.frame("Webpage"="paypalcom","Performance_score"=0.63,"Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="instagramcom","Performance_score"=0.69,"Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="tianyacn","Performance_score"=0.52,"Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="twittercom","Performance_score"=0.48,"Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="applecom","Performance_score"=0.45,"Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="quoracom","Performance_score"=0.59,"Performance"="Average"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="whatsappcom","Performance_score"=0.63,"Performance"="Average"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="paypalcom","Performance_score"=0.63,"Performance"="Average","Time_interactive"=5062.576))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="instagramcom","Performance_score"=0.69,"Performance"="Average","Time_interactive"=5609.32))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="tianyacn","Performance_score"=0.52,"Performance"="Average","Time_interactive"=5156.5285))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="twittercom","Performance_score"=0.48,"Performance"="Average","Time_interactive"=7372.841))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="applecom","Performance_score"=0.45,"Performance"="Average","Time_interactive"=6926.777))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="quoracom","Performance_score"=0.59,"Performance"="Average","Time_interactive"=7745.406))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="whatsappcom","Performance_score"=0.63,"Performance"="Average","Time_interactive"=7255.729))
   
-  performance_data <- rbind(performance_data,data.frame("Webpage"="coccoccom","Performance_score"=0.22,"Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="theguardiancom","Performance_score"=0.43,"Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="ettodaynet","Performance_score"=0.04,"Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="hao123com","Performance_score"=0.17,"Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="cnncom","Performance_score"=0.01,"Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="amazonawscom","Performance_score"=0.13,"Performance"="Poor"))
-  performance_data <- rbind(performance_data,data.frame("Webpage"="chinacom","Performance_score"=0.08,"Performance"="Poor"))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="coccoccom","Performance_score"=0.22,"Performance"="Poor","Time_interactive"=14360.126))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="theguardiancom","Performance_score"=0.43,"Performance"="Poor","Time_interactive"=13140.6175))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="ettodaynet","Performance_score"=0.04,"Performance"="Poor","Time_interactive"=16075.1635))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="hao123com","Performance_score"=0.17,"Performance"="Poor","Time_interactive"=12862.1185))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="cnncom","Performance_score"=0.01,"Performance"="Poor","Time_interactive"=32485.614))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="amazonawscom","Performance_score"=0.13,"Performance"="Poor","Time_interactive"=26959.452))
+  performance_data <- rbind(performance_data,data.frame("Webpage"="chinacom","Performance_score"=0.08,"Performance"="Poor","Time_interactive"=14128.0095))
   
   return(performance_data)
 }
 
 get_merged_data<-function(data){
   mean_data <- get_mean_data(data)
-  performance_data <- get_performance_data()
+  performance_data <- get_lighthouse_data()
   merged_data <- merge(mean_data,performance_data,by = "Webpage")
   
   return(merged_data)
@@ -152,7 +162,7 @@ get_merged_data<-function(data){
 #   This operation takes a long time to finish. let loading take place
 #   before performing other operations
 
-data<-get_energy_data("C:\\School Projects\\GreenLab\\Analysis\\GreenLab-Over9000\\R_scripts\\Data\\nx9")
+data<-get_energy_data("./Data/nx9/")
 
 
 View(data)
@@ -218,7 +228,7 @@ skewness(energy_natural_log)
 
 # We conclude that even with data manipulation, the energy consumption is not normal.
 #       We perform kruskal wallis (non-parametric test)
-Performance_data = get_performance_data()
+Performance_data = get_lighthouse_data()
 energy_consumption_values = data
 energy_with_performance = join(Performance_data, energy_consumption_values, by="Webpage", type="inner")
 
@@ -310,7 +320,7 @@ for(webpage in levels(data$Webpage)){
 }
 
 #mean_data <- get_mean_data(data)
-#performance_data <- get_performance_data()
+#performance_data <- get_lighthouse_data()
 
 merged_data <- get_merged_data(data)
 merged_data
@@ -324,7 +334,7 @@ for(performance in levels(merged_data$Performance)){
   qqnorm(performance_data$Mean_energy_consumption, main = performance, ylab = "Mean energy consumption")
   qqline(performance_data$Mean_energy_consumption)
   hist(performance_data$Mean_energy_consumption, main = performance, xlab = "Mean energy consumption")
-  boxplot(performance_data$Mean_energy_consumption,)
+  boxplot(performance_data$Mean_energy_consumption)
   
   p_value <- shapiro.test(performance_data$Mean_energy_consumption)[[2]]
   cat(performance,p_value)
