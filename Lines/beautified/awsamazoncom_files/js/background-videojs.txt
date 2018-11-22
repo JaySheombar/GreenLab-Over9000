@@ -1,0 +1,44 @@
+define(["librastandardlib/detection-utils/detection-utils"], function(DetectionUtils) {
+    "use strict";
+    var defaults = {
+        videoSelector: ".lb-bg-video-tag",
+        showClass: "lb-show"
+    };
+    var isMobile = DetectionUtils.isMobile();
+
+    function BackgroundVideo(elem) {
+        if (!isMobile) {
+            this.$elem = $(elem);
+            this.options = $.extend({}, defaults, this.$elem.data());
+            this.$video = this.$elem.find(this.options.videoSelector);
+            this.load()
+        }
+    }
+    BackgroundVideo.prototype = {
+        load: function() {
+            var that = this;
+            var wait = this.options.wait;
+            this.$video.attr("src", this.options.src);
+            this.$video.data("loaded", "true");
+            if (wait) {
+                wait = parseInt(wait, 10) * 1e3;
+                setTimeout(function() {
+                    that.show()
+                }, wait)
+            } else {
+                that.show()
+            }
+        },
+        show: function() {
+            this.$elem.addClass(this.options.showClass)
+        }
+    };
+    Libra.Comp.register({
+        name: "background-video",
+        initFct: function(elem) {
+            new BackgroundVideo(elem)
+        },
+        initTime: "immediate"
+    });
+    return BackgroundVideo
+});

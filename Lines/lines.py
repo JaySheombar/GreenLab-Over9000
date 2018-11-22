@@ -1,12 +1,16 @@
+import glob, urllib, os
+import jsbeautifier
 from html5print import HTMLBeautifier
 from html5print import CSSBeautifier
-from html5print import JSBeautifier
-
-import glob, urllib, os
 
 class Lines:
 
 	apps = ['awsamazoncom', "applecom", "askcom", "chinacom", "cnncom", "coccoccom", "wettodaynet", "hao123com", "instagramcom", "microsoftcom", "paypalcom", "popadsnet", "quoracom", "theguardiancom", "tianyacn", "twittercom", "whatsappcom", "xnxxcom", "xvideoscom", "yandexru", "youtubecom"]
+	opts = jsbeautifier.default_options()
+
+	def __init__(self):
+		self.opts.indent_size = 4
+		self.opts.space_in_empty_paren = True
 
 	def count_lines_from_file(self, app_name, filetype):
 		dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -28,14 +32,25 @@ class Lines:
 				if filetype is 'css':
 					result = CSSBeautifier.beautify(data, 4)
 				if filetype is 'js':
-					result = JSBeautifier.beautify(data, 4)
+					
+					if app_name is "chinacom": # needs fix for non utf-8 encoding
+						return
 
+					result = jsbeautifier.beautify_file(location, self.opts)
 
 				trimmed_app_name = file.replace(".", "")
-				loc_save = dir_path + "/" + app_name + "_files/" + trimmed_app_name + ".txt"
 
-				if not os.path.exists(dir_path + "/" + app_name + "_files/"):
-					os.makedirs(dir_path + "/" + app_name + "_files/")
+				if filetype is "css":
+					loc_save = dir_path + "/beautified/" + app_name + "_files/css/" + trimmed_app_name + ".txt"
+
+					if not os.path.exists(dir_path + "/beautified/" + app_name + "_files/css/"):
+						os.makedirs(dir_path + "/beautified/" + app_name + "_files/css/")
+
+				if filetype is "js":
+					loc_save = dir_path + "/beautified/" + app_name + "_files/js/" + trimmed_app_name + ".txt"
+
+					if not os.path.exists(dir_path + "/beautified/" + app_name + "_files/js/"):
+						os.makedirs(dir_path + "/beautified/" + app_name + "_files/js/")
 
 				save_file = open(loc_save, 'w+')
 				save_file.write(result)
@@ -85,4 +100,7 @@ class Lines:
 		return sum(1 for line in text_input)
 
 lines = Lines()
+print("Starting reading number of CSS lines")
 lines.launch_line_counter('css')
+print("Starting reading number of JS lines")
+lines.launch_line_counter('js')
