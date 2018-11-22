@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 "html5print" = "*"
+jsbeautifier = "*"
 
 [dev-packages]
 

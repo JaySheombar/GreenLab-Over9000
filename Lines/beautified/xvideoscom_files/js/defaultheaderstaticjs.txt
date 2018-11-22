@@ -1,0 +1,1849 @@
+/* Built on 2018-11-14 08:54:21 */ ! function() {
+    "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0 || (document.documentElement.className += " notouch"), "undefined" == typeof window.console && (window.console = {});
+    var e = function(e) {
+            for (var t = [], n = 1; n < arguments.length; n++) {
+                var o = arguments[n],
+                    i = typeof o;
+                if ("string" === i) t.push(o);
+                else if (null === o) t.push("null");
+                else if ("undefined" === i) t.push("undefined");
+                else if ("function" === i) {
+                    var a = o.toString();
+                    t.push(a.substr(a, a.indexOf("{") + 1) + " ... }")
+                } else "function" == typeof o.toString ? t.push(o.toString()) : t.push(i)
+            }
+            document.body ? "function" == typeof document.body.appendChild && document.body.appendChild(document.createComment(e + " / " + t.join(", "))) : document.write("\x3c!--" + e + " / " + t.join(", ") + "--\x3e")
+        },
+        t = ["error", "warn", "info", "debug", "log"];
+    for (var n in t) ! function(t) {
+        "undefined" == typeof window.console[t] && (window.console[t] = function() {
+            for (var n = [t.toUpperCase()], o = 0; o < arguments.length; o++) n.push(arguments[o]);
+            e.apply(null, n)
+        })
+    }(t[n])
+}(),
+function() {
+    var e, t = {};
+    t.getRootDomain = function() {
+        if ("string" == typeof e) return e;
+        var t = window.location.hostname.split(".");
+        if (t.length >= 2) {
+            e = "";
+            for (var n = t.length - 2; n < t.length; n++) e += "." + t[n]
+        }
+        return e
+    };
+    var n = {},
+        o = function(e, t) {
+            var n = e.indexOf(";", t);
+            return -1 === n && (n = e.length), unescape(e.substring(t, n))
+        };
+    n.set = function(e, t, n, o, i, a) {
+        var r = [];
+        if (r.push(e + "=" + encodeURIComponent(t)), n) {
+            var s = new Date;
+            s.setTime(s.getTime());
+            var d = new Date(s.getTime() + n);
+            r.push("expires=" + d.toGMTString())
+        }
+        o && r.push("path=" + o), i && r.push("domain=" + i), a && r.push("secure"), document.cookie = r.join(";")
+    }, n.setLocal = function(e, o, i, a, r) {
+        n.set(e, o, i, a, t.getRootDomain(), r)
+    }, n.get = function(e) {
+        for (var t = e + "=", n = t.length, i = document.cookie, a = i.length, r = 0; r < a;) {
+            var s = r + n;
+            if (i.substring(r, s) === t) return o(i, s);
+            if (0 === (r = i.indexOf(" ", r) + 1)) break
+        }
+        return null
+    }, window.xv || (window.xv = {}), window.xv.utils = t, window.xv.cookies = n
+}(),
+function() {
+    var e = function() {
+        this.s = window.localStorage
+    };
+    e.prototype = {
+        type: "local",
+        get: function(e, t) {
+            return "string" == typeof t && t.length > 0 && (e = t + "." + e), JSON.parse(this.s.getItem(e))
+        },
+        set: function(e, t, n) {
+            "string" == typeof n && n.length > 0 && (e = n + "." + e), this.s.setItem(e, JSON.stringify(t))
+        },
+        remove: function(e, t) {
+            "string" == typeof t && t.length > 0 && (e = t + "." + e), this.s.removeItem(e)
+        },
+        clear: function() {
+            this.s.clear()
+        }
+    };
+    var t = "_globalns_",
+        n = window.xv.cookies,
+        o = function() {
+            this.data = {}
+        };
+    o.prototype = {
+        type: "cookie",
+        _loadNs: function(e) {
+            if ("string" == typeof e && 0 !== e.length || (e = t), "object" != typeof this.data[e]) {
+                this.data[e] = {};
+                var o = n.get("hexavid_storage_" + e);
+                if ("string" == typeof o && o.length > 0) try {
+                    o = JSON.parse(o), "object" == typeof o && (this.data[e] = o)
+                } catch (i) {
+                    console.error(i)
+                }
+            }
+        },
+        _write: function(e) {
+            "string" == typeof e && 0 !== e.length || (e = t);
+            try {
+                var o = JSON.stringify(this.data[e]);
+                n.setLocal("hexavid_storage_" + e, o, 31536e6, "/")
+            } catch (i) {
+                console.error(i)
+            }
+        },
+        get: function(e, n) {
+            return this._loadNs(n), "undefined" == typeof this.data[n || t][e] ? null : this.data[n || t][e]
+        },
+        set: function(e, n, o) {
+            this._loadNs(o), this.data[o || t][e] = n, this._write(o)
+        },
+        remove: function(e, n) {
+            this._loadNs(n), "undefined" != typeof this.data[n || t][e] && (delete this.data[n || t][e], this._write(n))
+        },
+        clear: function() {
+            this._loadNs(ns), this.data[ns || t] = {}, this._write(ns)
+        }
+    }, window.xv || (window.xv = {});
+    try {
+        if ("object" == typeof window.localStorage) {
+            var i = window.localStorage,
+                a = "__storage_test__";
+            i.setItem(a, a), i.removeItem(a), window.xv.storage = new e
+        }
+    } catch (r) {}
+    window.xv.storage || (window.xv.storage = new o)
+}(),
+function() {
+    var e = window.xv.storage,
+        t = function(e, t, n, o, i) {
+            var a = document.createElement(e);
+            t && (a.className = t);
+            for (var r in n) n.hasOwnProperty(r) && (a.style[r] = n[r]);
+            return o && (a.innerHTML = o), i && (a.innerText ? a.innerText = i : a.textContent = i), a
+        },
+        n = function(e, t) {
+            var n = !1;
+            for (var o in e.childNodes)
+                if (1 === e.childNodes[o].nodeType) {
+                    n = e.childNodes[o];
+                    break
+                } n ? e.insertBefore(t, n) : e.appendChild(t)
+        },
+        o = function() {
+            if (-1 !== window.location.href.indexOf("debugjs=1") ? (this.is_debug = !0, e.set("enabled", !0, "debugconsole")) : e.get("enabled", "debugconsole") && (this.is_debug = !0), this.node, this.logs, "object" == typeof window.onerror) {
+                var t = this;
+                window.onerror = function(e, n, o, i, a) {
+                    var r = {};
+                    return r.u = n + ":" + o, "number" == typeof i && (r.u += ":" + i), console.error('ERROR: "' + e + '" in ' + r.u), "object" == typeof a && null !== a && "string" == typeof a.stack && (console.error(a.stack), r.s = a.stack.split(window.location.protocol + "//" + window.location.hostname).join("")), t.log(e, "Global error", null, r), !0
+                }
+            }
+        };
+    o.prototype = {
+        _read: function() {
+            if ("object" != typeof this.logs) {
+                this.logsize = 0, this.logs = e.get("logs", "debugconsole"), this.logs && "object" == typeof this.logs || (this.logs = []);
+                for (var t in this.logs) this.logsize += this.logs[t].s
+            }
+        },
+        _cleanLogs: function() {
+            for (; this.logsize > 1e5;) {
+                var e = this.logs.pop();
+                this.logsize -= e.s
+            }
+        },
+        getHistory: function() {
+            return e.get("logs", "debugconsole") || []
+        },
+        displayHistory: function() {
+            var e = this.getHistory();
+            if (0 === e.length) return void console.info("No history");
+            for (var t = e.length - 1; t >= 0; t--) {
+                var n = e[t],
+                    o = new Date(n.t),
+                    i = o.toUTCString() + ": " + n.a + " - " + n.x;
+                n.eu && (i += " IN " + n.eu), console.info(i), "undefined" != typeof n.js && (console.info("Status: " + n.js + " / State: " + n.jr), console.info("Response headers:", n.jh), console.info("Response text:", n.jt)), n.rjsm && console.info("RJS MODULES: " + n.rjsm), n.rjsp && console.info("RJS MAP: " + n.rjsp), n.es && console.info("STACK: " + n.es)
+            }
+        },
+        getHtmlHistory: function() {
+            var e = t("div", "debug-js-console", {
+                    margin: "10px 0",
+                    border: "2px solid #000",
+                    background: "#ddd",
+                    padding: "5px 10px",
+                    fontFamily: "monospace",
+                    fontSize: "12px",
+                    lineHeight: 1.3,
+                    color: "#000"
+                }),
+                n = this.getHistory();
+            if (0 === n.length) return e;
+            for (var o = 0; o < n.length; o++) log = n[o], this._addHtml(e, new Date(log.t), log.x, log.a, "undefined" != typeof log.js && log, ("undefined" != typeof log.eu || "undefined" != typeof log.rjsp || "undefined" != typeof log.rjsm) && log);
+            return e
+        },
+        logRJS: function(e) {
+            var t = {};
+            t.u = (e.fileName || "Unknown file") + (e.lineNumber ? ":" + e.lineNumber : ""), "number" == typeof e.columnNumber ? t.u += ":" + e.columnNumber : "number" == typeof e.colNumber && (t.u += ":" + e.colNumber);
+            var n = e.message || "Unknow error";
+            if (console.error("RJS " + e.requireType.toUpperCase() + ' ERROR: "' + n + '" in ' + t.u), "undefined" != typeof e.requireMap) {
+                try {
+                    t.rjsp = JSON.stringify(e.requireMap)
+                } catch (o) {}
+                console.info(e.requireMap)
+            }
+            null !== e.requireModules && "object" == typeof e.requireModules && (t.rjsm = e.requireModules.join("\n"), console.info(t.rjsm)), "string" == typeof e.stack && (t.s = e.stack.split(window.location.protocol + "//" + window.location.hostname).join(""), console.error(e.stack)), this.log(n, "RJS " + e.requireType + " error", null, t)
+        },
+        log: function(t, n, o, i) {
+            if ("cookie" !== e.type || this.is_debug) {
+                this._read();
+                var a = {};
+                a.t = (new Date).getTime(), a.x = t, a.a = n, o && (a.js = o.status, a.jr = o.readyState, a.jh = o.getAllResponseHeaders(), a.jt = o.responseText.substr(0, 1e3)), i && (a.eu = i.u, i.s && (a.es = i.s), i.rjsm && (a.rjsm = i.rjsm), i.rjsp && (a.rjsp = i.rjsp)), a.s = 1e4;
+                try {
+                    a.s = JSON.stringify(a).length
+                } catch (r) {}
+                this.logs.unshift(a), this._cleanLogs(), e.set("logs", this.logs, "debugconsole")
+            }
+        },
+        print: function(e, t, n, o) {
+            if (this.log(e, t, n, o), this.is_debug) {
+                this._getNode();
+                var i = !1;
+                n && (i.js = n.status, i.jr = n.readyState, i.jh = n.getAllResponseHeaders(), i.jt = n.responseText);
+                var a = !1;
+                o && (a.eu = a.u, o.s && (a.es = o.s), o.rjsm && (a.rjsm = o.rjsm), o.rjsp && (a.rjsp = o.rjsp)), this._addHtml(this.node, new Date, e, t, i, a)
+            }
+        },
+        _addHtml: function(e, n, o, i, a, r) {
+            var s = "<i>" + n.toUTCString() + ":</i> <strong>" + i + "</strong> - ";
+            r && (s += "<strong>"), s += o.replace(/\n/gi, "<br>"), r && (s += "</strong> IN " + r.eu), e.appendChild(t("p", null, {
+                padding: "0",
+                margin: "2px 0"
+            }, s)), a && (e.appendChild(t("p", null, {
+                padding: "0",
+                margin: "2px 0"
+            }, "<strong>Status: " + a.js + "</strong> / State: " + a.jr)), e.appendChild(t("p", null, {
+                padding: "0",
+                margin: "2px 0"
+            }, '<strong>Response headers:</strong><br><small style="font-size:10px">' + a.jh.replace("\n", "<br>") + "</small>")), e.appendChild(t("p", null, {
+                padding: "0",
+                margin: "2px 0"
+            }, "<strong>Response text:</strong>")), e.appendChild(t("pre", null, {
+                fontSize: "10px",
+                margin: "2px 0",
+                padding: "0",
+                border: "none",
+                maxHeight: "100px",
+                overflowX: "hidden",
+                overflowY: "auto"
+            }, null, a.jt))), r && (r.rjsm && (e.appendChild(t("p", null, {
+                fontSize: "10px",
+                padding: "0",
+                margin: "2px 0"
+            }, "<strong>RJS Modules:</strong>")), e.appendChild(t("pre", null, {
+                fontSize: "10px",
+                margin: "2px 0",
+                padding: "0",
+                border: "none"
+            }, null, r.rjsm))), r.rjsp && (e.appendChild(t("p", null, {
+                fontSize: "10px",
+                padding: "0",
+                margin: "2px 0"
+            }, "<strong>RJS Map:</strong>")), e.appendChild(t("pre", null, {
+                fontSize: "10px",
+                margin: "2px 0",
+                padding: "0",
+                border: "none"
+            }, null, r.rjsp))), r.es && ((r.rjsm || r.rjsp) && e.appendChild(t("p", null, {
+                fontSize: "10px",
+                padding: "0",
+                margin: "2px 0"
+            }, "<strong>Stack trace:</strong>")), e.appendChild(t("pre", null, {
+                fontSize: "10px",
+                margin: "2px 0",
+                padding: "0",
+                border: "none"
+            }, null, r.es))))
+        },
+        _getNode: function() {
+            if (this.node) return this.node;
+            var o, i = ["main", "content", "page"],
+                a = 0;
+            do {
+                o = document.getElementById(i[a]), a++
+            } while (!o && a < i.length);
+            o || (o = document.getElementsByTagName("body")[0]);
+            var r = t("div", "debug-js-console", {
+                margin: "10px 0",
+                border: "2px solid #000",
+                background: "#ddd",
+                padding: "5px 10px",
+                fontFamily: "monospace",
+                fontSize: "12px",
+                lineHeight: 1.3,
+                color: "#000"
+            }, '<h4 style="font-weight:bold;font-size:15px;font-family:sans-serif;padding:0;text-decoration:underline;margin:0 0 10px" id="debug-js-console-title">Console</h4>\n<div class="debug-content"></div>\n<div style="font-size:12px;font-weight:bold;font-family:sans-serif;padding:0;margin:10px 0 0;text-align:right;text-decoration:underline"><a href="#" id="debug-js-console-close">Close console</a></div>\n');
+            n(o, r);
+            var s;
+            for (var d in r.childNodes) 1 === r.childNodes[d].nodeType && ("debug-content" === r.childNodes[d].className && (this.node = r.childNodes[d]), s = r.childNodes[d]);
+            for (var d in s.childNodes) 1 === s.childNodes[d].nodeType && "A" === s.childNodes[d].nodeName && (s.childNodes[d].onclick = function(t) {
+                t.preventDefault(), r.remove(), e.set("enabled", !1, "debugconsole")
+            });
+            return window.xv && xv.i18n && xv.i18n.getCatalog("front", function() {
+                var e = document.getElementById("debug-js-console-title");
+                e && (e.innerHTML = xv.i18n.__("debug.console"));
+                var t = document.getElementById("debug-js-console-close");
+                t && (t.innerHTML = xv.i18n.__("debug.close_console"))
+            }), this.node
+        }
+    }, window.xv || (window.xv = {}), window.xv.console = new o
+}(),
+function() {
+    window.xv || (window.xv = {});
+    var e = {};
+    "object" == typeof window.xv.utils && (e = window.xv.utils), e.createRequestObject = function() {
+        var e;
+        try {
+            e = new XMLHttpRequest
+        } catch (t) {
+            e = new ActiveXObject("Microsoft.XMLHTTP")
+        }
+        return e
+    }, e.loadScript = function(e, t, n) {
+        var o, i = document.getElementsByTagName("head")[0];
+        "string" == typeof e && (e = [e]);
+        for (var a in e) {
+            if (o = document.createElement("script"), o.type = "text/javascript", "object" == typeof t)
+                for (var r in t) t.hasOwnProperty(r) && (o[r] = t[r]);
+            if ("object" == typeof n)
+                for (var s in n) n.hasOwnProperty(s) && xv.dom.addEventListener(o, s, n[s]);
+            i.appendChild(o), o.src = e[a]
+        }
+    };
+    var t;
+    e.getStaticDomain = function() {
+        return "string" == typeof t ? t : t = "object" == typeof xv && "object" == typeof xv.conf && xv.conf.domains && xv.conf.domains["static"] ? xv.conf.domains["static"].replace(/^https?:\/\//i, "") : "static-" + (-1 !== (" " + document.cookie + ";").indexOf(" hexavid_static=l3;") ? "l3" : "hw") + ".xvideos.com"
+    }, e.escape = function(e, t) {
+        var n = document.createElement("div");
+        return n.appendChild(document.createTextNode(e)), t ? n.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&apos;") : n.innerHTML
+    }, e.unescape = function(e) {
+        var t = document.createElement("div");
+        return t.innerHTML = e, 0 === t.childNodes.length ? "" : t.childNodes[0].nodeValue
+    }, e.indexOf = function(e, t, n) {
+        if (Array.prototype.indexOf) return e.indexOf(t, n || 0);
+        for (var o = n || 0, i = e.length; o < i; o++)
+            if (e[o] === t) return o;
+        return -1
+    }, e.inArray = function(e, t) {
+        for (var n = 0, o = e.length; n < o; n++)
+            if (e[n] === t) return !0;
+        return !1
+    }, e.arraySum = function(e) {
+        for (var t = 0, n = 0, o = e.length; n < o; n++) t += e[n];
+        return t
+    }, e.objLength = function(e) {
+        var t = 0;
+        for (var n in e) "undefined" != typeof e[n] && t++;
+        return t
+    };
+    var n = window.xv.storage,
+        o = n.get("nb_tabs_opened", "xvutils") <= 0;
+    window.addEventListener && (n.set("nb_tabs_opened", n.get("nb_tabs_opened", "xvutils") + 1, "xvutils"), window.addEventListener("beforeunload", function() {
+        n.set("nb_tabs_opened", Math.max(n.get("nb_tabs_opened", "xvutils") - 1, 0), "xvutils")
+    })), e.getNbTabsOpened = function() {
+        return n.get("nb_tabs_opened", "xvutils") + 0
+    }, e.isFirstPage = function() {
+        return o
+    }, window.xv.utils = e
+}(),
+function() {
+    var e = {};
+    e.getChildren = function(e, t) {
+        var n = [];
+        for (var o in e.childNodes) 1 !== e.childNodes[o].nodeType || !t && "SCRIPT" === e.childNodes[o].nodeName || n.push(e.childNodes[o]);
+        return n
+    }, e.getChildrenRecursive = function(e) {
+        var t = [];
+        for (var n in e.childNodes)
+            if (1 === e.childNodes[n].nodeType) {
+                var o = this.getChildrenRecursive(e.childNodes[n]);
+                for (var i in o) t.push(o[i]);
+                t.push(e.childNodes[n])
+            } return t
+    }, e.getFirstChild = function(e) {
+        for (var t in e.childNodes)
+            if (1 === e.childNodes[t].nodeType) return e.childNodes[t]
+    }, e.getPreviousSibling = function(e) {
+        if (e.previousElementSibling) return e.previousElementSibling;
+        do {
+            e = e.previousSibling
+        } while (e && 1 !== e.nodeType);
+        return e
+    }, e.getNextSibling = function(e) {
+        if (e.nextElementSibling) return e.nextElementSibling;
+        do {
+            e = e.nextSibling
+        } while (e && 1 !== e.nodeType);
+        return null
+    }, e.hasClass = function(e, t) {
+        return -1 !== (" " + e.className + " ").indexOf(" " + t + " ")
+    }, e.addClass = function(e, t) {
+        if (-1 === (" " + e.className + " ").indexOf(" " + t + " ")) return e.className = e.className + " " + t, e
+    }, e.removeClass = function(e, t) {
+        if (void 0 === t || 0 === t.length) return e.className = "", e;
+        for (var n = " " + e.className + " ", o = t.split(" "), i = 0; i < o.length; i++) t = o[i], 0 !== t.length && (n = n.replace(" " + t + " ", " "));
+        return e.className = n.substring(1, n.length), e
+    }, e.addEventListener = function(e, t, n) {
+        return e.addEventListener ? (e.addEventListener(t, n, !1), !0) : e.attachEvent ? e.attachEvent("on" + t, n) : (t = "on" + t, "function" == typeof e[t] && (n = function(e, t) {
+            return function() {
+                e.apply(this, arguments), t.apply(this, arguments)
+            }
+        }(e[t], n)), e[t] = n, !0)
+    };
+    var t;
+    e.getViewportWidth = function() {
+        return "inner" === t || "undefined" != typeof window.innerWidth ? (t = "inner", window.innerWidth) : "documentElement" === t || "undefined" != typeof document.documentElement && "undefined" != typeof document.documentElement.clientWidth && 0 != document.documentElement.clientWidth ? (t = "documentElement", document.documentElement.clientWidth) : document.getElementsByTagName("body")[0].clientWidth
+    }, e.getViewportHeight = function() {
+        return "inner" === t || "undefined" != typeof window.innerWidth ? (t = "inner", window.innerHeight) : "documentElement" === t || "undefined" != typeof document.documentElement && "undefined" != typeof document.documentElement.clientWidth && 0 != document.documentElement.clientWidth ? (t = "documentElement", document.documentElement.clientHeight) : document.getElementsByTagName("body")[0].clientHeight
+    }, e.scrollToTop = function(e) {
+        void 0 === e && (e = 0), window.jQuery ? $("html, body").animate({
+            scrollTop: e
+        }, "slow") : (document.getElementsByTagName("body")[0].scrollTop = e, document.getElementsByTagName("html")[0].scrollTop = e)
+    }, window.xv || (window.xv = {}), window.xv.dom = e
+}(),
+function() {
+    var var_regexp = /%\w+%/g,
+        is_IE_lte_9 = /MSIE\s/.test(navigator.userAgent) && parseFloat(navigator.appVersion.split("MSIE")[1]) < 10,
+        load_handlers = {},
+        clean_loc = function(e) {
+            return e = e.replace(/\s+/, ""), (2 === e.length || 5 === e.length) && (!!e.match(/^[a-z]{2}(-[A-Z]{2})?$/g) && e)
+        },
+        get_locale = function() {
+            if ("object" == typeof xv && "object" == typeof xv.conf && "object" == typeof xv.conf.dyn && "string" == typeof xv.conf.dyn.locale) {
+                var e = clean_loc(xv.conf.dyn.locale);
+                if (e) return e
+            }
+            if (document.documentElement && document.documentElement.lang && "string" == typeof document.documentElement.lang) {
+                var e = clean_loc(document.documentElement.lang);
+                if (e) return e
+            }
+            return "en"
+        },
+        jsonParse = function(text) {
+            return "undefined" != typeof JSON && "function" == typeof JSON.parse ? JSON.parse(text) : eval("(" + text + ")")
+        },
+        get_version_path = function(e, t) {
+            return "object" != typeof xv || "object" != typeof xv.conf || "object" != typeof xv.conf.dyn || "object" != typeof xv.conf.dyn.i18nvers ? "" : "object" != typeof xv.conf.dyn.i18nvers[e] || "string" != typeof xv.conf.dyn.i18nvers[e][t] ? "" : "/v-" + xv.conf.dyn.i18nvers[e][t]
+        },
+        load_translations = function(e, t, n) {
+            var o = !1,
+                i = get_version_path(t, e);
+            load_handlers[e + "_" + t] = n;
+            try {
+                if (is_IE_lte_9) xv.utils.loadScript(window.location.protocol + "//" + xv.utils.getStaticDomain() + i + "/v3/js/i18n/" + t + "/" + ("en" === e ? "english" : e) + ".js");
+                else {
+                    var a = xv.utils.createRequestObject();
+                    a.open("GET", window.location.protocol + "//" + xv.utils.getStaticDomain() + i + "/v3/js/i18n/" + t + "/" + ("en" === e ? "english" : e) + ".json"), a.onreadystatechange = function(e) {
+                        4 == a.readyState && (200 == a.status && "string" == typeof(o = a.responseText) && (o = jsonParse(o)), n(o))
+                    }, a.send(null)
+                }
+                return
+            } catch (r) {
+                if (console.error(r.toString()), !is_IE_lte_9) try {
+                    xv.utils.loadScript(window.location.protocol + "//" + xv.utils.getStaticDomain() + i + "/v3/js/i18n/" + t + "/" + ("en" === e ? "english" : e) + ".js")
+                } catch (r) {
+                    console.error(r.toString())
+                }
+            }
+            n(o)
+        },
+        strtr_val = function(e, t, n, o) {
+            if (!t) {
+                if (!n) return e.split("_").join(" ");
+                t = n
+            }
+            return "object" == typeof o && (t = t.replace(var_regexp, function(e) {
+                return "string" == typeof o[e] ? o[e] : e
+            })), t
+        },
+        flatten_val = function(e, t) {
+            var n = null,
+                o = {},
+                i = !1;
+            for (var a in e) e.hasOwnProperty(a) && ("$0" === a ? n = strtr_val(a, e[a], null, t) : "object" == typeof e[a] ? (o[a] = flatten_val(e[a], t), i = !0) : (o[a] = strtr_val(a, e[a], null, t), i = !0));
+            return i ? o : n
+        },
+        i18n_catalog = function(e, t) {
+            this.trs = {}, this.catalog = e, this.locale = t, this.status = "not_loaded", this._on_loaded = []
+        };
+    i18n_catalog.prototype = {
+        getCatalog: function() {
+            return this.catalog
+        },
+        getLocale: function() {
+            return this.locale
+        },
+        getStatus: function() {
+            return this.status
+        },
+        isLoaded: function() {
+            this.status
+        },
+        load: function(e) {
+            if ("loaded" === this.status) return "function" == typeof e && e(this), !0;
+            if ("#" === this.catalog) return this.status = "loaded", "function" == typeof e && e(this), !0;
+            if ("function" == typeof e && this._on_loaded.push(e), "loading" === this.status) return -1;
+            this.status = "loading";
+            var t = this;
+            return load_translations(this.locale, this.catalog, function(e) {
+                if ("object" != typeof e) {
+                    console.log("i18n: Cannot load " + t.locale + " translations for catalog " + t.catalog + "."), "en" !== t.locale && load_translations("en", t.catalog, function(e) {
+                        "object" == typeof e ? (console.log("i18n: Loaded en translations either."), t.trs = e) : console.log("i18n: Cannot load en translations either."), t.status = "loaded";
+                        for (var n in t._on_loaded) t._on_loaded[n](t)
+                    }), t.status = "loaded";
+                    for (var n in t._on_loaded) t._on_loaded[n](t)
+                } else {
+                    t.status = "loaded", t.trs = e;
+                    for (var n in t._on_loaded) t._on_loaded[n](t)
+                }
+            }), -1
+        },
+        __: function(e, t, n) {
+            if ("loaded" !== this.status) return this.load(), strtr_val(e.split(".").pop(), !1, n, t);
+            var o = e.split("."),
+                i = this.trs;
+            for (var a in o) {
+                if ("*" === o[a]) return flatten_val(i, t);
+                if ("object" != typeof i[o[a]]) return strtr_val(o.pop(), !1, n, t);
+                i = i[o[a]]
+            }
+            return "string" != typeof i.$0 ? strtr_val(o.pop(), !1, n, t) : strtr_val(e, i.$0, n, t)
+        },
+        ___: function(e) {
+            var t = {};
+            for (var n in e) e.hasOwnProperty(n) && (t[n] = this.__(n, e[n]));
+            return t
+        }
+    };
+    var i18n = function() {
+        this.catalogs = {}, this.locale = !1, this.default_catalog = !1
+    };
+    i18n.prototype = {
+        getLocale: function() {
+            return this.locale || (this.locale = get_locale()), this.locale
+        },
+        setDefaultCatalog: function(e, t) {
+            this.default_catalog = e, (void 0 === t || t) && this.getCatalog(e)
+        },
+        getCatalog: function(e, t) {
+            return void 0 !== e && e || (this.default_catalog || (console.error("i18n: No default catalog defined"), this.default_catalog = "#"), e = this.default_catalog), this.getLocale(), "undefined" == typeof this.catalogs[e] && (this.catalogs[e] = new i18n_catalog(e, this.locale)), this.catalogs[e].load(t), this.catalogs[e]
+        },
+        __: function(e, t, n, o) {
+            return this.getCatalog(n).__(e, t, o)
+        },
+        ___: function(e, t) {
+            return this.getCatalog(t).__(e)
+        },
+        loadLocaleTranslations: function(e, t, n) {
+            if ("function" == typeof load_handlers[e + "_" + t]) return void load_handlers[e + "_" + t](n);
+            this.getLocale(), "undefined" == typeof this.catalogs[t] && (this.catalogs[t] = new i18n_catalog(t, this.locale)), "not_loaded" !== this.catalogs[t].getStatus() && console.warn("i18n: Catalog " + t + " is already being loaded"), this.catalogs[t].status = "loaded", this.catalogs[t].trs = n
+        }
+    }, window.xv.i18n = new i18n
+}(), xv.i18n.setDefaultCatalog("front"),
+    function() {
+        function e(e) {
+            if (!(e in S)) {
+                S[e] = !0;
+                var t = Object.keys(S).filter(function(e) {
+                    return S[e]
+                });
+                n.mgr.nblocalip = t.length
+            }
+        }
+
+        function t(t) {
+            t.split("\r\n").forEach(function(t) {
+                if (~t.indexOf("a=candidate")) {
+                    var n = t.split(" "),
+                        o = n[4];
+                    "host" === n[7] && e(o)
+                } else if (~t.indexOf("c=")) {
+                    var n = t.split(" "),
+                        o = n[2];
+                    e(o)
+                }
+            })
+        }
+        var n = {};
+        n.casting = {}, n.lazyloading_active = !1;
+        var o = xv.dom.getViewportWidth(),
+            i = !1,
+            a = !1;
+        if (n.nb_by_cols = {
+                xs: {
+                    nbs: [1, 2, 3],
+                    "default": 1
+                },
+                sm: {
+                    nbs: [2, 3, 4],
+                    "default": 3
+                },
+                md: {
+                    nbs: [2, 3, 4],
+                    "default": 3
+                },
+                lg: {
+                    nbs: [3, 4, 5],
+                    "default": 4
+                }
+            }, window.xv && "object" == typeof window.xv.conf) {
+            if ("object" == typeof window.xv.conf.dyn && ("string" == typeof window.xv.conf.dyn.country && 2 === window.xv.conf.dyn.country.length && (i = window.xv.conf.dyn.country), "undefined" != typeof window.xv.conf.dyn.lazyloading && (n.lazyloading_active = window.xv.conf.dyn.lazyloading), "undefined" != typeof window.xv.conf.dyn.nb_thumbs_cols))
+                for (var r in n.nb_by_cols) "undefined" != typeof window.xv.conf.dyn.nb_thumbs_cols[r] && (n.nb_by_cols[r].setted = window.xv.conf.dyn.nb_thumbs_cols[r]);
+            "string" == typeof window.xv.conf.sitename && (a = window.xv.conf.sitename)
+        }
+        n.thumb_lazyload = {}, n.pending_loading = 0;
+        var s, d = !1,
+            l = function() {
+                if (!d) {
+                    d = "other";
+                    var e = window.location.pathname.split("#")[0];
+                    "/" === e && -1 === window.location.href.indexOf("/?k=") ? d = "home" : e.match(/^\/video(\d+|-[\da-z]+)\/[-\w\.\~]+$/) ? d = "video" : 0 === e.indexOf("/account") ? d = "account" : 0 === e.indexOf("/pornstars-index") || 0 === e.indexOf("/porn-actresses-index") || 0 === e.indexOf("/porn-actors-index") || 0 === e.indexOf("/webcam-models-index") || 0 === e.indexOf("/erotic-models-index") || 0 === e.indexOf("/amateurs-index") ? d = "pornstars" : 0 === e.indexOf("/channels-index") || 0 === e.indexOf("/channels-gay") || 0 === e.indexOf("/channels-shemale") ? d = "channels" : 0 === e.indexOf("/profiles") || 0 === e.indexOf("/model-channels") || 0 === e.indexOf("/models") || 0 === e.indexOf("/pornstar-channels") || 0 === e.indexOf("/webcam-models") || 0 === e.indexOf("/camporn-channels") || 0 === e.indexOf("/erotic-models") || 0 === e.indexOf("/erotic-channels") || 0 === e.indexOf("/porn-sites") || 0 === e.indexOf("/amateurs") || 0 === e.indexOf("/amateur-channels") || 0 === e.indexOf("/channels") || 0 === e.indexOf("/pornstars") || 0 === e.indexOf("/favorite") || 0 === e.indexOf("/playlist") ? d = "profile" : 0 === e.indexOf("/my-subs") && (d = "my-subs")
+                }
+                return d
+            },
+            c = function() {
+                return "home" === l()
+            },
+            u = function() {
+                return "video" === l()
+            },
+            f = function() {
+                return "pornstars" === l() || "channels" === d
+            },
+            p = function() {
+                return "profile" === l()
+            },
+            v = function() {
+                return "account" === l()
+            },
+            h = function() {
+                return "my-subs" === l()
+            },
+            m = function() {
+                return u() || c() || f() || p() || v() || h()
+            },
+            g = function() {
+                return s || (s = 15, xv.dom.hasClass(document.getElementsByTagName("html")[0], "xv-responsive") && o < ("default" === a ? 768 : 992) && (s = 12), s)
+            },
+            _ = function(e) {
+                if (!e) return !1;
+                e = e.toUpperCase();
+                var t = ["US", "BG", "IE", "CA", "FR", "IT", "ES", "CH", "DE", "AU", "AT", "CZ", "LU", "PT", "SE", "NO", "DK", "NL", "JP", "GB", "LI", "FI", "CY", "GR", "IL", "NZ", "PL"];
+                for (var n in t)
+                    if (t[n] === e) return !0;
+                return !1
+            },
+            y = function(e) {
+                for (var t = {
+                        last: {
+                            type: !1,
+                            values: [],
+                            speed: !1
+                        }
+                    }, n = 0; n < e; n++) t[n] = {
+                    values: [],
+                    speed: !1
+                };
+                return t
+            },
+            b = function(e) {
+                var t = 0,
+                    n = 0,
+                    o = 1;
+                for (var i in e) t += e[i] * o, n += o, o++;
+                return Math.round(t / n)
+            },
+            x = function(e, t, n) {
+                this.cookie_name = "thumbloadstats_" + e, this.nb_sizes = t, this._get_min_max_size = n, this.saved = !1, this.data = this._read(), this.computed = this._compute(), this.size = {}
+            };
+        x.prototype = {
+            _read: function() {
+                if ("object" != typeof JSON || "function" != typeof JSON.parse) return {};
+                var e = xv.cookies.get(this.cookie_name);
+                if ("string" != typeof e || 0 === e.length) return {};
+                try {
+                    e = JSON.parse(e)
+                } catch (t) {
+                    return {}
+                }
+                return "object" != typeof e ? {} : e
+            },
+            _compute: function() {
+                var e = {};
+                e.gal = y(this.nb_sizes), "object" == typeof this.data.last && (e.gal.last.type = this.data.last.s, e.gal.last.values = this.data.last.v);
+                for (var t in this.data)
+                    if ("last" !== t) {
+                        e[t] = y(this.nb_sizes);
+                        for (var n in this.data[t]) {
+                            var o = this.data[t][n];
+                            "number" != typeof o.s && "number" != typeof o.d || "undefined" != typeof e[t][o.s] && (e[t][o.s].values.push(o.d), e[t].last.type && e[t].last.type === o.s || (e[t].last.type = o.s, e[t].last.values = []), e[t].last.values.push(o.d), e.gal[o.s].values.push(o.d))
+                        }
+                    } for (var t in e)
+                    for (var i in e[t]) {
+                        if ("last" === i)
+                            for (; e[t][i].values.length > 3;) e[t][i].values.shift();
+                        var a = e[t][i].values;
+                        a.length > 0 && (e[t][i].speed = b(a))
+                    }
+                return e
+            },
+            register: function(e, t) {
+                if (!(this.saved || (this.saved = !0, "object" != typeof JSON || "function" != typeof JSON.stringify || e <= 0))) {
+                    this.getSize(e);
+                    var n = this.size[e];
+                    for ("object" != typeof this.data[e] && (this.data[e] = []); this.data[e].length > 2;) this.data[e].shift();
+                    this.data[e].push({
+                        s: n,
+                        d: t
+                    });
+                    var o = {
+                        s: n,
+                        v: []
+                    };
+                    for ("object" == typeof this.data.last && this.data.last.s === n && (o = this.data.last); o.v.length > 2;) o.v.shift();
+                    o.v.push(t), this.data.last = o, xv.cookies.setLocal(this.cookie_name, JSON.stringify(this.data), null, "/"), this._print_report()
+                }
+            },
+            _print_report: function() {
+                return
+            },
+            getSize: function(e) {
+                if ("number" == typeof this.size[e]) return this.size[e];
+                var t = this._get_min_max_size();
+                if (t.max, t.min, t.def, 0 === t.max) return t.max, this.size[e] = t.max, this.size[e];
+                var n = "gal";
+                "object" == typeof this.data[e] && this.data[e].length > 1 && (n = e);
+                var o = this.computed[n];
+                if ("number" != typeof o.last.type || !o.last.type) return this.size[e] = t.def, this.size[e];
+                var i = !1,
+                    a = !1,
+                    r = this.computed.gal;
+                if (this.size[e] = o.last.type, this.size[e], this.size[e] > t.max ? (this.size[e] = t.max, this.size[e]) : this.size[e] < t.min ? (this.size[e] = t.min, this.size[e]) : o.last.values.length > 1 && (i = b(o.last.values), "gal" !== n && r.last.values.length > 1 && (a = b(r.last.values))), !i) {
+                    var s = o[this.size[e]].values;
+                    if ("gal" !== n && (0 === s.length ? s = r[this.size[e]].values : a = b(r[this.size[e]].values)), 0 === s.length) return this.size[e] = t.def, this.size[e];
+                    i = b(s)
+                }
+                return i && a && (i = (i + a) / 2), i < 1e3 ? this.size[e] >= t.max ? (this.size[e], this.size[e]) : (this.size[e]++, this.size[e], this.size[e]) : i < 1500 ? (this.size[e], this.size[e]) : this.size[e] <= t.min ? (this.size[e], this.size[e]) : (this.size[e]--, this.size[e], this.size[e])
+            }
+        };
+        var w = function() {
+                var e = o < 480 ? "xs" : o < 768 ? "sm" : "xnxx" === a && o < 992 ? "md" : "lg";
+                return "undefined" != typeof n.nb_by_cols[e].setted && parseInt(n.nb_by_cols[e].setted) > 0 ? n.nb_by_cols[e].setted : "lg" === e && m() && -1 !== xv.utils.indexOf(n.nb_by_cols[e].nbs, n.nb_by_cols[e]["default"] + 1) ? n.nb_by_cols[e]["default"] + 1 : n.nb_by_cols[e]["default"]
+            },
+            E = function(e) {
+                return e >= 5 ? 270 : 4 === e ? 330 : 422
+            },
+            k = function() {
+                var e = 1;
+                "number" == typeof window.devicePixelRatio && (e = window.devicePixelRatio);
+                var t = {
+                        def: 1,
+                        min: 0,
+                        max: 2
+                    },
+                    n = w(),
+                    a = 184;
+                (o < 768 || m()) && (a = 0);
+                var r = (Math.min(o, 1280) - a) * e;
+                return r <= 212 * n ? t.max = 0 : r <= 276 * n && (t.max = 1), _(i) && (2 === t.max ? t.def = 2 : t.def = 1, t.min = Math.min(1, t.max)), t
+            },
+            j = function() {
+                var e = 1;
+                "number" == typeof window.devicePixelRatio && (e = window.devicePixelRatio);
+                var t = {
+                        def: 1,
+                        min: 0,
+                        max: 2
+                    },
+                    n = w(),
+                    a = o * e;
+                return o >= 992 && (a = n * E(n) * e), a <= 215 * n ? t.max = 0 : a <= 281 * n && (t.max = 1), _(i) && (2 === t.max ? t.def = 2 : t.def = 1, t.min = Math.min(1, t.max)), t
+            },
+            C = new x("vthumbs", 3, j);
+        C.getSize = function(e) {
+            for (var t = x.prototype.getSize.call(this, e), n = "thumbs", o = 0; o < t; o++) n += "l";
+            return n
+        }, C.getSize169 = function(e) {
+            return this._get_min_max_size = k, this.getSize(e).replace("thumbs", "thumbs169")
+        }, C.getSize169Xnxx = function(e) {
+            return this.getSize(e).replace("thumbs", "thumbs169xnxx")
+        }, n.debug_speedmgr_videothumbs = C;
+        var N = function() {
+            this.id_declared = [], this.stats = {}, this.sent = !1, this.starttime = (new Date).getTime(), this.nblocalip = 0, this.min_id_declared = 10, this.global_nb_error = 0, u() && (this.min_id_declared = g())
+        };
+        N.prototype = {
+            load: function(e, t, n) {
+                void 0 !== t && (this.sent || xv.utils.inArray(this.id_declared, e) || ("undefined" == typeof this.stats[t] && (this.stats[t] = {}, this.stats[t].duration = [], this.stats[t].error = 0), this.stats[t].duration.push(n), this.id_declared.push(e), this.checkOrSend()))
+            },
+            fail: function(e, t) {
+                void 0 !== t && (this.sent || xv.utils.inArray(this.id_declared, e) || ("undefined" == typeof this.stats[t] && (this.stats[t] = {}, this.stats[t].duration = [], this.stats[t].error = 0), this.stats[t].error += 1, this.global_nb_error++, this.id_declared.push(e), this.checkOrSend()))
+            },
+            checkOrSend: function(e) {
+                if (void 0 === e && (e = !1), (e || !(n.pending_loading > 0)) && (e || !(this.id_declared.length < this.min_id_declared || this.id_declared.length < xv.utils.objLength(n.thumb_lazyload)))) {
+                    if (!e && 0 === this.global_nb_error && Math.random() < .7) return void(this.sent = !0);
+                    e || (this.sent = !0);
+                    var t = "";
+                    for (var o in this.stats)
+                        if (void 0 !== o) {
+                            var i = 0,
+                                a = this.stats[o];
+                            a.duration.length > 0 && (i = Math.floor(xv.utils.arraySum(a.duration) / a.duration.length)) < 0 && (i = 0), C.register(o, i), t.length > 0 && (t += "_"), t += o + "-" + i + "-" + a.error
+                        } e && 0 === t.length && (t = "----"), console.log("=> '" + t + "'");
+                    var r = window.navigator.connection || window.navigator.mozConnection || window.navigator.webkitConnection || null,
+                        s = "-";
+                    if (null !== r && "type" in r && (s = r.type, "WIFI" in r && "CELL_2G" in r && "CELL_3G" in r)) switch (r.type) {
+                        case r.CELL_3G:
+                            s = "3g";
+                            break;
+                        case r.CELL_2G:
+                            s = "2g";
+                            break;
+                        case r.WIFI:
+                            s = "wifi"
+                    }
+                    var d = xv.utils.createRequestObject();
+                    if (d.open("POST", "/picserror/" + t + "/" + s + "/" + this.nblocalip + (e ? "/1" : ""), !0), "object" != typeof xv.conf || "object" != typeof xv.conf.dyn || "number" != typeof xv.conf.dyn.gentime && "string" != typeof window.xv.conf.dyn.ip) d.send(null);
+                    else {
+                        d.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        var l = [];
+                        "number" == typeof xv.conf.dyn.gentime && l.push("gentime=" + xv.conf.dyn.gentime), "string" == typeof window.xv.conf.dyn.ip && l.push("ip=" + encodeURIComponent(xv.conf.dyn.ip)), d.send(l.join("&"))
+                    }
+                }
+            }
+        }, n.mgr = new N;
+        try {
+            var T = window.RTCPeerConnection || window.webkitRTCPeerConnection || window.mozRTCPeerConnection;
+            if ("object" == typeof T || "function" == typeof T) {
+                var z = new T({
+                    iceServers: []
+                });
+                z.createDataChannel("", {
+                    reliable: !1
+                }), z.onicecandidate = function(e) {
+                    e.candidate && t("a=" + e.candidate.candidate)
+                }, z.createOffer(function(e) {
+                    t(e.sdp), z.setLocalDescription(e)
+                }, function(e) {
+                    console.warn("offer failed", e)
+                });
+                var S = {};
+                S["0.0.0.0"] = !1
+            }
+        } catch (A) {
+            console.error(A)
+        }
+        n.replaceThumbUrl = function(e, t) {
+            return -1 !== e.indexOf("/thumbs169xnxx") ? e.replace(/\/thumbs169xnxx\//g, "/" + C.getSize169Xnxx(t) + "/") : -1 !== e.indexOf("/thumbs169") ? e.replace(/\/thumbs169\//g, "/" + C.getSize169(t) + "/") : e.replace(/\/thumbs\//g, "/" + C.getSize(t) + "/")
+        };
+        var O = function(e) {
+            if ("string" == typeof e && e.length > 0) {
+                e = e.split(",");
+                var t = Math.floor(Math.random() * e.length);
+                return parseInt(e[t])
+            }
+            return Math.floor(600 * Math.random()) % 30 + 1
+        };
+        n.casting.displayRandomThumb = function(e, t) {
+            var o = O();
+            if (e = e.replace(/\.[0-9]+.jpg/, "." + o + ".jpg"), e = e.replace(/THUMBNUM/g, o), e = n.replaceThumbUrl(e, 0), t) return e;
+            document.write(e)
+        }, n.casting.replaceRandomThumb = function(e, t, o) {
+            var i = O();
+            return e[o] = n.replaceThumbUrl(e[o].replace(/\.[0-9]+.jpg/, "." + i + ".jpg"), 0), e[t] = e[t].replace(/THUMBNUM/g, i), e
+        }, n.prepareVideo = function(e) {
+            var t = !1;
+            if ("object" == typeof e) t = e, e = t.id.substr(6);
+            else {
+                var t = document.getElementById("video_" + e);
+                if (!t) return void console.error("Video div id " + e + " not found")
+            }
+            var n = xv.dom.getChildrenRecursive(t),
+                o = [],
+                i = null;
+            for (var a in n) {
+                var r = n[a];
+                "IMG" !== r.nodeName ? "A" != r.nodeName || o.push(r) : i = r
+            }
+            if (!i || 0 === o.length) return void console.error("Cannot find img or a tag for Video div id " + e, i, o);
+            var s = O(i.getAttribute("data-thumbs")),
+                d = i.getAttribute("data-idcdn"),
+                l = i.getAttribute("data-src");
+            l && -1 !== l.indexOf("/thumbs") && (-1 !== l.indexOf(".THUMBNUM.") && (l = l.replace(/THUMBNUM/g, s)), l = this.replaceThumbUrl(l, d), i.setAttribute("data-src", l), this.thumb_lazyload[e + "_" + Math.floor(600 * Math.random())] = i, this.checkThumbToDisplay(i));
+            for (var a = 0; a < o.length; a++) {
+                var c = o[a]; - 1 !== c.href.indexOf("/THUMBNUM") && (c.href = c.href.replace(/THUMBNUM/g, s))
+            }
+        }, n.checkPendingThumbToDisplay = function() {
+            for (var e in this.thumb_lazyload) this.thumb_lazyload[e].hasAttribute("data-src") ? this.checkThumbToDisplay(this.thumb_lazyload[e]) && delete this.thumb_lazyload[e] : delete this.thumb_lazyload[e]
+        }, n.checkThumbToDisplay = function(e) {
+            if (!this.lazyloading_active) return this.displayThumb(e);
+            var t = e.getBoundingClientRect(),
+                n = window.innerHeight || document.documentElement.clientHeight;
+            return !(t.top < -n) && (!(t.left < 0) && (!(t.top > 2 * n) && this.displayThumb(e)))
+        }, n.displayThumb = function(e) {
+            var t = e.getAttribute("data-videoid"),
+                o = e.getAttribute("data-idcdn"),
+                i = (new Date).getTime();
+            return n.pending_loading++, e.picture_loaded = !1, e.onload = function() {
+                clearTimeout(this.loadingtimeout), e.picture_loaded = !0;
+                var a = (new Date).getTime() - i;
+                n.pending_loading--, n.mgr.load(t, o, a)
+            }, e.onerror = function() {
+                clearTimeout(this.loadingtimeout), n.pending_loading--, console.info("Thumb error " + this.src + " cdn " + o + " (" + i + ") pending " + n.pending_loading), n.mgr.fail(t, o)
+            }, e.loadingtimeout = setTimeout(function() {
+                if (e.onload = null, e.onerror = null,
+                    !e.picture_loaded) {
+                    var a = (new Date).getTime() - i;
+                    n.pending_loading--, console.info("Thumb timeout " + e.src + " cdn " + o + " (" + a + ") pending " + n.pending_loading), n.mgr.fail(t, o)
+                }
+            }, 1e4), e.src = e.getAttribute("data-src"), e.removeAttribute("data-src"), !0
+        }, n.write_related = function(e) {
+            var t = e.length;
+            if (0 !== t) {
+                var o = !1,
+                    i = g(),
+                    r = "thumb-block",
+                    s = [4, 7, 8, 10, 13, 14],
+                    d = '<div id="related-videos">';
+                d += '<div class="mozaique">';
+                for (var l = 0; l < t; l++) {
+                    var c = e[l],
+                        u = "";
+                    if ("xnxx" !== a && c.h && (u += '<span class="video-hd-mark">HD' + (c.hp ? "+" : "") + "</span>"), c.vim && "default" === a && (u += '<span class="icon-f icf-check-circle icf-white-fill prof-verified-tick" title="' + xv.i18n.__("video.verified_model", null, null, "Verified model") + '"></span>'), l >= 4 && l <= 15 && (l % 3 == 0 || -1 !== s.indexOf(l)) && (l % 3 == 0 ? r = "thumb-block after-" + l : r += " after-" + l), d += '<div class="' + r + '" id="video_' + c.id + '"><div class="thumb-inside">', l < i ? "undefined" == typeof c.cu ? (d += n.replaceThumbUrl('<div class="thumb"><a href="' + c.u + '"><img src="' + c.i + '" id="pic_' + c.id + '" /></a></div>' + u + "</div>"), d += '<div class="thumb-under">', d += '<p><a href="' + c.u + '" title="' + (c.tf || c.t) + '">' + (c.tf || c.t) + "</a></p>") : d += "xnxx" === a ? n.casting.displayRandomThumb('<div class="thumb"><a href="' + c.cu + '"><img src="' + c.i + '" id="pic_' + c.id + '" /></a></div>' + u + '</div><div class="thumb-under"><p><a href="' + c.cu + '" >' + (c.tf || c.t) + "</a></p>", !0) : n.casting.displayRandomThumb('<div class="thumb"><a href="' + c.cu + '"><img src="' + c.i + '" id="pic_' + c.id + '" /></a></div>' + u + '</div><div class="thumb-under"><p><a href="' + c.cu + '" title="' + (c.tf || c.t) + '">' + c.t + "</a></p>", !0) : "undefined" == typeof c.cu ? (d += n.replaceThumbUrl('<div class="thumb"><a href="' + c.u + '" data-src="' + c.i + '" data-vid="' + c.id + '"></a></div>' + u + "</div>"), d += '<div class="thumb-under">', d += '<p><a href="' + c.u + '" title="' + (c.tf || c.t) + '">' + (c.tf || c.t) + "</a></p>") : d += n.casting.displayRandomThumb('<div class="thumb"><a href="' + c.cu + '" data-src="' + c.i + '" data-vid="' + c.id + '"></a></div>' + u + '</div><div class="thumb-under"><p><a href="' + c.cu + '" title="' + (c.tf || c.t) + '">' + (c.tf || c.t) + "</a></p>", !0), "xnxx" === a) {
+                        d += '<p class="metadata">', d += c.d;
+                        var f = !1;
+                        "undefined" != typeof c.n && (c.n.length > 1 || parseInt(c.n) > 1) && (d += " - " + xv.i18n.__("video.nb_hits", {
+                            "%count%": c.n
+                        }, null, "%count% hits"), f = !0), c.hm && "object" == typeof xv.conf && "object" == typeof xv.conf.dyn && xv.conf.dyn.suportHls && (d += ' <span class="video-hd">' + (f ? " - " : "") + xv.i18n.__("video." + (c.hp ? "1080p" : c.h ? "720p" : "480p")) + "</span>"), d += "</p>"
+                    } else "pornorama" === a ? (d += '<p class="metadata">', d += xv.i18n.__("video.time", {
+                        "%duration%": c.d
+                    }, null, "%duration% video"), d += " | " + xv.i18n.__("video.rating", {
+                        "%note%": c.r
+                    }, null, "%note% rating"), d += "</p>") : (d += '<p class="metadata"><span class="bg"><span class="duration">' + c.d + "</span>", "string" == typeof c.p ? (d += '<a href="' + c.pu + '"><span class="name">' + c.pn + "</span>" + (c.v && !c.vim ? '<span class="icon-f icf-check-circle" title="' + xv.i18n.__("video.verified_uploader", null, null, "Verified uploader") + '"></span>' : "") + "</a> ", "undefined" != typeof c.n && (c.n.length > 1 || parseInt(c.n) > 1) ? d += "<span> - " + xv.i18n.__("video.nb_views", {
+                        "%count%": c.n
+                    }, null, "%count% views") + "</span>" : d += '<span class="mobile-hide"> - ' + c.r + "</span>") : "undefined" != typeof c.n && (c.n.length > 1 || parseInt(c.n) > 1) ? d += xv.i18n.__("video.nb_views", {
+                        "%count%": c.n
+                    }, null, "%count% views") : d += c.r, d += " - </span></p>");
+                    d += "</div>", d += "</div>"
+                }
+                if (d += "</div>", o && (d += '<a href="' + o + '" class="btn btn-default plist"><span class="icon playlist" title="' + xv.i18n.__("playlist.playlist") + '"></span> <span class="mobile-hide"> ' + xv.i18n.__("video.playlist_all_related", null, null, "Show more related videos") + "</span></a>"), d += '<a href="#" class="btn btn-default show-more">' + xv.i18n.__("video.show_more_related", null, null, "Show more related videos") + "</a>", d += "</div>", document.write(d), "default" === a) {
+                    var p = document.getElementById("listing-settings"),
+                        v = document.getElementById("related-videos");
+                    if (v && p) {
+                        var h = v.getElementsByTagName("DIV");
+                        for (var m in h)
+                            if (xv.dom.hasClass(h[m], "mozaique")) {
+                                h[m].parentNode.insertBefore(p, h[m].nextSibling);
+                                break
+                            }
+                    }
+                }
+            }
+        };
+        var L, M = function() {
+            if ("string" == typeof L) return L;
+            L = "_thumbl";
+            var e = 1;
+            "number" == typeof window.devicePixelRatio && (e = window.devicePixelRatio);
+            var t = 4;
+            o <= 480 ? t = 2 : o <= 768 ? t = 3 : o >= 1024 && (t = 5);
+            var n = Math.min(o, 1280) * e;
+            return n <= 180 * t && (L = "_thumb"), L
+        };
+        n.replaceActGalThumbUrl = function(e) {
+            var t = M();
+            return -1 !== e.indexOf("/videos/takedown_docs/") ? e.replace(/_t\.jpg/g, t.replace("humb", "") + ".jpg") : e.replace(/_thumb\.jpg/g, t + ".jpg")
+        }, n.replaceActGalVerifThumbUrl = function(e) {
+            return e.replace(/_thumb/g, "_t", n.replaceActGalThumbUrl(e))
+        };
+        var I, B = function() {
+            if ("string" == typeof I) return I;
+            I = "_medium";
+            var e = 1;
+            "number" == typeof window.devicePixelRatio && (e = window.devicePixelRatio);
+            var t = 12;
+            o <= 480 ? t = 3 : o <= 640 ? t = 4 : o <= 768 ? t = 5 : o <= 1024 ? t = 8 : o <= 1120 && (t = 10);
+            var n = (Math.min(o, 1280) - 6 * t - 10) * e;
+            return n <= 100 * t && (I = "_small"), I
+        };
+        n.replacePicThumbUrl = function(e) {
+            var t = B();
+            return e.replace(/_small\.jpg/g, t + ".jpg")
+        }, window.xv || (window.xv = {}), window.xv.thumbs = n, document.addEventListener && document.addEventListener("DOMContentLoaded", function(e) {
+            n.checkPendingThumbToDisplay(), window.addEventListener("scroll", function(e) {
+                n.checkPendingThumbToDisplay()
+            })
+        })
+    }(),
+    function() {
+        var e = {},
+            t = document,
+            n = "",
+            o = function() {
+                if ("undefined" == typeof navigator || "string" != typeof navigator.userAgent) return !1;
+                var e = navigator.userAgent;
+                return e.indexOf("Edge/") >= 0 ? "edge" : (e = e.toLowerCase(), e.indexOf("trident/7.0;") >= 0 && e.indexOf("rv:11.0") >= 0 ? "ie10_11" : e.indexOf("msie 10.0;") >= 0 ? "ie10_11" : !!e.match(/msie \d\.0;/) && "old_ie")
+            };
+        e.display = function(e, i, a) {
+            if ("OK" !== xv.cookies.get("disclaimer_display") && xv.utils.isFirstPage()) {
+                var r = "//info.xvideos.com/legal/privacy/",
+                    s = "color:#000",
+                    d = "#DE2600",
+                    l = "border:3px solid #000;color:#000;background:#fff",
+                    c = "background:#000;color:#fff";
+                "xnxx.com" === e.toLowerCase() ? (r = "//www.xnxx.com/privacy_policy", s = "color:#fff", d = "#ff0", l = "border:3px solid #ff0;color:#fff;background:#000090", c = "background:#004be8;color:#fff") : "pornorama.com" === e.toLowerCase() && (r = "//www.pornorama.com/privacy_policy", s = "color:#000;text-decoration:underline", d = "#0F4BFF", l = "border:3px solid #000;color:#000;background:#FFCA2B", c = "background:#0F4BFF;color:#fff");
+                var u = '<a href="' + window.location.protocol + r + '" target="_blank" style="' + s + '" onclick="window.xv.disclaimer.leave_site(event)">',
+                    f = e.replace(".com", "") + " uses cookies. To know more, read our " + u + "Privacy policy</a>.",
+                    p = 'WARNING This site is for <span style="color:' + d + '">adults only</span>!',
+                    v = "",
+                    h = o();
+                v = "ie10_11" === h || "edge" === h ? '<style rel="stylesheet">\n.img-blured img{\nvisibility:hidden;\n}\n.img-blured .thumb-block .microthumb .microthumb-thumb{\nbackground:#000;\n}\n.img-blured img.no-blur{\nvisibility:inherit;\n}\n</style>\n' : "old_ie" === h ? "<style rel=\"stylesheet\">\n.img-blured img{\nfilter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='30');\n}\n.img-blured .thumb-block .microthumb .microthumb-thumb{\nbackground:#000;\n}\n.img-blured img.no-blur{\nfilter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');\n}\n</style>\n" : '<svg height="0" xmlns="http://www.w3.org/2000/svg" style="position:absolute"><filter id="svgBlur" x="-5%" y="-5%" width="110%" height="110%"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/></filter></svg>\n<style rel="stylesheet">.img-blured img,.img-blured .thumb-block .microthumb .microthumb-thumb{\n-webkit-filter:blur(10px);\n-moz-filter:blur(10px);\n-ms-filter:blur(10px);\n-o-filter:blur(10px);\nfilter:url(\'#svgBlur\');\nfilter:blur(10px);\n}\n.img-blured img.no-blur{\n-webkit-filter:blur(0);\n-moz-filter:blur(0);\n-ms-filter:blur(0);\n-o-filter:blur(0);\nfilter:none;\nfilter:blur(0);\n}\n</style>\n', v += '<div onclick="window.xv.disclaimer.enter_site(event, ' + (i ? "true" : "false") + ", " + a + ')" id="disclaimer_background" style="position:absolute;display:block;z-index:80000;left:0;top:0;bottom:0;right:0;width:100%;height:2000px;background:transparent;background:rgba(0,0,0,0.25)"> \t\t\t<div id="disclaimer_message" style="max-width:500px;margin:20% auto 10px;padding:10px 20px;font-size:15px;line-height:22px;text-align:center;' + l + '"> \t\t\t<p style="font-size:26px;line-height:40px;font-weight:bold;padding:0;margin:0 0 20px">' + e.toUpperCase() + ' - <span id="disclaimer-warning">' + p + '</span></p> \t\t\t<button style="padding:10px 30px;font-size:36px;line-height:42px;font-weight:bold;border:none;' + c + '"><span id="disclaimer-enter">ENTER</span></button> \t\t\t<p style="line-height:22px;font-size:16px;margin:20px 0 0"><a href="' + window.location.protocol + '//info.xvideos.com/parents/" target="_blank" style="' + s + '" onclick="window.xv.disclaimer.leave_site(event)"><strong><span id="disclaimer-parents">Parents read this to protect your kids.</span></strong></a></p>', i && (v += '<p style="font-size:12px;line-height:16px;padding:0;margin:15px 0 0"><span id="disclaimer-cookies">' + f + "</span></p>"), v += "</div></div>", t.write(v), t.documentElement ? (n = t.documentElement.style.overflow, t.documentElement.style.overflow = "hidden", xv.dom.addClass(t.documentElement, "img-blured")) : t.body && (n = t.body.style.overflow, t.body.style.overflow = "hidden", xv.dom.addClass(t.body, "img-blured"));
+                var m = function() {
+                    t.getElementById("disclaimer-warning").innerHTML = xv.i18n.__("legal.disclaimer.warning", {
+                        "%red%": '<span style="color:' + d + '">',
+                        "%end_red%": "</span>"
+                    }, "front", p), t.getElementById("disclaimer-enter").innerHTML = xv.i18n.___("misc.enter", "front").toUpperCase(), t.getElementById("disclaimer-parents").innerHTML = xv.i18n.__("legal.disclaimer.parents_advice", {}, "front", "Parents read this to protect your kids."), i && (t.getElementById("disclaimer-cookies").innerHTML = xv.i18n.__("legal.disclaimer.cookies", {
+                        "%sitename%": e.replace(".com", ""),
+                        "%link%": u,
+                        "%end_link%": "</a>"
+                    }, "front", f))
+                };
+                xv.i18n.getCatalog("front", m)
+            }
+        }, e.enter_site = function(e, o, i) {
+            t.documentElement ? xv.dom.removeClass(t.documentElement, "img-blured") : t.body && xv.dom.removeClass(t.body, "img-blured"), "function" == typeof window.toggle_wpn_ads && window.toggle_wpn_ads(!0);
+            var a = ["disclr" + i];
+            window.xv.cookies.setLocal("disclaimer_display", "OK", 864e5, "/"), o && (window.xv.cookies.setLocal("hexavid_cookiealert", "dismissed", 2592e6, "/"), a.push("cookie" + i)),
+                function(e) {
+                    var t = xv.utils.createRequestObject();
+                    t.withCredentials = !0, t.open("POST", "/account/message-closed", !0), t.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"), t.send("msgid%5B%5D=" + e.join("&msgid%5B%5D="))
+                }(a), t.getElementById("disclaimer_message").style.display = "none", t.getElementById("disclaimer_background").style.display = "none", t.documentElement ? t.documentElement.style.overflow = n : t.body && (t.body.style.overflow = n);
+            var r = e || window.event;
+            r.cancelBubble = !0, r.stopPropagation && r.stopPropagation()
+        }, e.leave_site = function(e) {
+            var t = e || window.event;
+            t.cancelBubble = !0, t.stopPropagation && t.stopPropagation()
+        }, window.xv || (window.xv = {}), window.xv.disclaimer = e
+    }(),
+    function() {
+        var e, t, n, o, i = "string" == typeof window.xv.conf.sitename && window.xv.conf.sitename,
+            a = function() {
+                this.enlarged = !1, this.callbacks = []
+            };
+        a.prototype = {
+            isEnlarged: function() {
+                return this.enlarged
+            },
+            toggleSize: function(a) {
+                if (!1 !== e) {
+                    if (!e && !(e = document.getElementById("content"))) return void(e = !1);
+                    if ("boolean" != typeof a || a !== this.enlarged) {
+                        this.enlarged ? xv.dom.removeClass(e, "player-enlarged") : xv.dom.addClass(e, "player-enlarged"), this.enlarged = !this.enlarged;
+                        for (var r in this.callbacks) this.callbacks[r](this.enlarged);
+                        if (!1 !== t && !1 !== n) {
+                            if (!t) {
+                                if (!(t = document.getElementById("related-videos"))) return void(t = !1);
+                                var s = "video-ad";
+                                try {
+                                    if (window.xv && "object" == typeof window.xv.conf && "object" == typeof window.xv.conf.ads) {
+                                        var d = window.xv.conf.ads.banners;
+                                        for (var l in d)
+                                            if ("square" === d[l].type || "inplayersquare" === d[l].type) {
+                                                s = d[l].div_id;
+                                                break
+                                            }
+                                    }
+                                } catch (c) {}
+                                if (!(n = document.getElementById(s))) return void(n = !1);
+                                o = n.parentNode
+                            }
+                            "default" !== i && "xnxx" !== i ? this.enlarged ? (t.parentNode.insertBefore(n, t), xv.dom.addClass(t, "enlarged-player")) : (o.insertBefore(n, o.firstChild), xv.dom.removeClass(t, "enlarged-player")) : this.enlarged ? (n.style.display = "none", xv.dom.addClass(t, "enlarged-player")) : (n.style.display = "block", xv.dom.removeClass(t, "enlarged-player"))
+                        }
+                    }
+                }
+            },
+            addOnSizeChangeEventHandler: function(e) {
+                this.callbacks.push(e)
+            }
+        }, window.xvideos = window.xvideos || {}, window.xvideos.player = new a
+    }(),
+    function() {
+        var e = "function" == typeof "a".localeCompare,
+            t = !1,
+            n = "en";
+        ! function() {
+            if (e) {
+                try {
+                    "a".localeCompare("b", "i")
+                } catch (i) {
+                    t = "RangeError" === i.name
+                }
+                if (t) {
+                    var o = document.documentElement.lang;
+                    if ("string" == typeof o) {
+                        o = o.toLowerCase();
+                        try {
+                            "a".localeCompare("b", o)
+                        } catch (i) {
+                            if (2 !== o.length) return;
+                            o = o.substr(0, 2);
+                            try {
+                                "a".localeCompare("b", o)
+                            } catch (i) {
+                                return
+                            }
+                        }
+                        n = o
+                    }
+                }
+            }
+        }();
+        var o = /\s*<span class="icon [\w ]+"><\/span>\s*/gi,
+            i = function(e, t) {
+                return e.label.replace(o, "").localeCompare(t.label.replace(o, ""))
+            },
+            a = function(e, t) {
+                return e.label.replace(o, "").localeCompare(t.label.replace(o, ""), n, {
+                    sensitivity: "base"
+                })
+            },
+            r = function(e, t) {
+                return t.label.replace(o, "").localeCompare(e.label.replace(o, ""))
+            },
+            s = function(e, t) {
+                return t.label.replace(o, "").localeCompare(e.label.replace(o, ""), n, {
+                    sensitivity: "base"
+                })
+            },
+            d = function(n, o) {
+                var r = parseInt(n.timestamp) || 0,
+                    s = parseInt(o.timestamp) || 0;
+                if (r === s) {
+                    if (n.other_link && !o.other_link) return xv.conf.dyn.is_desktop ? 1 : -1;
+                    if (!n.other_link && o.other_link) return xv.conf.dyn.is_desktop ? -1 : 1;
+                    var d = parseInt(n.weight) || 0,
+                        l = parseInt(o.weight) || 0;
+                    return d === l && e ? t ? a(n, o) : i(n, o) : d < l ? 1 : -1
+                }
+                return r < s ? 1 : -1
+            };
+        xv.cats = {
+            write: function(n, o, r) {
+                e && n.sort(t ? a : i), r = "string" == typeof r ? '" class="' + r : "";
+                var s = "";
+                for (var d in n) s += o ? '<option value="' + n[d].url + r + '">' + n[d].label + "</option>" : ' <li><a href="' + n[d].url + r + '">' + n[d].label + "</a></li>";
+                document.write(s)
+            },
+            initiated_navs: [],
+            available_cat_orders: ["order-az-asc", "order-az-desc", "order-top-asc"],
+            init_write_stored_order: function(e, t, n, o) {
+                var i = {
+                        cat_list_container: document.getElementById(e),
+                        order_list_container: document.getElementById(t),
+                        history_infos: document.getElementById(n),
+                        options: o || {}
+                    },
+                    a = i.history_infos.getElementsByTagName("SPAN");
+                if (xv.cats.can_use_save() && a[0]) {
+                    var r = xv.cats.get_history(),
+                        s = xv.cats.get_save("history_disabled", "XNXX_cats_order_5");
+                    if (r.length > 0 || s) {
+                        var d = i.history_infos.getElementsByTagName("DIV");
+                        d[0] && (i.history_infos_btn = a[0], i.history_infos_box = d[0], xv.dom.addEventListener(i.history_infos_btn, "click", function(e) {
+                            e.preventDefault ? e.preventDefault() : e.returnValue = !1, xv.dom.hasClass(i.history_infos_box, "hidden") ? xv.dom.removeClass(i.history_infos_box, "hidden") : xv.dom.addClass(i.history_infos_box, "hidden")
+                        }), xv.dom.removeClass(i.history_infos, "hidden"))
+                    }
+                }
+                if (i.cat_list_container) {
+                    var l = xv.cats.order_list(xv.cats.get_all(!0)),
+                        c = xv.cats.get_stored_order();
+                    xv.cats.write_list(l, "cat_list_container", i), xv.cats.update_order_switch(c, i), xv.cats.update_disable_switch(i)
+                }
+                links = i.order_list_container.getElementsByTagName("A");
+                for (var u in links) "object" == typeof links[u] && xv.dom.addEventListener(links[u], "click", function(e) {
+                    e.preventDefault ? e.preventDefault() : e.returnValue = !1;
+                    var t = e.target || e.srcElement,
+                        n = t.getAttribute("data-order");
+                    xv.cats.update_lists(n)
+                });
+                xv.cats.initiated_navs.push(i)
+            },
+            get_all: function(e) {
+                if (!xv.conf.dyn.categories) return [];
+                var t = [];
+                for (var n in xv.conf.dyn.categories) t.push({
+                    label: xv.conf.dyn.categories[n].label,
+                    url: xv.conf.dyn.categories[n].url,
+                    weight: xv.conf.dyn.categories[n].weight
+                });
+                for (var n in xv.conf.dyn.more_links) t.push({
+                    label: xv.conf.dyn.more_links[n].label,
+                    url: xv.conf.dyn.more_links[n].url,
+                    weight: 0,
+                    other_link: !0
+                });
+                var o = xv.cats.get_history(),
+                    i = [];
+                if (o.length > 0)
+                    for (var n in o) {
+                        var a = !1;
+                        for (var r in t) xv.cats.get_stored_pathname(o[n].url) === xv.cats.get_stored_pathname(t[r].url) && (a = !0, t[r].count = o[n].count, t[r].timestamp = o[n].timestamp);
+                        a || (o[n].label = xv.utils.escape(o[n].label, !0), o[n].custom = !0, i.push(o[n]))
+                    }
+                if (e && i.length > 10) {
+                    var s = function(e) {
+                            for (var t in o)
+                                if (xv.cats.get_stored_pathname(o[t].url) === xv.cats.get_stored_pathname(e)) return o.splice(t, 1), !0
+                        },
+                        l = new Date,
+                        c = l.getTime();
+                    i.sort(d).reverse();
+                    for (var u = !1; i.length > 10 && !1 === u;) c - i[0].timestamp > 7884e6 ? (s(i[0].url), i.splice(0, 1)) : u = !0;
+                    if (i.length > 20) {
+                        for (u = !1; i.length > 20 && !1 === u;) c - i[0].timestamp > 5256e6 ? (s(i[0].url), i.splice(0, 1)) : u = !0;
+                        if (i.length > 40) {
+                            for (u = !1; i.length > 40 && !1 === u;) c - i[0].timestamp > 2628e6 ? (s(i[0].url), i.splice(0, 1)) : u = !0;
+                            for (; i.length > 50;) s(i[0].url), i.splice(0, 1)
+                        }
+                    }
+                    xv.cats.save("history", o, "XNXX_cats_order_5")
+                }
+                return t = t.concat(i)
+            },
+            write_list: function(e, t, n) {
+                if (n[t]) {
+                    xv.cats.write_html_list(e, n[t]);
+                    var o = xv.cats.get_stored_order();
+                    for (var i in xv.cats.available_cat_orders) xv.cats.available_cat_orders[i] === o ? xv.dom.addClass(n[t], o) : xv.dom.removeClass(n[t], xv.cats.available_cat_orders[i]);
+                    if ("cat_list_container" === t) {
+                        links = n[t].getElementsByTagName("A");
+                        for (var i in links) "object" == typeof links[i] && xv.dom.addEventListener(links[i], "click", function(e) {
+                            e.preventDefault ? e.preventDefault() : e.returnValue = !1;
+                            var t = e.target || e.srcElement,
+                                n = t.getAttribute("href");
+                            xv.cats.add_to_history(t.text, n), window.location.href = n
+                        })
+                    }
+                }
+            },
+            update_lists: function(e) {
+                var t = xv.cats.get_stored_order();
+                "string" != typeof e ? e = t : "order-az-asc" === e && "order-az-asc" === t && (e = "order-az-desc");
+                var n = xv.cats.order_list(xv.cats.get_all(), e);
+                for (var o in xv.cats.initiated_navs) {
+                    var i = xv.cats.initiated_navs[o];
+                    xv.cats.update_list(i, n, e)
+                }
+            },
+            update_list: function(e, t, n) {
+                xv.cats.write_list(t, "cat_list_container", e), xv.cats.update_order_switch(n, e), xv.cats.update_disable_switch(e)
+            },
+            update_order_switch: function(e, t) {
+                var n = t.order_list_container.getElementsByTagName("A");
+                for (var o in n)
+                    if ("object" == typeof n[o]) {
+                        var i = n[o].getAttribute("data-order");
+                        i === e || "order-az-desc" === e && "order-az-asc" === i ? (xv.dom.hasClass(n[o], "current_order") || xv.dom.addClass(n[o], "current_order"), "order-az-asc" !== e && "order-az-desc" !== e || (n[o].getElementsByTagName("SPAN")[0].innerHTML = "order-az-asc" === e ? "↓" : "↑")) : xv.dom.hasClass(n[o], "current_order") && ("order-az-asc" === i && (n[o].getElementsByTagName("SPAN")[0].innerHTML = ""), xv.dom.removeClass(n[o], "current_order"))
+                    }
+            },
+            update_disable_switch: function(e) {
+                if (!e.history_infos_box) return !1;
+                var t = !!xv.cats.get_save("history_disabled", "XNXX_cats_order_5"),
+                    n = t ? "categories.clear_and_enable_history" : "categories.clear_and_disable_history",
+                    o = {
+                        "%clear_link%": '&lt;a href="#" data-follow="nofollow" data-action="clear-history"&gt;',
+                        "%disable_link%": '&lt;a href="#" data-follow="nofollow" data-action="disable-history"&gt;',
+                        "%end_link%": "&lt;/a&gt;"
+                    };
+                e.history_infos_box.innerHTML = "<p>" + xv.utils.unescape(xv.i18n.__(n, o)) + "</p>";
+                var i = e.history_infos_box.getElementsByTagName("A");
+                for (var a in i) "object" == typeof i[a] && ("clear-history" === i[a].getAttribute("data-action") ? (e.clear_history = i[a], xv.dom.addEventListener(e.clear_history, "click", function(t) {
+                    t.preventDefault ? t.preventDefault() : t.returnValue = !1, xv.cats.clear_history(), xv.dom.addClass(e.history_infos_box, "hidden")
+                }), xv.dom.removeClass(e.clear_history, "hidden")) : "disable-history" === i[a].getAttribute("data-action") && (e.disable_history = i[a], xv.dom.addEventListener(e.disable_history, "click", function(t) {
+                    t.preventDefault ? t.preventDefault() : t.returnValue = !1, xv.cats.disable_history_toggle(), xv.dom.addClass(e.history_infos_box, "hidden")
+                }), xv.dom.removeClass(e.disable_history, "hidden")))
+            },
+            get_stored_pathname: function(e) {
+                var t = document.createElement("a");
+                return t.href = e, (t.origin ? t.origin.toLowerCase() : "") + t.pathname.toLowerCase()
+            },
+            disable_history_toggle: function() {
+                var e = !xv.cats.get_save("history_disabled", "XNXX_cats_order_5");
+                if (e) {
+                    if (!xv.cats.clear_history()) return !1
+                } else xv.cats.get_stored_order("order-top-asc");
+                xv.cats.save("history_disabled", e, "XNXX_cats_order_5"), xv.cats.update_lists()
+            },
+            clear_history: function() {
+                return confirm(xv.utils.unescape(xv.i18n.__("categories.confirm_clear_history", null, null, "Are you sure you want to clear your navigation history ?"))) ? (xv.cats.del_save("history", "XNXX_cats_order_5"), xv.cats.update_lists(), !0) : 0 === xv.cats.get_history().length
+            },
+            get_history: function() {
+                return xv.cats.get_save("history", "XNXX_cats_order_5") || []
+            },
+            add_to_history: function(e, t) {
+                if (xv.cats.get_save("history_disabled", "XNXX_cats_order_5")) return !1;
+                t = xv.cats.get_stored_pathname(t);
+                var n = xv.cats.get_history();
+                0 === n.length && xv.cats.get_stored_order("order-top-asc");
+                var o = !1,
+                    i = new Date,
+                    a = i.getTime();
+                e = xv.utils.escape(e), e = e.slice(0, 1).toUpperCase() + e.slice(1);
+                for (var r in n) n[r].url === t && (a - n[r].timestamp > 1e4 && n[r].count++, n[r].timestamp = a, o = !0);
+                o || n.push({
+                    count: 1,
+                    timestamp: a,
+                    label: e,
+                    url: t
+                }), xv.cats.save("history", n, "XNXX_cats_order_5")
+            },
+            write_html_list: function(e, t) {
+                var n = "";
+                for (var o in e) n += "<li" + (e[o].count ? ' class="in-history"' : "") + '><a href="' + e[o].url + '" title="' + e[o].label + '">' + (e[o].custom ? '<span class="icon search-small"></span>' : "") + e[o].label + "</a></li>";
+                t.innerHTML = n
+            },
+            get_stored_order: function(e) {
+                stored_order = xv.cats.get_save("order", "XNXX_cats_order_5");
+                var t = e || stored_order || "order-top-asc";
+                return e && xv.cats.save("order", t, "XNXX_cats_order_5"), t
+            },
+            order_list: function(n, o) {
+                switch (order = xv.cats.get_stored_order(o), order) {
+                    case "order-az-asc":
+                        e ? n.sort(t ? a : i) : n.sort();
+                        break;
+                    case "order-az-desc":
+                        e ? n.sort(t ? s : r) : n.sort();
+                        break;
+                    case "order-top-asc":
+                    default:
+                        n.sort(d)
+                }
+                return n
+            },
+            can_use_save: function() {
+                return "object" == typeof JSON
+            },
+            save: function(e, t) {
+                if (!xv.cats.can_use_save()) return !1;
+                window.xv.storage.set(e, t, "XNXX_cats_order_5")
+            },
+            get_save: function(e) {
+                return !!xv.cats.can_use_save() && window.xv.storage.get(e, "XNXX_cats_order_5")
+            },
+            del_save: function(e) {
+                if (!xv.cats.can_use_save()) return !1;
+                window.xv.storage.remove(e, "XNXX_cats_order_5")
+            }
+        }
+    }(),
+    function() {
+        if ("object" == typeof xv && "object" == typeof xv.conf && "object" == typeof xv.conf.dyn && "object" == typeof xv.conf.dyn.ads && "undefined" != typeof xv.conf.dyn.ads.banners && 0 !== xv.conf.dyn.ads.banners.length) {
+            "undefined" != typeof JSON && "undefined" != typeof JSON.parse || xv.utils.loadScript(xv.utils.getStaticDomain() + "/v3/js/json3.js", {
+                async: "async"
+            });
+            var e = function() {
+                    var e = 0;
+                    if ("undefined" != typeof window.innerWidth) e = window.innerWidth;
+                    else if ("undefined" != typeof document.documentElement && "undefined" != typeof document.documentElement.clientWidth && document.documentElement.clientWidth > 0) e = document.documentElement.clientWidth;
+                    else if ("undefined" != typeof document.getElementsByTagName) {
+                        var t = document.getElementsByTagName("body");
+                        t.length > 0 && "undefined" != typeof t[0].clientWidth && t[0].clientWidth > 0 && (e = t[0].clientWidth)
+                    }
+                    return e > 0 ? e : 1024
+                },
+                t = function() {
+                    var e = 0;
+                    if ("undefined" != typeof window.innerHeight) e = window.innerHeight;
+                    else if ("undefined" != typeof document.documentElement && "undefined" != typeof document.documentElement.clientHeight && document.documentElement.clientHeight > 0) e = document.documentElement.clientHeight;
+                    else if ("undefined" != typeof document.getElementsByTagName) {
+                        var t = document.getElementsByTagName("body");
+                        t.length > 0 && "undefined" != typeof t[0].clientHeight && t[0].clientHeight > 0 && (e = t[0].clientHeight)
+                    }
+                    return e > 0 ? e : 768
+                },
+                n = xv.conf.dyn.ads,
+                o = "string" == typeof xv.conf.sitename && window.xv.conf.sitename,
+                i = !1;
+            window.wpn_categories = n.categories;
+            for (var a = function(e, t) {
+                    if ("function" != typeof document.querySelectorAll) return console.warn("Native: document.querySelectorAll is not supported in not supported in this browser"), !1;
+                    if (!i) return !!t && e.div_id;
+                    var n = document.querySelectorAll(e.div_id);
+                    if (0 === n.length) return !!t && e.div_id;
+                    n.length > 1 && console.warn("Native: Found more that 1 node"), n = n[0];
+                    var o = xv.dom.getChildren(n);
+                    return !(o.length < 16) && (e.mozthumbs = o, "/" === window.location.pathname ? e.insert_pos = Math.max(1, Math.floor(2 * o.length / 3)) : e.insert_pos = Math.max(1, Math.floor(2 * o.length / 3) + 4 + Math.floor(3.99 * Math.random())), n)
+                }, r = [], s = {}, d = [], l = [], c = !0, u = function(e, t) {
+                    return "number" == typeof t.min_ratio && t.min_ratio > 0 && (e += "_minr_" + t.min_ratio.toFixed(2)), "number" == typeof t.max_ratio && t.max_ratio > 0 && (e += "_maxr_" + t.max_ratio.toFixed(2)), e
+                }, f = function(e, t) {
+                    var n = {};
+                    return n.device = e, "number" == typeof t.min_ratio && t.min_ratio > 0 && (n.minr = Math.round(100 * t.min_ratio) / 100), "number" == typeof t.max_ratio && t.max_ratio > 0 && (n.maxr = Math.round(100 * t.max_ratio) / 100), n
+                }, p = 0; p < n.banners.length; p++) {
+                var v = n.banners[p],
+                    h = function(e) {
+                        if (!e.div_id) return console.error("Invalid banner: ", e), !1;
+                        if ("native" === e.type) return a(e, !0);
+                        var t = document.getElementById(e.div_id);
+                        return t ? (t.innerHTML = "", t) : e.div_id
+                    }(v);
+                if (!1 !== h && !(v.nb_ban <= 0)) {
+                    v.div = h, v.mobile || v.mobilehoriz || v.desktop || v.largescr || (v.mobile = !0, v.desktop = !0), v.is_loaded = !1, v.to_load = {};
+                    var m = !1,
+                        g = ["mobile", "mobilehoriz", "desktop"];
+                    for (var _ in g)
+                        if (v[g[_]]) {
+                            m = !0;
+                            var y = u(g[_], v);
+                            v.to_load[y] = !0, s[y] = f(g[_], v)
+                        } if (!m && v.largescr) {
+                        var y = u("largescr", v);
+                        v.to_load[y] = !0, s[y] = f("largescr", v)
+                    }
+                    r.push(v)
+                }
+            }
+            if (0 !== r.length) {
+                var b = xv.cookies.get("wpn_ad_cookie"),
+                    x = n.site,
+                    w = "",
+                    E = "",
+                    k = !1,
+                    j = "",
+                    C = !1,
+                    N = !1,
+                    T = xv.conf.dyn.is_tablet ? "tablet" : xv.conf.dyn.is_mobile ? "mobile" : "desktop",
+                    z = 0,
+                    S = [2, 3, 4, 5],
+                    O = [4, 5, 8, 11, 14],
+                    L = window.location.pathname.split("#")[0].match(/^\/video(\d+|-[\da-z]+)\/[-\w\.\~]*$/),
+                    M = [],
+                    I = {
+                        pos0: []
+                    },
+                    B = !1,
+                    A = null;
+                b || (b = ""), "string" == typeof n.categories && n.categories.length > 0 && (w = n.categories), "string" == typeof n.tracker && n.tracker.length > 0 && (E = n.tracker), "string" == typeof xv.conf.dyn.forcedcountry && xv.conf.dyn.forcedcountry.length > 0 && (j = xv.conf.dyn.forcedcountry);
+                var D, R, H = function(e, t, n, o) {
+                        var i = e.substr(-3);
+                        return "jpg" === i ? U(e, t, n, o) : "gif" === i ? P() ? q(e.substr(0, e.length - 3) + "mp4", t, n, o) : U(e, t, n, o) : "mp4" === i && (P() ? q(e, t, n, o) : U(e.substr(0, e.length - 3) + "gif", t, n, o))
+                    },
+                    P = function() {
+                        if (null !== A) return A;
+                        if (navigator.connection && navigator.connection.saveData) return !1;
+                        A = !1;
+                        try {
+                            var e = document.createElement("video");
+                            if ("undefined" != typeof e.canPlayType && "" === e.canPlayType('video/mp4; codecs="avc1.42E01E,mp4a.40.2"')) return !1;
+                            if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) return !/OS [1-9]_/.test(navigator.userAgent) && (A = !0);
+                            if ("Firefox" === xv.conf.dyn.browser) return A = !0;
+                            if ("Edge" === xv.conf.dyn.browser) return A = !0;
+                            if ("Chrome" !== xv.conf.dyn.browser) return !1;
+                            var t = navigator.userAgent.match(/Chrome\/([0-9]+)\./);
+                            if (t && t[1] > 50) return A = !0
+                        } catch (n) {
+                            return !1
+                        }
+                        return !1
+                    },
+                    X = function(e, t, n, o) {
+                        var i = document.createElement("a");
+                        return i.href = t, i.target = "_blank", i.rel = "noopener", i.onclick = function(e) {
+                            e = e || window.event, e.stopPropagation ? e.stopPropagation() : e.cancelBubble = !0
+                        }, o.length > 0 && (i.className = o), "headermobile" === n ? [e, i] : (i.appendChild(e), [i])
+                    },
+                    U = function(e, t, n, o) {
+                        var i = document.createElement("img");
+                        return i.src = e, o.length > 0 && (i.className = o), X(i, t, n, o)
+                    },
+                    q = function(e, t, n, o) {
+                        var i = document.createElement("video");
+                        if (i.setAttribute("playsinline", ""), i.muted = !0, i.loop = "loop", i.controls = !1, i.disableRemotePlayback = !0, i.autoplay = "autoplay", i.is_playing = !1, o.length > 0 && (i.className = o), i.addEventListener("loadstart", function() {
+                                console.log("videoads", e, "loadstart")
+                            }), i.addEventListener("play", function() {
+                                console.log("videoads", e, "play")
+                            }), i.addEventListener("waiting", function() {}), i.addEventListener("suspend", function() {}), i.addEventListener("canplaythrough", function() {}), i.addEventListener("canplay", function() {}), i.addEventListener("playing", function() {
+                                i.is_playing = !0
+                            }), i.addEventListener("error", function() {
+                                console.log("videoads", e, "error")
+                            }), i.addEventListener("ended", function() {}), i.addEventListener("abort", function() {
+                                console.log("videoads", e, "abort")
+                            }), i.addEventListener("durationchange", function() {
+                                console.log("videoads", e, "durationchange")
+                            }), i.addEventListener("loadeddata", function() {
+                                console.log("videoads", e, "loadeddata")
+                            }), i.addEventListener("loadedmetadata", function() {
+                                console.log("videoads", e, "loadedmetadata")
+                            }), navigator.connection && navigator.connection.saveData) {
+                            var a = xv.utils.createRequestObject();
+                            a.open("GET", e, !0), a.responseType = "arraybuffer", a.onreadystatechange = function(t) {
+                                if (4 == a.readyState && 200 == a.status) {
+                                    if (!a.response) return void(i.src = e);
+                                    i.src = "data:video/mp4;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(a.response))), console.log("videoads", e, "xhr : loaded")
+                                }
+                                4 == a.readyState && 0 == a.status && console.log("videoads", e, "xhr : load error")
+                            }, a.send(null)
+                        } else i.src = e;
+                        return X(i, t, n, o)
+                    },
+                    J = function(e, t, n, i) {
+                        var a = 3e7 + Math.round(7e7 * Math.random());
+                        return h = document.createElement("div"), h.id = "video_" + a, h.className = "thumb-block thumb-ad", h.innerHTML = "xnxx" === o ? '<div class="thumb-inside"><div class="thumb"><a href="' + t + '" target="_blank" rel="noopener"><img src="' + e + '" data-idcdn="0" data-videoid="' + a + '" id="pic_' + a + '" data-isad="true"></a></div></div><div class="thumb-under"><p><a href="' + t + '" title="' + n + '" target="_blank" rel="noopener">' + n + '</a></p><p class="metadata"><span class="duration">' + xv.i18n.__("misc.ad", {}, null, "AD") + '</span> <a href="' + t + '" target="_blank" rel="noopener">' + i + "</a></p></div>" : '<div class="thumb-inside"><div class="thumb"><a href="' + t + '" target="_blank" rel="noopener"><img src="' + e + '" data-idcdn="0" data-videoid="' + a + '" id="pic_' + a + '" data-isad="true"></a></div></div><div class="thumb-under"><p><a href="' + t + '" title="' + n + '" target="_blank" rel="noopener">' + n + '</a></p><p class="metadata"><span class="bg"><a href="' + t + '" target="_blank" rel="noopener">' + i + '</a> -<span class="duration">' + xv.i18n.__("misc.ad", {}, null, "AD") + "</span></span></p>", h
+                    },
+                    F = function(e, t, n, o) {
+                        var i = xv.cookies.get(e);
+                        return "string" == typeof i && i.match(/^\d$/g) && (i = parseInt(i)), "number" == typeof i && i >= t && i <= n ? i : o
+                    },
+                    W = function() {
+                        var t, n = e();
+                        return n < 480 ? (t = F("hexavid_nb_thumbs_cols_xs", 1, 3, 1), "desktop" === T ? t > 2 ? 3 : 2 : 1 === t ? 4 : 2 === t ? 5 : 8) : n < 768 ? (t = F("hexavid_nb_thumbs_cols_sm", 2, 4, 3), "desktop" === T ? t : 2 === t ? 5 : 3 === t ? 8 : 11) : n < 992 && "xnxx" === o ? (t = F("hexavid_nb_thumbs_cols_md", 2, 4, 3), "desktop" === T ? t : 2 === t ? 5 : 3 === t ? 8 : 11) : (t = F("hexavid_nb_thumbs_cols_lg", 3, 5, 4), "desktop" === T ? t : 3 === t ? 8 : 4 === t ? 11 : 14)
+                    },
+                    V = function(e, t) {
+                        var n = e.cloneNode(!1),
+                            o = xv.dom.getChildren(e);
+                        for (var i in o)
+                            if ("VIDEO" !== o[i].nodeName) {
+                                var a = V(o[i], t);
+                                n.appendChild(a)
+                            } else I["pos" + t].push(n);
+                        return n
+                    },
+                    G = function(e) {
+                        var t = [];
+                        for (var n in e) {
+                            var o = xv.dom.getChildrenRecursive(e[n]);
+                            for (var i in o) "VIDEO" === o[i].nodeName && t.push(o[i])
+                        }
+                        return t
+                    },
+                    $ = function(e) {
+                        if ("number" != typeof e && (e = W()), e !== B && (B = e, "undefined" != typeof I["pos" + e])) {
+                            var t = I["pos" + e];
+                            for (var n in t) t[n].appendChild(M[n]), M[n].play()
+                        }
+                    },
+                    K = function(e, t) {
+                        if (0 !== e.length) {
+                            M = G(e), I.pos0 = [];
+                            for (var n in M) I.pos0.push(M[n].parentNode);
+                            B = !1;
+                            var o = document.getElementById("related-videos");
+                            if (o && (o = xv.dom.getFirstChild(o)), !o) return void(t ? l = l.concat(e) : $(0));
+                            var i = [],
+                                a = xv.dom.getChildren(o);
+                            for (var r in a) xv.dom.hasClass(a[r], "thumb-block") && !xv.dom.hasClass(a[r], "video-ad") && i.push(a[r]);
+                            var s = xv.dom.getNextSibling(document.getElementById("ad-footer")),
+                                d = "desktop" === T ? S : O;
+                            for (var c in e) {
+                                z++;
+                                for (var u in d) {
+                                    var f = d[u];
+                                    if ("undefined" == typeof I["pos" + f] && (I["pos" + f] = []), "undefined" != typeof i[f * z - 1 - z]) {
+                                        var p = document.createElement("div");
+                                        p.className = "thumb-block video-ad video-ad-pos-" + f + " video-ad-support-" + T;
+                                        var v = i[f * z - 1 - z],
+                                            h = v.parentNode;
+                                        v.nextSibling === h.lastChild ? h.appendChild(p) : h.insertBefore(p, v.nextSibling);
+                                        var m = document.createElement("div");
+                                        if (m.className = "thumb-inside", p.appendChild(m), m.appendChild(V(e[c], f)), "desktop" !== T) {
+                                            var g = s.cloneNode(!0);
+                                            m.appendChild(g)
+                                        }
+                                    }
+                                }
+                            }
+                            "desktop" !== T && (xv.dom.addClass(document.getElementById("ad-footer"), "with-related-ad"), xv.dom.addClass(document.getElementById("related-videos"), "with-footer-ad")), xv.dom.addClass(document.getElementById("related-videos"), "with-ad");
+                            var _;
+                            if ("desktop" === T) {
+                                var y = "object" == typeof window.xvideos && "object" == typeof window.xvideos.player ? window.xvideos.player : null;
+                                if (y && y.isEnlarged() || $(0), y) {
+                                    var b = !1;
+                                    _ = function() {
+                                        b ? $() : $(0)
+                                    }, y.addOnSizeChangeEventHandler(function(e) {
+                                        b = e, _()
+                                    })
+                                }
+                            } else $(), _ = $;
+                            if ("undefined" != typeof window.addEventListener) window.addEventListener("resize", _), document.body.addEventListener("settings_nb_thumbs_changed", _);
+                            else if ("function" == typeof window.onresize) {
+                                var x = window.onresize;
+                                window.onresize = function() {
+                                    x(), _()
+                                }
+                            } else window.onresize = _
+                        }
+                    },
+                    Z = function(e, t) {
+                        for (var n = 0; n < e.length; n++) {
+                            var i = e[n].info,
+                                r = e[n].banners;
+                            if ("inplayersquare" !== i.type) {
+                                if ("square" === i.type && 0 === r.length && "object" == typeof html5player && html5player.setNoSquareAd(), "video" !== i.type) {
+                                    if ("string" == typeof i.div) {
+                                        var s;
+                                        if (!(s = "native" === i.type ? a(i, !1) : document.getElementById(i.div))) {
+                                            t ? d.push(e[n]) : console.error("Div " + i.div + " is missing");
+                                            continue
+                                        }
+                                        i.div = s, c || "native" === i.type || (s.style.display = "none")
+                                    }
+                                    var l = [],
+                                        u = [],
+                                        f = xv.conf.dyn.has_premium && xv.conf.dyn.disp_removeads && null !== window.location.pathname.match(/^\/video\d+\/.*/);
+                                    if (l.push(i.div), i.mobile_div) {
+                                        if ("string" == typeof i.mobile_div) {
+                                            var p = document.getElementById(i.mobile_div);
+                                            if (p) i.mobile_div = p, c || (p.style.display = "none");
+                                            else {
+                                                if (t) {
+                                                    d.push(e[n]);
+                                                    continue
+                                                }
+                                                console.error("Div " + i.mobile_div + " is missing")
+                                            }
+                                        }
+                                        i.mobile_div && l.push(i.mobile_div)
+                                    }
+                                    if (!f || "square" !== i.type && "footer" !== i.type && "footermobile" !== i.type && "headermobile" !== i.type || ("square" !== i.type && "headermobile" !== i.type || u.push(i.div), i.mobile_div && u.push(i.mobile_div)), 0 === r.length && "native" !== i.type) {
+                                        var v = !1,
+                                            h = !0;
+                                        "tower" === i.type && ("xnxx" !== o && "pornorama" !== o || "/" !== window.location.pathname) ? (v = !0, h = !1) : "square" !== i.type && "headermobile" !== i.type && ("footer" !== i.type && "footermobile" !== i.type || "string" != typeof i.area_tag || "hometopfooter" !== i.area_tag) || (h = !1), "tower" === i.type && "default" === o && (xv.dom.addClass(document.body, "no-side-tf-tower"), N = !0);
+                                        for (var m in l) {
+                                            var g = l[m].parentNode;
+                                            if (h) {
+                                                var _ = xv.dom.getNextSibling(l[m]);
+                                                g.removeChild(_)
+                                            }
+                                            v ? g.parentNode.removeChild(g) : g.removeChild(l[m])
+                                        }
+                                        return
+                                    }
+                                    for (var y = [], b = 0; b < r.length; b++)
+                                        for (var m in l)
+                                            if ("native" === i.type) {
+                                                var x = J(r[b].banner, r[b].url, r[b].label, r[b].user_name);
+                                                c || (x.style.display = "none"), i.mozthumbs.length >= i.insert_pos ? l[m].insertBefore(x, i.mozthumbs[i.insert_pos - 1]) : l[m].appendChild(x), i.div = x
+                                            } else {
+                                                var w = ("default" === o || "xnxx" === o) && !!L && ("square" === i.type && "video-ad" === i.div_id && "desktop" === T || "footermobile" === i.type && "ad-footer" === i.div_id && "desktop" !== T),
+                                                    E = H(r[b].banner, r[b].url, i.type, i.mobilehoriz ? "ad-mobilehoriz" : "");
+                                                for (var k in E) l[m].className = "ad-" + i.type + " ad-support-" + T, l[m].appendChild(E[k]), "tower" === i.type && (C = !0);
+                                                w && (y = y.concat(E))
+                                            } y.length > 0 && K(y, !0);
+                                    for (var j = 0; j < u.length; j++) {
+                                        var s = document.createElement("div");
+                                        s.className = "remove-ads";
+                                        var z = document.createElement("a");
+                                        z.href = xv.conf.dyn.login_info.is_premium ? xv.conf.dyn.premium_domain + window.location.pathname + "?pmsc=ad" : "/remove-all-ads";
+                                        var S = document.createElement("span");
+                                        S.className = "remove-ads-link", S.innerHTML = xv.i18n.__("misc.remove_ads");
+                                        var O = document.createElement("span");
+                                        O.className = "icon-f icf-close", z.appendChild(S), z.appendChild(document.createTextNode(" ")), z.appendChild(O), s.appendChild(z), u[j].appendChild(s)
+                                    }
+                                }
+                            } else {
+                                if ("object" != typeof html5player) {
+                                    t && d.push(e[n]);
+                                    continue
+                                }
+                                if (0 === r.length) {
+                                    html5player.setPlayerAd("NOAD");
+                                    continue
+                                }
+                                var M = {
+                                    url: r[0].url,
+                                    img: r[0].banner
+                                };
+                                r[0].banner_jpg && (M.jpg = r[0].banner_jpg), html5player.setPlayerAd(M)
+                            }
+                        }!0 === C ? (xv.dom.addClass(document.body, "has-side-tf-tower"), xv.dom.removeClass(document.body, "no-side-tf-tower")) : 0 === d.length && !1 === N && xv.dom.addClass(document.body, "no-side-tf-tower")
+                    },
+                    Y = function(e) {
+                        var t = [];
+                        t.push(window.location.protocol + "//rpc-php.trafficfactory.biz/json");
+                        for (var n = [], o = 0; o < e.length; o++) {
+                            var i = e[o];
+                            "undefined" == typeof i.area_tag ? n.push(i.type + "-" + i.nb_ban) : n.push(i.type + "-" + i.area_tag + "-" + i.nb_ban), e[o].is_loaded = !0
+                        }
+                        t.push(n.join("x")), t.push(b), t.push(w), t.push(x), t.push(E), t.push(""), t.push(j), t.push("content.json?v=" + Math.random());
+                        try {
+                            var a = xv.utils.createRequestObject();
+                            a.open("GET", t.join("/"), !0), a.onreadystatechange = function(t) {
+                                if (4 == a.readyState && 200 == a.status) {
+                                    var n = a.responseText;
+                                    if ("string" == typeof n) try {
+                                        n = JSON.parse(n)
+                                    } catch (r) {
+                                        return void console.error(r)
+                                    }
+                                    if (!n || !n.tracker_id || !n.banners) return;
+                                    xv.cookies.setLocal("wpn_ad_cookie", n.tracker_id, 6048e5, "/");
+                                    var o = [];
+                                    for (var i in n.banners) o.push({
+                                        info: e[i],
+                                        banners: n.banners[i]
+                                    });
+                                    Z(o, !0)
+                                }
+                                4 == a.readyState && 0 == a.status && (k || (k = !0, "object" == typeof xv.thumbs && "object" == typeof xv.thumbs.mgr && (xv.thumbs.mgr.checkOrSend(!0), "object" == typeof html5player && "function" == typeof html5player.loadingAdError && html5player.loadingAdError())))
+                            }, a.send(null)
+                        } catch (d) {
+                            if (/MSIE\s/i.test(navigator.userAgent) && parseFloat(navigator.appVersion.split(/MSIE/i)[1]) < 10) {
+                                window.wpn_ad_configuration = e;
+                                var r = [];
+                                r.push(window.location.protocol + "//rpc-php.trafficfactory.biz"), r.push(n.join("x")), r.push(b), r.push("0"), r.push(w), r.push(x), r.push(E), r.push("display.js?v=" + Math.random());
+                                var s = document.createElement("script");
+                                s.src = r.join("/"), s.type = "text/javascript", document.getElementsByTagName("head")[0].appendChild(s)
+                            } else k || (k = !0, "object" == typeof xv.thumbs && "object" == typeof xv.thumbs.mgr && (xv.thumbs.mgr.checkOrSend(!0), "object" == typeof html5player && "function" == typeof html5player.loadingAdError && html5player.loadingAdError()))
+                        }
+                    },
+                    Q = 768,
+                    ee = 184 + (xv.cookies.get("hexavid_no_responsive") > 0 ? 930 : 1280);
+                "xnxx" === o && (Q = 992);
+                var te = function(n) {
+                        if (null === D && (D = e()), (n.minr || n.maxr || "mobilehoriz" === n.device) && null === R && (R = D / t()), n.minr && R < n.minr) return !1;
+                        if (n.maxr && R > n.maxr) return !1;
+                        switch (n.device) {
+                            case "mobile":
+                                return D <= Q;
+                            case "mobilehoriz":
+                                return xv.conf.dyn.is_smartphone && (D >= 420 || R >= 1);
+                            case "desktop":
+                                return D > Q;
+                            case "largescr":
+                                return D >= ee
+                        }
+                        return console.error("Unknown device: " + n.device), !1
+                    },
+                    ne = function() {
+                        D = null, R = null;
+                        var e = [];
+                        for (var t in s) te(s[t]) && e.push(t);
+                        if (0 !== e.length) {
+                            for (var n = [], o = 0; o < r.length; o++) {
+                                var i = r[o];
+                                if (!i.is_loaded)
+                                    for (var a in e) i.to_load[e[a]] && n.push(i)
+                            }
+                            for (var a in e) delete s[e[a]];
+                            0 !== n.length && Y(n)
+                        }
+                    };
+                if ("undefined" != typeof window.addEventListener) window.addEventListener("resize", ne);
+                else if ("function" == typeof window.onresize) {
+                    var oe = window.onresize;
+                    window.onresize = function() {
+                        oe(), ne()
+                    }
+                } else window.onresize = ne;
+                var ie = function() {
+                    i = !0, d.length > 0 && Z(d, !1), l.length > 0 && K(l, !0)
+                };
+                "function" == typeof document.addEventListener ? document.addEventListener("DOMContentLoaded", ie) : window.attachEvent("onload", ie), ne(), window.xv.conf.ads_loaded = !0;
+                var ae = function() {
+                    if (document.body) return document.body, void xv.dom.addClass(document.body, "no-tf");
+                    window.setTimeout(ae, 100)
+                };
+                window.toggle_wpn_ads = function(e) {
+                    if ((e = !!e) !== c && "OK" !== xv.cookies.get("disclaimer_display") && xv.utils.isFirstPage()) {
+                        c = e, "default" === o && (c ? xv.dom.removeClass(document.body, "no-tf") : ae());
+                        for (var t in r) {
+                            var n = r[t].div;
+                            n && "object" == typeof n && (n.style.display = c ? "" : "none"), n = r[t].mobile_div, n && "object" == typeof n && (n.style.display = c ? "" : "none")
+                        }
+                    }
+                }, !0 === xv.conf.data.show_disclaimer && window.toggle_wpn_ads(!1)
+            }
+        }
+    }(),
+    function() {
+        if (!(xv && xv.conf && xv.conf.dyn.is_premium) || xv.conf.dyn.login_info.is_premium) {
+            var e, t, n, o, i = 0,
+                a = !1,
+                r = !1,
+                s = !1,
+                d = !1,
+                l = !1,
+                c = !1;
+            logo_red_default_w = 54, logo_default_w = !1, logo_default_h = !1, logo_current_w = !1, logo_current_h = !1, logo_max_width = !1, too_small_once = !1, force_mobile_menu = !1, window_resize_callback = function(u, f) {
+                a = !1, i = (new Date).getTime();
+                var p = xv.dom.getViewportWidth();
+                if (o !== p || !0 === f) {
+                    if (o = p, !1 === d || !1 === s || !1 === logo_default_h || !1 === logo_default_w) {
+                        if (s = document.getElementById("site-logo-svg"), s || (s = document.getElementById("header").getElementsByTagName("svg")[0]), !s) return !1;
+                        d = document.getElementById("site-logo"), c = document.getElementById("site-logo-red"), l = document.getElementById("site-logo-link"), logo_default_w = parseInt(s.getAttribute("width")), logo_default_h = parseInt(s.getAttribute("height")), r = document.getElementById("header-mobile-right")
+                    }
+                    var v = !1,
+                        h = !1,
+                        m = 0,
+                        g = !1,
+                        _ = !1,
+                        y = !1;
+                    if (e = o < 768, t = e || force_mobile_menu, r) {
+                        header_safety_marge_w = 10, header_left_w = 90, header_right_w = parseInt(r.offsetWidth);
+                        var b = header_left_w + header_right_w + header_safety_marge_w,
+                            x = b + logo_default_w + (c ? logo_red_default_w : 0);
+                        e && !1 === logo_max_width && (logo_max_width = "calc( 100% - " + b + "px )", l.style.maxWidth = logo_max_width), g = o < x
+                    } else g = o < logo_default_w / .28;
+                    if (g) {
+                        if (too_small_once = !0, r) {
+                            h = o - b;
+                            var w = logo_default_w;
+                            c && (w += logo_red_default_w), c ? h < 100 ? (y = !0, w = .3333 * logo_default_w, w += logo_red_default_w, _ = Math.floor(h * (logo_red_default_w / w)), h = (h - _) / .3333) : (_ = Math.floor(h * (logo_red_default_w / w)), h = Math.floor(h * (logo_default_w / w))) : h < 70 ? (y = !0, (h /= .3333) > logo_default_w && (h = logo_default_w)) : h = Math.floor(h * (logo_default_w / w))
+                        } else h = Math.ceil(.28 * o);
+                        v = Math.ceil(logo_default_h * h / logo_default_w * 100) / 100, m = Math.ceil((logo_default_h - v) / 2)
+                    } else logo_current_w === logo_default_w && logo_current_h === logo_default_h || (h = logo_default_w, v = logo_default_h, c && (_ = logo_red_default_w));
+                    !0 === too_small_once && !1 !== h && !1 !== v && (logo_current_w = h, logo_current_h = v, s.setAttribute("width", h), s.setAttribute("height", v), s.style.marginTop = m + "px", d.setAttribute("width", h), d.setAttribute("height", v), c && !1 !== _ && (c.style.fontSize = _ + "px"), !0 === y ? (xv.dom.addClass(l, "short"), l.style.width = .3333 * h + "px") : (xv.dom.removeClass(l, "short"), l.style.width = "auto")), !1 === u || "boolean" == typeof n && n === t || (n = t, "function" == typeof xv.header.update_menu_classs && xv.header.update_menu_classs())
+                }
+            }, xv || (xv = {}), xv.header || (xv.header = {}), xv.header.nav || (xv.header.nav = !1, xv.header.nav_var = {
+                menu_toggle: !1,
+                is_opened_desktop: !1,
+                main_cat_btn: !1,
+                home_trends_btn: !1
+            }), xv.header.is_mobile = function(t) {
+                return !1 !== t && window_resize_callback(!1), e
+            }, xv.header.is_mobile_menu = function(e) {
+                return !1 !== e && window_resize_callback(!1), t
+            }, xv.header.set_force_mobile_menu = function(e) {
+                "boolean" == typeof e && force_mobile_menu !== e && (force_mobile_menu = e, window_resize_callback(!0, !0))
+            }, xv.header.window_resize = function() {
+                var e = (new Date).getTime();
+                !1 === a && (e - i > 250 ? window_resize_callback() : a = setTimeout(window_resize_callback, 1e3))
+            }
+        }
+    }(),
+    function() {
+        xv.conf && (xv.conf.dyn.premium || "/remove-all-ads" === window.location.pathname) && (xv.premium = {
+            to_fade_in_up: [],
+            hide_to_fadeInUp_in: function(e) {
+                var t = document.getElementById(e),
+                    n = xv.dom.getChildrenRecursive(t);
+                for (var o in n) n[o].getAttribute && "fadeInUp" === n[o].getAttribute("data-animation") && (xv.dom.addClass(n[o], "to-fadeInUp"), this.to_fade_in_up.push({
+                    elem: n[o],
+                    position_top: !1,
+                    height: !1,
+                    visible: !1
+                }))
+            }
+        })
+    }();

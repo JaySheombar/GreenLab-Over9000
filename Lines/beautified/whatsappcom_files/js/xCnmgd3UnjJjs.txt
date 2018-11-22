@@ -1,0 +1,102 @@
+if (self.CavalryLogger) {
+    CavalryLogger.start_js(["r2f2F"]);
+}
+
+__d("WhatsAppWebPage", ["cx", "CSS"], (function(a, b, c, d, e, f, g) {
+    __p && __p();
+    a = {
+        toggleLanguagePicker: function() {
+            var a = document.getElementById("lang-picker"),
+                b = document.getElementById("lang-picker_bg");
+            a !== null && b !== null && (a.style.display = a.style.display === "none" ? "block" : "none", b.style.display = a.style.display)
+        },
+        initLanguagePicker: function() {
+            var a = document.getElementById("lang"),
+                b = document.getElementById("lang-picker_bg");
+            a !== null && b !== null && (a.onclick = this.toggleLanguagePicker, b.onclick = this.toggleLanguagePicker)
+        },
+        initSearchToggle: function() {
+            var a = document.getElementById("icon-search");
+            a !== null && (a.onclick = function() {
+                var a = document.getElementById("subheader");
+                if (a) {
+                    var c = b("CSS").matchesSelector(a, "_2ziw");
+                    window.scrollY > 5 ? (window.scrollTo(0, 0), c || b("CSS").addClass(a, "_2ziw")) : b("CSS").toggleClass(a, "_2ziw")
+                }
+            })
+        },
+        initMobileMenu: function() {
+            var a = document.getElementById("icon-drawer-open"),
+                c = document.getElementById("icon-drawer-close"),
+                d = "_2ziw";
+            a !== null && c !== null && (a.onclick = function() {
+                var a = document.getElementById("menu-drawer");
+                a !== null && b("CSS").addClass(a, d)
+            }, c.onclick = function() {
+                var a = document.getElementById("menu-drawer");
+                a !== null && b("CSS").removeClass(a, d)
+            })
+        },
+        makeFixedHeaderTransluscent: function(a, c, d) {
+            d === void 0 && (d = !1), d && (window.onscroll = function() {
+                var d = document.getElementsByClassName(a);
+                if (d.length > 0) {
+                    d = d[0];
+                    var e = Math.max(window.pageYOffset, document.documentElement ? document.documentElement.scrollTop : 0, document.body ? document.body.scrollTop : 0);
+                    e ? b("CSS").addClass(d, c) : b("CSS").removeClass(d, c)
+                }
+            })
+        }
+    };
+    e.exports = a
+}), null);
+__d("GoogleAnalyticsCookies", ["BanzaiODS", "DeferredCookie", "WebStorage"], (function(a, b, c, d, e, f) {
+    "use strict";
+    __p && __p();
+
+    function g() {
+        var a = b("WebStorage").getLocalStorageForRead();
+        if (a == null) {
+            b("BanzaiODS").bumpEntityKey("cookies", "google_analytics.localStorage.read.fail");
+            return null
+        }
+        return a.getItem("ga_client_id")
+    }
+
+    function h(a) {
+        var c = b("WebStorage").getLocalStorage();
+        if (c == null) {
+            b("BanzaiODS").bumpEntityKey("cookies", "google_analytics.localStorage.write.fail");
+            return
+        }
+        c.setItem("ga_client_id", a)
+    }
+
+    function i(a, c) {
+        var d = g();
+        b("BanzaiODS").bumpEntityKey("cookies", "google_analytics.localStorage.read");
+        window.__ga("create", a, babelHelpers["extends"]({
+            storage: "none",
+            clientId: d
+        }, c));
+        window.__ga(function(a) {
+            b("BanzaiODS").bumpEntityKey("cookies", "google_analytics.localStorage.write"), h(a.get("clientId"))
+        })
+    }
+    a = {
+        gaURI: "",
+        writeGACookies: function(a, c, d, e, f, g) {
+            g === void 0 && (g = []), this.gaURI = c, window.GoogleAnalyticsObject = "__ga", window.__ga = window.__ga || function() {
+                (window.__ga.q = window.__ga.q || []).push(arguments)
+            }, window.__ga.l = 1 * new Date(), i(d, e), g.length > 0 && (window.__ga("require", "linker"), window.__ga("linker:autoLink", g)), f && window.__ga("send", "pageview"), a ? b("DeferredCookie").registerCallbackOnCookieFlush(this.setupGA.bind(this)) : this.setupGA()
+        },
+        setupGA: function() {
+            var a = document.createElement("script"),
+                b = document.getElementsByTagName("script")[0];
+            a.async = !0;
+            a.src = this.gaURI;
+            b.parentNode && b.parentNode.insertBefore(a, b)
+        }
+    };
+    e.exports = a
+}), null);

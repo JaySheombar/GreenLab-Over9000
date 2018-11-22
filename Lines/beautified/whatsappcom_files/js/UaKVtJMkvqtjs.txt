@@ -1,0 +1,3866 @@
+if (self.CavalryLogger) {
+    CavalryLogger.start_js(["XwqlN"]);
+}
+
+__d("MessengerState.bs", ["invariant", "URI", "FBID.bs", "bs_array", "bs_block", "bs_curry", "JSSet.bs", "Utils.bs", "FBJSON", "Arbiter", "gkx", "bs_js_dict", "bs_belt_Map", "bs_belt_Set", "bs_caml_obj", "JSLogger", "ThreadId.bs", "FBIDCheck", "immutable", "bs_belt_Array", "bs_caml_array", "ChatConfig", "LogHistory", "MercuryIDs", "bs_pervasives", "bs_belt_Option", "ReasonReact.bs", "bs_js_primitive", "MessagingTag", "TypingStates", "MercuryAssert", "MercuryViewer", "ParticipantId.bs", "bs_belt_MapString", "bs_caml_primitive", "MercuryFilters.bs", "ImmutableObject", "MercuryLocalIDs", "ChannelConstants", "MessengerFolders.bs", "MessengerMessage.bs", "bs_js_null_undefined", "MercuryActionType", "MercuryAttachment", "MercuryMessageIDs.bs", "MercuryThreadInfo", "MessengerPersonas.bs", "XGroupsController", "MercuryThreadIDMap", "PageCommItemStatus", "MercuryActionStatus", "MessageRequestUtils", "MercuryPayloadSource", "MercuryThreadActions", "MessengerThreadUtils.bs", "MercuryLogMessageType", "MercuryServerRequests", "MercuryThreadInformer", "MercurySyncEventsProxy", "bs_caml_builtin_exceptions", "MercuryGlobalActionType", "ThreadConnectivityStatus.bs", "MercuryMessageClientState", "MessengerGroupsSyncStatus", "MercuryThreadlistConstants", "MessageUnsendabilityStatus", "MessengerSharedMediaActions", "setTimeoutAcrossTransitions", "MessagingGenericAdminTextType", "MessengerDesktopNotifications", "ChatReliabilityInstrumentation", "RemovedMessageTombstoneContent", "MercuryDisplayTimeFilterMessageRenderer", "MessengerPersistantViewerKeyedSubscriptionComponent.bs"], (function(a, b, c, d, e, f, g) {
+    "use strict";
+    __p && __p();
+
+    function a(a) {
+        return a[0]
+    }
+
+    function c(a) {
+        return a[1]
+    }
+
+    function d(a) {
+        return a[2]
+    }
+
+    function e(a) {
+        return a[3]
+    }
+
+    function h(a) {
+        return a[4]
+    }
+
+    function i(a) {
+        return a[5]
+    }
+
+    function j(a) {
+        return a[6]
+    }
+
+    function k(a) {
+        return a[8]
+    }
+
+    function l(a) {
+        return a[9]
+    }
+
+    function m(a) {
+        return a[10]
+    }
+
+    function n(a) {
+        return a[11]
+    }
+
+    function o(a) {
+        return a[12]
+    }
+
+    function p(a) {
+        return a[13]
+    }
+
+    function q(a) {
+        return a[14]
+    }
+
+    function r(a) {
+        return a[15]
+    }
+
+    function s(a) {
+        return a[16]
+    }
+
+    function t(a) {
+        return a[17]
+    }
+
+    function aa(a) {
+        return a[18]
+    }
+
+    function ba(a) {
+        var c = {};
+        b("bs_belt_Map").forEach(a, function(a, b) {
+            c[a] = b;
+            return 0
+        });
+        return c
+    }
+
+    function ca(a) {
+        return ba(a[7])
+    }
+
+    function u(a) {
+        b("ChatReliabilityInstrumentation").logMESSAGE_RECEIVED(b("FBJSON").stringify({
+            otid: a.offline_threading_id,
+            message_id: a.message_id,
+            other_user_fbid: a.other_user_fbid
+        }));
+        return 0
+    }
+
+    function da(a, c, d) {
+        d = d.reduce(b("bs_belt_Set").remove, c.reduce(b("bs_belt_Set").add, a[3]));
+        if (d === a[3]) return a;
+        else return [a[0], a[1], a[2], d, a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15], a[16], a[17], a[18]]
+    }
+    var ea = function(a, b) {
+        delete a[b];
+        return 0
+    };
+
+    function fa(a, c, d) {
+        var e = b("bs_belt_MapString").get(a, c);
+        if (e !== undefined) {
+            e = b("bs_js_primitive").valFromOption(e);
+            var f = b("bs_belt_Map").get(e, d);
+            if (f !== undefined) return b("bs_belt_MapString").set(a, c, b("bs_belt_Map").remove(e, d));
+            else return a
+        } else return a
+    }
+
+    function ga(c, a) {
+        var d = b("bs_caml_obj").caml_notequal(a.author, b("MercuryViewer").getID()),
+            e = a.thread_id;
+        if (d && !(e == null)) {
+            d = fa(c[6], e, a.author);
+            if (d !== c[6]) return [c[0], c[1], c[2], c[3], c[4], c[5], d, c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15], c[16], c[17], c[18]];
+            else return c
+        } else return c
+    }
+
+    function ha(a, c) {
+        __p && __p();
+        var d = c.thread_fbid;
+        if (d == null)
+            if (c.type === "typ" || c.type === "page_typing") {
+                c = b("FBID.bs").ofString(c.from.toString());
+                if (c !== undefined) return b("MercuryIDs").getThreadIDFromUserID(b("bs_js_primitive").valFromOption(c));
+                else return null
+            } else return null;
+        else {
+            c = b("MercuryThreadIDMap").getForFBID(a);
+            return c.getClientIDFromServerIDNow(d.toString())
+        }
+    }
+    var v = b("MercuryFilters.bs").getSupportedFilters(0).concat([b("MercuryFilters.bs").all, b("MercuryFilters.bs").groups]),
+        w = b("MessengerFolders.bs").getSupportedFolders(0).concat([b("MessagingTag").SPAM, b("MessagingTag").PAGE_BACKGROUND]);
+
+    function ia() {
+        var a = {};
+        w.forEach(function(b) {
+            var c = {};
+            v.forEach(function(a) {
+                c[a] = {
+                    threadlist: [],
+                    reachedEnd: !1,
+                    existingIDs: new Set()
+                };
+                return 0
+            });
+            a[b] = c;
+            return 0
+        });
+        return a
+    }
+
+    function ja(a, c) {
+        a = b("MercuryThreadInformer").getForFBID(a);
+        a.invalidatedThread(c);
+        return 0
+    }
+
+    function x(a, c) {
+        a = b("MercuryThreadInformer").getForFBID(a);
+        a.updatedThread(c);
+        return 0
+    }
+
+    function ka(a, c) {
+        a = b("MercuryThreadInformer").getForFBID(a);
+        a.deletedThread(c);
+        return 0
+    }
+
+    function y(a, c, d, e) {
+        a = b("MercuryThreadInformer").getForFBID(a);
+        a.changedThreadReadState(c, d, e);
+        return 0
+    }
+
+    function z(a, c) {
+        __p && __p();
+        var d = new Map();
+        c.forEach(function(a, b) {
+            d.set(a, b);
+            return 0
+        });
+        return c.sort(function(c, e) {
+            __p && __p();
+            var f = b("bs_belt_Map").get(a[7], c),
+                g = b("bs_belt_Map").get(a[7], e);
+            if (f !== undefined && g !== undefined) {
+                g = b("bs_js_primitive").valFromOption(g).timestamp - b("bs_js_primitive").valFromOption(f).timestamp;
+                if (g > 0) return 1;
+                else if (g < 0) return -1;
+                else return 0
+            } else f = 1;
+            if (f === 1) {
+                g = d.get(c);
+                f = d.get(e);
+                return b("bs_belt_Option").getExn(g == null ? undefined : b("bs_js_primitive").some(g)) - b("bs_belt_Option").getExn(f == null ? undefined : b("bs_js_primitive").some(f)) | 0
+            }
+        })
+    }
+
+    function la(a, b, c, d) {
+        __p && __p();
+        a = a[12][c];
+        if (a !== undefined) {
+            var e = a[d];
+            if (e !== undefined) {
+                b.forEach(function(a) {
+                    if (e.existingIDs.has(a)) {
+                        e.existingIDs["delete"](a);
+                        a = e.threadlist.indexOf(a);
+                        e.threadlist.splice(a, 1);
+                        return 0
+                    } else return 0
+                });
+                return 0
+            } else return 0
+        } else return 0
+    }
+
+    function A(a, c, d, e) {
+        __p && __p();
+        a = a !== undefined ? a : function() {
+            return !0
+        };
+        var f = b("bs_belt_Map").get(c[7], d);
+        if (f !== undefined) {
+            f = b("bs_js_primitive").valFromOption(f);
+            if (b("bs_curry")._1(a, f)) {
+                a = b("ImmutableObject").set(f, e);
+                f = b("bs_belt_Map").set(c[7], d, a);
+                x(c[0], d);
+                return [c[0], c[1], c[2], c[3], c[4], c[5], c[6], f, c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15], c[16], c[17], c[18]]
+            } else return c
+        } else return c
+    }
+
+    function ma(a, c, d) {
+        __p && __p();
+        var e = new Set(c.participants);
+        Object.assign(c, {
+            participants: Array.from(c.participants)
+        });
+        d.forEach(function(d) {
+            if (e.has(d)) return 0;
+            else {
+                c.participants.push(d);
+                if (b("bs_caml_obj").caml_equal(d, a)) {
+                    Object.assign(c, {
+                        is_subscribed: !0,
+                        can_reply: !0,
+                        cannot_reply_reason: null
+                    });
+                    return 0
+                } else return 0
+            }
+        });
+        return 0
+    }
+
+    function na(a, b, c, d) {
+        __p && __p();
+        w.forEach(function(e) {
+            if (e !== c) return la(a, b, e, d);
+            else return 0
+        });
+        var e = a[12][c];
+        if (e !== undefined) {
+            e = e[d];
+            e = e !== undefined ? [e.threadlist, e.existingIDs] : [
+                [], new Set()
+            ]
+        } else e = [
+            [], new Set()
+        ];
+        var f = e[1],
+            g = e[0];
+        b.forEach(function(a) {
+            if (f.has(a)) return 0;
+            else {
+                f.add(a);
+                g.push(a);
+                return 0
+            }
+        });
+        return [z(a, g), f]
+    }
+
+    function oa(a, c, d) {
+        __p && __p();
+        if (d !== undefined) {
+            var e = a[16][c];
+            if (e !== undefined) {
+                e.add(b("bs_js_primitive").valFromOption(d));
+                e = b("MercuryThreadInformer").getForFBID(a[0]);
+                e.updatedUnreadState();
+                return 0
+            } else {
+                d = b("MercuryServerRequests").getForFBID(a[0]);
+                d.fetchUnreadThreadIDs(c);
+                return 0
+            }
+        } else return 0
+    }
+    var pa = b("MessengerFolders.bs").getSupportedFolders(0).filter(function(a) {
+        return a !== b("MessagingTag").ACTION_ARCHIVED
+    });
+
+    function qa(a, c, d) {
+        __p && __p();
+        if (d !== undefined) {
+            var e = a[16][c];
+            if (e !== undefined) {
+                e["delete"](b("bs_js_primitive").valFromOption(d));
+                e = b("MercuryThreadInformer").getForFBID(a[0]);
+                e.updatedUnreadState();
+                return 0
+            } else {
+                d = b("MercuryServerRequests").getForFBID(a[0]);
+                d.fetchUnreadThreadIDs(c);
+                return 0
+            }
+        } else return 0
+    }
+
+    function ra(a, c, d) {
+        var e = b("MessengerFolders.bs").getFromMeta(c);
+        if (d !== e) {
+            pa.includes(e) && c.unread_count > 0 && oa(a, e, b("bs_js_primitive").some(c.thread_id));
+            if (pa.includes(d)) return qa(a, d, b("bs_js_primitive").some(c.thread_id));
+            else return 0
+        } else return 0
+    }
+
+    function sa(a, c) {
+        __p && __p();
+        var d = b("MessengerFolders.bs").getFromMeta(c);
+        if (w.includes(d)) {
+            v.forEach(function(e) {
+                var f = a[12][d][e],
+                    g = f.existingIDs.has(c.thread_id);
+                na(a, [c.thread_id], d, e);
+                var h = b("bs_caml_obj").caml_equal(b("bs_caml_array").caml_array_get(f.threadlist, f.threadlist.length - 1 | 0), c.thread_id);
+                if (!f.reachedEnd && !g && h) return la(a, [c.thread_id], d, e);
+                else return 0
+            });
+            return 0
+        } else return 0
+    }
+
+    function ta(a, c, d) {
+        __p && __p();
+        var e = b("bs_belt_Map").get(a[7], c);
+        if (e !== undefined) {
+            e = b("bs_js_primitive").valFromOption(e);
+            var f = b("MessengerFolders.bs").getFromMeta(e);
+            if (f !== d) {
+                var g = e.comm_status;
+                g = g == null ? b("ImmutableObject").set(e, {
+                    folder: d
+                }) : d === b("MessagingTag").OTHER ? b("ImmutableObject").set(e, {
+                    folder: d,
+                    comm_status: b("PageCommItemStatus").SPAM
+                }) : d === b("MessagingTag").INBOX ? b("ImmutableObject").set(e, {
+                    folder: d,
+                    comm_status: b("PageCommItemStatus").TODO
+                }) : b("ImmutableObject").set(e, {
+                    folder: d
+                });
+                var h = e.other_user_fbid;
+                h = h == null ? [] : d === b("MessagingTag").OTHER ? [b("MercuryIDs").getParticipantIDFromUserID(h)] : [];
+                e = e.other_user_fbid;
+                d = e == null ? [] : d === b("MessagingTag").OTHER ? [] : [b("MercuryIDs").getParticipantIDFromUserID(e)];
+                e = da(a, h, d);
+                h = b("bs_belt_Map").set(e[7], c, g);
+                ra(e, g, f);
+                sa(e, g);
+                x(e[0], c);
+                return [e[0], e[1], e[2], e[3], e[4], e[5], e[6], h, e[8], e[9], e[10], e[11], e[12], e[13], e[14], e[15], e[16], e[17], e[18]]
+            } else return a
+        } else return a
+    }
+
+    function B(a, c, d, e) {
+        a = b("MercuryThreadInformer").getForFBID(a);
+        a.updatedMessage(c, d, b("bs_js_null_undefined").fromOption(e));
+        return 0
+    }
+
+    function ua(c, a) {
+        c = b("MercuryThreadInformer").getForFBID(c);
+        c.receivedMessage(a);
+        return 0
+    }
+
+    function va(a, c, d) {
+        a = b("MercuryThreadInformer").getForFBID(a);
+        a.reorderedMessages(c, d);
+        return 0
+    }
+    var wa = function(a, b) {
+        delete a[b];
+        return 0
+    };
+
+    function C(a, c) {
+        var d = a[10].get(c);
+        return b("bs_js_primitive").nullable_to_opt(a[9].get(b("bs_belt_Option").getWithDefault(d == null ? undefined : b("bs_js_primitive").some(d), c)))
+    }
+
+    function xa(a, c, d) {
+        a = a !== undefined ? a : !1;
+        d = b("bs_belt_Array").keepMap(d, function(a) {
+            return C(c, a)
+        });
+        if (a) return d.slice().reverse();
+        else return d
+    }
+
+    function ya(a, c) {
+        return b("bs_belt_Array").keepMap(c, function(b) {
+            return C(a, b)
+        }).sort(function(a, c) {
+            return b("MessengerMessage.bs").compare(c, a)
+        }).map(function(a) {
+            return a.message_id
+        })
+    }
+
+    function D(a, b) {
+        return [a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9].set(b[0], b[1]), a[10], a[11], a[12], a[13], a[14], a[15], a[16], a[17], a[18]]
+    }
+
+    function E(b, a) {
+        b[10].set(a.message_id, a.message_id);
+        return [b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7], b[8], b[9], b[10], b[11], b[12], b[13], b[14], b[15], b[16], b[17], b[18]]
+    }
+    var F = function(a, b) {
+        delete a[b];
+        return 0
+    };
+
+    function za(c, d) {
+        __p && __p();
+        var a = c[15];
+        Object.keys(d).forEach(function(e) {
+            __p && __p();
+            var f = d[e];
+            if (f !== undefined) {
+                var g = f[0],
+                    h = g[2],
+                    i = g[1];
+                g = a.get(g[0]);
+                if (g == null) return 0;
+                else {
+                    g = g[1];
+                    if (g.length >= (i + h | 0)) {
+                        b("bs_curry")._2(F, d, e);
+                        return b("bs_curry")._1(f[1], xa(!0, c, g.slice(i, i + h | 0)))
+                    } else return 0
+                }
+            } else return 0
+        });
+        return 0
+    }
+
+    function Aa(d, c, e) {
+        __p && __p();
+        var a = e[1],
+            f = e[0];
+        b("MessengerMessage.bs").finalizeRanges(a);
+        var g = a.offline_threading_id;
+        if (!(g == null) && g !== a.message_id) {
+            d[10].set(g, a.message_id);
+            b("MercuryMessageIDs.bs").addServerID(g, a.message_id);
+            g = a.threading_id;
+            g == null || b("MercuryMessageIDs.bs").addServerID(g, a.message_id)
+        }
+        g = d[9].has(f);
+        var h = d[0],
+            i = d[1],
+            j = d[2],
+            k = d[3],
+            l = d[4],
+            m = d[5],
+            n = d[6],
+            o = d[7],
+            p = d[8],
+            q = d[9].set(f, a),
+            r = d[10],
+            s = d[11],
+            t = d[12],
+            aa = d[13],
+            ba = d[14],
+            ca = d[15],
+            u = d[16],
+            da = d[17];
+        d = d[18];
+        h = [h, i, j, k, l, m, n, o, p, q, r, s, t, aa, ba, ca, u, da, d];
+        if (!g && e[2] === 1) {
+            i = b("MercuryIDs").isLocalThread(a.thread_id);
+            j = b("bs_belt_Option").getWithDefault(b("bs_belt_Option").flatMap(b("bs_js_primitive").nullable_to_opt(a.thread_id), function(a) {
+                return b("bs_js_primitive").nullable_to_opt(ca.get(a))
+            }), [i ? 1 : 0, []]);
+            k = a.thread_id;
+            if (!(k == null)) {
+                l = ya(h, [f].concat(j[1].filter(function(c) {
+                    return b("bs_caml_obj").caml_notequal(c, a.offline_threading_id)
+                })));
+                ca.set(k, [j[0], l])
+            }
+            za(h, c[3][0])
+        }
+        return h
+    }
+
+    function Ba(b, c, a) {
+        b[11].set(c, a);
+        return [b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7], b[8], b[9], b[10], b[11], b[12], b[13], b[14], b[15], b[16], b[17], b[18]]
+    }
+
+    function Ca(a, c) {
+        var d = c[1];
+        c = c[0];
+        var e = a[11].get(c);
+        b("bs_belt_Option").isSome(e == null ? undefined : b("bs_js_primitive").some(e)) || g(0, 1777);
+        a[11]["delete"](c);
+        if (e == null) return b("bs_pervasives").failwith("Message must exist to update");
+        else return Object.assign(e, {
+            image_ids: d.image_ids,
+            file_ids: d.file_ids,
+            audio_ids: d.audio_ids,
+            gif_ids: d.gif_ids,
+            video_ids: d.video_ids,
+            client_state: b("MercuryMessageClientState").SEND_TO_SERVER
+        })
+    }
+
+    function Da(a, c) {
+        __p && __p();
+        var d = c[0],
+            e = a[15].get(d);
+        if (e == null) return a;
+        else {
+            var f = b("bs_array").map(function(a) {
+                    return a.message_id
+                }, b("bs_belt_Array").keepMap(c[1], function(b) {
+                    return C(a, b)
+                })),
+                g = ya(a, e[1].filter(function(a) {
+                    return f.indexOf(a) === -1
+                }));
+            a[15].set(d, [e[0], g]);
+            va(a[0], d, b("bs_js_null_undefined").fromOption(c[2]));
+            return [a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15], a[16], a[17], a[18]]
+        }
+    }
+
+    function Ea(c, d) {
+        __p && __p();
+        var e = {
+            snippet: "...",
+            snippet_attachments: null,
+            snippet_sender: null
+        };
+        d = b("bs_belt_Option").flatMap(b("bs_js_primitive").nullable_to_opt(c[15].get(d)), function(a) {
+            return b("bs_belt_Array").get(xa(undefined, c, a[1]), 0)
+        });
+        if (d !== undefined) {
+            var a = b("bs_js_primitive").valFromOption(d);
+            a = a.is_filtered_content ? b("MercuryDisplayTimeFilterMessageRenderer").renderFilteredContent(a) : a.body
+        } else a = null;
+        if (d !== undefined) {
+            d = b("bs_js_primitive").valFromOption(d);
+            var f = d.removed_timestamp;
+            if (f == null)
+                if (a == null) return e;
+                else {
+                    f = d.log_message_type;
+                    return {
+                        snippet: a,
+                        snippet_attachments: d.attachments,
+                        snippet_sender: f == null ? d.author : null
+                    }
+                }
+            else return {
+                snippet: b("RemovedMessageTombstoneContent").getTombstoneContentForSnippet(d.author),
+                snippet_attachments: null,
+                snippet_sender: null
+            }
+        } else return e
+    }
+
+    function Fa(a) {
+        __p && __p();
+        var c = a.attachments;
+        if (c == null) return 0;
+        else {
+            c = b("bs_belt_Array").keepMap(c, function(a) {
+                if (b("MercuryAttachment").isPhotoAttachment(a) && b("MercuryAttachment").isVideoAttachment(a)) {
+                    a = a.metadata;
+                    if (a == null) return undefined;
+                    else return b("bs_js_primitive").nullable_to_opt(a.fbid)
+                }
+            });
+            b("MessengerSharedMediaActions").deletePhotos(b("MercuryIDs").getThreadFBIDFromThreadID(a.thread_id), c);
+            return 0
+        }
+    }
+
+    function Ga(d, c, e, f) {
+        __p && __p();
+        var g = e.client_message_id;
+        if (g == null) return d;
+        else {
+            var h = C(d, g);
+            if (h !== undefined) {
+                h = b("bs_js_primitive").valFromOption(h);
+                var i = e.message_id,
+                    j = e.status;
+                if (b("bs_caml_obj").caml_equal(h.status, b("MercuryActionStatus").SUCCESS)) return d;
+                else if (d[9].has(i)) {
+                    var a = Object.assign(Object.assign({}, h), e);
+                    B(d[0], a.thread_id, a.message_id, f);
+                    return D(d, [i, a])
+                } else {
+                    a = b("bs_caml_obj").caml_equal(e.status, b("MercuryActionStatus").SUCCESS);
+                    a = a ? e.error_data : null;
+                    b("MercuryMessageIDs.bs").addServerID(g, i);
+                    d[10].set(g, i);
+                    h = Object.assign(Object.assign({}, h), {
+                        status: j,
+                        error_data: a,
+                        timestamp: e.timestamp,
+                        log_message_data: e.log_message_data,
+                        ranges: e.ranges,
+                        attachments: e.attachments
+                    });
+                    b("MessengerMessage.bs").finalizeRanges(h);
+                    j = D(d, [i, h]);
+                    j[9].set(g, {});
+                    j[9]["delete"](g);
+                    a = h.thread_id;
+                    e = j[15].get(a);
+                    if (!(e == null)) {
+                        var k = ya(j, e[1]);
+                        j[15].set(a, [e[0], k])
+                    }
+                    B(j[0], h.thread_id, h.message_id, f);
+                    a = b("MessengerMessage.bs").isTitanMessage(h);
+                    e = c[2].get(h.thread_id);
+                    a && (e == null || c[2].set(h.thread_id, e - 1 | 0));
+                    return [j[0], j[1], j[2], j[3], j[4], j[5], j[6], j[7], j[8], j[9], j[10].set(g, i), j[11], j[12], j[13], j[14], j[15], j[16], j[17], j[18]]
+                }
+            } else return d
+        }
+    }
+
+    function Ha(a, c, d) {
+        __p && __p();
+        if (d !== undefined && b("bs_caml_obj").caml_equal(b("bs_js_primitive").valFromOption(d), b("MercuryPayloadSource").CLIENT_CHANNEL_MESSAGE) && b("bs_caml_obj").caml_equal(c.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE)) {
+            d = c.offline_threading_id;
+            if (d == null || !b("bs_caml_obj").caml_equal(b("bs_js_primitive").nullable_to_opt(a[10].get(d)), d)) d = 1;
+            else return Object.assign({}, Object.assign(c, {
+                client_message_id: c.offline_threading_id,
+                status: b("MercuryActionStatus").SUCCESS,
+                action_type: b("MercuryActionType").SEND_MESSAGE
+            }));
+            if (d === 1) {
+                d = b("bs_belt_Option").flatMap(b("bs_js_primitive").nullable_to_opt(c.thread_id), function(c) {
+                    return b("bs_belt_Map").get(a[7], c)
+                });
+                if (d !== undefined) return Object.assign(Object.assign({}, c), {
+                    folder: b("bs_js_primitive").valFromOption(d).folder
+                });
+                else return c
+            }
+        } else return c
+    }
+
+    function Ia(c, a, d, e) {
+        __p && __p();
+        d = Ha(c, d, e);
+        if (b("bs_caml_obj").caml_equal(d.action_type, b("MercuryActionType").SEND_MESSAGE)) return Ga(c, a, d, e);
+        else {
+            var f = d.offline_threading_id;
+            f = b("bs_belt_Option").flatMap(f == null ? undefined : b("bs_js_primitive").some(f), function(a) {
+                return b("bs_js_primitive").nullable_to_opt(c[10].get(a))
+            });
+            var g = C(c, d.message_id);
+            if (f !== undefined || g !== undefined) return c;
+            else {
+                f = b("bs_caml_obj").caml_equal(e, b("bs_js_primitive").some(b("MercuryPayloadSource").CLIENT_SEND_MESSAGE)) ? E(c, d) : c;
+                g = b("bs_caml_obj").caml_equal(d.client_state, b("MercuryMessageClientState").DO_NOT_SEND_TO_SERVER);
+                e = d.upload_id;
+                g = g && !(e == null) ? Ba(f, e, d) : f;
+                e = b("MessengerMessage.bs").isErrorLogMessage(d);
+                f = d.thread_id;
+                e && (f == null || (a[6][0][f] = !0));
+                e = d.manual_retry_cnt;
+                f = d.thread_id;
+                e == null || !(f == null) && e > 0 && va(g[0], f, b("MercuryPayloadSource").CLIENT_SEND_MESSAGE);
+                e = Aa(g, a, [d.message_id, d, 1]);
+                ua(e[0], d);
+                return e
+            }
+        }
+    }
+    var Ja = function(a, b) {
+        delete a[b];
+        return 0
+    };
+
+    function Ka(a, c) {
+        __p && __p();
+        Object.keys(c).forEach(function(d) {
+            __p && __p();
+            var e = c[d];
+            if (e !== undefined) {
+                var f = e[0],
+                    g = ba(f.reduce(function(d, e) {
+                        var c = b("bs_belt_Map").get(a, e);
+                        if (c !== undefined) return b("bs_belt_Map").set(d, e, b("bs_js_primitive").valFromOption(c));
+                        else return d
+                    }, b("bs_belt_Map").make([b("ThreadId.bs").cmp])));
+                if (Object.keys(g).length === f.length) {
+                    b("bs_curry")._2(Ja, c, d);
+                    return b("bs_curry")._1(e[1], g)
+                } else return 0
+            } else return 0
+        });
+        return 0
+    }
+
+    function La(c, a, d) {
+        a = a.specific_to_list;
+        if (a == null) {
+            d = b("MercuryIDs").tokenize(d);
+            if (d.type !== "user" || d.value.length === 0) return [c];
+            else return [b("MercuryIDs").getParticipantIDFromUserID(b("FBID.bs").ofStringExn(d.value)), c]
+        } else return a
+    }
+
+    function G(c, a, d) {
+        var e = b("MercuryIDs").tokenize(d),
+            f = e.type === "user",
+            g = a.specific_to_list;
+        g = f ? !0 : g == null ? !1 : b("MessengerThreadUtils.bs").isCanonicalFromInitialParticipants(c, g);
+        if (g || f) c = La(c, a, d);
+        else {
+            var h = a.specific_to_list;
+            c = h == null ? [] : h
+        }
+        return new(b("ImmutableObject"))({
+            admins: {},
+            admin_model_status: null,
+            approval_mode: 0,
+            approval_queue_ids: [],
+            associated_object: null,
+            can_reply: undefined,
+            cannot_reply_reason: null,
+            comm_item_owners: null,
+            comm_source_id: null,
+            comm_status: null,
+            custom_like_icon: null,
+            custom_nickname: null,
+            customization_enabled: !1,
+            description: null,
+            ephemeral_ttl_mode: 0,
+            footer_color: null,
+            game_id: null,
+            gradient_colors: [],
+            group_approval_queue: null,
+            work_associated_group: null,
+            groups_sync_status: null,
+            has_email_participant: !1,
+            has_montage: !1,
+            header_color: null,
+            is_canonical_neo_user: !1,
+            is_pin_protected: !1,
+            is_pinned: !1,
+            is_thread_queue_enabled: !1,
+            joinable_mode: {
+                link: "",
+                mode: 0
+            },
+            last_message_timestamp: 0,
+            last_message_type: null,
+            last_message_id: null,
+            last_read_timestamp: 0,
+            lightweight_event: null,
+            lightweight_events: {},
+            marketplace_thread_data: null,
+            mentions_mute_mode: 0,
+            mute_until: null,
+            page_comm_item_id: null,
+            page_thread_info: null,
+            page_unsubscribe_status: !1,
+            participant_add_mode: null,
+            participants_event_status: null,
+            reactions_mute_mode: 0,
+            read_only: !1,
+            recipients_loadable: !0,
+            rtc_call_data: null,
+            server_timestamp: 0,
+            solid_color: null,
+            subtitle: null,
+            theme_id: null,
+            thread_connectivity_data: null,
+            thread_fbid: null,
+            thread_type: null,
+            thread_id: d,
+            participants: c,
+            name: "",
+            snippet: a.body,
+            snippet_attachments: [],
+            snippet_sender: a.author,
+            unread_count: 0,
+            message_count: 0,
+            image_src: null,
+            timestamp: a.timestamp,
+            other_user_fbid: f ? b("FBID.bs").ofStringExn(e.value) : null,
+            is_canonical_user: f,
+            is_canonical: g,
+            is_subscribed: !0,
+            folder: b("MessagingTag").INBOX,
+            is_archived: !1,
+            is_page_follow_up: !1,
+            is_page_unresponded_thread: !1,
+            object_association_type: null,
+            joinable_link: null,
+            linked_mentorship_programs: null,
+            thread_unsendability_status: null
+        })
+    }
+
+    function Ma(c, d, a, e) {
+        __p && __p();
+        e = b("MessengerMessage.bs").hasServerTimestamp(a, e);
+        var f = a.thread_id;
+        if (f == null) return undefined;
+        else {
+            b("MercuryAssert").isThreadID(f);
+            d = b("bs_belt_Map").get(d, f);
+            if (d !== undefined) return b("bs_js_primitive").some(b("bs_js_primitive").valFromOption(d));
+            else if (b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE) && !e) return b("bs_js_primitive").some(G(b("MercuryIDs").getParticipantIDFromUserID(c), a, f));
+            else return undefined
+        }
+    }
+
+    function Na(c, a, d) {
+        d = b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").LOG_MESSAGE) || b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE) ? d == null ? !0 : !d : b("MessengerMessage.bs").hasServerTimestamp(a, d);
+        if (c.server_timestamp !== 0 && a.timestamp < c.server_timestamp) return d;
+        else return !1
+    }
+
+    function Oa(c, d, a, e) {
+        var f = a.offline_threading_id;
+        if (!(f == null) && d.server_timestamp !== 0 && b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE) && f.length > 0 && b("bs_caml_obj").caml_notequal(a.author, b("MercuryIDs").getParticipantIDFromUserID(c)))
+            if (e.has(f)) return !0;
+            else {
+                e.add(f);
+                return !1
+            }
+        else return !1
+    }
+
+    function Pa(a, c, d) {
+        __p && __p();
+        var e = new Set(d);
+        Object.assign(c, {
+            participants: c.participants.filter(function(a) {
+                return !e.has(a)
+            })
+        });
+        d = b("bs_js_dict").fromArray(b("bs_js_dict").entries(c.admins));
+        Object.assign(c, {
+            admins: b("bs_array").fold_left(function(a, c) {
+                c = b("MercuryIDs").getUserIDFromParticipantID(c);
+                if (!(c == null)) {
+                    var d = a[c];
+                    d !== undefined && b("bs_curry")._2(ea, a, c)
+                }
+                return a
+            }, d, b("JSSet.bs").values(e))
+        });
+        if (e.has(a)) {
+            Object.assign(c, {
+                is_subscribed: !1
+            });
+            return 0
+        } else return 0
+    }
+
+    function H(a, c, d) {
+        var e = a.event_title,
+            f = a.event_time;
+        a = a.event_location_name;
+        return {
+            creator_id: null,
+            latitude: null,
+            location_address: null,
+            longitude: null,
+            note: "",
+            related_event: {
+                id: ""
+            },
+            repeat_mode: null,
+            seconds_to_notify_before: 0,
+            status: null,
+            track_rsvp: c.track_rsvp,
+            title: e == null ? c.title : e,
+            event_time: f == null ? c.event_time : parseInt(f, 10),
+            location_name: a == null ? c.location_name : a,
+            event_members: d !== undefined ? b("bs_js_primitive").valFromOption(d) : c.event_members,
+            oid: c.oid,
+            event_type: c.event_type
+        }
+    }
+
+    function Qa(b, a) {
+        var c = {};
+        Object.keys(b).forEach(function(a) {
+            c[a] = b[a];
+            return 0
+        });
+        c[a.guest_id] = a.guest_status;
+        return c
+    }
+    var I = function(a, b) {
+        delete a[b];
+        return 0
+    };
+
+    function Ra(a) {
+        __p && __p();
+        var c = [-1],
+            d = [null],
+            e = Math.floor(Date.now() / 1e3);
+        b("bs_js_dict").entries(a).forEach(function(a) {
+            a = a[1];
+            var b = a.event_time;
+            if (b > e && (c[0] < 0 || c[0] > b)) {
+                c[0] = b;
+                d[0] = a;
+                return 0
+            } else return 0
+        });
+        return d[0]
+    }
+    var J = function(a, b) {
+        delete a[b];
+        return 0
+    };
+
+    function Sa(a, c, d, e, f) {
+        __p && __p();
+        d !== 0 && y(a, c.thread_id, f, d);
+        if (c.timestamp === 0) {
+            b("ChatReliabilityInstrumentation").logERROR("thread timestamp is 0");
+            e.add(c.thread_id);
+            return undefined
+        } else {
+            d = c.unread_count === 0;
+            if (d === f) return undefined;
+            else {
+                x(a, c.thread_id);
+                return {
+                    unread_count: f ? 0 : 1
+                }
+            }
+        }
+    }
+
+    function Ta(a, c, d, e, f) {
+        __p && __p();
+        var g = d.action_type;
+        f = f == null ? !1 : f;
+        (b("bs_caml_obj").caml_equal(g, b("MercuryActionType").USER_GENERATED_MESSAGE) || b("bs_caml_obj").caml_equal(g, b("MercuryActionType").LOG_MESSAGE)) && ((d.is_unread || d.skip_bump_thread) && (c.unread_count === 0 && d.skip_bump_thread || d.timestamp <= c.server_timestamp || Object.assign(c, {
+            unread_count: c.unread_count + 1 | 0
+        })), Object.assign(c, {
+            message_count: c.message_count + 1 | 0,
+            is_archived: !1
+        }));
+        var h = b("MercuryIDs").getParticipantIDFromUserID(a);
+        if (b("bs_caml_obj").caml_equal(g, b("MercuryActionType").USER_GENERATED_MESSAGE)) {
+            c.unread_count === 0 && b("bs_caml_obj").caml_equal(d.author, h) && d.timestamp >= c.last_read_timestamp && !b("gkx")("702170") && Object.assign(c, {
+                last_read_timestamp: d.timestamp
+            });
+            var i = d.offline_threading_id;
+            if (!(i == null) && b("bs_caml_obj").caml_notequal(i, d.message_id)) {
+                Object.assign(c, {
+                    last_message_timestamp: d.timestamp
+                });
+                i = d.comm_status;
+                i == null || Object.assign(c, {
+                    last_message_id: d.message_id
+                })
+            }
+            i = d.comm_status;
+            var j = c.comm_status;
+            i == null || !(j == null) && j.toUpperCase() !== b("PageCommItemStatus").FOLLOW_UP && Object.assign(c, {
+                comm_status: i
+            });
+            j = d.creator_info;
+            j == null || b("bs_caml_obj").caml_equal(j.pageID, a) && Object.assign(c, {
+                folder: d.folder
+            });
+            i = c;
+            j = d.author;
+            var k = i.participants.indexOf(j);
+            if (k > 0) {
+                Object.assign(i, {
+                    participants: [j].concat(i.participants.slice(0, k), i.participants.slice(k + 1 | 0))
+                });
+                return 0
+            } else return 0
+        } else if (b("bs_caml_obj").caml_equal(g, b("MercuryActionType").SEND_MESSAGE)) {
+            j = d.log_message_type;
+            if (j == null) {
+                Object.assign(c, {
+                    snippet_attachments: d.attachments
+                });
+                return 0
+            } else {
+                if (b("bs_caml_obj").caml_equal(j, b("MercuryLogMessageType").THREAD_IMAGE)) {
+                    i = d.log_message_data;
+                    if (i == null) k = null;
+                    else {
+                        i = i.image;
+                        k = i == null ? null : i.preview_url
+                    }
+                    Object.assign(c, {
+                        image_src: k
+                    });
+                    x(a, e)
+                }
+                if (b("bs_caml_obj").caml_notequal(j, b("MercuryLogMessageType").SUBSCRIBE) && b("bs_caml_obj").caml_notequal(j, b("MercuryLogMessageType").UNSUBSCRIBE)) {
+                    Object.assign(c, {
+                        snippet_attachments: d.attachments
+                    });
+                    return 0
+                } else return 0
+            }
+        } else if (b("bs_caml_obj").caml_equal(g, b("MercuryActionType").LOG_MESSAGE)) {
+            c.last_message_timestamp < d.timestamp && Object.assign(c, {
+                last_message_timestamp: d.timestamp
+            });
+            i = d.log_message_type;
+            if (i == null) return 0;
+            else if (b("bs_caml_obj").caml_equal(i, b("MercuryLogMessageType").SUBSCRIBE) && !f) {
+                k = d.log_message_data;
+                if (k == null) j = [];
+                else {
+                    g = k.added_participants;
+                    j = g == null ? [] : g
+                }
+                ma(h, c, j);
+                return x(a, e)
+            } else if (b("bs_caml_obj").caml_equal(i, b("MercuryLogMessageType").UNSUBSCRIBE) && !f) {
+                k = d.log_message_data;
+                if (k == null) g = [];
+                else {
+                    j = k.removed_participants;
+                    g = j == null ? [] : j
+                }
+                Pa(h, c, g);
+                return x(a, e)
+            } else if (b("bs_caml_obj").caml_equal(i, b("MercuryLogMessageType").THREAD_IMAGE))
+                if (f) return 0;
+                else {
+                    k = d.log_message_data;
+                    if (k == null) j = null;
+                    else {
+                        h = k.image;
+                        j = h == null ? null : h.preview_url
+                    }
+                    Object.assign(c, {
+                        image_src: j
+                    });
+                    return 0
+                }
+            else if (b("bs_caml_obj").caml_equal(i, b("MercuryLogMessageType").THREAD_NAME)) {
+                g = d.log_message_data;
+                if (g == null) return 0;
+                else {
+                    f = g.name;
+                    !(f == null) && c.name === f || x(a, e);
+                    Object.assign(c, {
+                        name: g.name
+                    });
+                    return 0
+                }
+            } else if (b("bs_caml_obj").caml_equal(i, b("MercuryLogMessageType").GENERIC_ADMIN_TEXT)) {
+                k = a;
+                h = c;
+                j = d;
+                f = e;
+                g = j.log_message_data;
+                if (g == null) return 0;
+                else {
+                    i = g.untypedData;
+                    if (g.message_type === b("MessagingGenericAdminTextType").CHANGE_THREAD_NICKNAME) {
+                        a = h.custom_nickname;
+                        if (!(a == null)) {
+                            c = b("bs_js_dict").fromArray(b("bs_js_dict").entries(a));
+                            d = i.nickname;
+                            d.trim().length > 0 ? c[i.participant_id] = d : b("bs_curry")._2(J, c, i.participant_id);
+                            Object.assign(h, {
+                                custom_nickname: c
+                            })
+                        }
+                        x(k, f)
+                    } else if (g.message_type === b("MessagingGenericAdminTextType").CHANGE_THREAD_ICON) b("MercuryThreadActions").getForFBID(k).updateCustomLike(f, i.thread_icon);
+                    else if (g.message_type === b("MessagingGenericAdminTextType").CHANGE_THREAD_THEME) {
+                        if (!b("ChatConfig").get("chat_tab_has_gradients")) {
+                            e = i.theme_color;
+                            if (e == null) Object.assign(h, {
+                                solid_color: null,
+                                header_color: null,
+                                footer_color: null,
+                                gradient_colors: []
+                            });
+                            else if (e.length > 0) {
+                                j = "#" + e.slice(2);
+                                Object.assign(h, {
+                                    solid_color: j,
+                                    header_color: j,
+                                    footer_color: j,
+                                    gradient_colors: [j]
+                                })
+                            } else Object.assign(h, {
+                                solid_color: null,
+                                header_color: null,
+                                footer_color: null,
+                                gradient_colors: []
+                            });
+                            x(k, f)
+                        }
+                    } else if (g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_CREATE) {
+                        var l = {},
+                            m = i.event_creator_id;
+                        h.participants.forEach(function(c) {
+                            c = b("MercuryIDs").getUserIDFromParticipantID(c);
+                            if (c == null) return 0;
+                            else {
+                                var a = b("bs_caml_obj").caml_equal(c, m);
+                                l[c] = a ? "GOING" : "INVITED";
+                                return 0
+                            }
+                        });
+                        a = b("bs_js_dict").fromArray(b("bs_js_dict").entries(h.lightweight_events));
+                        d = i.event_time;
+                        c = {
+                            track_rsvp: i.event_track_rsvp,
+                            title: i.event_title,
+                            event_time: d == null ? 0 : parseInt(d, 10),
+                            location_name: i.event_location_name,
+                            event_members: l,
+                            oid: i.event_id,
+                            event_type: i.event_type
+                        };
+                        Object.assign(h, {
+                            lightweight_event: c
+                        });
+                        a[i.event_id] = Object.assign({}, c);
+                        Object.assign(h, {
+                            lightweight_events: a
+                        });
+                        x(k, f)
+                    } else if (g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_UPDATE || g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_UPDATE_TIME || g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_UPDATE_TITLE || g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_UPDATE_LOCATION) {
+                        e = h.lightweight_event;
+                        if (!(e == null)) {
+                            j = b("bs_js_dict").fromArray(b("bs_js_dict").entries(h.lightweight_events));
+                            e.oid === i.event_id && Object.assign(h, {
+                                lightweight_event: H(i, e, b("bs_js_primitive").some(e.event_members))
+                            });
+                            d = j[i.event_id];
+                            d !== undefined && (j[i.event_id] = H(i, d, undefined), Object.assign(h, {
+                                lightweight_events: j
+                            }))
+                        }
+                        x(k, f)
+                    } else if (g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_RSVP) {
+                        c = b("bs_js_dict").fromArray(b("bs_js_dict").entries(h.lightweight_events));
+                        a = h.lightweight_event;
+                        if (!(a == null) && a.oid === i.event_id) {
+                            e = Qa(a.event_members, i);
+                            Object.assign(h, {
+                                lightweight_event: H(i, a, b("bs_js_primitive").some(e))
+                            })
+                        }
+                        d = c[i.event_id];
+                        if (d !== undefined) {
+                            j = Qa(d.event_members, i);
+                            c[i.event_id] = H(i, d, b("bs_js_primitive").some(j));
+                            Object.assign(h, {
+                                lightweight_events: c
+                            })
+                        }
+                        x(k, f)
+                    } else if (g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_DELETE || g.message_type === b("MessagingGenericAdminTextType").LIGHTWEIGHT_EVENT_NOTIFY) {
+                        a = b("bs_js_dict").fromArray(b("bs_js_dict").entries(h.lightweight_events));
+                        b("bs_curry")._2(I, a, i.event_id);
+                        Object.assign(h, {
+                            lightweight_event: Ra(a),
+                            lightweight_events: a
+                        });
+                        x(k, f)
+                    }
+                    return 0
+                }
+            } else return 0
+        } else return 0
+    }
+
+    function Ua(c, a, d) {
+        __p && __p();
+        d = a.is_filtered_content ? b("MercuryDisplayTimeFilterMessageRenderer").renderFilteredContent(a) : d !== undefined ? d : a.body;
+        var e = a.raw_attachments;
+        e = !(e == null) && e.length > 0 ? b("MercuryAttachment").convertRaw(e) : a.attachments;
+        var f = a.removed_timestamp;
+        if (f == null) {
+            f = a.log_message_type;
+            d = {
+                snippet: d,
+                snippet_attachments: e,
+                snippet_sender: f == null ? a.author : null
+            }
+        } else d = {
+            snippet: b("RemovedMessageTombstoneContent").getTombstoneContentForSnippet(a.author),
+            snippet_attachments: null,
+            snippet_sender: null
+        };
+        return Object.assign(c, d)
+    }
+
+    function Va(a, c) {
+        a = b("bs_belt_Map").get(a, c);
+        if (a !== undefined) return b("MercuryThreadInfo").isEmptyLocalThread(b("bs_js_primitive").valFromOption(a));
+        else return !1
+    }
+
+    function Wa(a) {
+        var c = [b("MercuryFilters.bs").all];
+        a.unread_count > 0 && c.push(b("MercuryFilters.bs").unread);
+        a.is_canonical || c.push(b("MercuryFilters.bs").groups);
+        return c
+    }
+
+    function Xa(a, c) {
+        c = c.is_archived ? b("MessagingTag").ACTION_ARCHIVED : c.folder;
+        a = a[12][c];
+        if (a !== undefined) return c
+    }
+
+    function Ya(c, a) {
+        return b("bs_belt_Option").getWithDefault(b("bs_belt_Option").map(b("bs_belt_Option").flatMap(b("bs_js_primitive").undefined_to_opt(c[12][b("MessagingTag").INBOX]), function(a) {
+            return b("bs_js_primitive").undefined_to_opt(a[b("MercuryFilters.bs").all])
+        }), function(d) {
+            if (d.threadlist.length === 0) return a[7][0];
+            else return d.threadlist.reduce(function(a, d) {
+                d = b("bs_belt_Map").get(c[7], d);
+                if (d !== undefined && b("bs_js_primitive").valFromOption(d).timestamp > c[18]) return a + 1 | 0;
+                else return a
+            }, 0)
+        }), a[7][0])
+    }
+
+    function Za(c, a) {
+        __p && __p();
+        return b("bs_belt_Option").getWithDefault(b("bs_belt_Option").map(b("bs_belt_Option").flatMap(b("bs_js_primitive").undefined_to_opt(c[12][b("MessagingTag").INBOX]), function(a) {
+            return b("bs_js_primitive").undefined_to_opt(a[b("MercuryFilters.bs").all])
+        }), function(d) {
+            __p && __p();
+            if (d.threadlist.length === 0) return a[7][0];
+            else return d.threadlist.reduce(function(a, d) {
+                __p && __p();
+                var e = b("bs_belt_Map").get(c[7], d);
+                if (e !== undefined) {
+                    e = b("bs_js_primitive").valFromOption(e);
+                    if (e.timestamp > c[18] && !b("MercuryThreadInfo").isMuted(e)) {
+                        e = c[16][b("MessagingTag").INBOX];
+                        if (e !== undefined) {
+                            e = e.has(d);
+                            if (e) return a + 1 | 0;
+                            else return a
+                        } else return a
+                    } else return a
+                } else return a
+            }, 0)
+        }), a[7][0])
+    }
+
+    function $a(c, a, d) {
+        d = d === b("MessagingTag").PENDING;
+        if (d) return [c[0], c[1], c[2], c[3], c[4], 0, c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15], c[16], c[17], c[18]];
+        else return [c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15], c[16], c[17], a]
+    }
+
+    function ab(a) {
+        var c = [b("MercurySyncEventsProxy").getArbiterTypeForFBID(a, "TYP")];
+        b("FBIDCheck").isUser_deprecated(a) || c.push(b("ChannelConstants").getArbiterType("page_typing"));
+        return c
+    }
+
+    function bb(a) {
+        return [a, b("bs_belt_MapString").empty, b("bs_belt_MapString").empty, b("bs_belt_Set").make([b("ParticipantId.bs").cmp]), b("bs_belt_Set").make([b("ParticipantId.bs").cmp]), 0, b("bs_belt_MapString").empty, b("bs_belt_Map").make([b("ThreadId.bs").cmp]), new Set(), new Map(), new Map(), new Map(), ia(0), [], {}, new Map(), {}, {}, 0]
+    }
+    var cb = [{}],
+        db = [0],
+        K = new Map(),
+        eb = [{}],
+        L = [0],
+        fb = new Set(),
+        M = [{}],
+        gb = [0],
+        N = [cb, db, K, eb, L, fb, M, gb];
+
+    function O(a, c) {
+        __p && __p();
+        var d = N;
+        a = a;
+        c = c;
+        var e = [];
+        c = b("bs_array").fold_left(function(f, g) {
+            __p && __p();
+            switch (g.tag | 0) {
+                case 0:
+                    e.push(g[0].tag | 0);
+                    break;
+                case 1:
+                case 2:
+                    break
+            }
+            switch (g.tag | 0) {
+                case 0:
+                    var h = g[0];
+                    if (typeof h === "number") {
+                        var i = f,
+                            k = d;
+                        k[0][0] = {};
+                        k[1][0] = k[1][0];
+                        k[6][0] = {};
+                        k[2].clear();
+                        b("bs_belt_Map").keysToArray(i[7]).forEach(function(a) {
+                            return ja(i[0], a)
+                        });
+                        return [i[0], i[1], b("bs_belt_MapString").empty, i[3], i[4], i[5], i[6], b("bs_belt_Map").make([b("ThreadId.bs").cmp]), new Set(), new Map(), new Map(), i[11], ia(0), i[13], i[14], new Map(), i[16], i[17], i[18]]
+                    } else switch (h.tag | 0) {
+                        case 0:
+                            k = f;
+                            var l = h[0],
+                                m = [!1],
+                                n = [k[1]];
+                            Object.keys(l).forEach(function(a) {
+                                var c = l[a],
+                                    d = b("bs_belt_Option").getWithDefault(b("bs_belt_MapString").get(n[0], a), 0);
+                                if (c > d) {
+                                    m[0] = !0;
+                                    n[0] = b("bs_belt_MapString").set(n[0], a, c);
+                                    return 0
+                                } else return 0
+                            });
+                            if (m[0]) return [k[0], n[0], k[2], k[3], k[4], k[5], k[6], k[7], k[8], k[9], k[10], k[11], k[12], k[13], k[14], k[15], k[16], k[17], k[18]];
+                            else return k;
+                        case 1:
+                            return da(f, h[0], []);
+                        case 2:
+                            k = f;
+                            var o = h[0],
+                                p = h[1];
+                            p = p.reduce(b("bs_belt_Set").remove, o.reduce(b("bs_belt_Set").add, k[4]));
+                            if (p === k[4]) return k;
+                            else return [k[0], k[1], k[2], k[3], p, k[5], k[6], k[7], k[8], k[9], k[10], k[11], k[12], k[13], k[14], k[15], k[16], k[17], k[18]];
+                        case 3:
+                            o = f;
+                            p = h[0];
+                            k = p.reduce(function(a, c) {
+                                if (b("bs_belt_Set").has(a, c)) return b("bs_belt_Set").remove(a, c);
+                                else return b("bs_belt_Set").add(a, c)
+                            }, o[4]);
+                            if (k === o[4]) return o;
+                            else return [o[0], o[1], o[2], o[3], k, o[5], o[6], o[7], o[8], o[9], o[10], o[11], o[12], o[13], o[14], o[15], o[16], o[17], o[18]];
+                        case 4:
+                            p = f;
+                            k = h[0];
+                            o = k.reduce(function(c, d) {
+                                var a = d.is_messenger_ignored;
+                                if (a == null) return c;
+                                else if (a) return b("bs_belt_Set").add(c, b("MercuryIDs").getParticipantIDFromUserID(d.fbid));
+                                else return b("bs_belt_Set").remove(c, b("MercuryIDs").getParticipantIDFromUserID(d.fbid))
+                            }, p[3]);
+                            if (o === p[3]) return p;
+                            else return [p[0], p[1], p[2], o, p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12], p[13], p[14], p[15], p[16], p[17], p[18]];
+                        case 5:
+                            k = f;
+                            o = h[0];
+                            return [k[0], k[1], k[2], k[3], k[4], o, k[6], k[7], k[8], k[9], k[10], k[11], k[12], k[13], k[14], k[15], k[16], k[17], k[18]];
+                        case 6:
+                            p = f;
+                            o = h[0];
+                            k = ha(p[0], o);
+                            if (k == null) return p;
+                            else {
+                                var q = b("FBID.bs").ofString(o.from.toString());
+                                if (q !== undefined) {
+                                    q = b("bs_js_primitive").valFromOption(q);
+                                    b("MessengerPersonas.bs").addPersona(o.persona);
+                                    var r = o.persona,
+                                        s = b("gkx")("678634");
+                                    s = !(r == null) && s ? b("MercuryIDs").getParticipantIDFromUserID(r.id) : b("MercuryIDs").getParticipantIDFromUserID(q);
+                                    if (o.st === b("TypingStates").TYPING) {
+                                        r = b("bs_belt_MapString").get(p[6], k);
+                                        if (r !== undefined) return [p[0], p[1], p[2], p[3], p[4], p[5], b("bs_belt_MapString").set(p[6], k, b("bs_belt_Map").set(b("bs_js_primitive").valFromOption(r), s, Date.now())), p[7], p[8], p[9], p[10], p[11], p[12], p[13], p[14], p[15], p[16], p[17], p[18]];
+                                        else {
+                                            q = b("bs_belt_Map").set(b("bs_belt_Map").make([b("ParticipantId.bs").cmp]), s, Date.now());
+                                            return [p[0], p[1], p[2], p[3], p[4], p[5], b("bs_belt_MapString").set(p[6], k, q), p[7], p[8], p[9], p[10], p[11], p[12], p[13], p[14], p[15], p[16], p[17], p[18]]
+                                        }
+                                    } else if (o.st === b("TypingStates").INACTIVE) {
+                                        r = fa(p[6], k, s);
+                                        if (r !== p[6]) return [p[0], p[1], p[2], p[3], p[4], p[5], r, p[7], p[8], p[9], p[10], p[11], p[12], p[13], p[14], p[15], p[16], p[17], p[18]];
+                                        else return p
+                                    } else return p
+                                } else return p
+                            }
+                        case 7:
+                            q = f;
+                            var t = h[0],
+                                u = [!1],
+                                y = [q[2]];
+                            Object.keys(t).forEach(function(c) {
+                                __p && __p();
+                                Object.keys(t[c]).forEach(function(d) {
+                                    __p && __p();
+                                    var a = b("bs_belt_MapString").get(y[0], c);
+                                    a = a !== undefined ? b("bs_js_primitive").valFromOption(a) : b("immutable").OrderedMap();
+                                    var e = a.get(d),
+                                        f = t[c][d];
+                                    if (e == null || f.watermark > e.watermark) e = 1;
+                                    else return 0;
+                                    if (e === 1) {
+                                        u[0] = !0;
+                                        y[0] = b("bs_belt_MapString").set(y[0], c, a.set(d, f));
+                                        return 0
+                                    }
+                                });
+                                var a = b("bs_belt_MapString").get(y[0], c);
+                                if (a !== undefined) {
+                                    u[0] = !0;
+                                    y[0] = b("bs_belt_MapString").set(y[0], c, b("bs_js_primitive").valFromOption(a).sort(function(a, c) {
+                                        return b("bs_caml_primitive").caml_float_compare(a.watermark, c.watermark)
+                                    }));
+                                    return 0
+                                } else return 0
+                            });
+                            if (u[0]) return [q[0], q[1], y[0], q[3], q[4], q[5], q[6], q[7], q[8], q[9], q[10], q[11], q[12], q[13], q[14], q[15], q[16], q[17], q[18]];
+                            else return q;
+                        case 8:
+                            var z = f;
+                            o = d;
+                            k = h[0];
+                            if (k.length === 0) return z;
+                            else {
+                                s = z[7];
+                                r = k.reduce(function(a, c) {
+                                    return b("bs_belt_Map").set(a, c.thread_id, new(b("ImmutableObject"))(c))
+                                }, s);
+                                Ka(r, o[0][0]);
+                                k.forEach(function(a) {
+                                    return x(z[0], a.thread_id)
+                                });
+                                return [z[0], z[1], z[2], z[3], z[4], z[5], z[6], r, z[8], z[9], z[10], z[11], z[12], z[13], z[14], z[15], z[16], z[17], z[18]]
+                            }
+                        case 9:
+                            p = f;
+                            q = h[0];
+                            if (q.length === 0) return p;
+                            else {
+                                var ua = p[8],
+                                    xa = b("MercuryServerRequests").getForFBID(p[0]);
+                                q.forEach(function(a) {
+                                    __p && __p();
+                                    var b = a.thread_id;
+                                    if (ua.has(b)) {
+                                        ua["delete"](b);
+                                        if (a.unread_count > 0) {
+                                            xa.changeThreadReadStatus(b, !0, null, null, null, null);
+                                            return 0
+                                        } else return 0
+                                    } else return 0
+                                });
+                                return [p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], ua, p[9], p[10], p[11], p[12], p[13], p[14], p[15], p[16], p[17], p[18]]
+                            }
+                        case 10:
+                            var E = f;
+                            s = h[0];
+                            var F = h[1];
+                            if (s.length === 0) return E;
+                            else {
+                                o = E[7];
+                                var za = new Set(),
+                                    Ba = {},
+                                    Ha = {},
+                                    La = {};
+                                k = s.reduce(function(a, c) {
+                                    __p && __p();
+                                    if (b("MessengerMessage.bs").isErrorLogMessage(c)) return a;
+                                    else {
+                                        var d = Ma(E[0], a, c, F);
+                                        if (d !== undefined) {
+                                            d = b("bs_js_primitive").valFromOption(d);
+                                            var f = b("bs_belt_Map").set(a, d.thread_id, d),
+                                                g = c.offline_threading_id;
+                                            g = b("bs_belt_Option").flatMap(g == null ? undefined : b("bs_js_primitive").some(g), function(a) {
+                                                return b("bs_js_primitive").nullable_to_opt(E[10].get(a))
+                                            });
+                                            if (g !== undefined || Na(d, c, F) || Oa(E[0], d, c, za)) return f;
+                                            else {
+                                                g = c.thread_id;
+                                                if (g == null) throw b("bs_caml_builtin_exceptions").not_found;
+                                                else g = g;
+                                                var e = Ba[g];
+                                                e === undefined && (Ba[g] = Object.assign({}, d));
+                                                e = Ba[g];
+                                                Ta(E[0], e, c, g, F);
+                                                if (b("bs_caml_obj").caml_equal(c.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE)) {
+                                                    d = Ha[g];
+                                                    d !== undefined ? c.timestamp > d.timestamp && (Ha[g] = c) : Ha[g] = c
+                                                }
+                                                if (b("bs_caml_obj").caml_equal(c.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE) || b("bs_caml_obj").caml_equal(c.action_type, b("MercuryActionType").LOG_MESSAGE)) {
+                                                    e = La[g];
+                                                    e !== undefined ? c.timestamp > e.timestamp && (La[g] = c) : La[g] = c
+                                                }
+                                                return f
+                                            }
+                                        } else return a
+                                    }
+                                }, o);
+                                r = b("bs_js_dict").entries(Ba).reduce(function(a, c) {
+                                    __p && __p();
+                                    var d = c[1];
+                                    c = c[0];
+                                    var e = La[c],
+                                        f = Ha[c];
+                                    if (f !== undefined) Ua(d, f, undefined);
+                                    else if (e !== undefined) {
+                                        f = e.log_message_body;
+                                        f == null || Ua(d, e, f)
+                                    }
+                                    if (e !== undefined && !e.skip_bump_thread) {
+                                        e.timestamp > d.timestamp && Object.assign(d, {
+                                            timestamp: e.timestamp
+                                        });
+                                        f = 0;
+                                        F == null ? f = 1 : F || (f = 1);
+                                        f === 1 && (e.timestamp > d.server_timestamp && Object.assign(d, {
+                                            server_timestamp: e.timestamp
+                                        }))
+                                    }
+                                    f = new(b("ImmutableObject"))(d);
+                                    if (f.participants.length === 0 && !Va(a, f.thread_id)) return a;
+                                    else return b("bs_belt_Map").set(a, c, f)
+                                }, k);
+                                return [E[0], E[1], E[2], E[3], E[4], E[5], E[6], r, E[8], E[9], E[10], E[11], E[12], E[13], E[14], E[15], E[16], E[17], E[18]]
+                            }
+                        case 11:
+                            var G = f,
+                                Pa = h[0];
+                            w.forEach(function(a) {
+                                __p && __p();
+                                v.forEach(function(d) {
+                                    __p && __p();
+                                    var c = G,
+                                        e = Pa,
+                                        f = a,
+                                        g = d,
+                                        h = [];
+                                    d = e.filter(function(c) {
+                                        var a = c.filter;
+                                        a = a == null ? b("MercuryFilters.bs").all : a;
+                                        c = c.folder;
+                                        c = c == null ? f === b("MessagingTag").INBOX : c === f;
+                                        if (c) return b("bs_caml_obj").caml_equal(a, g);
+                                        else return !1
+                                    });
+                                    var i = [!1];
+                                    d.forEach(function(a) {
+                                        a.thread_ids.forEach(function(a) {
+                                            h.push(a);
+                                            return 0
+                                        });
+                                        var b = a.limit;
+                                        if (a.thread_ids.length < b) {
+                                            i[0] = !0;
+                                            return 0
+                                        } else return 0
+                                    });
+                                    e = na(c, h, f, g);
+                                    d = c[12][f];
+                                    c = d[g];
+                                    c = c !== undefined ? c.reachedEnd : !1;
+                                    d[g] = {
+                                        reachedEnd: i[0] ? i[0] : c,
+                                        threadlist: e[0],
+                                        existingIDs: e[1]
+                                    };
+                                    return 0
+                                });
+                                return 0
+                            });
+                            return [G[0], G[1], G[2], G[3], G[4], G[5], G[6], G[7], G[8], G[9], G[10], G[11], G[12], G[13], G[14], G[15], G[16], G[17], G[18]];
+                        case 12:
+                            var H = f;
+                            q = h[0];
+                            var Qa = {};
+                            w.forEach(function(a) {
+                                var b = {};
+                                v.forEach(function(a) {
+                                    b[a] = [];
+                                    return 0
+                                });
+                                Qa[a] = b;
+                                return 0
+                            });
+                            q.forEach(function(c) {
+                                __p && __p();
+                                var d = b("bs_belt_Map").get(H[7], c.thread_id);
+                                if (d !== undefined) {
+                                    var e = b("bs_js_primitive").valFromOption(d);
+                                    d = Xa(H, e);
+                                    if (d !== undefined) {
+                                        var a = d;
+                                        Wa(e).forEach(function(b) {
+                                            if (e.timestamp !== 0) {
+                                                Qa[a][b].push(c.thread_id);
+                                                return 0
+                                            } else return 0
+                                        });
+                                        return 0
+                                    } else return 0
+                                } else return 0
+                            });
+                            w.forEach(function(a) {
+                                v.forEach(function(b) {
+                                    var c = Qa[a][b];
+                                    na(H, c, a, b);
+                                    return 0
+                                });
+                                return 0
+                            });
+                            return [H[0], H[1], H[2], H[3], H[4], H[5], H[6], H[7], H[8], H[9], H[10], H[11], H[12], H[13], H[14], H[15], H[16], H[17], H[18]];
+                        case 13:
+                            var I = f;
+                            p = h[0];
+                            s = p.filter(function(a) {
+                                a = a.thread_id;
+                                return !(a == null)
+                            });
+                            if (s.length > 0) {
+                                var Ra = {};
+                                w.forEach(function(a) {
+                                    var b = {};
+                                    v.forEach(function(a) {
+                                        b[a] = {
+                                            to_add: [],
+                                            to_remove: []
+                                        };
+                                        return 0
+                                    });
+                                    Ra[a] = b;
+                                    return 0
+                                });
+                                s.forEach(function(a) {
+                                    __p && __p();
+                                    var c = a.thread_id;
+                                    if (c == null) return 0;
+                                    else {
+                                        var d = b("bs_belt_Map").get(I[7], c);
+                                        if (d !== undefined) {
+                                            var f = b("bs_js_primitive").valFromOption(d);
+                                            d = Xa(I, f);
+                                            if (d !== undefined) {
+                                                var e = d;
+                                                d = Wa(f);
+                                                (b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE) || b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").LOG_MESSAGE)) && d.forEach(function(a) {
+                                                    if (f.timestamp !== 0) {
+                                                        Ra[e][a].to_add.push(c);
+                                                        return 0
+                                                    } else return 0
+                                                });
+                                                w.forEach(function(a) {
+                                                    v.forEach(function(b) {
+                                                        var c = Ra[a][b];
+                                                        na(I, c.to_add, a, b);
+                                                        return la(I, c.to_remove, a, b)
+                                                    });
+                                                    return 0
+                                                });
+                                                return 0
+                                            } else return 0
+                                        } else return 0
+                                    }
+                                });
+                                o = b("MercuryThreadInformer").getForFBID(I[0]);
+                                o.updatedThreadlist();
+                                return [I[0], I[1], I[2], I[3], I[4], I[5], I[6], I[7], I[8], I[9], I[10], I[11], I[12], I[13], I[14], I[15], I[16], I[17], I[18]]
+                            } else return I;
+                        case 14:
+                            var J = f,
+                                Za = d;
+                            k = h[0];
+                            if (k.length > 0) {
+                                k.forEach(function(a) {
+                                    if (Za[5].has(a)) return 0;
+                                    else {
+                                        J[13].push(a);
+                                        Za[5].add(a);
+                                        return 0
+                                    }
+                                });
+                                r = b("MercuryThreadInformer").getForFBID(J[0]);
+                                r.updatedThreadlist();
+                                return [J[0], J[1], J[2], J[3], J[4], J[5], J[6], J[7], J[8], J[9], J[10], J[11], J[12], J[13], J[14], J[15], J[16], J[17], J[18]]
+                            } else return J;
+                        case 15:
+                            q = f;
+                            p = h[0];
+                            var ab = h[1];
+                            return A(function(a) {
+                                return a.page_unsubscribe_status !== ab
+                            }, q, p, {
+                                page_unsubscribe_status: ab
+                            });
+                        case 16:
+                            s = f;
+                            o = h[0];
+                            k = h[1];
+                            return A(undefined, s, o, {
+                                can_reply: k
+                            });
+                        case 17:
+                            r = f;
+                            q = h[0];
+                            p = h[1];
+                            s = b("bs_belt_Map").get(r[7], q);
+                            if (s !== undefined) {
+                                o = Object.assign({}, b("bs_js_primitive").valFromOption(s));
+                                ma(b("MercuryIDs").getParticipantIDFromUserID(r[0]), o, p);
+                                return A(undefined, r, q, o)
+                            } else return r;
+                        case 18:
+                            k = f;
+                            s = h[0];
+                            p = h[1];
+                            q = b("bs_belt_Map").get(k[7], s);
+                            if (q !== undefined) {
+                                o = b("bs_js_primitive").valFromOption(q);
+                                r = o.page_thread_info;
+                                q = b("ImmutableObject").set(o, {
+                                    page_thread_info: Object.assign(r == null ? {} : r, {
+                                        flagged: p
+                                    })
+                                });
+                                o = b("bs_belt_Map").set(k[7], s, q);
+                                x(k[0], s);
+                                return [k[0], k[1], k[2], k[3], k[4], k[5], k[6], o, k[8], k[9], k[10], k[11], k[12], k[13], k[14], k[15], k[16], k[17], k[18]]
+                            } else return k;
+                        case 19:
+                            r = f;
+                            p = h[0];
+                            return A(function(a) {
+                                return b("MessageRequestUtils").isMessageRequest(a)
+                            }, r, p, {
+                                folder: b("MessagingTag").INBOX
+                            });
+                        case 20:
+                            q = f;
+                            s = h[0];
+                            o = h[1];
+                            return A(undefined, q, s, {
+                                custom_like_icon: o
+                            });
+                        case 21:
+                            k = f;
+                            r = h[0];
+                            p = h[1];
+                            q = b("bs_belt_Map").get(k[7], r);
+                            if (q !== undefined) {
+                                s = b("bs_js_primitive").valFromOption(q);
+                                o = b("bs_js_dict").fromArray(b("bs_js_dict").entries(s.admins));
+                                q = b("ImmutableObject").set(s, {
+                                    admins: b("bs_array").fold_left(function(a, b) {
+                                        a[b.admin_fbid] = b.admin_type;
+                                        return a
+                                    }, o, p)
+                                });
+                                s = b("bs_belt_Map").set(k[7], r, q);
+                                x(k[0], r);
+                                return [k[0], k[1], k[2], k[3], k[4], k[5], k[6], s, k[8], k[9], k[10], k[11], k[12], k[13], k[14], k[15], k[16], k[17], k[18]]
+                            } else return k;
+                        case 22:
+                            o = f;
+                            p = h[0];
+                            q = h[1];
+                            r = b("bs_belt_Map").get(o[7], p);
+                            if (r !== undefined) {
+                                s = b("bs_js_primitive").valFromOption(r);
+                                k = b("bs_js_dict").fromArray(b("bs_js_dict").entries(s.admins));
+                                r = b("ImmutableObject").set(s, {
+                                    admins: b("bs_array").fold_left(function(d, c) {
+                                        var a = d[c];
+                                        a !== undefined && b("bs_curry")._2(ea, d, c);
+                                        return d
+                                    }, k, q)
+                                });
+                                s = b("bs_belt_Map").set(o[7], p, r);
+                                x(o[0], p);
+                                return [o[0], o[1], o[2], o[3], o[4], o[5], o[6], s, o[8], o[9], o[10], o[11], o[12], o[13], o[14], o[15], o[16], o[17], o[18]]
+                            } else return o;
+                        case 23:
+                            k = f;
+                            q = h[0];
+                            r = h[1];
+                            return A(undefined, k, q, {
+                                joinable_mode: r
+                            });
+                        case 24:
+                            p = f;
+                            s = h[0];
+                            o = h[1];
+                            return A(undefined, p, s, {
+                                approval_mode: o
+                            });
+                        case 25:
+                            k = f;
+                            q = h[0];
+                            r = h[1];
+                            p = h[2];
+                            var bb = h[3],
+                                cb = h[4];
+                            s = b("bs_belt_Map").get(k[7], q);
+                            if (s !== undefined) {
+                                o = b("bs_js_primitive").valFromOption(s);
+                                s = o.group_approval_queue;
+                                o = {
+                                    approval_queue_ids: o.approval_queue_ids.slice(),
+                                    group_approval_queue: s == null ? null : s.slice()
+                                };
+                                r == null || o.approval_queue_ids.indexOf(r) === -1 && Object.assign(o, {
+                                    approval_queue_ids: o.approval_queue_ids.concat([r])
+                                });
+                                if (!(p == null)) {
+                                    s = o.group_approval_queue;
+                                    s == null ? Object.assign(o, {
+                                        group_approval_queue: [p]
+                                    }) : s.map(function(a) {
+                                        return a.requester.id
+                                    }).indexOf(p.requester.id) === -1 && Object.assign(o, {
+                                        group_approval_queue: s.concat([p])
+                                    })
+                                }
+                                bb == null || Object.assign(o, {
+                                    approval_queue_ids: o.approval_queue_ids.filter(function(a) {
+                                        return b("bs_caml_obj").caml_notequal(a, bb)
+                                    })
+                                });
+                                if (!(cb == null)) {
+                                    r = o.group_approval_queue;
+                                    Object.assign(o, {
+                                        group_approval_queue: (r == null ? [] : r).filter(function(a) {
+                                            return a.requester.id !== cb
+                                        })
+                                    })
+                                }
+                                return A(undefined, k, q, o)
+                            } else return k;
+                        case 26:
+                            s = f;
+                            p = h[0];
+                            r = h[1];
+                            return A(undefined, s, p, {
+                                is_pin_protected: r
+                            });
+                        case 27:
+                            q = f;
+                            o = h[0];
+                            k = h[1];
+                            s = h[2];
+                            p = h[3];
+                            r = b("bs_belt_Map").get(q[7], o);
+                            if (r !== undefined) {
+                                if (k == null) {
+                                    r = b("bs_js_primitive").valFromOption(r).rtc_call_data;
+                                    r = r == null ? undefined : k
+                                } else r = k;
+                                return A(undefined, q, o, {
+                                    rtc_call_data: new(b("ImmutableObject"))({
+                                        call_state: s,
+                                        server_info_data: p,
+                                        initiator_fbid: r
+                                    })
+                                })
+                            } else return q;
+                        case 28:
+                            k = f;
+                            o = h[0];
+                            s = h[1];
+                            return A(undefined, k, o, {
+                                comm_status: s
+                            });
+                        case 29:
+                            p = f;
+                            r = h[0];
+                            q = h[1];
+                            k = h[2];
+                            o = h[3];
+                            s = q == null ? {
+                                nodes: []
+                            } : {
+                                nodes: [{
+                                    admin: {
+                                        id: q,
+                                        name: k,
+                                        profile_picture: {
+                                            uri: o
+                                        }
+                                    }
+                                }]
+                            };
+                            return A(undefined, p, r, {
+                                comm_item_owners: s
+                            });
+                        case 30:
+                            q = f;
+                            k = h[0];
+                            var db = h[1];
+                            o = h[2];
+                            p = b("bs_belt_Map").get(q[7], k);
+                            if (p !== undefined) {
+                                r = b("bs_js_primitive").valFromOption(p).participants_event_status;
+                                s = (r == null ? [] : r).filter(function(a) {
+                                    return b("bs_caml_obj").caml_notequal(a.participant_id, db)
+                                });
+                                s.push({
+                                    participant_id: db,
+                                    event_status: o
+                                });
+                                return A(undefined, q, k, {
+                                    participants_event_status: s
+                                })
+                            } else return q;
+                        case 31:
+                            p = f;
+                            r = h[0];
+                            o = h[1];
+                            k = h[2];
+                            if (k == null || !b("bs_caml_obj").caml_equal(k, b("MessengerGroupsSyncStatus").OPT_IN)) s = 1;
+                            else return A(undefined, p, r, {
+                                groups_sync_status: o
+                            });
+                            if (s === 1) return A(undefined, p, r, {
+                                groups_sync_status: o,
+                                work_associated_group: null
+                            });
+                        case 32:
+                            q = f;
+                            k = h[0];
+                            s = h[1];
+                            p = h[2];
+                            if (s == null) return A(undefined, q, k, {
+                                work_associated_group: null
+                            });
+                            else if (b("bs_caml_obj").caml_equal(s, b("MessengerGroupsSyncStatus").OPT_IN)) {
+                                r = new(b("URI"))(document.URL);
+                                o = r.getDomain();
+                                s = b("XGroupsController").getURIBuilder().setString("idorvanity", p).getURI().setDomain(o == null ? "" : o.replace("messenger.com", "facebook.com")).setPort(r.getPort()).setProtocol("https");
+                                return A(undefined, q, k, {
+                                    work_associated_group: {
+                                        id: p,
+                                        url: s.toString(),
+                                        group_saves: {
+                                            count: 0
+                                        },
+                                        group_events: {
+                                            count: 0
+                                        }
+                                    }
+                                })
+                            } else return A(undefined, q, k, {
+                                work_associated_group: null
+                            });
+                        case 33:
+                            o = f;
+                            r = h[0];
+                            p = h[1];
+                            return A(undefined, o, r, {
+                                description: p
+                            });
+                        case 34:
+                            s = f;
+                            q = h[0];
+                            k = h[1];
+                            return A(undefined, s, q, {
+                                solid_color: k.solid_color,
+                                header_color: k.header_color,
+                                footer_color: k.footer_color,
+                                gradient_colors: k.gradient_colors,
+                                theme_id: k.theme_id
+                            });
+                        case 35:
+                            o = f;
+                            r = h[0];
+                            p = h[1];
+                            return A(undefined, o, r, {
+                                joinable_link: p
+                            });
+                        case 36:
+                            var K = f,
+                                eb = h[0];
+                            s = b("bs_belt_Map").toArray(K[7]).reduce(function(a, c) {
+                                var d = c[1];
+                                c = c[0];
+                                if (d.folder === eb) {
+                                    x(K[0], c);
+                                    return b("bs_belt_Map").set(a, c, b("ImmutableObject").set(d, {
+                                        unread_count: 0
+                                    }))
+                                } else return a
+                            }, K[7]);
+                            K[16][eb] = new Set();
+                            q = b("MercuryThreadInformer").getForFBID(K[0]);
+                            q.updatedUnreadState();
+                            return [K[0], K[1], K[2], K[3], K[4], K[5], K[6], s, K[8], K[9], K[10], K[11], K[12], K[13], K[14], K[15], K[16], K[17], K[18]];
+                        case 37:
+                            var L = f,
+                                fb = h[0];
+                            k = b("bs_belt_Map").remove(L[7], fb);
+                            L[15]["delete"](fb);
+                            L[9].forEach(function(a, c, d) {
+                                __p && __p();
+                                if (b("bs_caml_obj").caml_equal(a.thread_id, fb)) {
+                                    L[9]["delete"](a.message_id);
+                                    c = a.offline_threading_id;
+                                    if (!(c == null)) {
+                                        d = L[10].get(c);
+                                        d == null || (L[9]["delete"](d), L[10]["delete"](c))
+                                    }
+                                    L[10]["delete"](a.message_id);
+                                    return 0
+                                } else return 0
+                            });
+                            ja(L[0], fb);
+                            return [L[0], L[1], L[2], L[3], L[4], L[5], L[6], k, L[8], L[9], L[10], L[11], L[12], L[13], L[14], L[15], L[16], L[17], L[18]];
+                        case 38:
+                            o = h[0];
+                            return Aa(f, d, [o.message_id, o, h[1]]);
+                        case 39:
+                            r = f;
+                            p = [h[0], h[1], h[2]];
+                            q = p[2];
+                            s = p[1];
+                            var M = p[0];
+                            if (s.length !== 0) {
+                                k = Da(r, [M, s, q]);
+                                o = 0;
+                                q !== undefined ? b("bs_caml_obj").caml_equal(b("bs_js_primitive").valFromOption(q), b("MercuryPayloadSource").CLIENT_CHANNEL_MESSAGE) || (o = 1) : o = 1;
+                                o === 1 && b("MercuryServerRequests").getForFBID(k[0]).deleteMessages(M, s);
+                                return b("bs_belt_Array").reduce(s, k, function(a, d) {
+                                    __p && __p();
+                                    d = C(a, d);
+                                    var c = b("bs_belt_Map").get(a[7], M);
+                                    if (c !== undefined) {
+                                        c = b("bs_js_primitive").valFromOption(c);
+                                        c = b("ImmutableObject").set(b("ImmutableObject").set(c, Ea(a, M)), {
+                                            message_count: c.message_count - 1 | 0
+                                        });
+                                        c = b("bs_belt_Map").set(a[7], M, c);
+                                        x(a[0], M);
+                                        c = [a[0], a[1], a[2], a[3], a[4], a[5], a[6], c, a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15], a[16], a[17], a[18]]
+                                    } else c = a;
+                                    d !== undefined && Fa(b("bs_js_primitive").valFromOption(d));
+                                    return c
+                                })
+                            } else return r;
+                        case 40:
+                            return ta(f, h[0], h[1]);
+                        case 41:
+                            p = f;
+                            q = h[0];
+                            o = h[1];
+                            s = b("bs_belt_Map").get(p[7], q);
+                            if (s !== undefined) {
+                                k = b("bs_js_primitive").valFromOption(s);
+                                var gb;
+                                switch (o.tag | 0) {
+                                    case 0:
+                                        gb = b("ImmutableObject").set(k, {
+                                            reactions_mute_mode: o[0] ? 1 : 0
+                                        });
+                                        break;
+                                    case 1:
+                                        gb = b("ImmutableObject").set(k, {
+                                            mentions_mute_mode: o[0] ? 1 : 0
+                                        });
+                                        break;
+                                    case 2:
+                                        r = o[0];
+                                        s = r === 0;
+                                        gb = b("ImmutableObject").set(k, {
+                                            mute_until: s ? undefined : r
+                                        });
+                                        break
+                                }
+                                o = b("bs_belt_Map").set(p[7], q, gb);
+                                x(p[0], q);
+                                return [p[0], p[1], p[2], p[3], p[4], p[5], p[6], o, p[8], p[9], p[10], p[11], p[12], p[13], p[14], p[15], p[16], p[17], p[18]]
+                            } else return p;
+                        case 42:
+                            k = f;
+                            s = h[0];
+                            r = h[1];
+                            q = b("bs_belt_Map").get(k[7], s);
+                            if (q !== undefined) {
+                                o = b("bs_js_primitive").valFromOption(q);
+                                if (o.is_archived !== r) {
+                                    p = b("MessengerFolders.bs").getFromMeta(o);
+                                    q = o.comm_status;
+                                    q = q == null ? b("ImmutableObject").set(o, {
+                                        is_archived: r
+                                    }) : b("ImmutableObject").set(o, {
+                                        is_archived: r,
+                                        comm_status: r ? b("PageCommItemStatus").DONE : b("PageCommItemStatus").TODO
+                                    });
+                                    o = b("bs_belt_Map").set(k[7], s, q);
+                                    ra(k, q, p);
+                                    sa(k, q);
+                                    x(k[0], s);
+                                    return [k[0], k[1], k[2], k[3], k[4], k[5], k[6], o, k[8], k[9], k[10], k[11], k[12], k[13], k[14], k[15], k[16], k[17], k[18]]
+                                } else return k
+                            } else return k;
+                        case 43:
+                            r = f;
+                            p = h[0];
+                            q = h[1];
+                            s = b("bs_belt_Map").get(r[7], p);
+                            if (s !== undefined) {
+                                o = b("bs_js_primitive").valFromOption(s);
+                                if (o.is_page_follow_up !== q) {
+                                    k = b("ImmutableObject").set(o, {
+                                        is_page_follow_up: q
+                                    });
+                                    s = b("bs_belt_Map").set(r[7], p, k);
+                                    x(r[0], p);
+                                    return [r[0], r[1], r[2], r[3], r[4], r[5], r[6], s, r[8], r[9], r[10], r[11], r[12], r[13], r[14], r[15], r[16], r[17], r[18]]
+                                } else return r
+                            } else return r;
+                        case 44:
+                            o = f;
+                            q = h[0];
+                            k = h[1];
+                            p = h[2];
+                            s = h[3];
+                            r = h[4];
+                            var N = b("bs_belt_Map").get(o[7], q);
+                            if (N !== undefined) {
+                                N = b("bs_js_primitive").valFromOption(N);
+                                p = Sa(o[0], N, p, o[8], k);
+                                p = p !== undefined && N.last_message_timestamp > N.last_read_timestamp ? b("bs_js_primitive").some(Object.assign(b("bs_js_primitive").valFromOption(p), {
+                                    last_read_timestamp: N.last_message_timestamp
+                                })) : p;
+                                if (p !== undefined) {
+                                    p = b("ImmutableObject").set(N, b("bs_js_primitive").valFromOption(p));
+                                    var O = b("bs_belt_Map").set(o[7], q, p);
+                                    if (s) {
+                                        s = !N.read_only && N.folder === b("MessagingTag").INBOX;
+                                        var P = b("MercuryServerRequests").getForFBID(o[0]);
+                                        P.changeThreadReadStatus(p.thread_id, k, r, p.last_read_timestamp, s, p.last_message_type)
+                                    }
+                                    P = O
+                                } else P = o[7];
+                                r = b("MessengerFolders.bs").getFromMeta(N);
+                                k ? (la(o, [q], r, b("MercuryFilters.bs").unread), qa(o, r, b("bs_js_primitive").some(q))) : (na(o, [q], r, b("MercuryFilters.bs").unread), oa(o, r, b("bs_js_primitive").some(q)));
+                                return [o[0], o[1], o[2], o[3], o[4], o[5], o[6], P, o[8], o[9], o[10], o[11], o[12], o[13], o[14], o[15], o[16], o[17], o[18]]
+                            } else return o;
+                        case 45:
+                            var Q = f,
+                                R = h[0];
+                            s = b("bs_belt_Option").getWithDefault(b("bs_belt_Option").map(b("bs_js_primitive").nullable_to_opt(Q[15].get(R)), function(a) {
+                                return [a[0],
+                                    []
+                                ]
+                            }), [0, []]);
+                            Q[15].set(R, s);
+                            p = b("bs_belt_Option").map(b("bs_belt_Map").get(Q[7], R), function(a) {
+                                return b("ImmutableObject").set(a, {
+                                    message_count: 0
+                                })
+                            });
+                            if (p !== undefined) {
+                                var hb = b("bs_js_primitive").valFromOption(p);
+                                O = b("bs_belt_Map").set(Q[7], R, hb);
+                                v.forEach(function(a) {
+                                    return la(Q, [R], hb.folder, a)
+                                });
+                                qa(Q, hb.folder, b("bs_js_primitive").some(R));
+                                N = O
+                            } else N = Q[7];
+                            ka(Q[0], R);
+                            return [Q[0], Q[1], Q[2], Q[3], Q[4], Q[5], Q[6], N, Q[8], Q[9], Q[10], Q[11], Q[12], Q[13], Q[14], Q[15], Q[16], Q[17], Q[18]];
+                        case 46:
+                            k = f;
+                            r = d;
+                            q = [h[0], h[1], h[2]];
+                            P = Ca(k, [q[0], q[1]]);
+                            o = P.thread_id;
+                            s = Da(k, [o, [P.message_id], q[2]]);
+                            p = r[2].get(o);
+                            p == null || r[2].set(o, Math.max(0, p - 1 | 0));
+                            return s;
+                        case 47:
+                            O = f;
+                            N = [h[0], h[1]];
+                            k = Ca(O, [N[0], N[1]]);
+                            b("MercuryServerRequests").getForFBID(O[0]).sendNewMessage(Object.assign(k, {
+                                preview_attachments: undefined
+                            }));
+                            return O;
+                        case 48:
+                            P = f;
+                            q = [h[0], h[1], h[2], h[3]];
+                            r = q[2];
+                            o = q[1];
+                            p = q[0];
+                            s = C(P, p);
+                            if (s !== undefined) {
+                                N = b("bs_js_primitive").valFromOption(s);
+                                k = b("bs_js_dict").map(function(a) {
+                                    return a
+                                }, b("bs_belt_Option").getWithDefault(b("bs_js_primitive").nullable_to_opt(N.reactions), {}));
+                                o !== undefined ? k[r] = o : b("bs_curry")._2(wa, k, r);
+                                O = Object.assign(Object.assign({}, N), {
+                                    reactions: k
+                                });
+                                s = N.thread_id;
+                                s == null || B(P[0], s, p, q[3]);
+                                return D(P, [p, O])
+                            } else return P;
+                        case 49:
+                            o = f;
+                            r = h[0];
+                            if (b("gkx")("676919")) {
+                                k = C(o, r);
+                                if (k !== undefined) {
+                                    N = b("bs_js_primitive").valFromOption(k);
+                                    s = N.attachments;
+                                    if (s == null || s.length === 0) return o;
+                                    else {
+                                        q = b("bs_caml_array").caml_array_get(s, 0);
+                                        p = q.share;
+                                        if (p == null) return o;
+                                        else {
+                                            O = p.target;
+                                            if (O == null) return o;
+                                            else {
+                                                P = O.message_state;
+                                                if (P == null) return o;
+                                                else {
+                                                    k = Object.assign(Object.assign({}, N), {
+                                                        attachments: b("bs_caml_array").caml_array_set(b("bs_array").copy(s), 0, Object.assign(Object.assign({}, q), {
+                                                            share: Object.assign(Object.assign({}, p), {
+                                                                target: Object.assign(Object.assign({}, O), {
+                                                                    message_state: "EXPIRED"
+                                                                })
+                                                            })
+                                                        }))
+                                                    });
+                                                    return D(o, [r, k])
+                                                }
+                                            }
+                                        }
+                                    }
+                                } else return o
+                            } else return o;
+                        case 50:
+                            P = f;
+                            N = [h[0], h[1], h[2]];
+                            s = N[0];
+                            q = C(P, s);
+                            if (q !== undefined) {
+                                p = b("bs_js_primitive").valFromOption(q);
+                                O = p.attachments;
+                                if (O == null || O.length === 0) return P;
+                                else {
+                                    r = b("bs_caml_array").caml_array_get(O, 0);
+                                    k = r.share;
+                                    if (k == null) return P;
+                                    else {
+                                        o = k.target;
+                                        if (o == null) return P;
+                                        else {
+                                            q = b("bs_array").copy(O);
+                                            b("bs_caml_array").caml_array_set(q, 0, Object.assign(Object.assign({}, r), {
+                                                share: Object.assign(Object.assign({}, k), {
+                                                    target: Object.assign(Object.assign({}, N[1]), {
+                                                        live_location_id: o.live_location_id
+                                                    })
+                                                })
+                                            }));
+                                            O = Object.assign(Object.assign({}, p), {
+                                                attachments: q
+                                            });
+                                            r = p.thread_id;
+                                            r == null || B(P[0], r, s, N[2]);
+                                            return D(P, [s, O])
+                                        }
+                                    }
+                                }
+                            } else return P;
+                        case 51:
+                            k = f;
+                            o = h[0];
+                            q = h[1];
+                            var S = o.replaced_message_id;
+                            if (S == null) return k;
+                            else {
+                                p = C(k, S);
+                                if (p !== undefined) {
+                                    r = o.message_id;
+                                    N = {
+                                        timestamp: o.timestamp,
+                                        profile_ranges: o.profile_ranges
+                                    };
+                                    s = b("bs_js_primitive").nullable_to_opt(o.status);
+                                    s !== undefined && (N.status = b("bs_js_primitive").valFromOption(s));
+                                    O = b("bs_js_primitive").nullable_to_opt(o.log_message_data);
+                                    O !== undefined && (N.log_message_data = b("bs_js_primitive").valFromOption(O));
+                                    P = b("bs_js_primitive").nullable_to_opt(o.meta_ranges);
+                                    P !== undefined && (N.meta_ranges = b("bs_js_primitive").valFromOption(P));
+                                    s = b("bs_js_primitive").nullable_to_opt(o.ranges);
+                                    s !== undefined && (N.ranges = b("bs_js_primitive").valFromOption(s));
+                                    O = b("bs_js_primitive").nullable_to_opt(o.raw_attachments);
+                                    O !== undefined && (N.raw_attachments = b("bs_js_primitive").valFromOption(O));
+                                    P = b("bs_js_primitive").nullable_to_opt(o.attachments);
+                                    P !== undefined && (N.attachments = b("bs_js_primitive").valFromOption(P));
+                                    s = b("bs_js_primitive").nullable_to_opt(o.body);
+                                    s !== undefined && (N.body = b("bs_js_primitive").valFromOption(s));
+                                    O = b("bs_js_primitive").nullable_to_opt(o.platform_xmd);
+                                    O !== undefined && (N.platform_xmd = b("bs_js_primitive").valFromOption(O));
+                                    P = N;
+                                    s = Object.assign(Object.assign({}, b("bs_js_primitive").valFromOption(p)), P);
+                                    b("MercuryMessageIDs.bs").addServerID(r, r);
+                                    var T = D(k, [r, s]);
+                                    if (r !== S) {
+                                        T[9]["delete"](S);
+                                        T[10].set(S, r);
+                                        O = b("bs_belt_Option").flatMap(b("bs_js_primitive").nullable_to_opt(o.thread_id), function(a) {
+                                            return b("bs_js_primitive").nullable_to_opt(T[15].get(a))
+                                        });
+                                        N = o.thread_id;
+                                        if (O !== undefined && !(N == null)) {
+                                            p = O;
+                                            P = ya(T, [r].concat(p[1].filter(function(a) {
+                                                return a !== S
+                                            })));
+                                            T[15].set(N, [p[0], P])
+                                        }
+                                    }
+                                    s = o.message_id;
+                                    O = o.thread_id;
+                                    O == null || (B(T[0], O, S, q), B(T[0], O, s, q));
+                                    return [T[0], T[1], T[2], T[3], T[4], T[5], T[6], T[7], T[8], T[9], T[10], T[11], T[12], T[13], T[14], T[15], T[16], T[17], T[18]]
+                                } else return k
+                            }
+                        case 52:
+                            r = f;
+                            N = d;
+                            p = [h[0], h[1]];
+                            P = p[0];
+                            o = C(r, p[1]);
+                            if (o !== undefined && b("MessengerMessage.bs").isTitanMessage(b("bs_js_primitive").valFromOption(o))) {
+                                O = N[2].get(P);
+                                O == null ? N[2].set(P, 1) : N[2].set(P, 1 + O | 0)
+                            }
+                            return r;
+                        case 53:
+                            return Ga(f, d, h[0], h[1]);
+                        case 54:
+                            s = f;
+                            q = d;
+                            k = h[0];
+                            p = h[1];
+                            o = Ia(s, q, k, p);
+                            N = ga(o, k);
+                            if (k.folder === b("MessagingTag").PENDING && b("bs_caml_obj").caml_equal(p, b("bs_js_primitive").some(b("MercuryPayloadSource").CLIENT_CHANNEL_MESSAGE))) return [N[0], N[1], N[2], N[3], N[4], N[5] + 1 | 0, N[6], N[7], N[8], N[9], N[10], N[11], N[12], N[13], N[14], N[15], N[16], N[17], N[18]];
+                            else if (k.folder === b("MessagingTag").INBOX) {
+                                P = k.thread_id;
+                                if (P == null) return N;
+                                else return ta(N, P, k.folder)
+                            } else return N;
+                        case 55:
+                            O = f;
+                            r = d;
+                            s = h[0];
+                            q = h[1];
+                            return Ia(O, r, s, q);
+                        case 56:
+                            o = f;
+                            p = d;
+                            P = h[0];
+                            k = h[1];
+                            N = b("bs_belt_Map").get(o[7], P);
+                            O = !1;
+                            if (k && !p[5].has(P)) o[13].push(P), p[5].add(P), O = !0;
+                            else if (!k && p[5].has(P)) {
+                                r = o[13].indexOf(P);
+                                r > -1 && o[13].splice(r, 1);
+                                p[5]["delete"](P);
+                                O = !0
+                            }
+                            if (N !== undefined) {
+                                s = b("bs_js_primitive").valFromOption(N);
+                                if (s.is_pinned !== k) {
+                                    q = b("ImmutableObject").set(s, {
+                                        is_pinned: k
+                                    });
+                                    r = b("bs_belt_Map").set(o[7], P, q);
+                                    x(o[0], P);
+                                    O = !0;
+                                    p = r
+                                } else p = o[7]
+                            } else p = o[7];
+                            if (O) return [o[0], o[1], o[2], o[3], o[4], o[5], o[6], p, o[8], o[9], o[10], o[11], o[12], o[13], o[14], o[15], o[16], o[17], o[18]];
+                            else return o;
+                        case 57:
+                            N = f;
+                            s = h[0];
+                            k = b("bs_js_dict").fromArray(b("bs_js_dict").entries(N[14]));
+                            k[s] = [];
+                            return [N[0], N[1], N[2], N[3], N[4], N[5], N[6], N[7], N[8], N[9], N[10], N[11], N[12], N[13], k, N[15], N[16], N[17], N[18]];
+                        case 58:
+                            q = f;
+                            P = h[0];
+                            r = b("bs_js_dict").fromArray(b("bs_js_dict").entries(q[14]));
+                            O = P.actor.id;
+                            p = r[O];
+                            p !== undefined ? (p.push(P), r[O] = p) : r[O] = [P];
+                            return [q[0], q[1], q[2], q[3], q[4], q[5], q[6], q[7], q[8], q[9], q[10], q[11], q[12], q[13], r, q[15], q[16], q[17], q[18]];
+                        case 59:
+                            o = f;
+                            s = h[0];
+                            k = b("bs_js_dict").fromArray(b("bs_js_dict").entries(o[14]));
+                            N = k[s];
+                            N === undefined && (k[s] = []);
+                            return [o[0], o[1], o[2], o[3], o[4], o[5], o[6], o[7], o[8], o[9], o[10], o[11], o[12], o[13], k, o[15], o[16], o[17], o[18]];
+                        case 60:
+                            p = f;
+                            var ib = h[0],
+                                jb = b("bs_js_dict").fromArray(b("bs_js_dict").entries(p[14]));
+                            O = Object.keys(jb);
+                            O.forEach(function(b) {
+                                var a = jb[b];
+                                if (a !== undefined) {
+                                    a = a.filter(function(a) {
+                                        return a.id !== ib.messageFBID
+                                    });
+                                    jb[b] = a;
+                                    return 0
+                                } else return 0
+                            });
+                            return [p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10], p[11], p[12], p[13], jb, p[15], p[16], p[17], p[18]];
+                        case 61:
+                            var U = f;
+                            P = [h[0], h[1]];
+                            var kb = P[1];
+                            P[0].forEach(function(b) {
+                                var a = U[15].get(b);
+                                a == null ? U[15].set(b, [1, []]) : U[15].set(b, [1, a[1]]);
+                                return va(U[0], b, kb)
+                            });
+                            return [U[0], U[1], U[2], U[3], U[4], U[5], U[6], U[7], U[8], U[9], U[10], U[11], U[12], U[13], U[14], U[15], U[16], U[17], U[18]];
+                        case 62:
+                            var V = f;
+                            r = h[0];
+                            r.forEach(function(c) {
+                                __p && __p();
+                                var a = c.folder;
+                                if (pa.includes(a)) {
+                                    c = c.thread_fbids.map(function(a) {
+                                        return b("MercuryIDs").getThreadIDFromThreadFBID(a)
+                                    }).concat(c.other_user_fbids.map(function(a) {
+                                        return b("MercuryIDs").getThreadIDFromUserID(a)
+                                    }));
+                                    V[16][a] = new Set(c);
+                                    a = b("MercuryThreadInformer").getForFBID(V[0]);
+                                    a.updatedUnreadState();
+                                    return 0
+                                } else return 0
+                            });
+                            return [V[0], V[1], V[2], V[3], V[4], V[5], V[6], V[7], V[8], V[9], V[10], V[11], V[12], V[13], V[14], V[15], V[16], V[17], V[18]];
+                        case 63:
+                            var W = f,
+                                lb = d;
+                            q = h[0];
+                            var c = [W[18]];
+                            q.forEach(function(a) {
+                                W[17][a.folder] = a.unread_count;
+                                a.unread_count === 0 && (W[16][a.folder] = new Set());
+                                a.folder === b("MessagingTag").INBOX && (c[0] = b("bs_belt_Option").getWithDefault(b("bs_js_primitive").nullable_to_opt(a.seen_timestamp), c[0]), lb[7][0] = a.unseen_count);
+                                a = b("MercuryThreadInformer").getForFBID(W[0]);
+                                a.updatedUnreadState();
+                                a.updatedUnseenState();
+                                return 0
+                            });
+                            return [W[0], W[1], W[2], W[3], W[4], W[5], W[6], W[7], W[8], W[9], W[10], W[11], W[12], W[13], W[14], W[15], W[16], W[17], c[0]];
+                        case 64:
+                            var X = f;
+                            N = h[0];
+                            N.forEach(function(a) {
+                                __p && __p();
+                                var c = a.other_user_fbid;
+                                if (c == null) {
+                                    var d = a.thread_fbid;
+                                    d = d == null ? undefined : b("bs_js_primitive").some(b("MercuryIDs").getThreadIDFromThreadFBID(d))
+                                } else d = b("bs_js_primitive").some(b("MercuryIDs").getThreadIDFromUserID(c));
+                                c = a.thread_id;
+                                d = c == null ? d : c == null ? undefined : b("bs_js_primitive").some(c);
+                                c = a.thread_id;
+                                var e;
+                                if (c == null) e = "";
+                                else {
+                                    c = b("bs_belt_Map").get(X[7], c);
+                                    e = c !== undefined ? b("MessengerFolders.bs").getFromMeta(b("bs_js_primitive").valFromOption(c)) : a.folder
+                                }
+                                if (pa.includes(e) && (b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").USER_GENERATED_MESSAGE) || b("bs_caml_obj").caml_equal(a.action_type, b("MercuryActionType").LOG_MESSAGE)) && a.is_unread) return oa(X, e, d);
+                                else return 0
+                            });
+                            return [X[0], X[1], X[2], X[3], X[4], X[5], X[6], X[7], X[8], X[9], X[10], X[11], X[12], X[13], X[14], X[15], X[16], X[17], X[18]];
+                        case 65:
+                            var Y = f,
+                                mb = h[0];
+                            pa.forEach(function(c) {
+                                __p && __p();
+                                var a = Y[16][c];
+                                if (a !== undefined) {
+                                    b("bs_js_dict").entries(mb).forEach(function(b) {
+                                        var c = b[0];
+                                        if (a.has(c)) {
+                                            a.add(b[1]);
+                                            a["delete"](c);
+                                            return 0
+                                        } else return 0
+                                    });
+                                    return 0
+                                } else return 0
+                            });
+                            return [Y[0], Y[1], Y[2], Y[3], Y[4], Y[5], Y[6], Y[7], Y[8], Y[9], Y[10], Y[11], Y[12], Y[13], Y[14], Y[15], Y[16], Y[17], Y[18]];
+                        case 66:
+                            return $a(f, h[0], h[1]);
+                        case 67:
+                            s = f;
+                            k = h[0];
+                            o = h[1];
+                            O = h[2];
+                            p = C(s, k);
+                            if (p !== undefined) {
+                                P = b("bs_js_primitive").valFromOption(p);
+                                Fa(P);
+                                r = Object.assign(Object.assign({}, P), {
+                                    removed_timestamp: o,
+                                    message_unsendability_status: b("MessageUnsendabilityStatus").DENY_TOMBSTONE_MESSAGE
+                                });
+                                q = D(s, [k, r]);
+                                N = P.thread_id;
+                                if (N == null) return q;
+                                else {
+                                    B(q[0], N, k, O);
+                                    p = b("bs_belt_Map").get(q[7], N);
+                                    if (p !== undefined) {
+                                        o = b("ImmutableObject").set(b("bs_js_primitive").valFromOption(p), Ea(q, N));
+                                        r = b("bs_belt_Map").set(q[7], N, o);
+                                        x(q[0], N);
+                                        return [q[0], q[1], q[2], q[3], q[4], q[5], q[6], r, q[8], q[9], q[10], q[11], q[12], q[13], q[14], q[15], q[16], q[17], q[18]]
+                                    } else return q
+                                }
+                            } else return s;
+                        case 68:
+                            P = f;
+                            k = h[0];
+                            O = h[1];
+                            p = b("ThreadConnectivityStatus.bs").toGraphQLValue(O);
+                            o = b("bs_belt_Map").get(P[7], k);
+                            if (o !== undefined) {
+                                N = b("bs_js_primitive").valFromOption(o);
+                                r = N.thread_connectivity_data;
+                                q = r == null ? b("ImmutableObject").set(N, {
+                                    thread_connectivity_data: {
+                                        connectivity_status: p,
+                                        first_sender_id: null
+                                    }
+                                }) : b("ImmutableObject").set(N, {
+                                    thread_connectivity_data: {
+                                        connectivity_status: p,
+                                        first_sender_id: r.first_sender_id
+                                    }
+                                });
+                                return [P[0], P[1], P[2], P[3], P[4], P[5], P[6], b("bs_belt_Map").set(P[7], k, q), P[8], P[9], P[10], P[11], P[12], P[13], P[14], P[15], P[16], P[17], P[18]]
+                            } else return P
+                    }
+                    case 1: s = g[0];
+                    if (typeof s === "number")
+                        if (s === 0) {
+                            h = f;
+                            var nb = [];
+                            b("bs_belt_MapString").forEach(h[6], function(a, c) {
+                                return b("bs_belt_Map").forEach(c, function(b, c) {
+                                    if (c < Date.now() - 3e4) {
+                                        nb.push([a, b]);
+                                        return 0
+                                    } else return 0
+                                })
+                            });
+                            if (nb.length === 0) return h;
+                            else {
+                                var a = [h[6]];
+                                nb.forEach(function(b) {
+                                    a[0] = fa(a[0], b[0], b[1]);
+                                    return 0
+                                });
+                                return [h[0], h[1], h[2], h[3], h[4], h[5], a[0], h[7], h[8], h[9], h[10], h[11], h[12], h[13], h[14], h[15], h[16], h[17], h[18]]
+                            }
+                        } else {
+                            O = f;
+                            o = d;
+                            if (Ya(O, o) > 0) {
+                                N = b("MercuryServerRequests").getForFBID(O[0]);
+                                N.markSeen();
+                                return $a(O, N.getLastActionTimestamp(), b("MessagingTag").INBOX)
+                            } else return O
+                        }
+                    else switch (s.tag | 0) {
+                        case 0:
+                            var Z = f,
+                                ob = d;
+                            p = s[0];
+                            r = s[1];
+                            k = s[2];
+                            q = s[3];
+                            var pb = Z[7],
+                                qb = [];
+                            P = ba(p.reduce(function(c, d) {
+                                var a = b("bs_belt_Map").get(pb, d);
+                                if (a !== undefined) return b("bs_belt_Map").set(c, d, b("bs_js_primitive").valFromOption(a));
+                                else {
+                                    qb.push(d);
+                                    return c
+                                }
+                            }, b("bs_belt_Map").make([b("ThreadId.bs").cmp])));
+                            if (qb.length === 0) {
+                                b("bs_curry")._1(k, P);
+                                return Z
+                            } else {
+                                h = ob[1];
+                                o = h[0].toString();
+                                ob[1][0] = h[0] + 1 | 0;
+                                ob[0][0][o] = [p, k];
+                                N = b("MercuryServerRequests").getForFBID(Z[0]);
+                                O = qb.reduce(function(a, d) {
+                                    __p && __p();
+                                    var e = b("MercuryIDs").tokenize(d),
+                                        f = e.type;
+                                    e = e.value;
+                                    if (f === "user") {
+                                        f = b("MercuryIDs").getParticipantIDFromUserID(b("FBID.bs").ofStringExn(e));
+                                        e = b("MercuryIDs").getParticipantIDFromUserID(Z[0]);
+                                        var c = b("bs_caml_obj").caml_equal(f, e);
+                                        c = b("MessengerThreadUtils.bs").createNewLocalThread(e, d, c ? [e] : [e, f], null);
+                                        e = b("bs_belt_Map").set(a, d, c);
+                                        Ka(e, ob[0][0]);
+                                        return e
+                                    } else return a
+                                }, Z[7]);
+                                N.fetchThreadData(qb, q);
+                                b("bs_curry")._1(r, o);
+                                if (O === Z[7]) return Z;
+                                else return [Z[0], Z[1], Z[2], Z[3], Z[4], Z[5], Z[6], O, Z[8], Z[9], Z[10], Z[11], Z[12], Z[13], Z[14], Z[15], Z[16], Z[17], Z[18]]
+                            }
+                        case 1:
+                            P = d[0][0];
+                            b("bs_curry")._2(Ja, P, s[0]);
+                            d[0][0] = P;
+                            return f;
+                        case 2:
+                            var $ = f;
+                            h = s[0];
+                            p = b("bs_belt_Array").keepMap(h, function(a) {
+                                a = C($, a);
+                                if (a !== undefined) return b("bs_js_primitive").nullable_to_opt(b("bs_js_primitive").valFromOption(a).offline_threading_id)
+                            });
+                            p.forEach(function(a) {
+                                $[10]["delete"](a);
+                                return 0
+                            });
+                            return [$[0], $[1], $[2], $[3], $[4], $[5], $[6], $[7], $[8], $[9], $[10], $[11], $[12], $[13], $[14], $[15], $[16], $[17], $[18]];
+                        case 3:
+                            k = f;
+                            var rb = s[0];
+                            N = b("bs_js_dict").fromArray(b("bs_js_dict").entries(k[14]));
+                            q = rb.montageActorID;
+                            r = N[q];
+                            if (r !== undefined) {
+                                o = r.map(function(a) {
+                                    __p && __p();
+                                    var c = b("bs_caml_obj").caml_equal(rb.montageMessageID, a.id);
+                                    if (c) {
+                                        c = a;
+                                        var d = rb,
+                                            e = c.montage_overlays.map(function(a) {
+                                                __p && __p();
+                                                if (b("bs_caml_obj").caml_equal(a.poll.id, d.pollID)) {
+                                                    var c = a.poll.poll_options.map(function(a, c) {
+                                                        c = c === d.optionVotedIndex;
+                                                        if (c) return new(b("ImmutableObject"))({
+                                                            text: a.text,
+                                                            vote_count: a.vote_count + 1 | 0
+                                                        });
+                                                        else return a
+                                                    });
+                                                    c = new(b("ImmutableObject"))({
+                                                        can_viewer_vote: a.poll.can_viewer_vote,
+                                                        id: a.poll.id,
+                                                        poll_options: c,
+                                                        viewer_vote_index: d.optionVotedIndex
+                                                    });
+                                                    return b("ImmutableObject").set(new(b("ImmutableObject"))(a), {
+                                                        poll: c
+                                                    })
+                                                } else return a
+                                            });
+                                        return b("ImmutableObject").set(new(b("ImmutableObject"))(c), {
+                                            montage_overlays: e
+                                        })
+                                    } else return a
+                                });
+                                N[q] = o
+                            }
+                            return [k[0], k[1], k[2], k[3], k[4], k[5], k[6], k[7], k[8], k[9], k[10], k[11], k[12], k[13], N, k[15], k[16], k[17], k[18]];
+                        case 4:
+                            O = b("bs_belt_Map").set(f[7], s[0], s[1]);
+                            return [f[0], f[1], f[2], f[3], f[4], f[5], f[6], O, f[8], f[9], f[10], f[11], f[12], f[13], f[14], f[15], f[16], f[17], f[18]]
+                    }
+                    case 2: P = g[0];
+                    switch (P.tag | 0) {
+                        case 0:
+                            b("bs_curry")._1(P[0], {
+                                blocked_ids: f[4]
+                            });
+                            break;
+                        case 1:
+                            b("bs_curry")._1(P[1], b("bs_belt_Map").get(f[7], P[0]));
+                            break;
+                        case 2:
+                            b("bs_curry")._1(P[0], f[13].concat([]));
+                            break;
+                        case 3:
+                            b("bs_curry")._2(P[0], f, d);
+                            break
+                    }
+                    return f
+            }
+        }, c, a);
+        e.length > 0 && b("LogHistory").getInstance("messenger_state").debug("actions", b("bs_belt_Option").getWithDefault(b("bs_js_primitive").undefined_to_opt(JSON.stringify(e)), ""));
+        return c
+    }
+
+    function P(c, a) {
+        __p && __p();
+        var d = function(c) {
+            b("bs_curry")._1(a, [b("bs_block").__(0, [b("bs_block").__(6, [c])])]);
+            b("setTimeoutAcrossTransitions")(function() {
+                return b("bs_curry")._1(a, [b("bs_block").__(1, [0])])
+            }, 3e4);
+            return 0
+        };
+        b("Arbiter").subscribe(ab(c), function(a, b) {
+            a = b.obj;
+            b = a.to;
+            if (!(b == null) && b.toString() !== c) return 0;
+            else {
+                d(a);
+                return 0
+            }
+        });
+        b("Arbiter").subscribe(b("JSLogger").DUMP_EVENT, function(d, e) {
+            __p && __p();
+            d = function(d, a) {
+                __p && __p();
+                var f = {};
+                b("bs_belt_MapString").toArray(d[2]).forEach(function(a) {
+                    var b = {};
+                    a[1].forEach(function(c, d, a) {
+                        b[d] = c.watermark;
+                        return 0
+                    });
+                    f[a[0]] = b;
+                    return 0
+                });
+                a = "read_receipts:" + c;
+                e[a] = f;
+                return 0
+            };
+            return b("bs_curry")._1(a, [b("bs_block").__(2, [b("bs_block").__(3, [d])])])
+        });
+        return 0
+    }
+    var Q = b("MessengerPersistantViewerKeyedSubscriptionComponent.bs").Make([bb, O, P, "MessengerStateProvider"]),
+        R = Q[2];
+
+    function hb(a, c) {
+        return b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(0, [c])])])
+    }
+
+    function S(a, c) {
+        b("MercuryAssert").isThreadID(c);
+        var d = [undefined],
+            e = function(a) {
+                d[0] = a;
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(1, [c, e])])]);
+        return b("bs_js_null_undefined").fromOption(d[0])
+    }
+
+    function T(a, c, d, e) {
+        __p && __p();
+        if (c.length === 0) {
+            b("bs_curry")._1(d, {});
+            return null
+        } else {
+            b("MercuryAssert").allThreadID(c);
+            var f = [null],
+                g = function(a) {
+                    f[0] = a;
+                    return 0
+                };
+            b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(1, [b("bs_block").__(0, [c, g, d, e])])]);
+            return f[0]
+        }
+    }
+
+    function ib(a, c, d, e) {
+        return T(a, [c], function(a) {
+            return b("bs_curry")._1(d, a[c])
+        }, e)
+    }
+
+    function jb(a, c, d, e) {
+        __p && __p();
+        var f = [undefined],
+            g = function(a) {
+                f[0] = a;
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(1, [c, g])])]);
+        g = f[0];
+        if (g !== undefined) return b("bs_js_primitive").valFromOption(g);
+        else {
+            g = b("MessengerThreadUtils.bs").createNewLocalThread(b("MercuryIDs").getParticipantIDFromUserID(a), c, d, e);
+            b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(1, [b("bs_block").__(4, [c, g])])]);
+            return g
+        }
+    }
+
+    function U(a) {
+        var c = b("MercuryLocalIDs").generateThreadID(null);
+        jb(a, c, [], null);
+        return c
+    }
+
+    function kb(a, c, d, e) {
+        __p && __p();
+        var f = [undefined],
+            g = function(a) {
+                f[0] = a;
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(1, [c, g])])]);
+        g = f[0];
+        if (g !== undefined) return b("bs_js_primitive").valFromOption(g);
+        else {
+            g = b("MessengerThreadUtils.bs").createNewLocalGroupGeneralThread(b("MercuryIDs").getParticipantIDFromUserID(a), c, d, e);
+            b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(1, [b("bs_block").__(4, [c, g])])]);
+            return g
+        }
+    }
+
+    function V(a, c, d) {
+        var e = b("MercuryLocalIDs").generateThreadID(null);
+        kb(a, e, c, d);
+        return e
+    }
+
+    function W(a, c) {
+        var d = [undefined],
+            e = function(a) {
+                d[0] = a;
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(1, [c, e])])]);
+        a = d[0];
+        if (a !== undefined) return b("MercuryThreadInfo").isEmptyLocalThread(b("bs_js_primitive").valFromOption(a));
+        else return !1
+    }
+
+    function lb(a, c) {
+        var d = [undefined],
+            e = function(a) {
+                d[0] = a;
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(1, [c, e])])]);
+        a = d[0];
+        if (a !== undefined) return b("MercuryThreadInfo").isNewEmptyLocalThread(b("bs_js_primitive").valFromOption(a));
+        else return !1
+    }
+
+    function X(c) {
+        var a = [
+                []
+            ],
+            d = function(b) {
+                a[0] = b;
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(c), [b("bs_block").__(2, [b("bs_block").__(2, [d])])]);
+        return a[0]
+    }
+
+    function Y(a, c) {
+        return b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(1, [b("bs_block").__(1, [c])])])
+    }
+
+    function mb(a) {
+        __p && __p();
+        var c = a.payload_source;
+        if (c == null) return !1;
+        else if (b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").CLIENT_CHANGE_ARCHIVED_STATUS) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").CLIENT_CHANNEL_MESSAGE) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").CLIENT_SEND_MESSAGE) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").SERVER_SEND_MESSAGE) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").SERVER_FETCH_THREADLIST_INFO) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").SERVER_THREAD_SYNC) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").SERVER_CHANGE_PINNED_STATUS) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").SERVER_INVALIDATE_GLOBAL_STATE) || b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").CLIENT_UPDATE_COMM_STATUS)) return !0;
+        else if (b("bs_caml_obj").caml_equal(c, b("MercuryPayloadSource").SERVER_INITIAL_DATA)) {
+            c = a.ordered_threadlists;
+            return !(c == null)
+        } else return !1
+    }
+
+    function nb(a, c) {
+        c = b("bs_block").__(1, [b("bs_block").__(3, [c])]);
+        return b("bs_curry")._2(R, b("bs_js_primitive").some(a), [c])
+    }
+
+    function Z(a, c) {
+        return b("bs_curry")._2(R, a == null ? undefined : b("bs_js_primitive").some(a), c)
+    }
+
+    function ob(a) {
+        __p && __p();
+        var c = [],
+            d = !1;
+        if (!(a == null)) {
+            var e = a.payload_source;
+            e == null || b("bs_caml_obj").caml_equal(e, b("MercuryPayloadSource").SERVER_INVALIDATE_GLOBAL_STATE) && (d = !0);
+            e = a.newlyAddedClientIDs;
+            e == null || c.push(b("bs_block").__(0, [b("bs_block").__(65, [e])]));
+            e = a.delivery_receipts;
+            e == null || c.push(b("bs_block").__(0, [b("bs_block").__(0, [e])]));
+            e = a.message_ignored_ids;
+            e == null || c.push(b("bs_block").__(0, [b("bs_block").__(1, [e])]));
+            e = a.threads;
+            if (!(e == null)) {
+                var f = a.payload_source;
+                f == null || (b("bs_caml_obj").caml_equal(f, b("MercuryPayloadSource").SERVER_FETCH_THREAD_INFO) && c.push(b("bs_block").__(0, [b("bs_block").__(9, [e])])), b("bs_caml_obj").caml_equal(f, b("MercuryPayloadSource").SERVER_INVALIDATE_THREAD_STATE) && (e.length > 0 && c.unshift(b("bs_block").__(0, [b("bs_block").__(37, [b("bs_caml_array").caml_array_get(e, 0).thread_id])]))));
+                c.push(b("bs_block").__(0, [b("bs_block").__(8, [e])]))
+            }
+            f = a.participants;
+            if (!(f == null)) {
+                c.push(b("bs_block").__(0, [b("bs_block").__(4, [f])]));
+                var g = [],
+                    h = [];
+                f.forEach(function(a) {
+                    if (a.is_messenger_blocked) {
+                        g.push(b("MercuryIDs").getParticipantIDFromUserID(a.fbid));
+                        return 0
+                    } else {
+                        h.push(b("MercuryIDs").getParticipantIDFromUserID(a.fbid));
+                        return 0
+                    }
+                });
+                (g.length > 0 || h.length > 0) && c.push(b("bs_block").__(0, [b("bs_block").__(2, [g, h])]))
+            }
+            e = a.message_blocked_ids;
+            e == null || e.length > 0 && c.push(b("bs_block").__(0, [b("bs_block").__(2, [e, []])]));
+            f = a.pending_folder_unseen_count;
+            f == null || c.push(b("bs_block").__(0, [b("bs_block").__(5, [f])]));
+            e = a.global_actions;
+            e == null || e.forEach(function(a) {
+                b("bs_caml_obj").caml_equal(a.action_type, b("MercuryGlobalActionType").MARK_ALL_READ) && c.push(b("bs_block").__(0, [b("bs_block").__(36, [a.folder])]));
+                if (b("bs_caml_obj").caml_equal(a.action_type, b("MercuryGlobalActionType").MARK_ALL_SEEN)) {
+                    c.push(b("bs_block").__(0, [b("bs_block").__(66, [a.timestamp, a.folder])]));
+                    return 0
+                } else return 0
+            });
+            if (mb(a)) {
+                f = a.ordered_threadlists;
+                e = 0;
+                !(f == null) && f.length > 0 ? c.push(b("bs_block").__(0, [b("bs_block").__(11, [f])])) : e = 1;
+                if (e === 1) {
+                    f = a.threads;
+                    e = a.payload_source;
+                    f == null || !(e == null) && f.length > 0 && e !== b("MercuryPayloadSource").SERVER_CHANGE_PINNED_STATUS && c.push(b("bs_block").__(0, [b("bs_block").__(12, [f])]))
+                }
+            }
+            e = a.pinned_thread_ids;
+            e == null || mb(a) && c.push(b("bs_block").__(0, [b("bs_block").__(14, [e])]));
+            f = a.roger;
+            f == null || c.push(b("bs_block").__(0, [b("bs_block").__(7, [f])]));
+            e = a.montage_delete_message_delta;
+            e == null || c.push(b("bs_block").__(0, [b("bs_block").__(60, [e])]));
+            f = a.montage_new_message_delta;
+            f == null || c.push(b("bs_block").__(0, [b("bs_block").__(58, [f])]));
+            e = a.montage_poll_sticker_vote;
+            e == null || e.forEach(function(a) {
+                c.push(b("bs_block").__(1, [b("bs_block").__(3, [a])]));
+                return 0
+            });
+            f = a.current_montage_thread;
+            if (!(f == null)) {
+                e = f.user;
+                if (!(e == null)) {
+                    f = e.messenger_montage_thread;
+                    f == null || (c.push(b("bs_block").__(0, [b("bs_block").__(59, [e.id])])), f.montage_messages.edges.forEach(function(a) {
+                        c.push(b("bs_block").__(0, [b("bs_block").__(58, [a.node])]));
+                        return 0
+                    }))
+                }
+            }
+            e = a.unread_thread_fbids;
+            e == null || c.push(b("bs_block").__(0, [b("bs_block").__(62, [e])]));
+            f = a.message_counts;
+            f == null || c.push(b("bs_block").__(0, [b("bs_block").__(63, [f])]));
+            e = a.actions;
+            if (!(e == null)) {
+                c.push(b("bs_block").__(0, [b("bs_block").__(10, [e, a.from_client])]));
+                if (mb(a)) {
+                    f = a.actions;
+                    f == null || c.push(b("bs_block").__(0, [b("bs_block").__(13, [f])]))
+                }
+                c.push(b("bs_block").__(0, [b("bs_block").__(64, [e])]));
+                f = a.payload_source;
+                var i = f == null ? undefined : b("bs_js_primitive").some(f);
+                e.forEach(function(d) {
+                    __p && __p();
+                    var e = d.action_type;
+                    if (b("bs_caml_obj").caml_equal(i, b("bs_js_primitive").some(b("MercuryPayloadSource").SERVER_SEARCH))) {
+                        c.push(b("bs_block").__(0, [b("bs_block").__(38, [d, 0])]));
+                        return 0
+                    } else if (b("bs_caml_obj").caml_equal(b("bs_js_primitive").nullable_to_opt(d.client_state), b("bs_js_primitive").some(b("MercuryMessageClientState").SEND_TO_SERVER))) {
+                        c.push(b("bs_block").__(0, [b("bs_block").__(38, [d, 0])]));
+                        return 0
+                    } else {
+                        var f = d.thread_id,
+                            g = d.upload_id,
+                            h = d.upload_data,
+                            j = d.message_ids;
+                        u(d);
+                        if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").DELETE_MESSAGES))
+                            if (!(f == null) && !(j == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(39, [f, j, i])]));
+                                return 0
+                            } else return 0;
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CHANGE_FOLDER)) {
+                            j = d.new_folder;
+                            if (!(f == null) && !(j == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(40, [f, j])]));
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CHANGE_ARCHIVED_STATUS))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(42, [f, d.archived])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CHANGE_MUTE_SETTINGS)) {
+                            j = d.reactions_mute_mode;
+                            var k = d.mentions_mute_mode,
+                                l = d.mute_until;
+                            k = j == null ? k == null ? l == null ? undefined : b("bs_block").__(2, [l]) : l == null ? b("bs_block").__(1, [k === 1]) : undefined : !(k == null) || !(l == null) ? undefined : b("bs_block").__(0, [j === 1]);
+                            if (!(f == null) && k !== undefined) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(41, [f, k])]));
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CHANGE_READ_STATUS))
+                            if (f == null) return 0;
+                            else {
+                                l = a.from_client;
+                                c.push(b("bs_block").__(0, [b("bs_block").__(44, [f, d.mark_as_read, d.timestamp, l == null ? !1 : l, d.source])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CHANGE_PAGE_FOLLOW_UP_STATUS))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(43, [f, d.is_page_follow_up])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").BLOCK_STATUS_CHANGED)) {
+                            c.push(b("bs_block").__(0, [b("bs_block").__(3, [b("bs_belt_Option").getWithDefault(b("bs_js_primitive").nullable_to_opt(d.message_blocked_ids), [])])]));
+                            return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").DELETE_THREAD))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(45, [f])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").REACTION_UPDATE)) {
+                            j = d.messageId;
+                            k = d.userId;
+                            if (!(j == null) && !(k == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(48, [j, b("bs_js_primitive").nullable_to_opt(d.reaction), k, i])]));
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").MONTAGE_DIRECT_EXPIRE)) {
+                            l = d.messageId;
+                            if (l == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(49, [l, i])]));
+                                return 0
+                            }
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").LIVE_LOCATION_UPDATE)) {
+                            j = d.messageId;
+                            k = d.liveLocation;
+                            if (!(j == null) && !(k == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(50, [j, k, i])]));
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").REPLACE_MESSAGE)) {
+                            c.push(b("bs_block").__(0, [b("bs_block").__(51, [d, i])]));
+                            return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CONFIRM_ATTACHMENT_PLACEHOLDER))
+                            if (!(g == null) && !(h == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(47, [g, h])]));
+                                return 0
+                            } else return 0;
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CANCEL_ATTACHMENT_PLACEHOLDER))
+                            if (!(g == null) && !(h == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(46, [g, h, i])]));
+                                return 0
+                            } else return 0;
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").SEND_MESSAGE)) {
+                            c.push(b("bs_block").__(0, [b("bs_block").__(53, [d, i])]));
+                            return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").USER_GENERATED_MESSAGE)) {
+                            c.push(b("bs_block").__(0, [b("bs_block").__(54, [d, i])]));
+                            return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").LOG_MESSAGE))
+                            if (b("MessengerMessage.bs").isLocalMessage(d)) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(55, [d, i])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CHANGE_PINNED_STATUS))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(56, [f, d.is_pinned])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").REMOVE_MESSAGE)) {
+                            l = d.messageId;
+                            j = d.removed_timestamp;
+                            if (!(l == null) && !(j == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(67, [l, j, i])]));
+                                b("MessengerDesktopNotifications").removeNotification(l);
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UNSUBSCRIBE_STATUS_UPDATE))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(15, [f, d.page_unsubscribe_status])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").BLOCK_STATUS_CHANGED))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(16, [f, d.canViewerReply])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").ADD_PARTICIPANTS))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(17, [f, d.participants])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").CHANGE_FLAG))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(18, [f, d.mark_as_flag])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").MOVE_PENDING_TO_INBOX))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(19, [f])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UPDATE_CUSTOM_LIKE))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(20, [f, d.custom_like])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").PROMOTE_GROUP_ADMINS)) {
+                            k = d.promoted_admins;
+                            if (!(f == null) && !(k == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(21, [f, k])]));
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").REMOVE_GROUP_ADMINS)) {
+                            g = d.removed_admin_ids;
+                            if (!(f == null) && !(g == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(22, [f, g])]));
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").JOINABLE_MODE))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(23, [f, d.joinable_mode])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").APPROVAL_MODE))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(24, [f, d.approval_mode])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").APPROVAL_QUEUE))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(25, [f, d.added_id, d.added_group_id, d.removed_id, d.removed_group_id])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").IS_PIN_PROTECTED))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(26, [f, d.is_pin_protected])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UPDATE_RTC_CALL_DATA))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(27, [f, d.initiator_fbid, d.call_state, d.server_info_data])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UPDATE_COMM_STATUS))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(28, [f, d.comm_status])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UPDATE_COMM_ITEM_OWNER))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(29, [f, d.id, d.name, d.profile_pic_uri])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").EVENT_RSVP_CHANGED))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(30, [f, d.actor_fbid, d.rsvp_status])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UPDATE_CONNECTIVITY_STATUS)) {
+                            h = d.thread_connectivity_status;
+                            if (!(f == null) && !(h == null)) {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(68, [f, h])]));
+                                return 0
+                            } else return 0
+                        } else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").GROUPS_SYNC_STATUS_CHANGED))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(31, [f, d.groups_sync_action, d.groups_sync_status_string])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").GROUPS_SYNC_METADATA_UPDATE))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(32, [f, d.groups_sync_action, d.fb_group_id])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").DESCRIPTION_CHANGED))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(33, [f, d.group_thread_description_string])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UPDATE_THREAD_THEME))
+                            if (f == null) return 0;
+                            else {
+                                c.push(b("bs_block").__(0, [b("bs_block").__(34, [f, {
+                                    solid_color: d.solid_color,
+                                    header_color: d.header_color,
+                                    footer_color: d.footer_color,
+                                    gradient_colors: d.gradient_colors,
+                                    theme_id: d.theme_id
+                                }])]));
+                                return 0
+                            }
+                        else if (b("bs_caml_obj").caml_equal(e, b("MercuryActionType").UPDATE_JOINABLE_LINK) && !(f == null)) {
+                            c.push(b("bs_block").__(0, [b("bs_block").__(35, [f, d.joinable_link])]));
+                            return 0
+                        } else return 0
+                    }
+                });
+                b("Utils.bs").isTruthy(a.from_client) && e.forEach(function(d) {
+                    var a = d.thread_id;
+                    if (a == null) return 0;
+                    else {
+                        c.push(b("bs_block").__(0, [b("bs_block").__(52, [a, d.message_id])]));
+                        return 0
+                    }
+                })
+            }
+            f = a.end_of_history;
+            f == null || c.push(b("bs_block").__(0, [b("bs_block").__(61, [f, a.payload_source])]))
+        }
+        d && c.unshift(b("bs_block").__(0, [0]));
+        return c
+    }
+
+    function pb(c, d) {
+        var a = [
+                []
+            ],
+            e = function(b, c) {
+                c = b[15].get(d);
+                if (c == null) return 0;
+                else {
+                    a[0] = xa(!0, b, c[1]);
+                    return 0
+                }
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(c), [b("bs_block").__(2, [b("bs_block").__(3, [e])])]);
+        return a[0]
+    }
+
+    function qb(c, d) {
+        var a = [d],
+            e = function(b, c) {
+                c = b[10].get(d);
+                if (c == null) return 0;
+                else {
+                    a[0] = c;
+                    return 0
+                }
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(c), [b("bs_block").__(2, [b("bs_block").__(3, [e])])]);
+        return a[0]
+    }
+
+    function $(a, c) {
+        var d = [undefined],
+            e = function(a, b) {
+                d[0] = a;
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(3, [e])])]);
+        a = d[0];
+        if (a !== undefined) return xa(!1, a, c);
+        else return []
+    }
+
+    function rb(a, c, d) {
+        __p && __p();
+        var e = [!1],
+            f = function(a, b) {
+                __p && __p();
+                b = a[15].get(c);
+                if (b == null) return 0;
+                else {
+                    a = b[0];
+                    b = b[1].length;
+                    if (a) {
+                        e[0] = !0;
+                        return 0
+                    } else {
+                        e[0] = b >= d;
+                        return 0
+                    }
+                }
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(3, [f])])]);
+        return e[0]
+    }
+
+    function sb(a, c) {
+        __p && __p();
+        var d = [!1],
+            e = function(a, b) {
+                __p && __p();
+                b = a[15].get(c);
+                if (b == null) return 0;
+                else {
+                    a = b[0];
+                    if (a) {
+                        d[0] = !0;
+                        return 0
+                    } else {
+                        d[0] = !1;
+                        return 0
+                    }
+                }
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(3, [e])])]);
+        return d[0]
+    }
+
+    function tb(a, c) {
+        return b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(1, [b("bs_block").__(2, [c])])])
+    }
+
+    function ub(a, c, d, e) {
+        __p && __p();
+        var f = [],
+            g = function(g, h) {
+                __p && __p();
+                h = g[15].get(c);
+                if (h == null) return 0;
+                else {
+                    h = h[1];
+                    for (var i = d, j = d + e | 0; i <= j; ++i) {
+                        var a = b("bs_belt_Option").flatMap(b("bs_belt_Array").get(h, i), function(a) {
+                            return C(g, a)
+                        });
+                        a !== undefined && f.push(b("bs_js_primitive").valFromOption(a))
+                    }
+                    return 0
+                }
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(3, [g])])]);
+        return f
+    }
+    var vb = [undefined];
+
+    function wb(a, c, d, e, f, g, h) {
+        __p && __p();
+        var i = function(j, i) {
+            __p && __p();
+            vb[0] = [c, d, e];
+            var k = j[15].get(c);
+            k = k == null ? [
+                [], undefined
+            ] : [k[1], k[0]];
+            var l = k[0];
+            if (b("Utils.bs").isSomeTrue(b("bs_js_primitive").undefined_to_opt(i[6][0][c]))) {
+                vb[0] = undefined;
+                i[6][0][c] = !1;
+                return 0
+            } else {
+                var m = i[2];
+                m = l.length - b("bs_belt_Option").getWithDefault(b("bs_js_primitive").nullable_to_opt(m.get(c)), 0) | 0;
+                var n = m - d | 0;
+                n = e - n | 0;
+                if (n > 0 && b("bs_caml_obj").caml_notequal(k[1], 1)) {
+                    k = b("MercuryServerRequests").getForFBID(a);
+                    var o = b("bs_js_null_undefined").fromOption(b("bs_belt_Option").map(b("bs_belt_Option").flatMap(b("bs_belt_Array").get(l, m - 1 | 0), function(a) {
+                            return C(j, a)
+                        }), function(a) {
+                            return a.timestamp
+                        })),
+                        p = i[4][0];
+                    i[4][0] = p + 1 | 0;
+                    i[3][0][String(p)] = [
+                        [c, d, e], f
+                    ];
+                    if (b("bs_caml_obj").caml_equal([c, d, e], vb[0])) {
+                        k.fetchThreadMessages(c, m, n, o, g, h);
+                        return 0
+                    } else return 0
+                } else return b("bs_curry")._1(f, b("bs_belt_Array").keepMap(l, function(a) {
+                    return C(j, a)
+                }).slice(d, e))
+            }
+        };
+        return b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(3, [i])])])
+    }
+
+    function xb(a) {
+        var c = [0],
+            d = function(d, a) {
+                c[0] = b("bs_caml_primitive").caml_int_min(Za(d, a), b("MercuryThreadlistConstants").MAX_UNSEEN_COUNT);
+                return 0
+            };
+        b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(2, [b("bs_block").__(3, [d])])]);
+        return c[0]
+    }
+
+    function yb(a) {
+        return b("bs_curry")._2(R, b("bs_js_primitive").some(a), [b("bs_block").__(1, [1])])
+    }
+    cb = b("ReasonReact.bs").wrapReasonForJs(Q[0], function(a) {
+        return b("bs_curry")._4(Q[1], undefined, undefined, b("bs_js_primitive").nullable_to_opt(a.fbid), a.children)
+    });
+    db = [Q[1]];
+    f.fbid = a;
+    f.deliveryReceipts = c;
+    f.readReceiptsPerThread = d;
+    f.ignoredIds = e;
+    f.blockedIds = h;
+    f.pendingFolderUnseenCount = i;
+    f.typing = j;
+    f.pendingReadStatusThreads = k;
+    f.messages = l;
+    f.localIDsMap = m;
+    f.messagesWithUploadsInFlight = n;
+    f.threadlistOrderMap = o;
+    f.pinnedThreads = p;
+    f.montage = q;
+    f.orderedMessageLists = r;
+    f.unreadCounts = s;
+    f.initialUnreadCounts = t;
+    f.unseenTimestamp = aa;
+    f.threads = ca;
+    f.send = R;
+    f.compute = hb;
+    f.getThreadMetaNow = S;
+    f.getMultiThreadMeta = T;
+    f.getThreadMeta = ib;
+    f.createNewLocalThread = jb;
+    f.createNewLocalThreadGenerateID = U;
+    f.createNewLocalGroupGeneralThreadGenerateID = V;
+    f.isEmptyLocalThread = W;
+    f.isNewEmptyLocalThread = lb;
+    f.getPinnedThreadlist = X;
+    f.unsubscribeThread = Y;
+    f.sendJS = Z;
+    f.invalidateSearchedMessages = tb;
+    f.hasLoadedNMessages = rb;
+    f.hasLoadedAllMessages = sb;
+    f.getCurrentlyLoadedMessages = pb;
+    f.getServerMessageID = qb;
+    f.getMessagesFromIDs = $;
+    f.getThreadMessagesRange = wb;
+    f.getThreadMessagesRangeNow = ub;
+    f.processPollStickerVoted = nb;
+    f.getUnseenUnreadCount = xb;
+    f.markAsSeen = yb;
+    f.processJSActions = ob;
+    f.Provider = db;
+    f.jsComponent = cb
+}), null);
+__d("M4Icon.bs", ["cssVar"], (function(a, b, c, d, e, f, g) {
+    "use strict";
+
+    function a(a) {
+        if (typeof a === "number")
+            if (a !== 0) return "#bec2c9";
+            else return "#FFFFFF";
+        else return a[0]
+    }
+    f.getColor = a
+}), null);
+__d("M4IconSVG.bs", ["React", "ReasonReact.bs"], (function(a, b, c, d, e, f) {
+    "use strict";
+    var g = b("ReasonReact.bs").statelessComponent("M4IconSVG");
+
+    function a(a, c) {
+        var d = a !== undefined ? a : "16px";
+        return [g[0], g[1], g[2], g[3], g[4], g[5], g[6], g[7], function() {
+            return b("React").createElement("svg", {
+                key: "svg",
+                height: d,
+                width: d,
+                version: "1.1",
+                viewBox: "0 0 16 16",
+                x: "0px",
+                xmlns: "http://www.w3.org/2000/svg",
+                xmlnsXlink: "http://www.w3.org/1999/xlink",
+                xmlSpace: "preserve",
+                y: "0px"
+            }, c)
+        }, g[9], g[10], g[11], g[12]]
+    }
+    f.component = g;
+    f.make = a
+}), null);
+__d("M4IconSettings.bs", ["React", "M4IconSVG.bs", "ReasonReact.bs"], (function(a, b, c, d, e, f) {
+    "use strict";
+    __p && __p();
+    var g = b("ReasonReact.bs").statelessComponent("M4IconSettings");
+
+    function h(a, c, d) {
+        var e = a !== undefined ? a : !0,
+            f = c !== undefined ? c : "blue",
+            h = {
+                fill: "none",
+                stroke: f,
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeMiterlimit: "10"
+            };
+        return [g[0], g[1], g[2], g[3], g[4], g[5], g[6], g[7], function() {
+            var a = !e;
+            return b("ReasonReact.bs").element(undefined, undefined, b("M4IconSVG.bs").make(undefined, [a ? b("React").createElement("g", {
+                key: "filled"
+            }, b("React").createElement("path", {
+                key: "outer",
+                style: h,
+                d: "M15.5,8.9V7.1l-2.2-0.5c-0.1-0.5-0.3-0.9-0.6-1.3l1.2-1.9l-1.2-1.2l-1.9,1.2C10.3,3,9.9,2.8,9.4,2.7L8.9,0.5\n          \t\t\tH7.1L6.6,2.7C6.1,2.8,5.7,3,5.2,3.2L3.3,2.1L2.1,3.3l1.2,1.9C3,5.7,2.8,6.1,2.7,6.6L0.5,7.1v1.7l2.2,0.5c0.1,0.5,0.3,0.9,0.6,1.3\n          \t\t\tl-1.2,1.9l1.2,1.2l1.9-1.2c0.4,0.2,0.9,0.4,1.3,0.6l0.5,2.2h1.7l0.5-2.2c0.5-0.1,0.9-0.3,1.3-0.6l1.9,1.2l1.2-1.2l-1.2-1.9\n          \t\t\tc0.2-0.4,0.4-0.9,0.6-1.3L15.5,8.9z"
+            }), b("React").createElement("circle", {
+                key: "inner",
+                style: h,
+                cx: "8",
+                cy: "8",
+                r: "2.5"
+            })) : b("React").createElement("path", {
+                key: "all",
+                d: "M15.5,8.9V7.1l-2.2-0.5c-0.1-0.5-0.3-0.9-0.6-1.3l1.2-1.9l-1.2-1.2l-1.9,1.2C10.3,3,9.9,2.8,9.4,2.7L8.9,0.5 H7.1L6.6,2.7C6.1,2.8,5.7,3,5.2,3.2L3.3,2.1L2.1,3.3l1.2,1.9C3,5.7,2.8,6.1,2.7,6.6L0.5,7.1v1.7l2.2,0.5c0.1,0.5,0.3,0.9,0.6,1.3 l-1.2,1.9l1.2,1.2l1.9-1.2c0.4,0.2,0.9,0.4,1.3,0.6l0.5,2.2h1.7l0.5-2.2c0.5-0.1,0.9-0.3,1.3-0.6l1.9,1.2l1.2-1.2l-1.2-1.9 c0.2-0.4,0.4-0.9,0.6-1.3L15.5,8.9z M8,11c-1.7,0-3-1.3-3-3c0-1.7,1.3-3,3-3c1.7,0,3,1.3,3,3C11,9.7,9.7,11,8,11z",
+                fill: f,
+                stroke: f
+            })]))
+        }, g[9], g[10], g[11], g[12]]
+    }
+    a = b("ReasonReact.bs").wrapReasonForJs(g, function(a) {
+        return h(a.filled, a.color, [])
+    });
+    f.component = g;
+    f.make = h;
+    f.jsComponent = a
+}), null);
+__d("ChatTabMenuIcon.bs", ["ix", "M4Icon.bs", "asset", "ImageReact.bs", "CurrentUser", "ReasonReact.bs", "M4IconSettings.bs"], (function(a, b, c, d, e, f, g) {
+    "use strict";
+    __p && __p();
+    var h = b("ReasonReact.bs").statelessComponent("ChatTabMenuIcon");
+
+    function i(a) {
+        return [h[0], h[1], h[2], h[3], h[4], h[5], h[6], h[7], function() {
+            if (b("CurrentUser").isWorkUser()) {
+                var c = typeof a === "number" ? a !== 0 ? g("483818") : g("492302") : g("414853");
+                return b("ReasonReact.bs").element(undefined, undefined, b("ImageReact.bs").make("button", undefined, undefined, undefined, c, undefined, undefined, undefined, undefined, []))
+            } else {
+                c = b("M4Icon.bs").getColor(a);
+                return b("ReasonReact.bs").element(undefined, undefined, b("M4IconSettings.bs").make(!0, c, []))
+            }
+        }, h[9], h[10], h[11], h[12]]
+    }
+    a = b("ReasonReact.bs").wrapReasonForJs(h, function(a) {
+        return i(a.iconStyle)
+    });
+    f.component = h;
+    f.make = i;
+    f.jsComponent = a
+}), null);
+__d("M4IconCamcorder.bs", ["React", "M4IconSVG.bs", "ReasonReact.bs"], (function(a, b, c, d, e, f) {
+    "use strict";
+    __p && __p();
+    var g = b("ReasonReact.bs").statelessComponent("M4IconCamcorder");
+
+    function h(a, c, d) {
+        var e = a !== undefined ? a : !0,
+            f = c !== undefined ? c : "blue",
+            h = {
+                fill: e ? f : "none",
+                stroke: f
+            };
+        return [g[0], g[1], g[2], g[3], g[4], g[5], g[6], g[7], function() {
+            return b("ReasonReact.bs").element(undefined, undefined, b("M4IconSVG.bs").make(undefined, [b("React").createElement("path", {
+                key: "body",
+                style: h,
+                d: "M9.5,13.5h-7c-1.1,0-2-0.9-2-2v-7c0-1.1,0.9-2,2-2h7c1.1,0,2,0.9,2,2v7C11.5,12.6,10.6,13.5,9.5,13.5z"
+            }), b("React").createElement("line", {
+                key: "focus-ring",
+                stroke: e ? "none" : f,
+                x1: "13.5",
+                x2: "13.5",
+                y1: "5",
+                y2: "11"
+            }), b("React").createElement("path", {
+                key: "lens",
+                style: h,
+                d: "M15,3.6l-3.5,3V8v1.4l3.5,3c0.2,0.2,0.5,0,0.5-0.3V8V3.9C15.5,3.6,15.2,3.4,15,3.6z"
+            })]))
+        }, g[9], g[10], g[11], g[12]]
+    }
+    a = b("ReasonReact.bs").wrapReasonForJs(g, function(a) {
+        return h(a.filled, a.color, [])
+    });
+    f.component = g;
+    f.make = h;
+    f.jsComponent = a
+}), null);
+__d("M4IconPhone.bs", ["React", "M4IconSVG.bs", "ReasonReact.bs"], (function(a, b, c, d, e, f) {
+    "use strict";
+    __p && __p();
+    var g = b("ReasonReact.bs").statelessComponent("M4IconPhone");
+
+    function h(a, c, d) {
+        d = a !== undefined ? a : !0;
+        a = c !== undefined ? c : "blue";
+        var e = {
+            fill: d ? a : "none",
+            stroke: a
+        };
+        return [g[0], g[1], g[2], g[3], g[4], g[5], g[6], g[7], function() {
+            return b("ReasonReact.bs").element(undefined, undefined, b("M4IconSVG.bs").make(undefined, [b("React").createElement("path", {
+                key: "all",
+                style: e,
+                d: "M8.8,11.6c0.1,0,0.1,0.1,0.2,0.1c0.4,0.2,0.8,0.1,1-0.3c0.1-0.2,0.2-0.4,0.3-0.6c0.2-0.2,0.5-0.6,0.8-0.7 C11.5,10,11.8,10,12,10c0.4,0,0.9,0.4,1.6,0.8c0.7,0.4,1.2,0.8,1.5,1c0.2,0.2,0.3,0.4,0.3,0.6c0,0.4,0,1.2-0.7,1.9 c-1,1.1-2.5,1.6-4.3,1c-1.8-0.6-4.1-1.7-6-3.7s-3.1-4.2-3.7-6s-0.2-3.3,1-4.3c0.7-0.6,1.4-0.7,1.9-0.7c0.2,0,0.5,0.1,0.6,0.3 c0.2,0.3,0.6,0.8,1,1.5C5.7,3.1,6,3.6,6,4c0,0.3,0,0.6-0.1,0.8C5.8,5.1,5.5,5.4,5.2,5.6C5,5.8,4.8,5.9,4.7,6C4.3,6.1,4.1,6.6,4.3,7 c0,0.1,0.1,0.1,0.1,0.2C5.5,9,7,10.5,8.8,11.6z"
+            })]))
+        }, g[9], g[10], g[11], g[12]]
+    }
+    a = b("ReasonReact.bs").wrapReasonForJs(g, function(a) {
+        return h(a.filled, a.color, [])
+    });
+    f.component = g;
+    f.make = h;
+    f.jsComponent = a
+}), null);
+__d("ChatVideoCallIcon.bs", ["ix", "M4Icon.bs", "asset", "ImageReact.bs", "CurrentUser", "M4IconPhone.bs", "ReasonReact.bs", "M4IconCamcorder.bs"], (function(a, b, c, d, e, f, g) {
+    "use strict";
+    __p && __p();
+    var h = b("ReasonReact.bs").statelessComponent("ChatVideoCallIcon");
+
+    function i(a, c) {
+        __p && __p();
+        return [h[0], h[1], h[2], h[3], h[4], h[5], h[6], h[7], function() {
+            if (b("CurrentUser").isWorkUser()) {
+                var d = a ? typeof c === "number" ? c !== 0 ? g("588631") : g("494527") : g("663415") : typeof c === "number" ? c !== 0 ? g("480009") : g("495226") : g("658572");
+                return b("ReasonReact.bs").element(undefined, undefined, b("ImageReact.bs").make(undefined, undefined, undefined, undefined, d, undefined, undefined, undefined, undefined, []))
+            } else {
+                d = b("M4Icon.bs").getColor(c);
+                if (a) return b("ReasonReact.bs").element(undefined, undefined, b("M4IconPhone.bs").make(!0, d, []));
+                else return b("ReasonReact.bs").element(undefined, undefined, b("M4IconCamcorder.bs").make(!0, d, []))
+            }
+        }, h[9], h[10], h[11], h[12]]
+    }
+    a = b("ReasonReact.bs").wrapReasonForJs(h, function(a) {
+        return i(a.isAudio, a.iconStyle)
+    });
+    f.component = h;
+    f.make = i;
+    f.jsComponent = a
+}), null);
+__d("M4IconPhoto.bs", ["React", "M4IconSVG.bs", "ReasonReact.bs"], (function(a, b, c, d, e, f) {
+    "use strict";
+    __p && __p();
+    var g = b("ReasonReact.bs").statelessComponent("M4IconPhoto");
+
+    function h(a, c, d) {
+        var e = a !== undefined ? a : !0,
+            f = c !== undefined ? c : "blue",
+            h = {
+                fill: "none",
+                stroke: f,
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeMiterlimit: "10"
+            };
+        return [g[0], g[1], g[2], g[3], g[4], g[5], g[6], g[7], function() {
+            return b("ReasonReact.bs").element(undefined, undefined, b("M4IconSVG.bs").make(undefined, [e ? b("React").createElement("g", {
+                key: "filled"
+            }, b("React").createElement("path", {
+                key: "bg",
+                d: "M1.3,13.1L2,1.7c0-0.1,0-0.2,0-0.4L1.2,1.4C0.5,1.5,0,2.4,0,3.4l0.6,10.9c0,0.5,0.2,0.9,0.4,1.3C1.4,15.8,1.7,16,1.9,16 c0,0,0.1,0,0.1,0l0.3,0C1.7,15.4,1.2,14.3,1.3,13.1z",
+                fill: f
+            }), b("React").createElement("path", {
+                key: "hills",
+                d: "M13,6.2c-0.2-0.2-0.6-0.3-0.8-0.1L9.4,8.5c-0.2,0.1-0.2,0.4,0,0.6L10,9.8c0.2,0.2,0.2,0.6-0.1,0.8c-0.1,0.1-0.2,0.1-0.4,0.1 c-0.2,0-0.3-0.1-0.4-0.2L7.3,8.3C7.1,8.1,6.7,8,6.5,8.2l-2.6,2l-0.4,3.1c0,0.5,0.2,1.6,0.7,1.7l8.8,0.6c0.2,0,0.5,0,0.7-0.2 c0.2-0.2,0.5-0.7,0.6-0.9l0.6-5.9L13,6.2z",
+                fill: f
+            }), b("React").createElement("path", {
+                key: "frame",
+                style: h,
+                d: "M12.9,15.5l-8.2-0.7C4,14.7,3.4,14,3.4,13.2l1-11.4C4.5,1,5.2,0.5,6,0.5l8.2,0.7C15,1.3,15.5,2,15.5,2.8 l-1,11.4C14.4,15,13.7,15.6,12.9,15.5z"
+            })) : b("React").createElement("g", {
+                key: "outline"
+            }, b("React").createElement("path", {
+                key: "bg",
+                d: "M2.1,14.7c-0.1-0.1-0.2-0.3-0.2-0.5l0-0.1c-0.1-0.3-0.1-0.7-0.1-1.1l0-0.1L1,3.3c0-0.5,0.3-0.9,0.8-0.9l1-0.1l0.1-0.7\n              c0-0.1,0-0.2,0.1-0.4L1.7,1.4c-1,0.1-1.8,1-1.7,2l0.9,10.9c0,0.5,0.3,0.9,0.7,1.3C1.9,15.8,2.3,16,2.8,16c0.1,0,0.1,0,0.2,0l0.5,0\n              C2.8,15.7,2.4,15.2,2.1,14.7z",
+                fill: f
+            }), b("React").createElement("path", {
+                key: "frame",
+                style: h,
+                d: "M12.9,15.5l-8.3-0.7c-0.8-0.1-1.4-0.8-1.3-1.6l1-11.4C4.3,1,5.1,0.4,5.8,0.5l8.3,0.7C15,1.3,15.5,2,15.5,2.8 l-1,11.4C14.4,15,13.7,15.6,12.9,15.5z"
+            }), b("React").createElement("polyline", {
+                key: "left-hill",
+                style: h,
+                points: "3.5,11 6.9,8.6 9.2,11.3 "
+            }), b("React").createElement("polyline", {
+                key: "right-hill",
+                style: h,
+                points: "14.6,9 12.5,6.5 8.3,10 "
+            })), b("React").createElement("circle", {
+                key: "sun",
+                cx: "7.5",
+                cy: "4.5",
+                fill: f,
+                r: "1.5"
+            })]))
+        }, g[9], g[10], g[11], g[12]]
+    }
+    a = b("ReasonReact.bs").wrapReasonForJs(g, function(a) {
+        return h(a.filled, a.color, [])
+    });
+    f.component = g;
+    f.make = h;
+    f.jsComponent = a
+}), null);
+__d("M4IconSend.bs", ["React", "M4IconSVG.bs", "ReasonReact.bs"], (function(a, b, c, d, e, f) {
+    "use strict";
+    __p && __p();
+    var g = b("ReasonReact.bs").statelessComponent("M4IconSend");
+
+    function h(a, c, d) {
+        var e = a !== undefined ? a : !0,
+            f = c !== undefined ? c : "blue";
+        return [g[0], g[1], g[2], g[3], g[4], g[5], g[6], g[7], function() {
+            return b("ReasonReact.bs").element(undefined, undefined, b("M4IconSVG.bs").make(undefined, [e ? b("React").createElement("path", {
+                key: "filled",
+                d: "M11,8.3L2.6,8.8C2.4,8.8,2.3,8.9,2.3,9l-1.2,4.1c-0.2,0.5,0,1.1,0.4,1.5C1.7,14.9,2,15,2.4,15c0.2,0,0.4,0,0.6-0.1l11.2-5.6 C14.8,9,15.1,8.4,15,7.8c-0.1-0.4-0.4-0.8-0.8-1L3,1.1C2.5,0.9,1.9,1,1.5,1.3C1,1.7,0.9,2.3,1.1,2.9L2.3,7c0,0.1,0.2,0.2,0.3,0.2 L11,7.7c0,0,0.3,0,0.3,0.3S11,8.3,11,8.3z",
+                fill: f
+            }) : b("React").createElement("g", {
+                key: "outline"
+            }, b("React").createElement("path", {
+                key: "perimeter",
+                d: "M2.4,1.6l12,6c0.7,0.4,0.7,1.4,0,1.8l-12,6C1.7,15.8,0.8,15,1,14.2l1.7-5.4c0.1-0.2,0.1-0.4,0-0.6L1,2.8 C0.8,2,1.7,1.2,2.4,1.6z",
+                fill: "none",
+                stroke: f,
+                strokeMiterlimit: "10"
+            }), b("React").createElement("line", {
+                key: "center-line",
+                fill: "none",
+                stroke: f,
+                strokeMiterlimit: "10",
+                x1: "2.8",
+                x2: "14.8",
+                y1: "8.5",
+                y2: "8.5"
+            }))]))
+        }, g[9], g[10], g[11], g[12]]
+    }
+    a = b("ReasonReact.bs").wrapReasonForJs(g, function(a) {
+        return h(a.filled, a.color, [])
+    });
+    f.component = g;
+    f.make = h;
+    f.jsComponent = a
+}), null);
