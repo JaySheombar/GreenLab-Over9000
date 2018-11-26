@@ -179,7 +179,8 @@ mean_energy
 
 # Visualize the data using Histograms, qqnorm and qqplot
 
-histo_raw <-qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Consumption", xlab = "Energy Consumption (joules)", ylab = "density", col = I("White"))
+histo_raw <-qplot(data$Energy_consumption, geom="histogram", main="Histogram for Energy Consumption", xlab = "Energy Consumption (joules)", ylab = "Density", col = I("White"))
+
 qqplot_raw <-ggplot(data.frame(y = data$Energy_consumption), aes(sample = y)) +
   stat_qq() + stat_qq_line(col="red", lty=2) + ylab("Energy Consumption Sample Quantile (joules)") + 
   xlab("Normal Theoretical Quantile") + ggtitle("Q-Q Plot: Energy Consumption")
@@ -204,6 +205,12 @@ skewness(data$Energy_consumption)
 energy_squared <-data$Energy_consumption ^ 2
 energy_natural_log <- log(data$Energy_consumption)        # performs natural log
 energy_reciprocal <- 1/ data$Energy_consumption
+
+# Check the skewness of each transformation
+skewness(energy_squared)
+skewness(energy_natural_log)
+skewness(energy_reciprocal)
+
 
 ## Visualize the reciprocal of the data -- No major improvement
 histo_reciprocal <- qplot(energy_reciprocal, geom="histogram", main="Histogram for the Reciprocal of the Energy Consumption ", xlab = "Reciprocal of Energy Consumption (1/ joules)", ylab = "Density", col = I("White"))
@@ -251,7 +258,7 @@ p
 
 # View a scatter plot of the data per Performance Score
 ggplot(data.frame(y = energy_with_performance$Energy_consumption), aes(x = energy_with_performance$Performance_score, y=y, sample = y, color = energy_with_performance$Performance)) +
-  labs(title="Scatter Plot of Performance Level versus Energy Consumption", x="Performance Score",  y = "Energy Consumption (joules)", color = "Performance Level")+
+  labs(title="Scatter Plot of Performance Score versus Energy Consumption", x="Performance Score",  y = "Energy Consumption (joules)", color = "Performance Level")+
   geom_point()
 
 
@@ -291,7 +298,7 @@ kruskal.test(energy_with_performance$Energy_consumption, energy_with_performance
 #   (effectively performing 3 * (3-1) / 2 pairwise tests) on the individual
 #   performance groups.  Apply Holms correction to correct for multiple tests:
 # https://www.rdocumentation.org/packages/FSA/versions/0.8.20/topics/dunnTest
-dunnTest(Energy_consumption ~ Performance, data = energies_with_ranks,method="holm")
+dunnTest(Energy_consumption ~ Performance, data = energies_with_ranks,method="bonferroni")
 
 
 # Make an analysis of Correlion which is non-parametric.
@@ -304,6 +311,7 @@ energy_good_performance <- energies_with_ranks[energies_with_ranks$Performance =
 energy_average_performance <- energies_with_ranks[energies_with_ranks$Performance == "Average", ]
 energy_poor_performance <- energies_with_ranks[energies_with_ranks$Performance == "Poor", ]
 
+# Make a Density Plot for the Performance Levels and Energy Consumption
 ggplot(energies_with_ranks, aes(energies_with_ranks$Energy_consumption, fill = Performance) ) +
   geom_density(alpha = 0.4)+ labs(title = "Energy Consumption per Performance Level", x = "Energy Consumption (joules)", y = "Density")
 
