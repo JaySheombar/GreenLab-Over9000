@@ -2,18 +2,20 @@
 From the results of the statistical tests performed in the previous section we can elaborate on our research question. 
 The outcome of the Kruskal Wallis test shows that we can reject our null hypothesis. Therefore, we can say that there is a difference in the means of energy consumption of the different performance levels. \newline
 
-Given that Kruskal Wallis is an omnibus statistical test, the nature of these differences is best explained with the Dunn test. With the results from the Dunn test we can see that there is no significant differences of energy consumption between the good and average performance levels of web apps. However, the test shows that the difference in energy consumption of web apps with poor performance levels is quite relevant.
+Given that Kruskal Wallis is an omnibus statistical test, the nature of these differences is best explained with the Dunn test. The results from the Dunn test also exhibits the same result as Kruskal Wallis. Dunn's test shows that there is indeed a significant difference among all three performance level pairs(good-average, good-poor, average-poor). Moreover, the test shows that the difference in energy consumption of web apps with poor performance levels is quite relevant and the difference between good and average is also quite distinctive. Then, we want to determine the degree of differences of each group using Cliff's Delta.
 \newline
 
-Finally we try to see the degree of overlap between two distributions of performance levels. With Cliff's Delta test we know that the effect size of a poor performance level against good and average levels is moderate as described by the Cliff's delta guidelines. However, comparing good and average performance levels yields negligible effect sizes. 
-\newline
+Finally to visualize the degree of overlap between two distributions of performance levels, we run Cliff's delta test. This yields quite a large effect size between good-poor and average-poor while it results in a medium effect size for good-average web apps, which is still a significant value and therefore cannot be negligible. Looking into the differences in effect size, we can safely deduce that there are diminishing effects as web apps become better in performing. Since the effect size is still significant enough therefore, it is worth an effort for the improvement considering the existence of medium effect size between good and average performing web apps.\newline
 
-\hlcyan{With the help of data analysis and the obtained results from our experiment we can answer our \textit{research question: To what extent does the performance score of lighthouse correlate with energy consumption in the context of web applications?}}
-\newline
+With the help of data analysis and the obtained results from our experiment we can answer our \textit{research question:}\newline
+\textit{To what extent does the performance score of lighthouse correlate with energy consumption in the context of web applications?}\newline
 
-\hlcyan{We can conclude that performance score of lighthouse can be used as an indication of how much energy a certain web app consumes. More precisely, we can say that when a web app has a performance score between 0 and 44, the energy consumption is going to be higher than a web app with more than 44 as performance score. }
-\newline
+We can conclude that performance score of lighthouse can be used as an indication of how much energy a certain web app consumes. More precisely, we can say that when a web app has a performance score between 0 and 44, the energy consumption is going to be higher than a web app with more than 44 as performance score. Since, there exists difference in effect size between good and average, we can conclude that an averagely performed web app with score 45-74 consumes more energy compared to the one with good performance score(75-100).\newline
 
-\hlcyan{This information can be useful for the web developers who are interested in reducing the energy consumption from their web applications. While developing web apps they can take into account the performance score from lighthouse's performance audit as a guide to estimate how much energy is going to be consumed by that particular web app. And based on this score, they can adopt changes or optimize the codes so that their web app consumes less energy.}
+Therefore performance scores as measured by the performance score tool namely lighthouse, are correlated with the energy consumption in the context of web apps. Apparently, there are large gains when jumping between poor to average when it comes to energy consumption, while there are significant gains that can be achieved by improving the performance from average to good.\newline
+
+This information can be useful for the web developers who are interested in reducing the energy consumption from their web applications. While developing web apps they can take into account the performance score from lighthouse's performance audit as a guide to estimate how much energy is going to be consumed by that particular web app. And based on this score, they can adopt changes or optimize the codes so that their web app consumes less energy. Considering all these factors, we like to recommend the developers to use performance tools like lighthouse as a guiding tool in assessing the development process. By doing so it would be possible to obtain the followings:\newline
+\textit{A) Developers will make a high performance web app which has been proven to help with user retention.}\newline
+\textit{B) Developers will develop web apps which consume less energy.}
 
 
