@@ -7,13 +7,13 @@ The summary presented in Table \ref{tab:table3} and histogram in Fig \ref{fig:hi
     \begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
       \textbf{  } & \textbf{Energy consumption} \\
       \hline
-      Min & 384.1\\
-      1st Qu. & 1438.7\\
-      Median & 2324.4\\
-      Mean & 3712.2 \\
-      3rd Qu. & 4221.0 \\
-      Max & 32054 \\
-      St. deviation & 4189.437\\
+      Min & 3.543\\
+      1st Qu. & 71.025\\
+      Median & 153.555\\
+      Mean & 480.398 \\
+      3rd Qu. & 362.120 \\
+      Max & 9820.064 \\
+      St. deviation & 1080.97\\
     \end{tabular}
         \caption{Summary energy consumption.}
            \label{tab:table3}
@@ -21,8 +21,7 @@ The summary presented in Table \ref{tab:table3} and histogram in Fig \ref{fig:hi
 \end{table}
 
 
-
-The energy consumption is between 3.543 joules and 9820.064 joules. The central tendency based on the median lies around 153.555 joules. Using the skewness formula \cite{Rep:e1071}, we are able to quantify the skewness of the data. We tested for skewness and achieved a result of 4.77. This value demonstrates a positive skewness as values that deviate from zero implies that the data is not symmetrical. This is further corroborated by the shape of fig \ref{fig:histec}, with the data showing a long tail towards the higher energy consumption values. A standard deviation of 1080.97 joules shows that there is a big spread in the data.  
+The energy consumption is between 3.543 joules and 9820.064 joules. The central tendency based on the median lies around 153.555 joules. Using the skewness formula \cite{Rep:e1071}, we are able to quantify the skewness of the data. We tested for skewness and achieved a result of 4.77. This value demonstrates a positive skewness as values that deviate from zero implies that the data is not symmetrical. This is further corroborated by the shape of fig \ref{fig:histec}, with the data showing a long tail towards the higher energy consumption values. A standard deviation of 1080.97 joules shows that there is a big spread in the data. 
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{./NewImages/Fig_4_Histogram_Energy_Consumption.png}
@@ -30,7 +29,7 @@ The energy consumption is between 3.543 joules and 9820.064 joules. The central 
   \label{fig:histec}
 \end{figure}
 
-To get a clearer sense of the observations, we zoomed in on the energy consumption per level in Fig. \ref{fig:boxecv} and Fig. \ref{fig:scatpvsec}. We created energy-consumption box plots diagrams and scatter-plots for the performance levels Good, Average and poor.
+To get a clearer sense of the observations, we zoomed in on the energy consumption per level in Fig. \ref{fig:boxecv} and Fig. \ref{fig:scatpvsec}. We created energy-consumption box plots diagrams and scatter-plots for the performance levels Good, Average and Poor.
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{./NewImages/Fig_5_Box_Plot_Energy_Per_Level.png}
@@ -101,6 +100,7 @@ Next we applied Cliff's delta to investigate the effect size. Effect size will h
 \end{figure}
 
 In order to support the results given by Cliff's delta test we depicted in Fig. \ref{fig:density-levels} a density graph with different levels. In this graph we can see how the density of good and average score are very similar and show a high frequency on low energy consumption values. Contrarily, we see smaller frequencies for low energy consumption for the web apps with poor performance score.
+
 
 
 
