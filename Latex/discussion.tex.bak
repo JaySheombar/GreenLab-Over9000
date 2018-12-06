@@ -1,0 +1,6 @@
+\section{Discussion}
+From the results of the statistical tests performed in the previous section we can elaborate on our research question. 
+The outcome of the Kruskal Wallis test shows that we can reject our null hypothesis. Therefore, we can say that there is a difference in the means of energy consumption of the different performance levels.  
+Given that Kruskal Wallis is an omnibus statistical test, the nature of these differences is best explained with the Dunn test. With the results from the Dunn test we can see that there is no significant differences of energy consumption between the good and average performance levels of web apps. However, the test shows that the difference in energy consumption of web apps with poor performance levels is quite relevant.
+
+Finally we try to see the degree of overlap between two distributions of performance levels. With Cliff's Delta test we know that the effect size of a poor performance level against good and average levels is moderate as described by the Cliff's delta guidelines covered in the course. However, comparing good and average performance levels yields negligible effect sizes. 

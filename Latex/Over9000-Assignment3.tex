@@ -1,0 +1,113 @@
+\documentclass[10pt, conference, compsocconf]{IEEEtran}
+\usepackage[bookmarks=true]{hyperref}
+\usepackage{epsfig}
+\usepackage{amsmath,amssymb,amsfonts,latexsym}
+\usepackage{enumerate}
+\usepackage{xspace}
+\usepackage{epsf,picinpar}
+\usepackage{varioref}
+\usepackage{colortbl,multirow,hhline}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{colortbl,multirow,hhline}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{caption}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{pifont}
+\usepackage{xcolor,colortbl}
+\usepackage{url}
+\usepackage{balance}
+\usepackage{graphicx, subfigure}
+\usepackage{longtable}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{framed}
+\usepackage{morefloats}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{pdfpages}
+\usepackage{fancybox}
+\usepackage{amsmath}
+\usepackage{flushend}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{makecell}
+\usepackage{soul}
+\usepackage{multirow}
+\usepackage{color}
+
+\DeclareRobustCommand{\hlcyan}[1]{{\sethlcolor{cyan}\hl{#1}}}
+
+\renewcommand{\ttdefault}{cmr}
+
+\newcommand{\limit}[1]{\textcolor{red}{\ding{46}~Page limit:~#1}\\}
+\newcommand{\todo}[1]{\textcolor{blue}{\ding{46}~#1}} 
+\newcommand{\ie}{\emph{i.e.,}\xspace}
+\newcommand{\eg}{\emph{e.g.,}\xspace}
+\newcommand{\etc}{etc.\xspace}
+\newcommand{\etal}{\emph{et~al.}\xspace} 
+    
+\begin{document}
+
+\title{
+	\todo{Are performance scores good indicators for energy efficiency of web apps}
+}
+
+\author{
+\IEEEauthorblockN{Miguel Morales Exposito}
+\IEEEauthorblockA{2618012\\
+m.e.miguel@student.vu.nl}
+\and
+\IEEEauthorblockN{Tanjina Islam}
+\IEEEauthorblockA{2609513\\
+tanjina012@gmail.com}
+\and
+\IEEEauthorblockN{Christian Valladares}
+\IEEEauthorblockA{2612946\\
+cvalladares4837@gmail.com}
+\and
+\IEEEauthorblockN{Sanjay Sheombar}
+\IEEEauthorblockA{2589918\\
+s.sheombar@student.vu.nl}
+\and
+\IEEEauthorblockN{Kwame Chan-Jong-Chu}
+\IEEEauthorblockA{2583387 Number\\
+kwamsc91@gmail.com}
+}
+
+\maketitle
+
+\begin{abstract}
+
+\noindent \textit{Context}. Developers have access to tools like Lighthouse that help them assess the performance of web apps and to guide the adoption of development best practices. When it comes to energy consumption however, these tools seem to be lacking. 
+
+\noindent \textit{Goal}. This research investigates if there is correlation between the performance scores from Lighthouse and the energy consumption of web apps. By proving correlation, the performance scores could help developers guide their development in less energy consuming web apps.
+
+\noindent \textit{Method}. 21 web apps were measured with the Trepn energy profiler and grouped on the performance treatments: Good, Average and Poor. To assess if the energy consumption is related to the fixed performance treatment, we performed the Kruskall Wallis test. We also performed the Spearman's rank correlation test to identify the correlation between the different performance treatments and energy consumption. Furthermore, we performed Dunn's test to identify the pairwise difference among performance treatments. To quantify these differences, we performed Cliff's Delta between the different pair groups to determine the effect size. 
+
+\noindent \textit{Results}. The Kruskall Wallis test resulted in a significant difference between the performance score cut-offs with a p-value of 3.382e-14. We identified a correlation of -0.324 between performance scores and energy consumption; implying that an increase in performance brings about a decrease in energy consumption. Performing Dunn's test, we discovered that there is a significant difference between Good-Poor and Average-Poor, with an effect size of respectively  $d_{Good-Poor} = -0.444$ and $d_{average-poor} =  -0.386$. However, Dunn's test did not show a significant difference between good and average performing web-apps with a p-value of 0.499, and this is also corroborated by a negligible delta value of -0.099. 
+
+\noindent \textit{Conclusions}. We concluded that poor performant web apps consume more energy than web apps with good or average performance levels. However, the performance score alone would not be sufficient in motivating the software developers to build web apps that consume less energy. Performance scores could guide developers in developing less energy consuming web apps, until the treshold for average is reached. \newline
+\end{abstract}
+
+\begin{IEEEkeywords}
+Empirical Software Engineering, Green Software, Mobile, Lighthouse, Energy Consumption,
+\end{IEEEkeywords}
+
+\input{intro.tex}
+\input{definition.tex}
+\input{planning.tex}
+\input{execution.tex}
+\input{results.tex}
+\input{discussion.tex}
+\input{threats.tex}
+\input{conclusion.tex}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs.bib}
+
+\end{document}

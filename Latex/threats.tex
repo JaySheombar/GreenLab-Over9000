@@ -1,0 +1,61 @@
+\section{Threats To Validity}\label{sec:threats}
+The validity of the experiment has been analyzed based on the four types of classification as defined by Cook and Campbell \cite{Book:Quasi-exp}.The four different types of threats to the validity of our experiment are described in the following sections:
+
+\subsection{Internal Validity}
+
+\textbf{History}
+
+The way we performed the experiments to collect the energy consumption data was incremental. The first three data collection iterations collected energy consumption data on increments of 5 tests per day with two minutes between test. The last iteration was performed 4 days later with a repetition of 10 runs with two minutes between runs. This way we obtained the energy consumption of each web app 25 times. Furthermore, we performed the subject selection based on performance scores a few days before the energy consumption data was collected. Given the time gap between the subject selection and the data collection process, history may be  an internal threat to validity because a web app's performance score could have changed all throughout the data collection process.  
+This is also true for the Performance score for a web app.  Given the time constraints, the motivation behind performing a more iterative data collection was to ensure that a balanced data set was produced; we opted for smaller increments so that every web app ended up with an equal number of runs per web app while reducing the risk of not collecting enough data on time. Furthermore, we tried to collect the energy consumption data on iterations as close to each other as possible to mitigate this threat.   \newline
+
+
+\textbf{Maturation}
+
+Maturation might play a role if a trial is repeated multiple times over same object.  In order to reduce the effect of it, we made sure that Android runner takes intervals of 2 minutes with a duration of 60 seconds between each test execution. After each execution, it also clears up the cache from the web browser. Thereby, even though the trials are applied in different time-frames we made sure that there was not any cached data to influence the second run. \newline
+
+\textbf{Reliability of measures}
+
+There are several factor that can affect the reliability of the measures i.e. brightness of the devices, distance to the router and interference with other processes consuming energy. To mitigate this, we always set the brightness of the screen to the minimum and always set the device at the same distance from the router. To ensure that the energy measured is only consumed by the web app under test, we used the delta values for power consumption of Trepn which does not consider the energy consumed by the profiler and the OS.
+
+
+
+
+\subsection{External Validity}
+
+\textbf{Interaction of selection and treatment}
+
+Since convenience sampling has been chosen as the sampling technique, there is a high chance of introducing biases and therefore it will make the outcome difficult to be generalized. This threat deals with the situation when the population of subjects is not representative of the one for which we would like to generalize our results. The population of the subjects (web apps) was chosen from the Alexa top 1 million web apps in terms of high traffic. We randomly selected 21 out of the 100 popular most visited web apps as our representative sample. We sampled the top 100 subset due to their high traffic--thus we select web apps of interest to a general population.  Furthermore, the randomization of the selection process allows us to not introduce biases based on the type of web apps selected.  
+Although the specific selection of samples affects the external validity and thus the results obtained from it may not be generalized but however, specific sampling helps to represent the scope of our defined experiment. Which in turn, results in performing the analysis of outcomes much more easier and thus increase the conclusion validity. \newline
+
+
+\textbf{Interaction of setting and treatment}
+
+This threat deals with the situation when the experiments are performed in such a testing environment which is not realistic. For our experiment we used a relatively new device connected via wifi which representative of the way most users browse the internet. Google Chrome was the mobile browser of choice which captures \hlcyan{60\% of market share and Lighthouse which is supported by Google. By using these tools and materials we made sure to generate a realistic experimental setting environment that is representative of a real world problem.}
+
+
+\subsection{Construct Validity}
+
+\textbf{Definition of constructs}
+
+In order to mitigate inadequate pre-operational explanation of constructs, we defined our constructs quite early before even performing the experiments using the standard GQM method. The goal of our experiment as well as the questions related to this goal and the metrics that are relevant to address those questions have been derived from this well-established GQM- tree. Using the GQM approach, we also formulated the hypotheses to address the main research question and identified the independent and dependant variables for our experiment. \newline
+
+\textbf{Mono-operation bias}
+
+Our experiment is based on one factor, performance score which is the independent variable of our experiment design. Since we have only one independent variable, therefore the experiment might face mono-operation bias. But, we performed our experiments using 25 trials on single factor with 3 treatments which will help to mitigate the mono-operation bias from our measurements.
+
+
+
+\subsection{Conclusion Validity}
+
+\textbf{Low statistical power}
+
+In order to deal with this threat and reduce the impact size of it, we made sure to have enough data to perform the data analysis. We used a fixed number of treatments i.e. 3 for our experiments with 7 subjects each. So in total 21 web apps and we executed the test 25 times per web app. Therefore, we have relatively large sample size with 525 trials in total of the web apps for all three treatment levels. This is done to make sure that we have sufficient data to perform statistical analysis on that.  However, for future research, it may be helpful to increase the number of web apps per category to verify if statistically significant differences may be identified between good and average performing web apps. \newline
+
+\textbf{Violated assumptions of statistical tests}
+
+To mitigate this threat to validity, we checked the distribution of data before performing the statistical analysis on that. This is done to make sure that we will select appropriate tests basing on the data distribution type. So that, based on the distribution of data, we can adjust our tests accordingly. While formulating our experiment plan, we decided to use the ANOVA test assuming the energy consumption is normally distributed. In our case this was not true hence we adjusted our tests and migrated to Kruskal-Wallis test. \newline
+
+\textbf{Fishing and error rate}
+
+Since convenience sampling has been chosen as the sampling technique, there is a high chance of introducing biases and therefore it could influence the outcomes of our experiment. However, the specific selection of samples helps to define the scope of the experiments and thus will help to answer our research questions. But apart from that, with regards to mitigate this threat to validity we applied Bonferroni's p-value correction technique to obtain statistical correctness so that we can adapt the significance difference that we found while performing different statistical tests. 
+
