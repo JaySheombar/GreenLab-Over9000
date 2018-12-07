@@ -15,7 +15,7 @@ Maturation might play a role if a trial is repeated multiple times over same obj
 
 \textbf{Reliability of measures}
 
-There are several factor that can affect the reliability of the measures i.e. brightness of the devices, distance to the router and interference with other processes consuming energy. To mitigate this, we always set the brightness of the screen to the minimum and always set the device at the same distance from the router. To ensure that the energy measured is only consumed by the web app under test, we used the delta values for power consumption of Trepn which does not consider the energy consumed by the profiler and the OS. \hlcyan{Furthermore, we have only considered the energy consumed by each web app until it is interactive. Using the first-time-interactive we mitigate the risk of punishing web apps that load faster than the profiling time used in Android runner.}
+There are several factor that can affect the reliability of the measures i.e. brightness of the devices, distance to the router and interference with other processes consuming energy. To mitigate this, we always set the brightness of the screen to the minimum and always set the device at the same distance from the router. To ensure that the energy measured is only consumed by the web app under test, we used the delta values for power consumption of Trepn which does not consider the energy consumed by the profiler and the OS. Furthermore, we have only considered the energy consumed by each web app until it is interactive. Using the first-time-interactive we mitigate the risk of punishing web apps that load faster than the profiling time used in Android runner.
 
 
 
@@ -30,7 +30,7 @@ Although the specific selection of samples affects the external validity and thu
 
 \textbf{Interaction of setting and treatment}
 
-This threat deals with the situation when the experiments are performed in such a testing environment which is not realistic. For our experiment we used a relatively new device connected via wifi which representative of the way most users browse the internet. Google Chrome was the mobile browser of choice which captures \hlcyan{60\% of market share and Lighthouse which is supported by Google. By using these tools and materials we made sure to generate a realistic experimental setting environment that is representative of a real world problem.}
+This threat deals with the situation when the experiments are performed in such a testing environment which is not realistic. For our experiment we used a relatively new device connected via wifi which representative of the way most users browse the internet. Google Chrome was the mobile browser of choice which captures 60\% of market share and Lighthouse which is supported by Google. By using these tools and materials we made sure to generate a realistic experimental setting environment that is representative of a real world problem.
 
 
 \subsection{Construct Validity}
